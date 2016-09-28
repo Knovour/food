@@ -1,11 +1,12 @@
 module Components.Footer exposing (render)
 
-import Html exposing (Html, footer, text, i)
-import Html.Attributes exposing (class)
+import Html exposing (Html, footer, text, a, i)
+import Html.Attributes exposing (..)
 
 render : Html msg
 render =
   footer [ class "footer-block" ] [
     i [ class "mdi mdi-copyright" ] [],
-    text " 當季蔬果一覽"
+    text " 當季蔬果一覽 | ",
+    a [ href "http://notes.knovour.ninja/food/" ] [ text "GitHub" ]
   ]
