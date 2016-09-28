@@ -1,0 +1,34 @@
+input[type="range"] {
+  -webkit-appearance: none !important;
+  width: 100%;
+  height: 2px;
+  outline: none;
+  background-color: #bdbdbd;
+  margin: auto;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+input[type="range"]:hover {
+  background-color: #9E9E9E;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none !important;
+  width: 12pt;
+  height: 12pt;
+  background-color: #388E3C;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 0 6pt rgba(56, 142, 60, .3);
+}
+
+input[type="range"]::-webkit-slider-thumb:active {
+  box-shadow: none;
+  width: 18pt;
+  height: 18pt;
+}
