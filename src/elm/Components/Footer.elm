@@ -8,5 +8,5 @@ render =
   footer [ class "footer-block" ] [
     i [ class "mdi mdi-copyright" ] [],
     text " 當季蔬果一覽 | ",
-    a [ href "http://notes.knovour.ninja/food/" ] [ text "GitHub" ]
+    a [ href "https://github.com/Knovour/food" ] [ text "GitHub" ]
   ]
