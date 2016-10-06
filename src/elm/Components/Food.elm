@@ -15,12 +15,12 @@ has monthList current = monthList
 renderFood : Food -> Html Main.Msg
 renderFood food =
   div [ class "food-card" ] [
-    img [ class "img", src ("https://dl.dropboxusercontent.com/u/1419724/img/" ++ food.name ++ ".webp"), alt "" ] [],
+    div [ class "media" ] [
+      img [ class "img", src ("https://dl.dropboxusercontent.com/u/1419724/img/" ++ food.name ++ ".webp"), alt "" ] []
+    ],
     div [ class "info" ] [
       span [ class "name" ] [ text food.name ],
-      a [ class "copyright _right", href food.imgFrom, target "_blank", title "圖片來源" ] [
-        i [ class "icon mdi mdi-copyright" ] []
-      ]
+      a [ class "copyright", href food.imgFrom, target "_blank" ] [ text "圖片來源" ]
     ]
   ]
 

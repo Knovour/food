@@ -11,82 +11,48 @@
   > .goods {
     display: flex;
     flex-wrap: wrap;
+    margin-right: -8pt;
   }
 }
 
 .food-card {
   position: relative;
   margin: 0 8pt 8pt 0;
+  padding: 4pt 4pt 8pt;
   background: white;
   box-sizing: border-box;
   box-shadow: rgba(0, 0, 0, 0.117647) 0pt 1pt 6pt, rgba(0, 0, 0, 0.117647) 0pt 1pt 4pt;
   cursor: pointer;
+  width: 120px;
 
-  > .img {
+  > .media > .img {
     display: block;
     width: 100%;
   }
 
   > .info {
-    position: absolute auto 0 0 0;
-    padding: 6pt 12pt;
-    background: rgba(53, 53, 53, .5);
-    color: white;
+    padding: 8pt 0 0;
+    color: #353535;
+  }
+
+  > .info > .name {
+    display: block;
     font-size: 1.1em;
   }
 
   > .info > .copyright {
-    font-size: 1.2em;
-    color: white;
+    display: block;
+    color: #03A9F4;
+    text-decoration: none;
+    font-size: .8em;
+    padding: 12pt 4pt 0 0;
+    text-align: right;
   }
 }
 
-@media screen and (min-width: 1441px) {
-  .food-card {
-    width: calc((100% - 56pt) / 8);
-
-    &:nth-of-type(8n+8) {
-      margin-right: 0;
-    }
-  }
-}
-
-@media screen and (min-width: 1025px) and (max-width: 1440px) {
-  .food-card {
-    width: calc((100% - 40pt) / 6);
-
-    &:nth-of-type(6n+6) {
-      margin-right: 0;
-    }
-  }
-}
-
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-  .food-card {
-    width: calc((100% - 32pt) / 5);
-
-    &:nth-of-type(5n+5) {
-      margin-right: 0;
-    }
-  }
-}
-
-@media screen and (min-width: 551px) and (max-width: 768px) {
-  .food-card {
-    width: calc((100% - 16pt) / 3);
-
-    &:nth-of-type(3n+3) {
-      margin-right: 0;
-    }
-  }
-}
 
 @media screen and (max-width: 550px) {
   .food-card {
-    width: calc((100% - 8pt) / 2);
-
-    &:nth-of-type(2n+2) {
-      margin-right: 0;
-    }
+    width: calc((100% - 24pt) / 3);
   }
 }
