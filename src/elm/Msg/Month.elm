@@ -1,3 +1,5 @@
 module Msg.Month exposing (..)
 
-type Msg = Change Int
+
+type Msg
+  = Change Int
