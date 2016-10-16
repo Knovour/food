@@ -11,7 +11,8 @@ import Components.Dimmer as Dimmer
 import Components.Header as Header
 import Components.Shelf as Shelf
 import Components.Toolbar as Toolbar
--- import Components.Footer as Footer
+import Components.Action as Action
+import Components.Footer as Footer
 import Components.Box as Box
 
 
@@ -34,17 +35,16 @@ main =
 view : Model -> Html Msg
 view model =
   let
-    month =
-      model.month
-
-    box =
-      model.box
+    month = model.month
+    box = model.box
+    action = model.action
   in
     div []
       [ Dimmer.render box.open
       , Header.render
       , Shelf.render [] (Shelf.goods data month)
-      -- , Footer.render
+      , Footer.render
       , Box.render box
-      , Toolbar.render month
+      , Toolbar.render month action
+      , Action.render action
       ]

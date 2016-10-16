@@ -10,17 +10,17 @@ update : Main.Msg -> Model -> Model
 update msg model =
   case msg of
     MonthMsg month_msg ->
-      updateMonth month_msg model
+      updateMonth month_msg
 
     _ ->
       model
 
 
-updateMonth : Month.Msg -> Model -> Model
-updateMonth month_msg model =
+updateMonth : Month.Msg -> Model
+updateMonth month_msg =
   case month_msg of
     Change 0 ->
-      { current = 0, text = "顯示全部" }
+      { current = 0, text = "所有月份" }
 
     Change current ->
       let
@@ -28,6 +28,6 @@ updateMonth month_msg model =
           Data.month
             |> List.filter (\{ idx } -> idx == current)
             |> List.head
-            |> Maybe.withDefault { idx = 0, eng = "", text = "顯示全部" }
+            |> Maybe.withDefault { idx = 0, eng = "", text = "所有月份" }
       in
         { current = current, text = result.text }

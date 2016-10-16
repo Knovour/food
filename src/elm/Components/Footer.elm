@@ -8,6 +8,5 @@ render : Html msg
 render =
   footer [ class "footer-block" ]
     [ i [ class "mdi mdi-copyright" ] []
-    , text " 當季蔬果一覽 | "
-    , a [ href "https://github.com/Knovour/food" ] [ text "GitHub" ]
+    , text " 當季蔬果一覽"
     ]

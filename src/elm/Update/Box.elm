@@ -9,14 +9,14 @@ update : Main.Msg -> Model -> Model
 update msg model =
   case msg of
     BoxMsg box_msg ->
-      toggleBox box_msg model
+      toggleBox box_msg
 
     _ ->
       model
 
 
-toggleBox : Box.Msg -> Model -> Model
-toggleBox box_msg model =
+toggleBox : Box.Msg -> Model
+toggleBox box_msg =
   case box_msg of
     Open str ->
       { open = True, food = str }

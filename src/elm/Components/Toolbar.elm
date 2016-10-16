@@ -6,16 +6,22 @@ import Html.Events as Event exposing (onInput)
 
 import Libs.Normalize exposing (toInt)
 import Msg.Main as Main exposing (..)
-import Msg.Month exposing (..)
-import Model.Month exposing (Model)
 
-render : Model -> Html Main.Msg
-render monthModel =
-  div [ class "toolbar-block" ]
-  [ div [ class "month-range" ]
-    [ div [ class "group" ]
-      [ output [ class "output", for "monthRange" ] [ text monthModel.text ]
-      , input
+import Msg.Month exposing (..)
+
+import Model.Month as Month
+import Model.Action as Action
+
+render : Month.Model -> Action.Model -> Html Main.Msg
+render monthModel isOpen =
+  let
+    formClass = if isOpen then "show" else "hide"
+    classes = "toolbar-block _depth-2 " ++ formClass
+  in
+    Html.form [ class classes ]
+    [ fieldset [ class "month" ] [ text monthModel.text ]
+    , div [ class "month-range group" ]
+      [ input
         [ id "monthRange"
         , class "slider"
         , type' "range"
@@ -27,5 +33,5 @@ render monthModel =
         , onInput (\value -> MonthMsg <| Change (toInt value))
         ] []
       ]
+    -- , div [ class "group" ] [ input [type' "text" ] [] ]
     ]
-  ]

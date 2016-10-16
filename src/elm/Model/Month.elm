@@ -10,5 +10,5 @@ type alias Model =
 model : Model
 model =
   { current = 0
-  , text = "顯示全部"
+  , text = "所有月份"
   }

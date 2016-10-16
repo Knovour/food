@@ -54,7 +54,7 @@ if(TARGET_ENV === 'development') {
 
   module.exports = merge(commonConfig, {
     entry: [
-      'webpack-dev-server/client?http://localhost:8080',
+      'webpack-dev-server/client?http://localhost:7999',
       './src/static/index.js'
     ],
 

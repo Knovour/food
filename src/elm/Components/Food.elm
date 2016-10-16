@@ -15,7 +15,7 @@ has monthList current = List.member current monthList
 
 renderFood : Food -> Html Main.Msg
 renderFood food =
-  div [ class "food-card", onClick (BoxMsg <| Open food.name) ]
+  div [ class "food-card _depth-1", onClick (BoxMsg <| Open food.name) ]
     [ div [ class "media" ]
       [ img [ class "img", src ("https://dl.dropboxusercontent.com/u/1419724/img/" ++ food.name ++ ".webp"), alt "" ] []
       ]

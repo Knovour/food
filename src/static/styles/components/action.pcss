@@ -1,0 +1,30 @@
+.action-button {
+  position: fixed auto 32pt 32pt auto;
+  background: var(--berry);
+  text-align: center;
+  color: white;
+  cursor: pointer;
+  transition: all 100ms linear;
+
+  &.open {
+    width: 32pt;
+    height: 32pt;
+    font-size: 1.5em;
+  }
+
+  &.close {
+    width: 52pt;
+    height: 52pt;
+    font-size: 2em;
+  }
+
+  > .icon {
+    display: block;
+    position: relative 50% auto auto;
+    transform: translateY(-50%);
+
+    &.mdi-close {
+      top: 52%;
+    }
+  }
+}
