@@ -19,7 +19,7 @@
 ```bash
 cd [專案位置]
 elm package install
-npm i
+yarn
 ```
 
 ## 啟動

@@ -30,10 +30,9 @@
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1",
+    "webpack-dashboard": "^0.2.0",
     "webpack-dev-server": "^1.16.1",
     "webpack-merge": "^0.14.1"
   },
-  "dependencies": {
-    "normalize.css": "^5.0.0"
-  }
+  "dependencies": {}
 }

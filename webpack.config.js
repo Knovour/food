@@ -2,9 +2,10 @@ const path              = require('path');
 const webpack           = require('webpack');
 const merge             = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const autoprefixer      = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const Dashboard         = require('webpack-dashboard');
+const DashboardPlugin   = require('webpack-dashboard/plugin');
 
 console.log('WEBPACK GO!');
 
@@ -62,19 +63,27 @@ if(TARGET_ENV === 'development') {
       contentBase: "./src",
       hot: true,
       inline:   true,
-      progress: true
+      progress: true,
+      noInfo: true,
+      quiet: true,
+      stats: {
+        colors: true
+      }
     },
 
     module: {
       loaders: [{
         test:    /\.elm$/,
         exclude: [ /elm-stuff/, /node_modules/ ],
-        loader:  'elm-hot!elm-webpack?verbose=true&warn=true'
+        loader:  'elm-hot!elm-webpack?warn=true'
       }, {
         test: /\.p?css$/,
         loader: "style-loader!css-loader!postcss-loader"
       }]
-    }
+    },
+    plugins: [
+      new DashboardPlugin(new Dashboard().setData)
+    ]
   });
 }
 

@@ -6,18 +6,30 @@
   > .header {
     display: inline-block;
     margin: 0;
-    height: 48px;
+    height: 32pt;
     width: auto;
   }
 }
 
 .right-menu {
   float: right;
+  margin-top: -3pt;
   color: var(--green);
-  font-size: 3em;
+  font-size: 36pt;
 
   > a,
   > a:visited {
     color: var(--green);
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .header-block > .header {
+    height: 24pt;
+  }
+
+  .right-menu {
+    font-size: 30pt;
   }
 }
