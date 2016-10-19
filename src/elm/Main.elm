@@ -1,6 +1,6 @@
 module Main exposing (..)
 
-import Html exposing (..)
+import Html exposing (Html, div)
 import Html.App as Html
 import Libs.Data exposing (data)
 import Msg.Main exposing (Msg)
@@ -35,16 +35,16 @@ main =
 view : Model -> Html Msg
 view model =
   let
-    month = model.month
+    search = model.search
     box = model.box
     action = model.action
   in
     div []
       [ Dimmer.render box.open
       , Header.render
-      , Shelf.render [] (Shelf.goods data month)
+      , Shelf.render [] (Shelf.goods data search)
       , Footer.render
       , Box.render box
-      , Toolbar.render month action
+      , Toolbar.render search action
       , Action.render action
       ]

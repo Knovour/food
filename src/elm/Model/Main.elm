@@ -1,12 +1,12 @@
 module Model.Main exposing (..)
 
-import Model.Month as Month
+import Model.Search as Search
 import Model.Box as Box
 import Model.Action as Action
 
 
 type alias Model =
-  { month : Month.Model
+  { search : Search.Model
   , box : Box.Model
   , action : Action.Model
   }
@@ -14,7 +14,7 @@ type alias Model =
 
 model : Model
 model =
-  { month = Month.model
+  { search = Search.model
   , box = Box.model
   , action = Action.model
   }

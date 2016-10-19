@@ -1,5 +1,13 @@
 input[type="text"] {
+  outline: none;
   border-width: 0;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--black);
   width: 100%;
+  padding: 2pt 0 8pt;
+  font-size: 1.1em;
+  color: var(--black);
+
+  &:focus {
+    border-color: var(--lightgreen);
+  }
 }

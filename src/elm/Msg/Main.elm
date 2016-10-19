@@ -1,12 +1,12 @@
 module Msg.Main exposing (..)
 
-import Msg.Month as Month
+import Msg.Search as Search
 import Msg.Box as Box
 import Msg.Action as Action
 
 
 type Msg
   = NoOp
-  | MonthMsg Month.Msg
+  | SearchMsg Search.Msg
   | BoxMsg Box.Msg
   | ActionMsg Action.Msg
