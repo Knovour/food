@@ -5,9 +5,25 @@
 @import 'helpers.pcss';
 
 body {
-  background: var(--smooth-white);
+  background-color: var(--smooth-white);
   color: var(--brown);
   font-family: Rubik, 微軟正黑體, 'Noto Sans TC', sans-serif;
+
+  &::after {
+    background-image: url(https://dl.dropboxusercontent.com/u/1419724/img/field.webp);
+    background-size: 120% auto;
+    background-position: -20% -30%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    content: "";
+    opacity: 0.3;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: fixed;
+    z-index: -1;
+  }
 }
 
 div, h1, h2, h3, h4, h5, h6, header, footer, section, article {
