@@ -4,8 +4,6 @@ const merge             = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const Dashboard         = require('webpack-dashboard');
-const DashboardPlugin   = require('webpack-dashboard/plugin');
 
 console.log('WEBPACK GO!');
 
@@ -82,7 +80,6 @@ if(TARGET_ENV === 'development') {
       }]
     },
     plugins: [
-      new DashboardPlugin(new Dashboard().setData)
     ]
   });
 }
