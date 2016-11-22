@@ -25,13 +25,11 @@ normalize :
     , list : List Food
     }
 normalize rowData foodTypes =
-  List.map
-    (\currentType ->
-      rowData
-        |> pick currentType
-        |> format currentType
-    )
-    foodTypes
+  List.map (\currentType ->
+    rowData
+    |> pick currentType
+    |> format currentType
+  ) foodTypes
 
 
 toInt : String -> Int

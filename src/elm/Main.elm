@@ -1,12 +1,8 @@
-module Main exposing (..)
-
 import Html exposing (Html, div)
-import Html.App as Html
 import Libs.Data exposing (data)
 import Msg.Main exposing (Msg)
 import Model.Main as Main exposing (Model, model)
 import Update.Main exposing (update)
-
 import Components.Dimmer as Dimmer
 import Components.Header as Header
 import Components.Shelf as Shelf
@@ -19,7 +15,7 @@ import Components.Box as Box
 -- APP
 
 
-main : Program Never
+main : Program Never Model Msg
 main =
   Html.beginnerProgram
     { model = model

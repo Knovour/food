@@ -9,19 +9,14 @@ import Libs.Data as Data
 update : Main.Msg -> Model -> Model
 update msg model =
   case msg of
-    SearchMsg search_msg ->
-      updateSearch search_msg model
-
-    _ ->
-      model
+    SearchMsg search_msg -> updateSearch search_msg model
+    _ -> model
 
 
 updateSearch : Search.Msg -> Model -> Model
 updateSearch search_msg model =
   case search_msg of
-    Month 0 ->
-      { model | current = 0, month = "所有月份"  }
-
+    Month 0 -> { model | current = 0, month = "所有月份" }
     Month current ->
       let
         result =
@@ -31,5 +26,5 @@ updateSearch search_msg model =
             |> Maybe.withDefault { idx = 0, eng = "", text = "所有月份" }
       in
         { model | current = current, month = result.text }
-    Name str ->
-      { model | name = str }
+
+    Name str -> { model | name = str }

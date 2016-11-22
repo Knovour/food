@@ -5,8 +5,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-console.log('WEBPACK GO!');
-
 // detemine build env
 const TARGET_ENV = process.env.npm_lifecycle_event === 'build' ? 'production' : 'development';
 
@@ -58,12 +56,7 @@ if(TARGET_ENV === 'development') {
     ],
 
     devServer: {
-      contentBase: "./src",
-      hot: true,
-      inline:   true,
       progress: true,
-      noInfo: true,
-      quiet: true,
       stats: {
         colors: true
       }
@@ -73,14 +66,12 @@ if(TARGET_ENV === 'development') {
       loaders: [{
         test:    /\.elm$/,
         exclude: [ /elm-stuff/, /node_modules/ ],
-        loader:  'elm-hot!elm-webpack?warn=true'
+        loader:  'elm-hot-loader!elm-webpack-loader?verbose=true&warn=true&debug=true'
       }, {
         test: /\.p?css$/,
         loader: "style-loader!css-loader!postcss-loader"
-      }]
+      }],
     },
-    plugins: [
-    ]
   });
 }
 
