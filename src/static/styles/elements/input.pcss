@@ -1,13 +1,16 @@
-input[type="text"] {
+input[type="search"] {
   outline: none;
   border-width: 0;
-  border-bottom: 1px solid var(--black);
   width: 100%;
-  padding: 2pt 0 8pt;
-  font-size: 1.1em;
+  padding: 4pt 0 8pt;
+  height: 24pt;
+  font-size: 16pt;
   color: var(--black);
+  background: transparent;
+}
 
-  &:focus {
-    border-color: var(--lightgreen);
-  }
+input::-webkit-input-placeholder,
+input::-moz-placeholder {
+  font-family: overpass;
+  font-weight: 600;
 }

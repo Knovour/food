@@ -1,25 +1,50 @@
 .header-block {
-  margin: 0 -16pt 32pt;
-  padding: 12pt 16pt;
-  color: var(--green);
+  display: flex;
+  align-items: center;
+  position: fixed 0 auto auto 0;
+  width: calc(100% - 216pt);
+  height: 48pt;
+  border-bottom: 1px solid rgba(var(--lighter-gray), .4);
+  padding: 0 16pt 0 24pt;
+  background: var(--smooth-white);
+  color: var(--black);
+  z-index: 100;
 
   > .header {
     display: inline-block;
     margin: 0;
-    height: 32pt;
+    height: 20pt;
     width: auto;
+  }
+
+  .search {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 16pt 0 40pt;
+    flex-grow: 2;
+
+    > .label {
+      font-size: 24pt;
+      margin-right: 8pt;
+    }
   }
 }
 
 .right-menu {
-  float: right;
-  margin-top: -3pt;
-  color: var(--green);
-  font-size: 36pt;
+  margin-left: auto;
 
-  > a,
-  > a:visited {
-    color: var(--green);
+  > .important-btn {
+    width: 24pt;
+    height: 24pt;
+    border-radius: 50%;
+    background: var(--green);
+    color: white;
+    text-align: center;
+    cursor: pointer;
+
+    > i {
+      line-height: 24pt;
+    }
   }
 }
 

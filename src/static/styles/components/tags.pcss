@@ -1,0 +1,44 @@
+.tags-list {
+  position: fixed 48pt auto auto 0;
+  border-right: 1px solid rgba(var(--lighter-gray), .4);
+  background: var(--smooth-white);
+  width: 40pt;
+  height: calc(100vh - 48pt);
+  z-index: 100;
+  writing-mode: vertical-lr;
+  font-size: 16pt;
+  line-height: 34pt;
+
+  > .tags {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    white-space: nowrap;
+  }
+
+  > .tags > .tag {
+    font-weight: 300;
+    cursor: pointer;
+    display: inline-block;
+    width: 100%;
+    padding: 16pt 0;
+    letter-spacing: 4pt;
+
+    &:hover {
+      background: rgba(var(--lighter-gray), .3);
+    }
+  }
+
+  .tag:first-child {
+    font-weight: 500;
+  }
+
+  &::after {
+    content: '';
+    position: absolute 0 -1px auto auto;
+    width: 4pt;
+    height: calc(32pt + 32pt + 8pt);
+    background: var(--brown);
+  }
+}

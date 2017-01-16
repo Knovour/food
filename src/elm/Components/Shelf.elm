@@ -6,15 +6,15 @@ import Components.Layer as Layer
 import Components.Goods as Goods
 import Components.Food as Food
 import Msg.Main as Main exposing (..)
-import Libs.Type exposing (Food)
+import Libs.Type exposing (Group, Food)
 import Model.Search as Search
 
 
-goods : List { currentType : String, list : List Food } -> Search.Model -> List (Html Main.Msg)
+goods : List Group -> Search.Model -> List (Html Main.Msg)
 goods goods searchModel =
-  List.map (\{ currentType, list } ->
-    Layer.render { species = currentType }
-    [ Layer.label currentType
+  List.map (\{ tag, list } ->
+    Layer.render { species = tag }
+    [ Layer.label tag
     , Goods.render (Food.render list searchModel)
     ]
   ) goods

@@ -11,4 +11,11 @@ label currentType =
 
 render : { species : String } -> List (Html msg) -> Html msg
 render attr elemList =
-  div [ class "layer", attribute "data-type" attr.species ] elemList
+  let
+    hide =
+      if attr.species /= "蔬菜" then
+        "_hide"
+      else
+        ""
+  in
+    div [ class ("layer " ++ hide), attribute "data-type" attr.species ] elemList

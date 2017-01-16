@@ -1,32 +1,42 @@
 import Html exposing (Html, div)
-import Libs.Data exposing (data)
-import Msg.Main exposing (Msg)
+
+import Libs.Init exposing (request)
+
+import Msg.Main as Main exposing (..)
+
 import Model.Main as Main exposing (Model, model)
+
 import Update.Main exposing (update)
-import Components.Dimmer as Dimmer
-import Components.Header as Header
-import Components.Shelf as Shelf
-import Components.Toolbar as Toolbar
-import Components.Action as Action
-import Components.Footer as Footer
-import Components.Box as Box
+
+import Components.Header  as Header
+import Components.Tags as Tags exposing (tags)
+import Components.Shelf   as Shelf
+import Components.Footer  as Footer
+import Components.Tools.Tools as Tools exposing (tools)
+
 
 
 -- APP
 
-
 main : Program Never Model Msg
 main =
-  Html.beginnerProgram
-    { model = model
+  Html.program
+    { init = init
     , view = view
     , update = update
+    , subscriptions = subscriptions
     }
 
 
 
--- VIEW
+-- INIT
 
+init : (Model, Cmd Msg)
+init = (model, request)
+
+
+
+-- VIEW
 
 view : Model -> Html Msg
 view model =
@@ -34,13 +44,19 @@ view model =
     search = model.search
     box = model.box
     action = model.action
+    content = model.content
   in
     div []
-      [ Dimmer.render box.open
-      , Header.render
-      , Shelf.render [] (Shelf.goods data search)
-      , Footer.render
-      , Box.render box
-      , Toolbar.render search action
-      , Action.render action
+      [ Header.render
+      , tools
+      , tags
+      , Shelf.render [] (Shelf.goods content search)
+      -- , Footer.render
       ]
+
+
+
+-- SUBSCRIPTIONS
+
+subscriptions : Model -> Sub Msg
+subscriptions model = Sub.none

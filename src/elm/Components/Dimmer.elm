@@ -6,16 +6,21 @@ import Html.Events as Event exposing (onClick)
 import Msg.Main as Main exposing (..)
 import Msg.Box exposing (..)
 
-
-render : Bool -> Html Main.Msg
-render showDimmer =
+show : Bool -> Html.Attribute msg
+show isActive =
   let
     toggle =
-      if showDimmer then
+      if isActive then
         "_show"
       else
         "_hide"
-
-    classes = "dimmer " ++ toggle
   in
-    div [ class classes, onClick (BoxMsg <| Close) ] []
+    class ("dimmer " ++ toggle)
+
+
+dimmer : List (Html.Attribute Main.Msg) -> Html Main.Msg
+dimmer props =
+  let
+     attr = List.append props [ onClick (BoxMsg <| Close) ]
+  in
+    div attr []

@@ -1,0 +1,49 @@
+.tools {
+  position: fixed 0 0 auto auto;
+  width: 216pt;
+  height: 100vh;
+  border-left: 1px solid rgba(var(--lighter-gray), .4);
+  padding: 16pt;
+  background: var(--smooth-white);
+  color: var(--black);
+  z-index: 100;
+
+  .heading {
+    font-size: 1.2em;
+    margin-bottom: 8pt;
+  }
+}
+
+.month-group {
+
+  > .group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 8pt;
+    font-size: 14pt;
+    font-weight: 300;
+  }
+
+  .month {
+    width: 24pt;
+    height: 24pt;
+    border-radius: 50%;
+    border: 1px solid var(--lighter-gray);
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+
+    > span {
+      position: absolute 50% auto auto 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    &:hover {
+      font-weight: 700;
+      color: white;
+      background: var(--green);
+      border-color: var(--green);
+    }
+  }
+}

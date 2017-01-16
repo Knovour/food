@@ -1,35 +1,50 @@
 module Libs.Normalize exposing (normalize, toInt)
 
-import String
-import List
-import Libs.Type exposing (Food, Month)
+import Libs.Data exposing (foodTypes)
+import Libs.Type exposing (Respond, Item, Asset, Food, Group)
+
+
+normalize : Respond -> List Group
+normalize { items, assets } =
+  let
+    rowData = List.map (\item -> insert item assets) items
+  in
+    List.map (\tag ->
+      rowData
+        |> pick tag
+        |> List.sortBy (\{ harvest } -> List.length harvest)
+        |> List.reverse
+        |> groupUp tag
+    ) foodTypes
+
+
+insert : Item -> List Asset -> Food
+insert item assets =
+  let
+    result =
+      assets
+        |> List.filter (\{ id } -> id == item.image)
+        |> List.head
+        |> Maybe.withDefault { id = "", url = "", source = "" }
+  in
+    { name = item.name
+    , image = result.url
+    , source = result.source
+    , species = item.species
+    , harvest = (List.map toInt item.harvest)
+    }
 
 
 pick : String -> List Food -> List Food
-pick currentType list =
-  List.filter (\{ species } -> species == currentType) list
+pick tag list =
+  List.filter (\{ species } -> species == tag) list
 
 
-format : String -> List Food -> { currentType : String, list : List Food }
-format currentType list =
-  { currentType = currentType
+groupUp : String -> List Food -> { tag : String, list : List Food }
+groupUp tag list =
+  { tag = tag
   , list = list
   }
-
-
-normalize :
-  List Food
-  -> List String
-  -> List
-    { currentType : String
-    , list : List Food
-    }
-normalize rowData foodTypes =
-  List.map (\currentType ->
-    rowData
-    |> pick currentType
-    |> format currentType
-  ) foodTypes
 
 
 toInt : String -> Int
