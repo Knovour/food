@@ -3,19 +3,18 @@
   width: 200pt;
   height: 100vh;
   border-left: 1px solid rgba(var(--lighter-gray), .4);
-  padding: 16pt;
+  padding: 24pt 16pt 0;
   background: var(--smooth-white);
   color: var(--black);
   z-index: 100;
 
   .heading {
     font-size: 1.2em;
-    margin-bottom: 8pt;
+    margin: 0 0 8pt;
   }
 }
 
 .month-group {
-
   > .group {
     display: flex;
     flex-wrap: wrap;
@@ -46,4 +45,59 @@
       border-color: var(--green);
     }
   }
+}
+
+.opts-group {
+  margin-bottom: 32pt;
+}
+
+.opts {
+  display: flex;
+  margin-bottom: 8pt;
+  color: var(--green);
+  position: relative;
+  justify-content: space-between;
+
+  &:before {
+    content: '';
+    background: var(--green);
+    width: calc(50% - 2pt);
+    height: 100%;
+    position: absolute 0 auto auto 0;
+    z-index: -1;
+    border-radius: 2pt;
+  }
+
+  > .active {
+    color: white;
+  }
+
+  > .view {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(50% - 2pt);
+    text-align: center;
+    cursor: pointer;
+    border-radius: 2pt;
+
+    &:not(.active):hover {
+      background: rgba(var(--lighter-gray), .4);
+    }
+  }
+
+  > .group {
+    padding: 6pt 0;
+    font-size: 10pt;
+  }
+
+  > .layout {
+    padding: 8pt 0;
+
+    > i {
+      font-size: 20pt;
+    }
+  }
+
+
 }
