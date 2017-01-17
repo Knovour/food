@@ -8,6 +8,7 @@
   writing-mode: vertical-lr;
   font-size: 16pt;
   line-height: 34pt;
+  padding-top: 24pt;
 
   > .tags {
     width: 100%;
@@ -22,8 +23,10 @@
     cursor: pointer;
     display: inline-block;
     width: 100%;
-    padding: 16pt 0;
+    /*padding: 16pt 0;*/
     letter-spacing: 4pt;
+    height: calc(32pt + 48pt);
+    text-align: center;
 
     &:hover {
       background: rgba(var(--lighter-gray), .3);
@@ -36,9 +39,9 @@
 
   &::after {
     content: '';
-    position: absolute 0 -1px auto auto;
+    position: absolute 24pt -1px auto auto;
     width: 4pt;
-    height: calc(32pt + 32pt + 8pt);
+    height: calc(32pt + 48pt);
     background: var(--brown);
   }
 }
