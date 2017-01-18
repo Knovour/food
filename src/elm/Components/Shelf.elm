@@ -1,4 +1,4 @@
-module Components.Shelf exposing (goods, render)
+module Components.Shelf exposing (goods, shelf)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
@@ -24,6 +24,6 @@ goods actions goods searchModel =
   ) goods
 
 
-render : List a -> List (Html Main.Msg) -> Html Main.Msg
-render attr elemList =
+shelf : List a -> List (Html Main.Msg) -> Html Main.Msg
+shelf attr elemList =
   div [ class "food-shelf" ] elemList

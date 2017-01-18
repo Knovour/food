@@ -1,4 +1,4 @@
-module Components.Header exposing (render)
+module Components.Header exposing (header_)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
@@ -7,8 +7,8 @@ import Msg.Main as Main exposing (..)
 import Msg.Search exposing (..)
 
 
-render : Html Main.Msg
-render =
+header_ : Html Main.Msg
+header_ =
   header [ class "header-block" ]
     [ img [ class "header", src "https://dl.dropboxusercontent.com/u/1419724/img/logo.svg", alt "logo" ] []
     , div [ class "search" ]
