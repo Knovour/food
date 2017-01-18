@@ -1,8 +1,14 @@
 module Model.Action exposing (..)
 
 
-type alias Model = Bool
+type alias Model =
+  { hover : List Int
+  , tag : String
+  }
 
 
 model : Model
-model = False
+model =
+  { hover = []
+  , tag = "蔬菜"
+  }

@@ -19,6 +19,7 @@
   }
 
   > .tags > .tag {
+    position: relative;
     font-weight: 300;
     cursor: pointer;
     display: inline-block;
@@ -28,20 +29,22 @@
     height: calc(32pt + 48pt);
     text-align: center;
 
-    &:hover {
+    &.current {
+      font-weight: 500;
+    }
+
+    &.current:after {
+      content: '';
+      position: absolute 0 -1px auto auto;
+      width: 4pt;
+      height: 100%;
+      background: var(--brown);
+      z-index: 400;
+    }
+
+    &:not(.current):hover {
       border-right: 3pt solid rgba(var(--lighter-gray), .3);
     }
   }
 
-  .tag:first-child {
-    font-weight: 500;
-  }
-
-  &::after {
-    content: '';
-    position: absolute 24pt -1px auto auto;
-    width: 4pt;
-    height: calc(32pt + 48pt);
-    background: var(--brown);
-  }
 }

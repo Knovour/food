@@ -2,16 +2,14 @@ module Components.Food exposing (..)
 
 import Html exposing (Html, div, span, img, text, i, a)
 import Html.Attributes exposing (..)
-import Html.Events as Event exposing (onClick)
+import Html.Events as Event exposing (onMouseEnter, onMouseLeave)
 import String exposing (isEmpty, contains)
 import Libs.Type exposing (Food)
+import Libs.Helper exposing (include)
+import Msg.Action exposing (..)
 import Msg.Main as Main exposing (..)
 import Model.Search as Search
 
-
-include : List Int -> Int -> Bool
-include monthList current =
-  List.member current monthList
 
 
 renderFood : Food -> Html Main.Msg
@@ -29,7 +27,7 @@ renderFood food =
     ) (List.range 1 12)
   in
 
-  div [ class "food-card" ]
+  div [ class "food-card", onMouseEnter (ActionMsg <| Hover food.harvest), onMouseLeave (ActionMsg <| Hover []) ]
     [ div [ class "media" ]
       [ img [ class "img", src food.image, alt "" ] []
       ]

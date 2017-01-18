@@ -8,15 +8,19 @@ import Components.Food as Food
 import Msg.Main as Main exposing (..)
 import Libs.Type exposing (Group, Food)
 import Model.Search as Search
+import Model.Action as Action
 
 
-goods : List Group -> Search.Model -> List (Html Main.Msg)
-goods goods searchModel =
+goods : Action.Model -> List Group -> Search.Model -> List (Html Main.Msg)
+goods actions goods searchModel =
   List.map (\{ tag, list } ->
-    Layer.render { species = tag }
-    [ Layer.label tag
-    , Goods.render (Food.render list searchModel)
-    ]
+    if tag == actions.tag then
+      Layer.render tag
+      [ Layer.label tag
+      , Goods.render (Food.render list searchModel)
+      ]
+    else
+      text ""
   ) goods
 
 

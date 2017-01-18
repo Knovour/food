@@ -8,12 +8,12 @@ import Model.Action exposing (Model)
 update : Main.Msg -> Model -> Model
 update msg model =
   case msg of
-    ActionMsg action_msg -> toggleAction action_msg
+    ActionMsg action_msg -> toggleAction action_msg model
     _ -> model
 
 
-toggleAction : Action.Msg -> Model
-toggleAction action_msg =
+toggleAction : Action.Msg -> Model -> Model
+toggleAction action_msg model =
   case action_msg of
-    Open  -> True
-    Close -> False
+    Hover list -> { model | hover = list }
+    Tag str -> { model | tag = str }

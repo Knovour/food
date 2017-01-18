@@ -10,8 +10,7 @@ import Update.Main exposing (update)
 
 import Components.Header  as Header
 import Components.Tags as Tags exposing (tags)
-import Components.Shelf   as Shelf
-import Components.Footer  as Footer
+import Components.Shelf as Shelf
 import Components.Tools.Tools as Tools exposing (tools)
 
 
@@ -48,10 +47,9 @@ view model =
   in
     div []
       [ Header.render
-      , tools
-      , tags
-      , Shelf.render [] (Shelf.goods content search)
-      -- , Footer.render
+      , tools action
+      , tags action
+      , Shelf.render [] (Shelf.goods action content search)
       ]
 
 

@@ -3,15 +3,17 @@ module Components.Tools.Tools exposing (..)
 import Html exposing (..)
 import Html.Attributes as Attr exposing (..)
 
+import Libs.Helper exposing (include)
 import Components.Tools.Month as Month exposing (month)
 import Msg.Main as Main exposing (..)
+import Model.Action as Action
 
 
-tools : Html Main.Msg
-tools =
+tools : Action.Model -> Html Main.Msg
+tools action =
   let
-    group1 = List.map (\num -> month [] [ Month.current num ]) (List.range 1 6)
-    group2 = List.map (\num -> month [] [ Month.current num ]) (List.range 7 12)
+    group1 = List.map (\num -> month [ Month.highlight (include action.hover num) ] [ Month.current num ]) (List.range 1 6)
+    group2 = List.map (\num -> month [ Month.highlight (include action.hover num) ] [ Month.current num ]) (List.range 7 12)
   in
     div [ class "tools" ]
       [ div [ class "view-options" ]
@@ -35,9 +37,9 @@ tools =
       , footer [ class "footer" ]
         [ div [ class "copyright" ] [ text "2017 © Knovour" ]
         , div [ class "links" ]
-          [ a [ href "https://notes.knovour.ninja" ] [ text "Blog" ]
+          [ a [ href "https://notes.knovour.ninja", target "_blank" ] [ text "Blog" ]
           , span [ class "middot" ] [ text "·" ]
-          , a [ href "https://github.com/Knovour/food" ] [ text "GitHub" ]
+          , a [ href "https://github.com/Knovour/food", target "_blank" ] [ text "GitHub" ]
           , span [ class "middot" ] [ text "·" ]
           , span []
             [ text "Made by "
@@ -46,29 +48,3 @@ tools =
           ]
         ]
       ]
-  -- Html.form [ class classes ]
-  --   [ fieldset [ class "month" ] [ text "搜尋" ]
-  --   , div [ class "month-range group" ]
-  --     [ label [ class "label" ] [ text searchModel.month ]
-  --     , input
-  --       [ id "monthRange"
-  --       , class "slider"
-  --       , type_ "range"
-  --       , Attr.min "0"
-  --       , Attr.max "12"
-  --       , step "1"
-  --       , value (toString searchModel.current)
-  --       , name "monthRange"
-  --       , onInput (\value -> SearchMsg <| Month (toInt value))
-  --       ]
-  --       []
-  --     ]
-  --   , div [ class "group" ]
-  --     [ label [ class "label" ] [ text "名稱" ]
-  --     , input
-  --       [ type_ "text"
-  --       , onInput (\value -> SearchMsg <| Name value)
-  --       ]
-  --       []
-  --     ]
-  --   ]

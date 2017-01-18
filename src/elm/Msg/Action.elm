@@ -2,5 +2,5 @@ module Msg.Action exposing (..)
 
 
 type Msg
-  = Open
-  | Close
+  = Hover (List Int)
+  | Tag String
