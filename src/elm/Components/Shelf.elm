@@ -1,29 +1,30 @@
-module Components.Shelf exposing (goods, shelf)
+module Components.Shelf exposing (layer_, shelf)
 
-import Html exposing (..)
-import Html.Attributes exposing (..)
-import Components.Layer as Layer
-import Components.Goods as Goods
-import Components.Food as Food
+import Html exposing (Html, div)
+import Html.Attributes exposing (class)
+
+import Components.Shelf.Layer as Layer exposing (layer)
+import Components.Shelf.Goods as Goods exposing (goods)
+import Components.Shelf.Food as Food
+
 import Msg.Main as Main exposing (..)
-import Libs.Type exposing (Group, Food)
+
 import Model.Search as Search
 import Model.Action as Action
 
+import Libs.Type exposing (Group)
 
-goods : Action.Model -> List Group -> Search.Model -> List (Html Main.Msg)
-goods actions goods searchModel =
+
+layer_ : Action.Model -> List Group -> Search.Model -> List (Html Main.Msg)
+layer_ actions foodList searchModel =
   List.map (\{ tag, list } ->
-    if tag == actions.tag then
-      Layer.render tag
-      [ Layer.label tag
-      , Goods.render (Food.render list searchModel)
+    layer [ Layer.show (tag == actions.tag), Layer.dataType tag ]
+      [ Layer.name tag
+      , goods [] (Food.list list searchModel)
       ]
-    else
-      text ""
-  ) goods
+  ) foodList
 
 
 shelf : List a -> List (Html Main.Msg) -> Html Main.Msg
-shelf attr elemList =
-  div [ class "food-shelf" ] elemList
+shelf attr slot =
+  div [ class "food-shelf" ] slot

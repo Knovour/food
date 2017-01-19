@@ -2,16 +2,16 @@ import Html exposing (Html, div)
 
 import Libs.Init exposing (request)
 
-import Msg.Main as Main exposing (..)
+import Msg.Main exposing (Msg)
 
-import Model.Main as Main exposing (Model, model)
+import Model.Main exposing (Model, model)
 
 import Update.Main exposing (update)
 
 import Components.Header as Header exposing (header_)
 import Components.Tags as Tags exposing (tags)
 import Components.Shelf as Shelf exposing (shelf)
-import Components.Tools.Tools as Tools exposing (tools)
+import Components.Tools as Tools exposing (tools)
 
 
 
@@ -38,19 +38,13 @@ init = (model, request)
 -- VIEW
 
 view : Model -> Html Msg
-view model =
-  let
-    search = model.search
-    box = model.box
-    action = model.action
-    content = model.content
-  in
-    div []
-      [ header_
-      , tools action
-      , tags action
-      , shelf [] (Shelf.goods action content search)
-      ]
+view { search, box, action, content } =
+  div []
+    [ header_
+    , tools action
+    , tags action
+    , shelf [] (Shelf.layer_ action content search)
+    ]
 
 
 

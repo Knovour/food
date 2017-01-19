@@ -1,36 +1,38 @@
-.tags-list {
+.tags-block {
   position: fixed 48pt auto auto 0;
   border-right: 1px solid rgba(var(--lighter-gray), .4);
   background: var(--smooth-white);
   width: 40pt;
   height: calc(100vh - 48pt);
   z-index: 100;
+  padding-top: 24pt;
+}
+
+.tags-list {
+  width: 100%;
+  height: 100%;
   writing-mode: vertical-lr;
   font-size: 16pt;
   line-height: 34pt;
-  padding-top: 24pt;
+  overflow-y: auto;
+  overflow-x: hidden;
+  white-space: nowrap;
 
-  > .tags {
-    width: 100%;
-    height: 100%;
-    overflow-y: auto;
-    overflow-x: hidden;
-    white-space: nowrap;
-  }
-
-  > .tags > .tag {
+  & > .tag {
     position: relative;
-    font-weight: 300;
-    cursor: pointer;
     display: inline-block;
     width: 100%;
-    /*padding: 16pt 0;*/
-    letter-spacing: 4pt;
     height: calc(32pt + 48pt);
+    font-weight: 300;
+    cursor: pointer;
+    letter-spacing: 4pt;
     text-align: center;
+    opacity: .65;
+    color: var(--berry);
 
     &.current {
       font-weight: 500;
+      opacity: 1;
     }
 
     &.current:after {
@@ -38,13 +40,13 @@
       position: absolute 0 -1px auto auto;
       width: 4pt;
       height: 100%;
-      background: var(--brown);
+      background: var(--berry);
       z-index: 400;
     }
 
     &:not(.current):hover {
-      border-right: 3pt solid rgba(var(--lighter-gray), .3);
+      border-right: 3pt solid rgba(var(--berry), .4);
+      opacity: .9;
     }
   }
-
 }

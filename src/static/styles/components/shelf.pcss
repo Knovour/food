@@ -2,7 +2,7 @@
   flex: 0 1 100%;
   padding: 16pt;
 
-  > .species:first-of-type .label {
+  & > .species:first-of-type .label {
     margin-top: 0;
   }
 }
@@ -12,7 +12,7 @@
   display: flex;
   flex-wrap: wrap;
 
-  > .label {
+  & > .label {
     display: none;
     writing-mode: vertical-rl;
     margin: 0 8pt 0 0;
@@ -25,7 +25,7 @@
     font-weight: 300;
   }
 
-  > .goods {
+  & > .goods {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
@@ -45,28 +45,28 @@
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
   }
 
-  > .media {
+  & > .media {
     width: 100%;
     overflow: hidden;
   }
 
-  > .media > .img {
+  & > .media > .img {
     display: block;
     width: 100%;
     height: auto;
   }
 
-  > .info {
+  & > .info {
     margin-top: 8pt;
     color: var(--black);
   }
 
-  > .info > .name {
+  & > .info > .name {
     display: block;
     font-size: 1.1em;
   }
 
-  > .info > .copyright {
+  & > .info > .copyright {
     float: left;
     text-decoration: none;
     font-size: 12px;
@@ -80,7 +80,7 @@
   margin: 8pt 0;
   height: 4px;
 
-  > .dot {
+  & > .dot {
     float: left;
     width: 4px;
     height: 4px;
@@ -89,44 +89,7 @@
     background: rgba(var(--lighter-gray), .5);
   }
 
-  > .current {
+  & > .current {
     background: var(--dark-green);
-  }
-}
-
-
-@media screen and (max-width: 550px) {
-  .food-card {
-    width: calc((100% - 16pt) / 2);
-    padding: 8pt 0;
-
-    > .media {
-      margin-top: -8pt;
-    }
-
-    > .info {
-      padding: 0 0 0 4pt;
-    }
-
-    > .info > .name {
-      font-size: 1em;
-    }
-  }
-
-
-  .layer {
-    display: blox;
-
-    > .label {
-      writing-mode: inherit;
-      margin: 0;
-      width: 100%;
-      border-right-width: 0;
-      padding-right: 0;
-    }
-
-    > .goods {
-      width: calc(100% + 8pt);
-    }
   }
 }

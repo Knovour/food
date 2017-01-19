@@ -1,28 +1,31 @@
 module Components.Tags exposing (tags)
 
-import Html exposing (..)
-import Html.Attributes as Attr exposing (..)
+import Html exposing (Html, Attribute, div, text)
+import Html.Attributes exposing (class)
 import Html.Events as Event exposing (onClick)
+
 import Msg.Main as Main exposing (..)
 import Msg.Action exposing (..)
+
+import Model.Action exposing (Model)
+
 import Libs.Data exposing (foodTypes)
-import Model.Action as Action
+
+selected : String -> String -> Attribute Main.Msg
+selected name tag =
+  if (name == tag) then
+    class "tag current"
+  else
+    class "tag"
 
 
-tags : Action.Model -> Html Main.Msg
-tags action =
+tags : Model -> Html Main.Msg
+tags { tag } =
   let
     tagList = List.map (\name ->
-      let
-        classes =
-          if name == action.tag then
-            "tag current"
-          else
-            "tag"
-      in
-        div [ class classes, onClick (ActionMsg <| Tag name) ] [ text name ]
+      div [ selected name tag, onClick (ActionMsg <| Tag name) ] [ text name ]
     ) foodTypes
   in
-    div [ class "tags-list" ]
-      [ div [ class "tags" ] tagList
+    div [ class "tags-block" ]
+      [ div [ class "tags-list" ] tagList
       ]
