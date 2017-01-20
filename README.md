@@ -4,9 +4,9 @@
 
 - [GitHub Page](https://notes.knovour.ninja/food/)
 - 資料來源：[行政院農委會 - 田邊好幫手](http://life.coa.gov.tw/Life/AgriculturalProducts/SeasonProductList.aspx?selectMonth=1&__M=True)（若有相同作物資料，以產季月份最多為主）。
-- 營養資料表目前是假資料。
 - 專案修改自：[Elm Webpack Starter](https://github.com/moarwick/elm-webpack-starter)
-- 專案架構參考自：[Structured TodoMVC example with Elm](https://medium.com/@_rchaves_/structured-todomvc-example-with-elm-a68d87cd38da#.pjdeirpjy)
+- 架構參考：[Structured TodoMVC example with Elm](https://medium.com/@_rchaves_/structured-todomvc-example-with-elm-a68d87cd38da#.pjdeirpjy)
+- UI 參考：[Google Fonts](https://fonts.google.com/)
 
 ## 前置作業
 
