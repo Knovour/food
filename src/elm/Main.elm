@@ -8,10 +8,12 @@ import Model.Main exposing (Model, model)
 
 import Update.Main exposing (update)
 
+import Components.Dimmer as Dimmer exposing (dimmer)
 import Components.Header as Header exposing (header_)
-import Components.Tags as Tags exposing (tags)
+import Components.Tags exposing (tags)
 import Components.Shelf as Shelf exposing (shelf)
-import Components.Tools as Tools exposing (tools)
+import Components.Tools exposing (tools)
+import Components.Box exposing (box_)
 
 
 
@@ -41,9 +43,11 @@ view : Model -> Html Msg
 view { search, box, action, content } =
   div []
     [ header_
-    , tools action
+    , tools action search
     , tags action
     , shelf [] (Shelf.layer_ action content search)
+    , dimmer [ Dimmer.show box.open ]
+    , box_ box
     ]
 
 

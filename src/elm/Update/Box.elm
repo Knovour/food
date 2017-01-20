@@ -15,5 +15,5 @@ update msg model =
 toggleBox : Box.Msg -> Model
 toggleBox box_msg =
   case box_msg of
-    Open str -> { open = True, food = str }
-    Close -> { open = False, food = "" }
+    Open str -> { open = True, name = str }
+    Close -> { open = False, name = "" }
