@@ -88,14 +88,23 @@
   }
 
   & > .month._highlight,
+  & > .month._selected,
   & > .month:hover {
-    font-weight: 700;
-    color: white;
+    font-weight: 600;
+    color: var(--smooth-white);
+  }
+
+  & > .month._highlight:not(._selected) {
     background: var(--light-green);
     border-color: var(--light-green);
   }
 
-  & > .month:active {
+  & > .month:not(._selected):hover {
+    background: rgba(var(--lighter-gray), .4);
+    border-color: rgba(var(--lighter-gray), .1);
+  }
+
+  & > .month._selected {
     background: var(--green);
     border-color: var(--green);
   }

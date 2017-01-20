@@ -1,8 +1,8 @@
-@import 'init/root.pcss';
-@import 'elements/index.pcss';
-@import 'components/index.pcss';
-@import 'variants.pcss';
-@import 'helpers.pcss';
+@import 'init/root.css';
+@import 'elements/index.css';
+@import 'components/index.css';
+@import 'variants.css';
+@import 'helpers.css';
 
 body {
   background-color: var(--smooth-white);
@@ -38,6 +38,5 @@ a {
 }
 
 #main {
-  min-height: 100vh;
   padding: 48pt 200pt 0 40pt;
 }

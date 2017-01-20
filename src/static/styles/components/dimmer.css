@@ -1,6 +1,6 @@
 .dimmer {
   position: fixed 0;
-  background: rgba(53, 53, 53, .5);
+  background: rgba(var(--black), .8);
   width: 100vw;
   height: 100vh;
   z-index: 100;

@@ -1,0 +1,95 @@
+.box-modal {
+  position: fixed 8% auto auto 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  background: white;
+  border-radius: 2px;
+  width: 32vw;
+  padding: 8pt 32pt 24pt;
+
+  & > .close {
+    position: absolute 4pt 4pt auto auto;
+    font-size: 32pt;
+    color: var(--lighter-gray);
+    cursor: pointer;
+
+    &:hover {
+      color: var(--light-gray);
+    }
+  }
+}
+
+.box-content {
+  width: 100%;
+
+  & > .heading {
+    margin: 24pt 0 8pt;
+    font-size: 1.6em;
+    font-weight: 400;
+  }
+
+  & > .subheading {
+    margin: -4pt 0 8pt;
+    color: var(--light-gray);
+  }
+}
+
+
+.info-list {
+  padding: 0 0 0 24pt;
+  line-height: 1.8em;
+
+  & .link {
+    font-weight: 600;
+  }
+}
+
+.color-palette {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  & > .slot {
+    display: block;
+    width: calc(100% / 5 - 4pt);
+    margin: 0 4pt 4pt 0;
+    border-radius: 2px;
+    box-sizing: border-box;
+    transition: all 200ms linear;
+
+    &:nth-child(5n) {
+      margin-right: 0;
+    }
+
+    &:hover {
+      @apply --depth-3;
+    }
+  }
+}
+
+.color-box {
+  position: relative;
+  width: 100%;
+  border-radius: 2px;
+  padding-bottom: 100%;
+
+  & > .info {
+    position: absolute 50% auto auto 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  & > .info > span {
+    display: block;
+    text-align: center;
+  }
+
+  & > .info > .name {
+    font-size: 1em;
+  }
+
+  & > .info > .hex {
+    margin-top: 8pt;
+    font-size: .6em;
+    font-weight: 800;
+  }
+}
