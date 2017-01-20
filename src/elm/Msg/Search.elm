@@ -2,5 +2,6 @@ module Msg.Search exposing (..)
 
 
 type Msg
-  = Month Int
+  = SelectMonth Int
+  | UnSelectMonth Int
   | Name String

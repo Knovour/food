@@ -9,11 +9,12 @@ import Components.Footer exposing (footer_)
 
 import Msg.Main exposing (Msg)
 import Model.Action as Action
+import Model.Search as Search
 
-tools : Action.Model -> Html Msg
-tools action =
+tools : Action.Model -> Search.Model -> Html Msg
+tools action search =
   div [ class "tools-pack" ]
     [ display
-    , month action
+    , month action search
     , footer_
     ]

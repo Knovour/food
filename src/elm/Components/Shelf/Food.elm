@@ -37,15 +37,28 @@ food food =
         ]
       ]
 
+isFilterHarvest : List Int -> List Int -> Bool
+isFilterHarvest harvest selectedMonth =
+  let
+    result =
+      if (List.length selectedMonth) > (List.length harvest) then
+        -1
+      else
+        selectedMonth
+          |> List.filter (\num -> harvest |> include num)
+          |> List.length
+  in
+    (List.length selectedMonth) == result
+
 
 list : List Food -> Search.Model -> List (Html Main.Msg)
-list foodList { current, name } =
+list foodList { name, month } =
   List.map (\foodData ->
     let
-      isCurrentMonth = current == 0 || (foodData.harvest |> include current)
       isSearchResult = isEmpty name || (name |> contains foodData.name)
+      isFilterResult = List.isEmpty month || (isFilterHarvest foodData.harvest month)
     in
-      if (isCurrentMonth && isSearchResult) then
+      if (isSearchResult && isFilterResult) then
         food foodData
       else
         text ""
