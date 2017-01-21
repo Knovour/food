@@ -99,7 +99,7 @@ if(TARGET_ENV === 'production') {
 
     plugins: [
       new CopyWebpackPlugin([{
-        from: 'src/static/favicon.ico'
+        from: 'src/static/favicon.png'
       }]),
       new webpack.optimize.OccurenceOrderPlugin(),
       new ExtractTextPlugin('./[hash].css', { allChunks: true }),
