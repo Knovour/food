@@ -6,7 +6,6 @@ import Html.Events as Event exposing (onMouseEnter, onMouseLeave)
 import String exposing (isEmpty, contains)
 
 import Libs.Type exposing (Food)
-import Libs.Helper exposing (include)
 
 import Msg.Action exposing (..)
 import Msg.Main as Main exposing (..)
@@ -20,7 +19,7 @@ food food =
     harvest = List.map (\month ->
       let
         classes =
-          if (food.harvest |> include month) then
+          if (List.member month food.harvest) then
             "dot current"
           else
             "dot"
@@ -45,7 +44,7 @@ isFilterHarvest harvest selectedMonth =
         -1
       else
         selectedMonth
-          |> List.filter (\num -> harvest |> include num)
+          |> List.filter (\num -> List.member num harvest)
           |> List.length
   in
     (List.length selectedMonth) == result
@@ -55,7 +54,7 @@ list : List Food -> Search.Model -> List (Html Main.Msg)
 list foodList { name, month } =
   List.map (\foodData ->
     let
-      isSearchResult = isEmpty name || (name |> contains foodData.name)
+      isSearchResult = isEmpty name || (contains foodData.name name)
       isFilterResult = List.isEmpty month || (isFilterHarvest foodData.harvest month)
     in
       if (isSearchResult && isFilterResult) then

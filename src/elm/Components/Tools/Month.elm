@@ -4,8 +4,6 @@ import Html exposing (Html, Attribute, div, p, text)
 import Html.Attributes exposing (class)
 import Html.Events as Event exposing (onClick)
 
-import Libs.Helper exposing (include)
-
 import Msg.Main as Main exposing (..)
 import Msg.Search exposing (..)
 
@@ -25,7 +23,7 @@ current num = text (toString num)
 
 handleClick : Int -> List Int -> Main.Msg
 handleClick num list =
-  if (list |> include num) then
+  if (List.member num list) then
     SearchMsg <| UnSelectMonth num
   else
     SearchMsg <| SelectMonth num
@@ -36,7 +34,7 @@ month { hover } { month } =
     group =
       List.map (\num ->
         div
-          [ classes (hover |> include num) (month |> include num)
+          [ classes (List.member num hover) (List.member num month)
           , onClick (handleClick num month)
           ] [ current num ]
       ) (List.range 1 12)
