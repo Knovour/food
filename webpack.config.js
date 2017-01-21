@@ -40,7 +40,7 @@ const commonConfig = {
     return [
       require('postcss-import')({ addDependencyTo: webpack }),
       require('postcss-cssnext')({
-        browsers: []
+        browsers: [ 'last 1 versions' ]
       }),
       require('rucksack-css')
     ]
