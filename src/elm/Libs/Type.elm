@@ -1,13 +1,6 @@
 module Libs.Type exposing (..)
 
 
-type alias Month =
-  { idx : Int
-  , eng : String
-  , text : String
-  }
-
-
 type alias Item =
   { name : String
   , image : String

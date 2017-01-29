@@ -1,5 +1,4 @@
 module Components.Tools exposing (..)
-
 import Html exposing (Html, div)
 import Html.Attributes exposing (class)
 
@@ -11,10 +10,11 @@ import Msg.Main exposing (Msg)
 import Model.Action as Action
 import Model.Search as Search
 
+
 tools : Action.Model -> Search.Model -> Html Msg
 tools action search =
   div [ class "tools-pack" ]
-    [ display
+    [ display action
     , month action search
     , footer_
     ]

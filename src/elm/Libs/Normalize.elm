@@ -1,21 +1,26 @@
 module Libs.Normalize exposing (normalize, toInt)
+import Dict exposing (Dict)
 
 import Libs.Data exposing (foodTypes)
 import Libs.Type exposing (Respond, Item, Asset, Food, Group)
 
 
-normalize : Respond -> List Group
+normalize : Respond -> Dict String (List Food)
 normalize { items, assets } =
   let
     rowData = List.map (\item -> insert item assets) items
   in
-    List.map (\tag ->
-      rowData
-        |> pick tag
-        |> List.sortBy (\{ harvest } -> List.length harvest)
-        |> List.reverse
-        |> groupUp tag
-    ) foodTypes
+    foodTypes
+      |> List.map (\tag ->
+          let
+            list = rowData
+              |> List.filter (\{ species } -> species == tag)
+              |> List.sortBy (\{ harvest } -> List.length harvest)
+              |> List.reverse
+          in
+            (tag, list)
+         )
+      |> Dict.fromList
 
 
 insert : Item -> List Asset -> Food
@@ -33,18 +38,6 @@ insert item assets =
     , species = item.species
     , harvest = (List.map toInt item.harvest)
     }
-
-
-pick : String -> List Food -> List Food
-pick tag list =
-  List.filter (\{ species } -> species == tag) list
-
-
-groupUp : String -> List Food -> { tag : String, list : List Food }
-groupUp tag list =
-  { tag = tag
-  , list = list
-  }
 
 
 toInt : String -> Int

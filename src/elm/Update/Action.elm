@@ -16,4 +16,6 @@ toggleAction : Action.Msg -> Model -> Model
 toggleAction action_msg model =
   case action_msg of
     Hover list -> { model | hover = list }
+    Group str -> { model | group = str }
+    Layout str -> { model | layout = str }
     Tag str -> { model | tag = str }

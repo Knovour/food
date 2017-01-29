@@ -1,9 +1,11 @@
 module Model.Content exposing (..)
-import Libs.Type exposing (Group)
+import Dict exposing (Dict)
+
+import Libs.Type exposing (Food)
 
 
-type alias Model = List Group
+type alias Model = Dict String (List Food)
 
 
 model : Model
-model = []
+model = Dict.fromList []

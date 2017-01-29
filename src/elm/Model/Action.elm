@@ -3,6 +3,8 @@ module Model.Action exposing (..)
 
 type alias Model =
   { hover : List Int
+  , group : String
+  , layout : String
   , tag : String
   }
 
@@ -10,5 +12,7 @@ type alias Model =
 model : Model
 model =
   { hover = []
-  , tag = "蔬菜"
+  , group = "蔬菜"
+  , layout = "apps"
+  , tag = "分頁"
   }

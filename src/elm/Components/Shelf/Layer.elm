@@ -1,7 +1,11 @@
 module Components.Shelf.Layer exposing (..)
-
 import Html exposing (Html, Attribute, h2, div, text)
 import Html.Attributes exposing (class, attribute)
+
+
+
+layer : List (Attribute msg) -> List (Html msg) -> Html msg
+layer attr slot = div attr slot
 
 
 show : Bool -> Attribute msg
@@ -16,10 +20,14 @@ dataType : String -> Attribute msg
 dataType species = attribute "data-type" species
 
 
-name : String -> Html msg
-name name =
-  h2 [ class "label" ] [ text name ]
+labelView : String -> Attribute msg
+labelView tag =
+  if tag == "分頁" then
+    class "label _hide"
+  else
+    class "label"
 
 
-layer : List (Attribute msg) -> List (Html msg) -> Html msg
-layer attr slot = div attr slot
+name : List (Attribute msg) -> List (Html msg) -> Html msg
+name attr slot = h2 attr slot
+

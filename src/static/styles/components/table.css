@@ -1,20 +1,45 @@
-.ingredients-table {
+.food-list {
+  padding: 24pt;
+}
+
+.table-head {
+  & > th {
+    padding: 8pt 0;
+    font-size: 1.1em;
+    font-weight: 500;
+  }
+
+  & > th:first-child {
+    width: calc(6em + 64pt);
+    text-align: left;
+  }
+
+  & > th:nth-last-child(-n+12) {
+    width: calc(80% / 12);
+  }
+}
+
+.table-body {
   & > .row {
-    border-bottom: 1px solid rgba(121, 85, 72, .1);
-    line-height: 2em;
+    border-bottom: 1px solid rgba(var(--lighter-gray), .2);
+
+    &:last-of-type {
+      border-bottom-width: 0;
+    }
+
+    &:hover {
+      background: rgba(var(--lighter-gray), .3);
+    }
   }
 
-  & > .row:last-of-type {
-    border-bottom-width: 0;
+  & .dot {
+    margin: 0 auto;
   }
+}
 
-  & > .row > .subdata {
-    color: #a96c43;
+.table-body > .row {
+  & > td:first-child {
+    padding: 8pt 0 8pt 8pt;
+    font-size: 1.2em;
   }
-
-  & > .row .label {
-    width: 8em;
-    display: inline-block;
-  }
-
 }

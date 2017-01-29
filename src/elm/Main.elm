@@ -1,19 +1,15 @@
+module Main exposing (..)
 import Html exposing (Html, div)
 
-import Libs.Init exposing (request)
-
+import Components.Dimmer  as Dimmer exposing (dimmer)
+import Components.Header  exposing (header_)
+import Components.Content exposing (content)
+import Components.Tools   exposing (tools)
+import Components.Box     exposing (box_)
 import Msg.Main exposing (Msg)
-
 import Model.Main exposing (Model, model)
-
 import Update.Main exposing (update)
-
-import Components.Dimmer as Dimmer exposing (dimmer)
-import Components.Header as Header exposing (header_)
-import Components.Tags exposing (tags)
-import Components.Shelf as Shelf exposing (shelf)
-import Components.Tools exposing (tools)
-import Components.Box exposing (box_)
+import Libs.Init exposing (request)
 
 
 
@@ -40,14 +36,13 @@ init = (model, request)
 -- VIEW
 
 view : Model -> Html Msg
-view { search, box, action, content } =
+view model =
   div []
     [ header_
-    , tools action search
-    , tags action
-    , shelf [] (Shelf.layer_ action content search)
-    , dimmer [ Dimmer.show box.open ]
-    , box_ box
+    , tools model.action model.search
+    , content model
+    , dimmer [ Dimmer.show model.box.open ]
+    , box_ model.box
     ]
 
 

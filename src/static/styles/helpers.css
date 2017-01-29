@@ -1,5 +1,5 @@
 ._hide {
-  display: none;
+  display: none !important;
 }
 
 ._depth {
@@ -8,8 +8,4 @@
   &-3 { @apply --depth-3; }
   &-4 { @apply --depth-4; }
   &-5 { @apply --depth-5; }
-}
-
-._hide {
-  display: none;
 }

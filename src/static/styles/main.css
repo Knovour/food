@@ -37,6 +37,10 @@ a {
   text-decoration: none;
 }
 
-#main {
-  padding: 48pt 200pt 0 40pt;
+#content {
+  margin: 48pt 200pt 0 40pt;
+
+  &._show-all {
+    margin-left: 0;
+  }
 }

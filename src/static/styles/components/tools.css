@@ -18,14 +18,15 @@
   }
 }
 
-.opts-box {
+.display-switch {
   position: relative;
   display: flex;
   justify-content: space-between;
   margin-bottom: 8pt;
   color: var(--green);
+  transition: all 320ms linear;
 
-  &:before {
+  &::before {
     content: '';
     position: absolute 0 auto auto 0;
     width: calc(50% - 2pt);
@@ -33,6 +34,11 @@
     border-radius: 2pt;
     background: var(--green);
     z-index: -1;
+    transition: all 200ms linear;
+  }
+
+  &.toggle::before {
+    left: calc(50% + 2pt);
   }
 
   & > ._active {

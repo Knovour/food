@@ -10,25 +10,32 @@
 .layer {
   margin-bottom: 40pt;
   display: flex;
-  flex-wrap: wrap;
 
   & > .label {
-    display: none;
+    position: relative;
     writing-mode: vertical-rl;
-    margin: 0 8pt 0 0;
+    margin: 8pt 8pt 0 0;
     width: 32pt;
     font-size: 2em;
     line-height: 1.7em;
     letter-spacing: 1pt;
-    border-right: 2px solid;
     padding-right: 2pt;
     font-weight: 300;
+    color: var(--berry);
+
+    &::after {
+      content: '';
+      position: absolute 0 0 auto auto;
+      width: 1.6pt;
+      height: 3.2em;
+      background: var(--berry);
+    }
   }
 
   & > .goods {
-    display: flex;
+    display: inline-flex;
     flex-wrap: wrap;
-    width: 100%;
+    flex-grow: 2;
   }
 }
 
@@ -82,14 +89,5 @@
 
   & > .dot {
     float: left;
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    margin-right: 6px;
-    background: rgba(var(--lighter-gray), .5);
-  }
-
-  & > .current {
-    background: var(--dark-green);
   }
 }
