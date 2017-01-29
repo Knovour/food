@@ -1,6 +1,5 @@
 const path              = require('path');
 const webpack           = require('webpack');
-const merge             = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -11,21 +10,12 @@ const TARGET_ENV = process.env.npm_lifecycle_event === 'build' ? 'production' : 
 // common webpack config
 const commonConfig = {
   output: {
-    path:     'dist/',
+    path: path.resolve(__dirname, './dist/'),
     filename: '[hash].js',
   },
 
   resolve: {
-    modulesDirectories: [ 'node_modules' ],
-    extensions:         [ '', '.js', '.elm' ]
-  },
-
-  module: {
-    noParse: /\.elm$/,
-    loaders: [{
-      test: /\.(eot|ttf|woff|woff2|svg)$/,
-      loader: 'file-loader'
-    }]
+    extensions: [ '.js', '.elm' ]
   },
 
   plugins: [
@@ -33,67 +23,58 @@ const commonConfig = {
       template: 'src/static/index.html',
       inject:   'body',
       filename: 'index.html'
-    })
-  ],
-
-  postcss(webpack) {
-    return [
-      require('postcss-import')({ addDependencyTo: webpack }),
-      require('postcss-cssnext')({
-        browsers: [ 'last 1 versions' ]
-      }),
-      require('rucksack-css')
-    ]
-  }
+    }),
+		new webpack.HotModuleReplacementPlugin(),
+  ]
 }
 
 // additional webpack settings for local env (when invoked by 'npm start')
 if(TARGET_ENV === 'development') {
-  console.log('Serving locally...');
-
-  module.exports = merge(commonConfig, {
+  module.exports = Object.assign({}, commonConfig, {
     entry: [
       'webpack-dev-server/client?http://localhost:7999',
       './src/static/index.js'
     ],
-
     devServer: {
-      progress: true,
       stats: {
         colors: true
       }
     },
-
     module: {
-      loaders: [{
+      rules: [{
         test:    /\.elm$/,
         exclude: [ /elm-stuff/, /node_modules/ ],
-        loader:  'elm-hot-loader!elm-webpack-loader?verbose=true&warn=true&debug=true'
+        use: [
+          'elm-hot-loader',
+          'elm-webpack-loader?verbose=true&warn=true&debug=true'
+        ]
       }, {
         test: /\.p?css$/,
-        loader: "style-loader!css-loader!postcss-loader"
+        use: [
+          'style-loader',
+          'css-loader',
+          'postcss-loader'
+        ]
       }],
-    },
+    }
   });
 }
 
 // additional webpack settings for prod env (when invoked via 'npm run build')
 if(TARGET_ENV === 'production') {
-  console.log('Building for prod...');
-
-  module.exports = merge(commonConfig, {
+  module.exports = Object.assign({}, commonConfig, {
     entry: './src/static/index.js',
     module: {
-      loaders: [{
+      rules: [{
         test:    /\.elm$/,
         exclude: [ /elm-stuff/, /node_modules/ ],
-        loader:  'elm-webpack'
+        loader:  'elm-webpack-loader'
       }, {
         test: /\.p?css$/,
-        loader: ExtractTextPlugin.extract('style-loader', [
-          'css-loader',
-          'postcss-loader',
-        ])
+        loader: ExtractTextPlugin.extract({
+          fallbackLoader: 'style-loader',
+          loader: 'css-loader!postcss-loader'
+        })
       }]
     },
 
@@ -101,10 +82,12 @@ if(TARGET_ENV === 'production') {
       new CopyWebpackPlugin([{
         from: 'src/static/favicon.png'
       }]),
-      new webpack.optimize.OccurenceOrderPlugin(),
-      new ExtractTextPlugin('./[hash].css', { allChunks: true }),
+      new ExtractTextPlugin({
+        filename: './[hash].css',
+        allChunks: true
+      }),
       new webpack.optimize.UglifyJsPlugin({
-        minimize:   true,
+        minimize: true,
         compressor: { warnings: false }
       })
     ]
