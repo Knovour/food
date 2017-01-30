@@ -79,6 +79,11 @@ if(TARGET_ENV === 'production') {
     },
 
     plugins: [
+      new HtmlWebpackPlugin({
+        template: 'src/static/index.html',
+        inject:   'body',
+        filename: 'index.html'
+      }),
       new CopyWebpackPlugin([{
         from: 'src/static/favicon.png'
       }]),
