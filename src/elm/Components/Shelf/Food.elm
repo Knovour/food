@@ -3,9 +3,9 @@ import Html exposing (Html, div, span, img, text, i, a)
 import Html.Attributes exposing (class, src, alt, href, target)
 import Html.Events as Event exposing (onMouseEnter, onMouseLeave)
 
-import Libs.Type exposing (Food)
+import Msg.Main   as Main exposing (..)
 import Msg.Action exposing (..)
-import Msg.Main as Main exposing (..)
+import Libs.Type exposing (Food)
 
 
 

@@ -1,10 +1,12 @@
 module Components.Table exposing (..)
 import Html exposing (Html, div, table, thead, tr, th, tbody, td, span, text, img)
 import Html.Attributes exposing (class, src, alt)
+import Html.Events as Event exposing (onMouseEnter, onMouseLeave)
 import Dict exposing (Dict)
 
 import Components.Shelf.Layer as Layer
-import Msg.Main as Main exposing (..)
+import Msg.Main   as Main exposing (..)
+import Msg.Action exposing (..)
 import Model.Main   exposing (Model, model)
 import Model.Action as Action
 import Libs.Data    exposing (foodTypes)
@@ -51,6 +53,8 @@ tbody_ list =
                   let dot = if (List.member month food.harvest) then " current" else ""
                   in  td [] [ span [ class ("dot -large" ++ dot) ] [] ]
                 ) (List.range 1 12)
-          in tr [ class "row" ] (td [] [ text food.name ] :: harvest)
+              hover = (ActionMsg <| Hover food.harvest)
+              unHover =  (ActionMsg <| Hover [])
+          in tr [ class "row", onMouseEnter hover, onMouseLeave unHover ] (td [] [ text food.name ] :: harvest)
         ) list
   in tbody [ class "table-body" ] ((tr [class "row _extra-spacing" ] [ td [] [] ]) :: tdList)
