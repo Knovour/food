@@ -38,7 +38,7 @@ init = (model, request)
 view : Model -> Html Msg
 view model =
   div []
-    [ header_
+    [ header_ model.search.name
     , tools model.action model.search
     , content model
     , dimmer [ Dimmer.show model.box.open ]

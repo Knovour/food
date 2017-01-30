@@ -2,7 +2,7 @@ input[type="search"] {
   outline: none;
   border-width: 0;
   width: 100%;
-  padding: 4pt 0;
+  padding: 4pt 0 6pt;
   height: 24pt;
   font-size: 16pt;
   color: var(--black);

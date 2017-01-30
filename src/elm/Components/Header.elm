@@ -10,11 +10,11 @@ import Msg.Box exposing (..)
 import Components.Header.Search exposing (search)
 
 
-header_ : Html Main.Msg
-header_ =
+header_ : String -> Html Main.Msg
+header_ searchInput =
   header [ class "header-block" ]
     [ img [ class "logo", src "https://dl.dropboxusercontent.com/u/1419724/img/logo.svg", alt "logo" ] []
-    , search
+    , search searchInput
     , div [ class "right-menu" ]
       [ div [ class "information-btn _depth-1", onClick (BoxMsg <| Open "information") ] [ i [ class "material-icons icon" ] [ text "priority_high" ] ]
       ]

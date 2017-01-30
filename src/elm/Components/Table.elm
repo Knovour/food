@@ -25,7 +25,7 @@ tableList : Action.Model -> Dict String (List Food) -> List (Html Main.Msg)
 tableList { tag, group } foodDict =
   List.map(\species ->
     let list = getDictValue species foodDict
-        toggle = if (tag /= "分頁" || species == group) then "" else " _hide"
+        toggle = if List.length list > 0 && (tag /= "分頁" || species == group) then "" else " _hide"
     in
       div [ class ("food-table" ++ toggle) ]
         [ Layer.name [ Layer.labelView tag ] [ text species ]

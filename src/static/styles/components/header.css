@@ -27,6 +27,7 @@
   & > .label {
     margin-right: 8pt;
     font-size: 24pt;
+    cursor: pointer;
   }
 }
 

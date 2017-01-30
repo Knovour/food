@@ -26,7 +26,7 @@ layer_ action foodDict =
   List.map(\species ->
     let list = getDictValue species foodDict
     in
-      layer [ Layer.show (action.tag /= "分頁" || species == action.group), Layer.dataType species ]
+      layer [ Layer.show (List.length list > 0 && (action.tag /= "分頁" || species == action.group)), Layer.dataType species ]
         [ Layer.name [ Layer.labelView action.tag ] [ text species ]
         , goods [] (Food.list list)
         ]
