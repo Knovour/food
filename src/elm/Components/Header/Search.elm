@@ -1,5 +1,4 @@
 module Components.Header.Search exposing (..)
-
 import Html exposing (Html, div, label, text, input)
 import Html.Attributes exposing (class, for, id, type_, name, placeholder)
 import Html.Events as Event exposing (onInput)

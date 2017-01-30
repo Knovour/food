@@ -1,11 +1,12 @@
 module Components.Box.InfoBox exposing (..)
-
 import Html exposing (Html, div, h5, a, ul, li, p, i, text, span)
 import Html.Attributes exposing (class, style, href, target)
 import Html.Events as Event exposing (onClick)
 
 import Msg.Main as Main exposing (..)
 import Msg.Box exposing (..)
+
+
 
 colors : List { name : String, color : String, tag : String, font : String }
 colors =
@@ -21,19 +22,20 @@ colors =
   , { name = "莓", color = "#B5495B", tag = "ICHIGO", font = "#FFFFFB" }
   ]
 
+
 infoBox : Html Main.Msg
 infoBox =
-  let
-    colorPalettes = List.map (\{ name, color, tag, font } ->
-      a [ class "slot", href ("http://nipponcolors.com/#" ++ tag), target "_blank" ]
-        [ div [ class "color-box", style [ ("background", color), ("color", font) ] ]
-          [ div [ class "info" ]
-            [ span [ class "name" ] [ text name ]
-            , span [ class "hex" ] [ text color ]
+  let colorPalettes =
+        List.map (\{ name, color, tag, font } ->
+          a [ class "slot", href ("http://nipponcolors.com/#" ++ tag), target "_blank" ]
+            [ div [ class "color-box", style [ ("background", color), ("color", font) ] ]
+              [ div [ class "info" ]
+                [ span [ class "name" ] [ text name ]
+                , span [ class "hex" ] [ text color ]
+                ]
+              ]
             ]
-          ]
-        ]
-    ) colors
+        ) colors
   in
     div [ class "box-modal _slide-in _depth-4" ]
       [ i [ class "material-icons close", onClick (BoxMsg <| Close) ] [ text "close" ]

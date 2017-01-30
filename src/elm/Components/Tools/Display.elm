@@ -20,23 +20,23 @@ display action =
 
 layout : String -> Html Main.Msg
 layout switch =
-  let
-    toggle = if switch == "menu" then " toggle" else ""
-    options = List.map (\tag ->
-      let active = if switch == tag then " _active" else ""
-      in div [ class ("layout opt" ++ active), onClick (ActionMsg <| Layout tag) ] [ i [ class "material-icons icon" ] [ text tag ] ]
-    ) [ "apps", "menu" ]
-  in
-    div [ class ("display-switch" ++ toggle) ] options
+  let toggle = if switch == "menu" then " toggle" else ""
+      options =
+        List.map (\tag ->
+          let active = if switch == tag then " _active" else ""
+              click = (ActionMsg <| Layout tag)
+          in div [ class ("layout opt" ++ active), onClick click ] [ i [ class "material-icons icon" ] [ text tag ] ]
+        ) [ "apps", "menu" ]
+  in div [ class ("display-switch" ++ toggle) ] options
 
 
 tag : String -> Html Main.Msg
 tag switch  =
-  let
-    toggle = if switch == "標籤" then " toggle" else ""
-    options = List.map (\tag ->
-      let active = if switch == tag then " _active" else ""
-      in div [ class ("tag opt" ++ active), onClick (ActionMsg <| Tag tag) ] [ text tag ]
-    ) [ "分頁", "標籤" ]
-  in
-    div [ class ("display-switch" ++ toggle) ] options
+  let toggle = if switch == "標籤" then " toggle" else ""
+      options =
+        List.map (\tag ->
+          let active = if switch == tag then " _active" else ""
+              click = (ActionMsg <| Tag tag)
+          in div [ class ("tag opt" ++ active), onClick click ] [ text tag ]
+        ) [ "分頁", "標籤" ]
+  in div [ class ("display-switch" ++ toggle) ] options

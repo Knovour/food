@@ -9,15 +9,12 @@ import Msg.Box exposing (..)
 
 show : Bool -> Html.Attribute msg
 show isActive =
-  if isActive then
-    class "dimmer _show"
-  else
-    class "dimmer _hide"
+  if isActive
+  then class "dimmer _show"
+  else class "dimmer _hide"
 
 
 dimmer : List (Html.Attribute Main.Msg) -> Html Main.Msg
 dimmer props =
-  let
-     attr = props ++ [ onClick (BoxMsg <| Close) ]
-  in
-    div attr []
+  let attr = props ++ [ onClick (BoxMsg <| Close) ]
+  in  div attr []

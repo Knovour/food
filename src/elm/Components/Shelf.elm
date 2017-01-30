@@ -17,17 +17,14 @@ import Libs.Helpers exposing (foodRefilter, getDictValue)
 
 shelf : Model -> Dict String (List Food) -> Html Main.Msg
 shelf { search, box, action, content } foodDict =
-  let
-    toggle = if action.tag == "標籤" then " -show-all" else ""
-  in
-    div [ class ("food-shelf" ++ toggle) ] (layer_ action foodDict)
+  let toggle = if action.tag == "標籤" then " _show-all" else ""
+  in  div [ class ("food-shelf" ++ toggle) ] (layer_ action foodDict)
 
 
 layer_ : Action.Model -> Dict String (List Food) -> List (Html Main.Msg)
 layer_ action foodDict =
   List.map(\species ->
-    let
-      list = getDictValue species foodDict
+    let list = getDictValue species foodDict
     in
       layer [ Layer.show (action.tag /= "分頁" || species == action.group), Layer.dataType species ]
         [ Layer.name [ Layer.labelView action.tag ] [ text species ]

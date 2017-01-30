@@ -1,7 +1,8 @@
 module Libs.Parser exposing (parser)
-
 import Json.Decode as Decode exposing (Decoder)
+
 import Libs.Type exposing (Item, Asset, Respond)
+
 
 
 parser : Decoder Respond
@@ -30,8 +31,6 @@ decodeAsset =
     (Decode.at [ "fields", "file" ] decodeUrl)
     (Decode.at [ "fields", "description" ] Decode.string)
 
+
 decodeUrl : Decoder String
-decodeUrl =
-  Decode.field "url" Decode.string
-
-
+decodeUrl = Decode.field "url" Decode.string

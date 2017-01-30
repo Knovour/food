@@ -9,10 +9,9 @@ middot = span [ class "middot" ] [ text "·" ]
 
 footer_ : Html msg
 footer_ =
-  let
-    blog = "https://notes.knovour.ninja"
-    github = "https://github.com/Knovour/food"
-    elm = "http://elm-lang.org"
+  let blog = "https://notes.knovour.ninja"
+      github = "https://github.com/Knovour/food"
+      elm = "http://elm-lang.org"
   in
     footer [ class "footer" ]
       [ div [ class "copyright" ] [ text "2017 © Knovour" ]

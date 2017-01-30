@@ -8,8 +8,4 @@ import Model.Box exposing (Model)
 
 
 box_ : Model -> Html Main.Msg
-box_ { name, open } =
-  if open then
-    infoBox
-  else
-    text ""
+box_ { name, open } = if open then infoBox else text ""

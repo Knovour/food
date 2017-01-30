@@ -15,9 +15,8 @@ import Libs.Helpers exposing (foodRefilter, getDictValue)
 
 content : Model -> Html Main.Msg
 content model =
-  let
-    foodDict = foodRefilter model.action model.search model.content
-    toggle = if model.action.tag == "標籤" then " _show-all" else ""
+  let foodDict = foodRefilter model.action model.search model.content
+      toggle = if model.action.tag == "標籤" then "_show-all" else ""
   in
     div []
       [ tags model.action foodDict
@@ -27,7 +26,6 @@ content model =
 
 display : Model -> Dict String (List Food) -> Html Main.Msg
 display model foodDict =
-  if model.action.layout == "apps" then
-    shelf model foodDict
-  else
-    table_ model foodDict
+  if model.action.layout == "apps"
+  then shelf model foodDict
+  else table_ model foodDict

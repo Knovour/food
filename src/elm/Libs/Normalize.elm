@@ -7,30 +7,26 @@ import Libs.Type exposing (Respond, Item, Asset, Food, Group)
 
 normalize : Respond -> Dict String (List Food)
 normalize { items, assets } =
-  let
-    rowData = List.map (\item -> insert item assets) items
-  in
-    foodTypes
+  let rowData = List.map (\item -> insert item assets) items
+  in foodTypes
       |> List.map (\tag ->
-          let
-            list = rowData
-              |> List.filter (\{ species } -> species == tag)
-              |> List.sortBy (\{ harvest } -> List.length harvest)
-              |> List.reverse
-          in
-            (tag, list)
-         )
+          let list =
+                rowData
+                  |> List.filter (\{ species } -> species == tag)
+                  |> List.sortBy (\{ harvest } -> List.length harvest)
+                  |> List.reverse
+          in (tag, list)
+        )
       |> Dict.fromList
 
 
 insert : Item -> List Asset -> Food
 insert item assets =
-  let
-    result =
-      assets
-        |> List.filter (\{ id } -> id == item.image)
-        |> List.head
-        |> Maybe.withDefault { id = "", url = "", source = "" }
+  let result =
+        assets
+          |> List.filter (\{ id } -> id == item.image)
+          |> List.head
+          |> Maybe.withDefault { id = "", url = "", source = "" }
   in
     { name = item.name
     , image = result.url
@@ -41,5 +37,4 @@ insert item assets =
 
 
 toInt : String -> Int
-toInt value =
-  Result.withDefault 0 (String.toInt value)
+toInt value = Result.withDefault 0 (String.toInt value)
