@@ -1,13 +1,12 @@
 module Components.Content exposing (..)
-import Html exposing (Html, div)
+import Html            exposing (Html, div)
 import Html.Attributes exposing (id, class)
 import Dict exposing (Dict)
 
+import Architecture.Main as Main exposing (..)
 import Components.Tags  exposing (tags)
 import Components.Shelf exposing (shelf)
 import Components.Table exposing (table_)
-import Msg.Main as Main exposing (..)
-import Model.Main exposing (Model, model)
 import Libs.Type    exposing (Food)
 import Libs.Helpers exposing (foodRefilter, getDictValue)
 
@@ -24,7 +23,7 @@ content model =
       ]
 
 
-display : Model -> Dict String (List Food) -> Html Main.Msg
+display : Main.Model -> Dict String (List Food) -> Html Main.Msg
 display model foodDict =
   if model.action.layout == "apps"
   then shelf model foodDict

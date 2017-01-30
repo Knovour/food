@@ -1,14 +1,13 @@
 module Components.Shelf exposing (layer_, shelf)
-import Html exposing (Html, div, text)
+import Html            exposing (Html, div, text)
 import Html.Attributes exposing (class)
 import Dict exposing (Dict)
 
 import Components.Shelf.Layer as Layer exposing (layer)
 import Components.Shelf.Goods exposing (goods)
 import Components.Shelf.Food  as Food
-import Msg.Main as Main exposing (..)
-import Model.Main   exposing (Model, model)
-import Model.Action as Action
+import Architecture.Main   as Main exposing (..)
+import Architecture.Action as Action
 import Libs.Data    exposing (foodTypes)
 import Libs.Type    exposing (Food)
 import Libs.Helpers exposing (foodRefilter, getDictValue)

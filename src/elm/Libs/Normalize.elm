@@ -5,6 +5,7 @@ import Libs.Data exposing (foodTypes)
 import Libs.Type exposing (Respond, Item, Asset, Food, Group)
 
 
+
 normalize : Respond -> Dict String (List Food)
 normalize { items, assets } =
   let rowData = List.map (\item -> insert item assets) items

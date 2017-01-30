@@ -1,14 +1,13 @@
 module Components.Tools.Month exposing (..)
-
-import Html exposing (Html, Attribute, div, p, text)
+import Html            exposing (Html, Attribute, div, p, text)
 import Html.Attributes exposing (class)
-import Html.Events as Event exposing (onClick)
+import Html.Events     exposing (onClick)
 
-import Msg.Main as Main exposing (..)
-import Msg.Search exposing (..)
+import Architecture.Main   as Main exposing (..)
+import Architecture.Search as Search exposing (..)
+import Architecture.Action as Action
 
-import Model.Action as Action exposing (..)
-import Model.Search as Search exposing (..)
+
 
 classes : Bool -> Bool -> Attribute Main.Msg
 classes isHighlight isSelected =
@@ -16,14 +15,17 @@ classes isHighlight isSelected =
       selected = if isSelected then " _selected" else ""
   in class ("month" ++ highlight ++ selected)
 
+
 current : Int -> Html Main.Msg
 current num = text (toString num)
+
 
 handleClick : Int -> List Int -> Main.Msg
 handleClick num list =
   if (List.member num list)
   then SearchMsg <| UnSelectMonth num
   else SearchMsg <| SelectMonth num
+
 
 month : Action.Model -> Search.Model -> Html Main.Msg
 month { hover } { month } =

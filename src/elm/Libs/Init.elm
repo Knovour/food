@@ -1,8 +1,9 @@
 module Libs.Init exposing (..)
-
 import Http
-import Msg.Main as Main exposing (..)
+
+import Architecture.Main as Main exposing (..)
 import Libs.Parser exposing (parser)
+
 
 
 request : Cmd Main.Msg

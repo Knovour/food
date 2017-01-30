@@ -1,10 +1,10 @@
 module Components.Box.InfoBox exposing (..)
-import Html exposing (Html, div, h5, a, ul, li, p, i, text, span)
+import Html            exposing (Html, div, h5, a, ul, li, p, i, text, span)
 import Html.Attributes exposing (class, style, href, target)
-import Html.Events as Event exposing (onClick)
+import Html.Events     exposing (onClick)
 
-import Msg.Main as Main exposing (..)
-import Msg.Box exposing (..)
+import Architecture.Main as Main exposing (..)
+import Architecture.Box  exposing (..)
 import Libs.Data exposing (colorPalettes)
 
 

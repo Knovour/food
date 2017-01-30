@@ -1,13 +1,12 @@
 module Components.Header exposing (header_)
-
-import Html exposing (Html, header, img, div, i, text)
+import Html            exposing (Html, header, img, div, i, text)
 import Html.Attributes exposing (class, src, alt)
-import Html.Events as Event exposing (onClick)
+import Html.Events     exposing (onClick)
 
-import Msg.Main as Main exposing (..)
-import Msg.Box exposing (..)
-
+import Architecture.Main as Main exposing (..)
+import Architecture.Box exposing (..)
 import Components.Header.Search exposing (search)
+
 
 
 header_ : String -> Html Main.Msg

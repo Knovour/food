@@ -6,9 +6,7 @@ import Components.Header  exposing (header_)
 import Components.Content exposing (content)
 import Components.Tools   exposing (tools)
 import Components.Box     exposing (box_)
-import Msg.Main exposing (Msg)
-import Model.Main exposing (Model, model)
-import Update.Main exposing (update)
+import Architecture.Main exposing (..)
 import Libs.Init exposing (request)
 
 

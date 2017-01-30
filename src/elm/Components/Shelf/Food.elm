@@ -1,10 +1,10 @@
 module Components.Shelf.Food exposing (..)
-import Html exposing (Html, div, span, img, text, i, a)
+import Html            exposing (Html, div, span, img, text, i, a)
 import Html.Attributes exposing (class, src, alt, href, target)
-import Html.Events as Event exposing (onMouseEnter, onMouseLeave)
+import Html.Events     exposing (onMouseEnter, onMouseLeave)
 
-import Msg.Main   as Main exposing (..)
-import Msg.Action exposing (..)
+import Architecture.Main   as Main exposing (..)
+import Architecture.Action exposing (..)
 import Libs.Type exposing (Food)
 
 

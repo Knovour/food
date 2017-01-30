@@ -1,9 +1,8 @@
 module Libs.Helpers exposing (foodRefilter, getDictValue)
 import Dict exposing (Dict)
 
-import Model.Search as Search
-import Model.Action as Action
-
+import Architecture.Search as Search
+import Architecture.Action as Action
 import Libs.Type exposing (Food)
 
 

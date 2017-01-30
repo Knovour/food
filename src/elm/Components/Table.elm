@@ -1,21 +1,19 @@
 module Components.Table exposing (..)
-import Html exposing (Html, div, table, thead, tr, th, tbody, td, span, text, img)
+import Html            exposing (Html, div, table, thead, tr, th, tbody, td, span, text, img)
 import Html.Attributes exposing (class, src, alt)
-import Html.Events as Event exposing (onMouseEnter, onMouseLeave)
+import Html.Events     exposing (onMouseEnter, onMouseLeave)
 import Dict exposing (Dict)
 
+import Architecture.Main   as Main   exposing (..)
+import Architecture.Action as Action exposing (..)
 import Components.Shelf.Layer as Layer
-import Msg.Main   as Main exposing (..)
-import Msg.Action exposing (..)
-import Model.Main   exposing (Model, model)
-import Model.Action as Action
 import Libs.Data    exposing (foodTypes)
 import Libs.Type    exposing (Food)
 import Libs.Helpers exposing (foodRefilter, getDictValue)
 
 
 
-table_ : Model -> Dict String (List Food) -> Html Main.Msg
+table_ : Main.Model -> Dict String (List Food) -> Html Main.Msg
 table_ { search, box, action, content } foodDict =
   let toggle = if action.tag == "標籤" then " _show-all" else ""
   in  div [ class ("food-list" ++ toggle) ] (tableList action foodDict)

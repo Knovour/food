@@ -1,11 +1,10 @@
 module Components.Tools.Display exposing (..)
-import Html exposing (Html, div, p, i, text)
-import Html.Attributes as Attr exposing (class)
-import Html.Events as Event exposing (onClick)
+import Html            exposing (Html, div, p, i, text)
+import Html.Attributes exposing (class)
+import Html.Events     exposing (onClick)
 
-import Msg.Main as Main exposing (..)
-import Msg.Action exposing (..)
-import Model.Action as Action
+import Architecture.Main   as Main   exposing (..)
+import Architecture.Action as Action exposing (..)
 
 
 
