@@ -1,7 +1,7 @@
 elm-stuff/
 node_modules/
 tmp/
+dist/
 
-dist/index.html
 .DS_Store
 *.log
