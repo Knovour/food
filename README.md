@@ -24,19 +24,17 @@ yarn
 
 ## 啟動
 
-### Development（8080 port）
+### Development（7999 port）
 
 ```
-npm start
+yarn start
 ```
 
 ### Production
 
 ```
-npm run build
+yarn run build
 ```
-
-給 GitPage 讀取用：把 `dist/` 裡的 `index.html` 搬到外面的資料夾，並修改裡面的 path。
 
 ## License
 
