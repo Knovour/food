@@ -1,6 +1,14 @@
 module Libs.Type exposing (..)
 
 
+type alias ColorPalette =
+  { name : String
+  , color : String
+  , tag : String
+  , font : String
+  }
+
+
 type alias Item =
   { name : String
   , image : String
