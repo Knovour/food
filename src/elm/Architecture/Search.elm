@@ -4,19 +4,19 @@ module Architecture.Search exposing (..)
 
 type alias Model =
   { month : List Int
-  , name : String
+  , name  : String
   }
 
 
 model : Model
 model =
   { month = []
-  , name = ""
+  , name  = ""
   }
 
 
 type Msg
-  = SelectMonth Int
+  = SelectMonth   Int
   | UnSelectMonth Int
   | Name String
 
@@ -29,5 +29,5 @@ update searchMsg model =
       in { model | month = newList }
     UnSelectMonth num ->
       let newList = List.filter (\m -> m /= num) model.month
-      in  { model | month = newList }
+      in { model | month = newList }
     Name str -> { model | name = str }

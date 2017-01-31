@@ -8,6 +8,7 @@ import Architecture.Content as Content
 import Libs.Type exposing (Respond)
 
 
+
 type alias Model =
   { search  : Search.Model
   , box     : Box.Model
@@ -30,7 +31,7 @@ type Msg
   | SearchMsg Search.Msg
   | BoxMsg    Box.Msg
   | ActionMsg Action.Msg
-  | Content   (Result Http.Error Respond)
+  | Content  (Result Http.Error Respond)
 
 
 

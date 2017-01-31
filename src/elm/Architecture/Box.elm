@@ -23,5 +23,5 @@ type Msg
 update : Msg -> Model
 update boxMsg =
   case boxMsg of
-    Open str -> { open = True, name = str }
+    Open str -> { open = True,  name = str }
     Close    -> { open = False, name = "" }

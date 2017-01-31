@@ -5,7 +5,7 @@ import Components.Dimmer  as Dimmer exposing (dimmer)
 import Components.Header  exposing (header_)
 import Components.Content exposing (content)
 import Components.Tools   exposing (tools)
-import Components.Box     exposing (box_)
+import Components.Box     exposing (box)
 import Architecture.Main exposing (..)
 import Libs.Init exposing (request)
 
@@ -40,7 +40,7 @@ view model =
     , tools model.action model.search
     , content model
     , dimmer [ Dimmer.show model.box.open ]
-    , box_ model.box
+    , box model.box
     ]
 
 

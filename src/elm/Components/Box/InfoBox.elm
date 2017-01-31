@@ -3,6 +3,7 @@ import Html            exposing (Html, div, h5, a, ul, li, p, i, text, span)
 import Html.Attributes exposing (class, style, href, target)
 import Html.Events     exposing (onClick)
 
+import Components.Link exposing (link)
 import Architecture.Main as Main exposing (..)
 import Architecture.Box  exposing (..)
 import Libs.Data exposing (colorPalettes)
@@ -32,22 +33,10 @@ infoBox =
       , div [ class "box-content" ]
         [ h5 [ class "heading" ] [ text "關於" ]
         , ul [ class "info-list" ]
-          [ li [ class "item" ]
-            [ text "資料來源："
-            , a [ class "link", href gov, target "_blank" ] [ text "行政院農委會 - 田邊好幫手" ]
-            ]
-          , li [ class "item" ]
-            [ text "專案修改自："
-            , a [ class "link", href elmStarter, target "_blank" ] [ text "Elm Webpack Starter" ]
-            ]
-          , li [ class "item" ]
-            [ text "架構參考："
-            , a [ class "link", href elmStructure, target "_blank" ] [ text "Structured TodoMVC example with Elm" ]
-            ]
-          , li [ class "item" ]
-            [ text "UI 參考："
-            , a [ class "link", href ui, target "_blank" ] [ text "Google Fonts" ]
-            ]
+          [ li [ class "item" ] [ text "資料來源：", link gov "行政院農委會 - 田邊好幫手" ]
+          , li [ class "item" ] [ text "專案修改自：", link elmStarter "Elm Webpack Starter" ]
+          , li [ class "item" ] [ text "架構參考：", link elmStructure "Structured TodoMVC example with Elm" ]
+          , li [ class "item" ] [ text "UI 參考：", link ui "Google Fonts" ]
           ]
         , h5 [ class "heading" ] [ text "顏色" ]
         , p [ class "subheading" ] [ text "From Nippon Colors" ]

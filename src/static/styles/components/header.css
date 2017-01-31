@@ -34,7 +34,7 @@
 .right-menu {
   margin-left: auto;
 
-  & > .information-btn {
+  & > .info-btn {
     width: 24pt;
     height: 24pt;
     border-radius: 50%;

@@ -3,27 +3,27 @@ module Architecture.Action exposing (..)
 
 
 type alias Model =
-  { hover : List Int
-  , group : String
+  { hover  : List Int
+  , group  : String
   , layout : String
-  , tag : String
+  , showBy : String
   }
 
 
 model : Model
 model =
-  { hover = []
-  , group = "蔬菜"
+  { hover  = []
+  , group  = "蔬菜"
   , layout = "apps"
-  , tag = "分頁"
+  , showBy = "分頁"
   }
 
 
 type Msg
   = Hover (List Int)
-  | Group String
+  | Group  String
   | Layout String
-  | Tag String
+  | ShowBy String
 
 
 update : Msg -> Model -> Model
@@ -32,4 +32,4 @@ update actionMsg model =
     Hover  list -> { model | hover  = list }
     Group  str  -> { model | group  = str }
     Layout str  -> { model | layout = str }
-    Tag    str  -> { model | tag    = str }
+    ShowBy str  -> { model | showBy = str }

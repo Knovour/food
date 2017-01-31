@@ -2,10 +2,9 @@ module Components.Footer exposing (footer_)
 import Html            exposing (Html, div, footer, span, text, a, i)
 import Html.Attributes exposing (class, href, target)
 
+import Components.Link exposing (link)
 
 
-middot : Html msg
-middot = span [ class "middot" ] [ text "·" ]
 
 footer_ : Html msg
 footer_ =
@@ -16,13 +15,14 @@ footer_ =
     footer [ class "footer" ]
       [ div [ class "copyright" ] [ text "2017 © Knovour" ]
       , div [ class "links" ]
-        [ a [ href blog, target "_blank" ] [ text "Blog" ]
+        [ link blog "Blog"
         , middot
-        , a [ href github, target "_blank" ] [ text "GitHub" ]
+        , link github "GitHub"
         , middot
-        , span []
-          [ text "Made by "
-          , a [ href elm, target "_blank" ] [ text "Elm" ]
-          ]
+        , span [] [ text "Made by ", link elm "Elm" ]
         ]
       ]
+
+
+middot : Html msg
+middot = span [ class "middot" ] [ text "·" ]

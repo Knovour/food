@@ -1,4 +1,4 @@
-module Components.Box exposing (box_)
+module Components.Box exposing (box)
 import Html exposing (Html, text)
 
 import Architecture.Main as Main
@@ -7,5 +7,8 @@ import Components.Box.InfoBox exposing (infoBox)
 
 
 
-box_ : Box.Model -> Html Main.Msg
-box_ { name, open } = if open then infoBox else text ""
+box : Box.Model -> Html Main.Msg
+box { name, open } =
+  if open
+  then infoBox
+  else text ""

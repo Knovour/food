@@ -9,18 +9,17 @@ import Architecture.Search exposing (..)
 
 
 search : String -> Html Main.Msg
-search searchInput =
-  let icon = if String.length searchInput > 0 then "close" else "search"
-      click = SearchMsg <| Name ""
+search searchVal =
+  let icon = if String.length searchVal > 0 then "close" else "search"
   in
     div [ class "search-bar" ]
-      [ label [ class "label material-icons", for "search", onClick click ] [ text icon ]
+      [ label [ class "label material-icons", for "search", onClick (SearchMsg <| Name "") ] [ text icon ]
       , input
         [ id "search"
         , type_ "search"
         , name "search"
         , placeholder "Search..."
-        , value searchInput
+        , value searchVal
         , onInput (\value -> SearchMsg <| Name value)
         ] []
       ]

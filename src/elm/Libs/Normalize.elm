@@ -1,4 +1,4 @@
-module Libs.Normalize exposing (normalize, toInt)
+module Libs.Normalize exposing (normalize)
 import Dict exposing (Dict)
 
 import Libs.Data exposing (foodTypes)
@@ -28,14 +28,11 @@ insert item assets =
           |> List.filter (\{ id } -> id == item.image)
           |> List.head
           |> Maybe.withDefault { id = "", url = "", source = "" }
+      harvest = List.map (\val -> Result.withDefault 0 (String.toInt val)) item.harvest
   in
-    { name = item.name
-    , image = result.url
-    , source = result.source
+    { name    = item.name
+    , image   = result.url
+    , source  = result.source
     , species = item.species
-    , harvest = (List.map toInt item.harvest)
+    , harvest = harvest
     }
-
-
-toInt : String -> Int
-toInt value = Result.withDefault 0 (String.toInt value)

@@ -1,4 +1,4 @@
-.tags-block {
+.tab-block {
   position: fixed 48pt auto auto 0;
   border-right: 1px solid rgba(var(--lighter-gray), .4);
   background: var(--smooth-white);
@@ -8,7 +8,7 @@
   padding-top: 24pt;
 }
 
-.tags-list {
+.tab-list {
   width: 100%;
   height: 100%;
   writing-mode: vertical-lr;
@@ -18,7 +18,7 @@
   overflow-x: hidden;
   white-space: nowrap;
 
-  & > .tag {
+  & > .tab {
     position: relative;
     display: inline-block;
     width: 100%;

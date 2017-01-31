@@ -2,44 +2,44 @@ module Libs.Type exposing (..)
 
 
 type alias ColorPalette =
-  { name : String
-  , color : String
-  , tag : String
-  , font : String
+  { color : String
+  , font  : String
+  , tag   : String
+  , name  : String
   }
 
 
 type alias Item =
-  { name : String
-  , image : String
+  { name    : String
+  , image   : String
   , species : String
   , harvest : List String
   }
 
 
 type alias Asset =
-  { id : String
-  , url: String
+  { id     : String
+  , url    : String
   , source : String
   }
 
 
 type alias Respond =
-  { items: List Item
-  , assets: List Asset
+  { items  : List Item
+  , assets : List Asset
   }
 
 
 type alias Food =
-  { name : String
-  , image : String
-  , source : String
+  { name    : String
+  , image   : String
+  , source  : String
   , species : String
   , harvest : List Int
   }
 
 
 type alias Group =
-  { tag : String
+  { tag  : String
   , list : List Food
   }

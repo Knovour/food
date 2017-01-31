@@ -9,6 +9,24 @@ import Architecture.Action as Action
 
 
 
+month : Action.Model -> Search.Model -> Html Main.Msg
+month { hover } { month } =
+  div [ class "options-block" ]
+    [ p [ class "heading" ] [ text "月份" ]
+    , div [ class "calendar" ] (monthCircle hover month)
+    ]
+
+
+monthCircle : List Int -> List Int -> List (Html Main.Msg)
+monthCircle hover month =
+  List.map (\num ->
+    div
+      [ classes (List.member num hover) (List.member num month)
+      , onClick (handleClick num month)
+      ] [ text (toString num) ]
+  ) (List.range 1 12)
+
+
 classes : Bool -> Bool -> Attribute Main.Msg
 classes isHighlight isSelected =
   let highlight = if isHighlight then " _highlight" else ""
@@ -16,28 +34,8 @@ classes isHighlight isSelected =
   in class ("month" ++ highlight ++ selected)
 
 
-current : Int -> Html Main.Msg
-current num = text (toString num)
-
-
 handleClick : Int -> List Int -> Main.Msg
 handleClick num list =
   if (List.member num list)
   then SearchMsg <| UnSelectMonth num
   else SearchMsg <| SelectMonth num
-
-
-month : Action.Model -> Search.Model -> Html Main.Msg
-month { hover } { month } =
-  let group =
-        List.map (\num ->
-          div
-            [ classes (List.member num hover) (List.member num month)
-            , onClick (handleClick num month)
-            ] [ current num ]
-        ) (List.range 1 12)
-  in
-    div [ class "options-block" ]
-      [ p [ class "heading" ] [ text "月份" ]
-      , div [ class "calendar" ] group
-      ]

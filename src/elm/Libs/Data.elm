@@ -14,14 +14,14 @@ monthList = List.range 1 12
 
 colorPalettes : List ColorPalette
 colorPalettes =
-  [ { name = "胡粉", color = "#FFFFFB", tag = "GOFUN", font = "#373C38" }
-  , { name = "白鼠", color = "#BDC0BA", tag = "SHIRONEZUMI", font = "#FFFFFB" }
-  , { name = "銀鼠", color = "#91989F", tag = "GINNEZUMI", font = "#FFFFFB" }
-  , { name = "藍墨茶", color = "#373C38", tag = "AISUMICHA", font = "#FFFFFB" }
-  , { name = "白綠", color = "#A8D8B9", tag = "BYAKUROKU", font = "#FFFFFB" }
-  , { name = "若竹", color = "#5DAC81", tag = "WAKATAKE", font = "#FFFFFB" }
-  , { name = "青竹", color = "#00896C", tag = "AOTAKE", font = "#FFFFFB" }
-  , { name = "老竹", color = "#6A8372", tag = "OITAKE", font = "#FFFFFB" }
-  , { name = "空", color = "#58B2DC", tag = "SORA", font = "#FFFFFB" }
-  , { name = "莓", color = "#B5495B", tag = "ICHIGO", font = "#FFFFFB" }
+  [ { color = "#FFFFFB", font = "#373C38", tag = "GOFUN",       name = "胡粉" }
+  , { color = "#BDC0BA", font = "#FFFFFB", tag = "SHIRONEZUMI", name = "白鼠" }
+  , { color = "#91989F", font = "#FFFFFB", tag = "GINNEZUMI",   name = "銀鼠" }
+  , { color = "#373C38", font = "#FFFFFB", tag = "AISUMICHA",   name = "藍墨茶" }
+  , { color = "#A8D8B9", font = "#FFFFFB", tag = "BYAKUROKU",   name = "白綠" }
+  , { color = "#5DAC81", font = "#FFFFFB", tag = "WAKATAKE",    name = "若竹" }
+  , { color = "#00896C", font = "#FFFFFB", tag = "AOTAKE",      name = "青竹" }
+  , { color = "#6A8372", font = "#FFFFFB", tag = "OITAKE",      name = "老竹" }
+  , { color = "#58B2DC", font = "#FFFFFB", tag = "SORA",        name = "空" }
+  , { color = "#B5495B", font = "#FFFFFB", tag = "ICHIGO",      name = "莓" }
   ]

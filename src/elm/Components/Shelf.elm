@@ -1,13 +1,14 @@
 module Components.Shelf exposing (layer_, shelf)
 import Html            exposing (Html, div, text)
-import Html.Attributes exposing (class)
+import Html.Attributes exposing (class, attribute)
 import Dict exposing (Dict)
 
+import Architecture.Main   as Main exposing (..)
+import Architecture.Action as Action
 import Components.Shelf.Layer as Layer exposing (layer)
 import Components.Shelf.Goods exposing (goods)
 import Components.Shelf.Food  as Food
-import Architecture.Main   as Main exposing (..)
-import Architecture.Action as Action
+import Components.Tag as Tag exposing (tag)
 import Libs.Data    exposing (foodTypes)
 import Libs.Type    exposing (Food)
 import Libs.Helpers exposing (foodRefilter, getDictValue)
@@ -16,17 +17,21 @@ import Libs.Helpers exposing (foodRefilter, getDictValue)
 
 shelf : Model -> Dict String (List Food) -> Html Main.Msg
 shelf { search, box, action, content } foodDict =
-  let toggle = if action.tag == "標籤" then " _show-all" else ""
-  in  div [ class ("food-shelf" ++ toggle) ] (layer_ action foodDict)
+  let toggle =
+        if action.showBy == "標籤"
+        then " _show-all"
+        else ""
+  in div [ class ("food-shelf" ++ toggle) ] (layer_ action foodDict)
 
 
 layer_ : Action.Model -> Dict String (List Food) -> List (Html Main.Msg)
 layer_ action foodDict =
   List.map(\species ->
     let list = getDictValue species foodDict
+        isCurrentLayer = List.length list > 0 && (action.showBy /= "分頁" || species == action.group)
     in
-      layer [ Layer.show (List.length list > 0 && (action.tag /= "分頁" || species == action.group)), Layer.dataType species ]
-        [ Layer.name [ Layer.labelView action.tag ] [ text species ]
+      layer [ Layer.show isCurrentLayer, attribute "data-type" species ]
+        [ tag [ Tag.show action.showBy ] [ text species ]
         , goods [] (Food.list list)
         ]
     ) foodTypes
