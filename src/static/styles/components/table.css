@@ -58,8 +58,11 @@
   }
 
   & > th:nth-last-child(-n+12) {
-    border-radius: 0 2px 2px 0;
     width: calc(80% / 12);
+  }
+
+  & > th:last-child {
+    border-radius: 0 2px 2px 0;
   }
 }
 
