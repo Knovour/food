@@ -2,6 +2,10 @@
   flex: 0 1 100%;
   padding: 16pt;
 
+  @media (max-width: 1120px) {
+    padding: 8pt;
+  }
+
   & > .species:first-of-type .label {
     margin-top: 0;
   }
@@ -46,6 +50,22 @@
   margin-bottom: 8pt;
   padding: 8pt 8pt 16pt;
   transition: all 160ms linear;
+
+  @media (max-width: 1600px) {
+    width: calc(100% / 7);
+  }
+
+  @media (max-width: 1380px) {
+    width: calc(100% / 6);
+  }
+
+  @media (max-width: 1280px) {
+    width: calc(100% / 5);
+  }
+
+  @media (max-width: 1120px) {
+    width: calc(100% / 4);
+  }
 
   &:hover {
     background: white;

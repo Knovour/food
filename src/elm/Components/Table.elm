@@ -61,8 +61,8 @@ tbody_ list =
                   let dot = if (List.member month food.harvest) then " current" else ""
                   in td [] [ span [ class ("dot -large" ++ dot) ] [] ]
                 ) (List.range 1 12)
-              hover = ActionMsg <| Hover food.harvest
-              unHover = ActionMsg <| Hover []
+              hover = Action <| Hover food.harvest
+              unHover = Action <| Hover []
           in tr [ class "row", onMouseEnter hover, onMouseLeave unHover ] (td [] [ text food.name ] :: harvest)
         ) list
   in tbody [ class "table-body" ] ((tr [class "row _extra-spacing" ] [ td [] [] ]) :: tdList)

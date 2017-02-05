@@ -6,6 +6,11 @@
   height: calc(100vh - 48pt);
   z-index: 100;
   padding-top: 24pt;
+
+  @media (max-width: 1120px) {
+    width: 32pt;
+    padding-top: 16pt;
+  }
 }
 
 .tab-list {
@@ -17,6 +22,11 @@
   overflow-y: auto;
   overflow-x: hidden;
   white-space: nowrap;
+
+  @media (max-width: 1120px) {
+    font-size: 14pt;
+    line-height: 30pt;
+  }
 
   & > .tab {
     position: relative;
@@ -30,6 +40,10 @@
     opacity: .65;
     color: var(--berry);
 
+    @media (max-width: 1120px) {
+      height: 64pt;
+    }
+
     &.current {
       font-weight: 500;
       opacity: 1;
@@ -42,11 +56,19 @@
       height: 100%;
       background: var(--berry);
       z-index: 400;
+
+      @media (max-width: 1120px) {
+        width: 2pt;
+      }
     }
 
     &:not(.current):hover {
       border-right: 3pt solid rgba(var(--berry), .4);
       opacity: .9;
+
+      @media (max-width: 1120px) {
+        border-right: 2pt solid rgba(var(--berry), .4);
+      }
     }
   }
 }

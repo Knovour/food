@@ -10,6 +10,10 @@
   color: var(--black);
   z-index: 100;
 
+  @media (max-width: 1440px) {
+    width: calc(100% - 160pt);
+  }
+
   & > .logo {
     display: inline-block;
     height: 20pt;

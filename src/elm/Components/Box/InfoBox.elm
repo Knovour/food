@@ -29,7 +29,7 @@ infoBox =
       ui = "https://fonts.google.com/"
   in
     div [ class "box-modal _slide-in _depth-4" ]
-      [ i [ class "material-icons close", onClick (BoxMsg <| Close) ] [ text "close" ]
+      [ i [ class "material-icons close", onClick (Box <| Close) ] [ text "close" ]
       , div [ class "box-content" ]
         [ h5 [ class "heading" ] [ text "關於" ]
         , ul [ class "info-list" ]

@@ -37,5 +37,5 @@ classes isHighlight isSelected =
 handleClick : Int -> List Int -> Main.Msg
 handleClick num list =
   if (List.member num list)
-  then SearchMsg <| UnSelectMonth num
-  else SearchMsg <| SelectMonth num
+  then Search <| UnSelectMonth num
+  else Search <| SelectMonth num

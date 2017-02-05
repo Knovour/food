@@ -13,13 +13,13 @@ search searchVal =
   let icon = if String.length searchVal > 0 then "close" else "search"
   in
     div [ class "search-bar" ]
-      [ label [ class "label material-icons", for "search", onClick (SearchMsg <| Name "") ] [ text icon ]
+      [ label [ class "label material-icons", for "search", onClick (Search <| Name "") ] [ text icon ]
       , input
         [ id "search"
         , type_ "search"
         , name "search"
         , placeholder "Search..."
         , value searchVal
-        , onInput (\value -> SearchMsg <| Name value)
+        , onInput (\value -> Search <| Name value)
         ] []
       ]

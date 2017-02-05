@@ -20,7 +20,7 @@ tabs { group, showBy } foodList =
         else ""
       tagList = List.map (\name ->
         let value = getDictValue name foodList
-            click = ActionMsg <| Group name
+            click = Action <| Group name
         in div [ classes (name == group) (List.length value == 0), onClick click ] [ text name ]
       ) foodTypes
   in div [ class ("tab-block" ++ toggle) ] [ div [ class "tab-list" ] tagList ]

@@ -1,13 +1,13 @@
 module Main exposing (..)
 import Html exposing (Html, div)
 
+import Architecture.Main   exposing (..)
 import Components.Dimmer  as Dimmer exposing (dimmer)
 import Components.Header  exposing (header_)
 import Components.Content exposing (content)
 import Components.Tools   exposing (tools)
 import Components.Box     exposing (box)
-import Architecture.Main exposing (..)
-import Libs.Init exposing (request)
+import Libs.Init exposing (request, screenSize)
 
 
 
@@ -19,7 +19,7 @@ main =
     { init = init
     , view = view
     , update = update
-    , subscriptions = subscriptions
+    , subscriptions = screenSize
     }
 
 
@@ -42,10 +42,3 @@ view model =
     , dimmer [ Dimmer.show model.box.open ]
     , box model.box
     ]
-
-
-
--- SUBSCRIPTIONS
-
-subscriptions : Model -> Sub Msg
-subscriptions model = Sub.none

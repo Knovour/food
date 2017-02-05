@@ -1,4 +1,4 @@
-.tools-pack {
+.tools-sidebar {
   position: fixed 0 0 auto auto;
   width: 200pt;
   height: 100vh;
@@ -7,6 +7,12 @@
   background: var(--smooth-white);
   color: var(--black);
   z-index: 100;
+
+
+  @media (max-width: 1440px) {
+    width: 160pt;
+    padding: 16pt 12pt 0;
+  }
 }
 
 .options-block {
@@ -15,6 +21,10 @@
   & > .heading {
     margin: 0 0 8pt;
     font-size: 1.2em;
+
+    @media (max-width: 1440px) {
+      font-size: 1em;
+    }
   }
 }
 
@@ -62,6 +72,9 @@
   & > .tag {
     padding: 6pt 0;
     font-size: 10pt;
+    @media (max-width: 1440px) {
+      font-size: 8pt;
+    }
   }
 
   & > .layout {
@@ -70,6 +83,9 @@
 
   & > .layout > .icon {
     font-size: 20pt;
+    @media (max-width: 1440px) {
+      font-size: 16pt;
+    }
   }
 }
 
@@ -77,7 +93,6 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  font-size: 14pt;
   font-weight: 200;
 
   & > .month {
@@ -91,6 +106,13 @@
     border-radius: 50%;
     cursor: pointer;
     transition: all 120ms linear;
+    font-size: 14pt;
+
+    @media (max-width: 1440px) {
+      width: 20pt;
+      height: 20pt;
+      font-size: 14px;
+    }
   }
 
   & > .month._highlight,

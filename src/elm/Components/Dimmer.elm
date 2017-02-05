@@ -10,7 +10,7 @@ import Architecture.Box  exposing (..)
 
 dimmer : List (Html.Attribute Main.Msg) -> Html Main.Msg
 dimmer props =
-  let attr = props ++ [ onClick (BoxMsg <| Close) ]
+  let attr = props ++ [ onClick (Box <| Close) ]
   in div attr []
 
 

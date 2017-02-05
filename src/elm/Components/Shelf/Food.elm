@@ -16,8 +16,8 @@ food food =
           let classes = if (List.member month food.harvest) then " current" else ""
           in  div [ class ("dot" ++ classes) ] []
         ) (List.range 1 12)
-      hover = (ActionMsg <| Hover food.harvest)
-      unHover =  (ActionMsg <| Hover [])
+      hover = (Action <| Hover food.harvest)
+      unHover =  (Action <| Hover [])
   in
     div [ class "food-card", onMouseEnter hover, onMouseLeave unHover ]
       [ div [ class "media" ] [ img [ class "img", src food.image, alt "" ] [] ]

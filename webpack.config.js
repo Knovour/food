@@ -23,8 +23,7 @@ const commonConfig = {
       template: 'src/static/index.html',
       inject:   'body',
       filename: 'index.html'
-    }),
-		new webpack.HotModuleReplacementPlugin(),
+    })
   ]
 }
 

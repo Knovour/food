@@ -11,5 +11,5 @@ import Architecture.Box  exposing (..)
 rightMenu : Html Main.Msg
 rightMenu =
   div [ class "right-menu" ]
-    [ div [ class "info-btn _depth-1", onClick (BoxMsg <| Open "info") ] [ i [ class "material-icons icon" ] [ text "priority_high" ] ]
+    [ div [ class "info-btn _depth-1", onClick (Box <| Open "info") ] [ i [ class "material-icons icon" ] [ text "priority_high" ] ]
     ]

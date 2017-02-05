@@ -40,7 +40,20 @@ a {
 #content {
   margin: 48pt 200pt 0 40pt;
 
+  @media (max-width: 1440px) {
+    margin-right: 160pt;
+  }
+
+  @media (max-width: 1120px) {
+    margin-left: 32pt;
+  }
+
   &._show-all {
     margin-left: 0;
   }
+}
+
+/* DEBUG PANEL */
+.elm-overlay {
+  z-index: 1000;
 }

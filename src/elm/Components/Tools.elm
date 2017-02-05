@@ -13,7 +13,7 @@ import Components.Footer exposing (footer_)
 
 tools : Action.Model -> Search.Model -> Html Msg
 tools action search =
-  div [ class "tools-pack" ]
+  div [ class "tools-sidebar" ]
     [ display action
     , month action search
     , footer_
