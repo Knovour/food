@@ -8,10 +8,23 @@
   color: var(--black);
   z-index: 100;
 
-
   @media (max-width: 1440px) {
     width: 160pt;
     padding: 16pt 12pt 0;
+  }
+}
+
+.tools-sidebar.-narrow {
+  width: calc(24pt + 16pt);
+  padding: 24pt 8pt;
+
+  & > .toggle-display,
+  & > .footer {
+    display: none;
+  }
+
+  & > .calendar-filter {
+    margin-top: 24pt;
   }
 }
 
@@ -86,6 +99,15 @@
     @media (max-width: 1440px) {
       font-size: 16pt;
     }
+  }
+}
+
+
+.calendar-filter.-narrow {
+  & > .heading {
+    margin-bottom: 4pt;
+    text-align: center;
+    color: var(--light-gray);
   }
 }
 

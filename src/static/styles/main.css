@@ -48,7 +48,15 @@ a {
     margin-left: 32pt;
   }
 
-  &._show-all {
+  &._center {
+    margin: 48pt 120pt 40pt;
+
+    @media (max-width: 1440px) {
+      margin: 48pt 80pt 40pt;
+    }
+  }
+
+  &._show-all:not(._center) {
     margin-left: 0;
   }
 }

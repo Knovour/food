@@ -10,7 +10,7 @@ import Architecture.Action as Action exposing (..)
 
 display : Action.Model -> Html Main.Msg
 display action =
-  div [ class "options-block" ]
+  div [ class "options-block toggle-display" ]
     [ p [ class "heading" ] [ text "顯示方式" ]
     , layout action.layout
     , tag action.showBy

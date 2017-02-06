@@ -15,6 +15,10 @@
   margin-bottom: 40pt;
   display: flex;
 
+  @media (max-width: 1120px) {
+    flex-flow: column;
+  }
+
   & > .label {
     position: relative;
     writing-mode: vertical-rl;
@@ -33,6 +37,21 @@
       width: 1.6pt;
       height: 3.2em;
       background: var(--berry);
+
+      @media (max-width: 1120px) {
+      position: absolute auto auto -4pt 0;
+        width: 16%;
+        height: 1.6pt;
+      }
+    }
+
+
+    @media (max-width: 1120px) {
+      width: auto;
+      margin: 8pt 8pt 24pt;
+      padding: 0;
+      writing-mode: horizontal-tb;
+      font-size: 1.6em;
     }
   }
 

@@ -1,9 +1,11 @@
 module Libs.Init exposing (..)
 import Http
-import Window exposing (..)
+import Task exposing (..)
+import Window
 
 import Architecture.Main   as Main exposing (..)
 import Architecture.Screen exposing (..)
+import Architecture.Action exposing (..)
 import Libs.Parser exposing (parser)
 
 
@@ -13,13 +15,25 @@ import Libs.Parser exposing (parser)
 request : Cmd Main.Msg
 request =
   let url = "https://cdn.contentful.com/spaces/8whbhu195nq1/entries?access_token=2f74c3147a60b6f114c06133d0badf43b7e2415284385a7dd94def6812e3bb4a"
-  in Http.send Content (Http.get url parser)
+  in
+    Cmd.batch
+      [ Http.send Content (Http.get url parser)
+      , Task.perform tagDisplay Window.width
+      ]
 
 
 -- SUBSCRIPTIONS
 
 screenSize : Main.Model -> Sub Main.Msg
 screenSize model =
-  Window.resizes (\{width, height} ->
-    Screen (Resize width height)
-  )
+  Sub.batch
+    [ Window.resizes (\{width, height} -> Screen (Resize width height))
+    , Window.resizes (\{width, height} -> tagDisplay width)
+    ]
+
+
+tagDisplay : Int -> Main.Msg
+tagDisplay width =
+  if width <= 1120
+  then Action <| ShowBy "標籤"
+  else NoOp

@@ -19,10 +19,14 @@ content model =
         if model.action.showBy == "標籤"
         then "_show-all"
         else ""
+      locate =
+        if model.action.sidebar == "close"
+        then " _center"
+        else ""
   in
     div []
       [ tabs model.action foodDict
-      , div [ id "content", class toggle ] [ display model foodDict ]
+      , div [ id "content", class (toggle ++ locate) ] [ display model foodDict ]
       ]
 
 

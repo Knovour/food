@@ -1,4 +1,5 @@
 module Architecture.Action exposing (..)
+import Window exposing (..)
 
 
 
@@ -15,7 +16,7 @@ model : Model
 model =
   { hover   = []
   , group   = "蔬菜"
-  , sidebar = "show"
+  , sidebar = "open"
   , layout  = "apps"
   , showBy  = "分頁"
   }

@@ -8,10 +8,16 @@ import Components.Header.RightMenu exposing (rightMenu)
 
 
 
-header_ : String -> Html Main.Msg
-header_ searchVal =
-  header [ class "header-block" ]
-    [ img [ class "logo", src "https://dl.dropboxusercontent.com/u/1419724/img/logo.svg", alt "logo" ] []
-    , search searchVal
-    , rightMenu
-    ]
+header_ : Model -> Html Main.Msg
+header_ model =
+  let
+    classes =
+      if model.action.sidebar == "close"
+      then " -extend"
+      else ""
+  in
+    header [ class ("header-block" ++ classes) ]
+      [ img [ class "logo", src "https://dl.dropboxusercontent.com/u/1419724/img/logo.svg", alt "logo" ] []
+      , search model.search.name
+      , rightMenu model
+      ]

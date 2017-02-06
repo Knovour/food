@@ -1,5 +1,5 @@
 module Components.Tools.Month exposing (..)
-import Html            exposing (Html, Attribute, div, p, text)
+import Html            exposing (Html, Attribute, div, p, i, text)
 import Html.Attributes exposing (class)
 import Html.Events     exposing (onClick)
 
@@ -10,11 +10,21 @@ import Architecture.Action as Action
 
 
 month : Action.Model -> Search.Model -> Html Main.Msg
-month { hover } { month } =
-  div [ class "options-block" ]
-    [ p [ class "heading" ] [ text "月份" ]
-    , div [ class "calendar" ] (monthCircle hover month)
-    ]
+month { sidebar, hover } { month } =
+  let
+    label =
+      if sidebar == "open"
+      then text "月份"
+      else i [ class "material-icons icon" ] [ text "today" ]
+    classes =
+      if sidebar == "open"
+      then ""
+      else " -narrow"
+  in
+    div [ class ("options-block calendar-filter" ++ classes) ]
+      [ p [ class "heading" ] [ label ]
+      , div [ class "calendar" ] (monthCircle hover month)
+      ]
 
 
 monthCircle : List Int -> List Int -> List (Html Main.Msg)
