@@ -14,11 +14,11 @@ tools : Main.Model -> Html Main.Msg
 tools model =
   let
     { action, screen } = model
-    isMobile = screen.width <= 876
+    isMobile = screen.width <= 976
     classes =
-      if (action.sidebar == "open" && isMobile == True)
-      then ""
-      else " -narrow"
+      if (action.sidebar == "close" && isMobile /= True)
+      then " -narrow"
+      else ""
 
     mobileClasses =
       if isMobile
