@@ -20,6 +20,7 @@ request =
       [ Http.send Content (Http.get url parser)
       , Task.perform tagDisplay Window.width
       , Task.perform layoutDisplay Window.width
+      , Task.perform closeSidebar Window.width
       , Task.perform (\w -> Screen <| Width w) Window.width
       ]
 
@@ -45,4 +46,10 @@ layoutDisplay : Int -> Main.Msg
 layoutDisplay width =
   if width <= 1120
   then Action <| Layout "apps"
+  else NoOp
+
+closeSidebar : Int -> Main.Msg
+closeSidebar width =
+  if width <= 976
+  then Action <| Sidebar "close"
   else NoOp
