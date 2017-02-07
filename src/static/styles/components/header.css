@@ -5,13 +5,24 @@
   width: calc(100% - 200pt);
   height: 48pt;
   border-bottom: 1px solid rgba(var(--lighter-gray), .4);
-  padding: 0 24pt 0 24pt;
+  padding: 0 24pt;
   background: var(--smooth-white);
   color: var(--black);
   z-index: 110;
 
   @media (max-width: 1440px) {
     width: calc(100% - 160pt);
+  }
+
+  @media (max-width: 976px) {
+    @apply --depth-2;
+    width: 100%;
+    padding: 0 8pt 0 16pt;
+    background: var(--logo);
+
+    & > .search-bar {
+      display: none;
+    }
   }
 
   & > .logo {
@@ -24,6 +35,10 @@
 
 .header-block.-extend {
   width: calc(100% - 40pt);
+
+  @media (max-width: 1120px) {
+    width: calc(100% - 36pt);
+  }
 }
 
 .search-bar {
@@ -49,6 +64,7 @@
   margin-left: auto;
 
   & > .btn {
+    @apply --depth-1;
     width: 24pt;
     height: 24pt;
     margin-left: 16pt;
@@ -59,14 +75,20 @@
     background: var(--green);
     color: white;
 
+    @media (min-width: 977px) {
+      &:hover {
+        @apply --depth-3;
+      }
+    }
+
+    @media (max-width: 976px) {
+      @apply --depth-0;
+      margin-left: 8pt;
+      background: transparent;
+    }
+
     & > .icon {
       line-height: 24pt;
-    }
-  }
-
-  & > .info-btn {
-    &:hover {
-      @apply --depth-3;
     }
   }
 
@@ -75,24 +97,27 @@
   }
 
   & > .tools-btn {
-    position: absolute;
-    right: 0;
-    transform: translateX(50%);
-    width: 24pt;
-    height: 32pt;
-    border-radius: 0;
-    text-align: center;
-    background: var(--smooth-white);
-    color: var(--light-green);
     cursor: pointer;
 
-    &:hover {
-      color: var(--green);
-    }
+    @media (min-width: 977px) {
+      @apply --depth-0;
+      position: absolute;
+      right: 0;
+      transform: translateX(50%);
+      border-radius: 0;
+      background: var(--smooth-white);
+      color: var(--light-green);
+      height: 32pt;
 
-    & > .icon {
-      font-size: 32px;
-      line-height: 32pt;
+      & > .icon {
+        font-size: 32px;
+        line-height: 32pt;
+      }
+
+      &:hover {
+        @apply --depth-0;
+        color: var(--green);
+      }
     }
   }
 }

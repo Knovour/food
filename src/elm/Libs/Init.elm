@@ -19,6 +19,8 @@ request =
     Cmd.batch
       [ Http.send Content (Http.get url parser)
       , Task.perform tagDisplay Window.width
+      , Task.perform layoutDisplay Window.width
+      , Task.perform (\w -> Screen <| Width w) Window.width
       ]
 
 
@@ -27,8 +29,9 @@ request =
 screenSize : Main.Model -> Sub Main.Msg
 screenSize model =
   Sub.batch
-    [ Window.resizes (\{width, height} -> Screen (Resize width height))
+    [ Window.resizes (\{width, height} -> Screen <| Resize width height)
     , Window.resizes (\{width, height} -> tagDisplay width)
+    , Window.resizes (\{width, height} -> layoutDisplay width)
     ]
 
 
@@ -36,4 +39,10 @@ tagDisplay : Int -> Main.Msg
 tagDisplay width =
   if width <= 1120
   then Action <| ShowBy "標籤"
+  else NoOp
+
+layoutDisplay : Int -> Main.Msg
+layoutDisplay width =
+  if width <= 1120
+  then Action <| Layout "apps"
   else NoOp

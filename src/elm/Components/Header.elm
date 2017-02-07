@@ -11,13 +11,18 @@ import Components.Header.RightMenu exposing (rightMenu)
 header_ : Model -> Html Main.Msg
 header_ model =
   let
+    { action, screen } = model
     classes =
-      if model.action.sidebar == "close"
+      if (action.sidebar == "close" && screen.width > 976)
       then " -extend"
       else ""
+    logo =
+      if screen.width > 976
+      then "https://dl.dropboxusercontent.com/u/1419724/img/logo.svg"
+      else "https://dl.dropboxusercontent.com/u/1419724/img/logo-white.svg"
   in
     header [ class ("header-block" ++ classes) ]
-      [ img [ class "logo", src "https://dl.dropboxusercontent.com/u/1419724/img/logo.svg", alt "logo" ] []
+      [ img [ class "logo", src logo, alt "logo" ] []
       , search model.search.name
       , rightMenu model
       ]

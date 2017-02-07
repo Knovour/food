@@ -20,7 +20,7 @@ content model =
         then "_show-all"
         else ""
       locate =
-        if model.action.sidebar == "close"
+        if (model.action.sidebar == "close" || model.screen.width <= 976)
         then " _center"
         else ""
   in

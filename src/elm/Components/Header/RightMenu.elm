@@ -10,7 +10,7 @@ import Architecture.Action exposing (..)
 
 
 rightMenu : Main.Model -> Html Main.Msg
-rightMenu { action } =
+rightMenu { action, screen } =
   let
     sidebarIsOpen = action.sidebar == "open"
     toggleSidebar =
@@ -18,11 +18,13 @@ rightMenu { action } =
       then Action <| Sidebar "close"
       else Action <| Sidebar "open"
     iconName =
-      if sidebarIsOpen
+      if screen.width <= 976
+      then "more_vert"
+      else if sidebarIsOpen
       then "keyboard_arrow_right"
       else "keyboard_arrow_left"
   in
     div [ class "right-menu" ]
-      [ div [ class "btn info-btn _depth-1", onClick (Box <| Open "info") ] [ i [ class "material-icons icon" ] [ text "priority_high" ] ]
+      [ div [ class "btn info-btn", onClick (Box <| Open "info") ] [ i [ class "material-icons icon" ] [ text "priority_high" ] ]
       , div [ class "btn tools-btn", onClick toggleSidebar ] [ i [ class "material-icons icon" ] [ text iconName ] ]
       ]

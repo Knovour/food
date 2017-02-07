@@ -18,9 +18,13 @@ model =
 
 type Msg
   = Resize Int Int
+  | Width Int
+  | Height Int
 
 
 update : Msg -> Model -> Model
 update screen model =
   case screen of
     Resize w h -> { width = w, height = h }
+    Width  w   -> { model | width = w }
+    Height h   -> { model | height = h }

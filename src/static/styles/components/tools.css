@@ -8,9 +8,19 @@
   color: var(--black);
   z-index: 100;
 
-  @media (max-width: 1440px) {
+  @media (min-width: 977px) and (max-width: 1440px) {
     width: 160pt;
     padding: 16pt 12pt 0;
+  }
+
+  &._float {
+    @apply --depth-3;
+    z-index: 200;
+  }
+
+  &._float._hide {
+    @apply --depth-0;
+    right: 100%;
   }
 }
 
@@ -26,6 +36,10 @@
   & > .calendar-filter {
     margin-top: 24pt;
   }
+
+  @media (max-width: 1120px) {
+    width: calc(20pt + 16pt);
+  }
 }
 
 .options-block {
@@ -35,9 +49,28 @@
     margin: 0 0 8pt;
     font-size: 1.2em;
 
-    @media (max-width: 1440px) {
+    @media (min-width: 977px) and (max-width: 1440px) {
       font-size: 1em;
     }
+  }
+}
+
+.search-box {
+  @media (min-width: 977px) {
+    display: none;
+  }
+
+  & > .search-bar {
+    margin: 0;
+  }
+}
+
+
+.toggle-display {
+  position: relative;
+
+  @media (max-width: 1440px) {
+    display: none;
   }
 }
 
@@ -130,7 +163,7 @@
     transition: all 120ms linear;
     font-size: 14pt;
 
-    @media (max-width: 1440px) {
+    @media (min-width: 977px) and (max-width: 1440px) {
       width: 20pt;
       height: 20pt;
       font-size: 14px;

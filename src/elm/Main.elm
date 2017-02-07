@@ -39,6 +39,6 @@ view model =
     [ header_ model
     , tools model
     , content model
-    , dimmer [ Dimmer.show model.box.open ]
+    , dimmer model
     , box model.box
     ]
