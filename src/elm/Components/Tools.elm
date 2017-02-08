@@ -3,7 +3,6 @@ import Html            exposing (Html, div, i, text)
 import Html.Attributes exposing (class)
 
 import Architecture.Main as Main exposing (..)
-import Components.Tools.SearchBox exposing (searchBox)
 import Components.Tools.Display   exposing (display)
 import Components.Tools.Month     exposing (month)
 import Components.Footer          exposing (footer_)
@@ -31,8 +30,7 @@ tools model =
       else ""
   in
     div [ class ("tools-sidebar" ++ classes ++ mobileClasses ++ toggleClasses) ]
-      [ searchBox model.search.name
-      , display action
+      [ display action
       , month action model.search
       , footer_
       ]

@@ -22,7 +22,10 @@ header_ model =
       else "https://dl.dropboxusercontent.com/u/1419724/img/logo-white.svg"
   in
     header [ class ("header-block" ++ classes) ]
-      [ img [ class "logo", src logo, alt "logo" ] []
-      , search model.search.name
-      , rightMenu model
+      [ div [ class "main-nav" ]
+        [ img [ class "logo", src logo, alt "logo" ] []
+        , search model
+        , rightMenu model
+        ]
+      , search model
       ]

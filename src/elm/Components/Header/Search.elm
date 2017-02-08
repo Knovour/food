@@ -8,18 +8,25 @@ import Architecture.Search exposing (..)
 
 
 
-search : String -> Html Main.Msg
-search searchVal =
-  let icon = if String.length searchVal > 0 then "close" else "search"
+search : Main.Model -> Html Main.Msg
+search { action, screen, search } =
+  let icon =
+        if String.length search.name > 0
+        then "delete_sweep"
+        else "search"
+      hide =
+        if action.toggleSearch == "close" && screen.width <= 976
+        then " _hide"
+        else ""
   in
-    div [ class "search-bar" ]
+    div [ class ("search-bar" ++ hide) ]
       [ label [ class "label material-icons", for "search", onClick (Search <| Name "") ] [ text icon ]
       , input
         [ id "search"
         , type_ "search"
         , name "search"
         , placeholder "Search..."
-        , value searchVal
+        , value search.name
         , onInput (\value -> Search <| Name value)
         ] []
       ]

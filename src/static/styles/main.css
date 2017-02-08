@@ -60,6 +60,10 @@ a {
     }
   }
 
+  &._search {
+    margin-top: 136pt;
+  }
+
   &._show-all:not(._center) {
     margin-left: 0;
   }

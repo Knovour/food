@@ -23,10 +23,14 @@ content model =
         if (model.action.sidebar == "close" || model.screen.width <= 976)
         then " _center"
         else ""
+      mobileSearch =
+        if (model.action.toggleSearch == "open" && model.screen.width <= 976)
+        then " _search"
+        else ""
   in
     div []
       [ tabs model.action foodDict
-      , div [ id "content", class (toggle ++ locate) ] [ display model foodDict ]
+      , div [ id "content", class (toggle ++ locate ++ mobileSearch) ] [ display model foodDict ]
       ]
 
 

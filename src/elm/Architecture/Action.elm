@@ -1,5 +1,4 @@
 module Architecture.Action exposing (..)
-import Window exposing (..)
 
 
 
@@ -9,6 +8,7 @@ type alias Model =
   , sidebar : String
   , layout  : String
   , showBy  : String
+  , toggleSearch  : String
   }
 
 
@@ -19,6 +19,7 @@ model =
   , sidebar = "open"
   , layout  = "apps"
   , showBy  = "分頁"
+  , toggleSearch  = "open"
   }
 
 
@@ -28,6 +29,7 @@ type Msg
   | Sidebar String
   | Layout  String
   | ShowBy  String
+  | ToggleSearch String
 
 
 update : Msg -> Model -> Model
@@ -38,3 +40,4 @@ update actionMsg model =
     Sidebar str  -> { model | sidebar = str }
     Layout  str  -> { model | layout = str }
     ShowBy  str  -> { model | showBy = str }
+    ToggleSearch str  -> { model | toggleSearch = str }

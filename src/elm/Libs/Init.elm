@@ -18,10 +18,11 @@ request =
   in
     Cmd.batch
       [ Http.send Content (Http.get url parser)
+      , Task.perform (\w -> Screen <| Width w) Window.width
       , Task.perform tagDisplay Window.width
       , Task.perform layoutDisplay Window.width
       , Task.perform closeSidebar Window.width
-      , Task.perform (\w -> Screen <| Width w) Window.width
+      , Task.perform toggleMobileSearch Window.width
       ]
 
 
@@ -30,16 +31,17 @@ request =
 screenSize : Main.Model -> Sub Main.Msg
 screenSize model =
   Sub.batch
-    [ Window.resizes (\{width, height} -> Screen <| Resize width height)
-    , Window.resizes (\{width, height} -> tagDisplay width)
-    , Window.resizes (\{width, height} -> layoutDisplay width)
+    [ Window.resizes (\{ width, height } -> Screen <| Resize width height)
+    , Window.resizes (\{ width } -> tagDisplay width)
+    , Window.resizes (\{ width } -> layoutDisplay width)
+    , Window.resizes (\{ width } -> toggleMobileSearch width)
     ]
 
 
 tagDisplay : Int -> Main.Msg
 tagDisplay width =
   if width <= 1120
-  then Action <| ShowBy "標籤"
+  then Action <| ShowBy "分頁"
   else NoOp
 
 layoutDisplay : Int -> Main.Msg
@@ -52,4 +54,10 @@ closeSidebar : Int -> Main.Msg
 closeSidebar width =
   if width <= 976
   then Action <| Sidebar "close"
+  else NoOp
+
+toggleMobileSearch : Int -> Main.Msg
+toggleMobileSearch width =
+  if width > 976
+  then Action <| ToggleSearch "open"
   else NoOp
