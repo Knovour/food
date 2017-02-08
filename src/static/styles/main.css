@@ -56,12 +56,12 @@ a {
     }
 
     @media (max-width: 976px) {
-      margin: 64pt 0 40pt;
+      margin: 80pt 0 40pt ;
     }
   }
 
   &._search {
-    margin-top: 136pt;
+    margin-top: 112pt;
   }
 
   &._show-all:not(._center) {

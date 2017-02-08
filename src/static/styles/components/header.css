@@ -16,11 +16,12 @@
   }
 
   @media (max-width: 976px) {
-    @apply --depth-2;
+    @apply --depth-1;
     width: 100%;
+    min-height: 32pt;
     border-bottom-width: 0;
     padding: 8pt 8pt 8pt 16pt;
-    background: var(--logo);
+    background: var(--berry);
   }
 
   @media (min-width: 977px) {
@@ -48,10 +49,14 @@
     height: 20pt;
     width: auto;
     margin: 0;
+
+    @media (max-width: 976px) {
+      height: 16pt;
+    }
   }
 
   @media (max-width: 976px) {
-    height: 32pt;
+    height: 24pt;
     & > .search-bar {
       display: none;
     }
@@ -79,10 +84,10 @@
   }
 
   @media (max-width: 976px) {
-    @apply --depth-1;
+    @apply --depth-2;
     display: flex;
     width: 100%;
-    margin: 8pt 8pt 8pt 0;
+    margin: 8pt 0 0 -8pt;
     border-radius: 2px;
     padding: 8pt;
     background: white;

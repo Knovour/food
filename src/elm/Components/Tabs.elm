@@ -13,17 +13,21 @@ import Libs.Helpers exposing (getDictValue)
 
 
 tabs : Action.Model -> Dict String (List Food) -> Html Main.Msg
-tabs { group, showBy } foodList =
+tabs { group, showBy, toggleSearch } foodList =
   let toggle =
         if showBy == "標籤"
         then " _hide"
         else ""
       tagList = List.map (\name ->
-        let value = getDictValue name foodList
-            click = Action <| Group name
-        in div [ classes (name == group) (List.length value == 0), onClick click ] [ text name ]
-      ) foodTypes
-  in div [ class ("tab-block" ++ toggle) ] [ div [ class "tab-list" ] tagList ]
+          let value = getDictValue name foodList
+              click = Action <| Group name
+          in div [ classes (name == group) (List.length value == 0), onClick click ] [ text name ]
+        ) foodTypes
+      mobileMenu =
+        if toggleSearch == "open"
+        then " _search-active"
+        else ""
+  in div [ class ("tab-block" ++ toggle ++ mobileMenu) ] [ div [ class "tab-list" ] tagList ]
 
 
 classes : Bool -> Bool -> Attribute Main.Msg
