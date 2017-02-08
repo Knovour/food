@@ -20,7 +20,7 @@
     width: 100%;
     min-height: 32pt;
     border-bottom-width: 0;
-    padding: 8pt 8pt 8pt 16pt;
+    padding: 8pt 4pt 8pt 16pt;
     background: var(--berry);
   }
 
@@ -120,7 +120,7 @@
 
     @media (max-width: 976px) {
       @apply --depth-0;
-      margin-left: 8pt;
+      margin-left: 4pt;
       background: transparent;
     }
 

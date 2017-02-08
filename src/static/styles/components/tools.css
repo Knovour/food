@@ -24,8 +24,8 @@
   }
 
   @media (max-width: 976px) {
-    top: 8pt;
-    right: 8pt;
+    top: 4pt;
+    right: 4pt;
     bottom: 16pt;
     height: auto;
     border-radius: 2px;
