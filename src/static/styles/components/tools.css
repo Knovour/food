@@ -14,13 +14,21 @@
   }
 
   &._float {
-    @apply --depth-3;
+    @apply --depth-5;
     z-index: 200;
   }
 
   &._float._hide {
     @apply --depth-0;
     right: 100%;
+  }
+
+  @media (max-width: 976px) {
+    top: 8pt;
+    right: 8pt;
+    bottom: 16pt;
+    height: auto;
+    border-radius: 2px;
   }
 }
 
