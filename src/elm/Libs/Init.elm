@@ -34,7 +34,6 @@ screenSize model =
     [ Window.resizes (\{ width, height } -> Screen <| Resize width height)
     , Window.resizes (\{ width } -> tagDisplay width)
     , Window.resizes (\{ width } -> layoutDisplay width)
-    , Window.resizes (\{ width } -> toggleMobileSearch width)
     ]
 
 
@@ -58,6 +57,6 @@ closeSidebar width =
 
 toggleMobileSearch : Int -> Main.Msg
 toggleMobileSearch width =
-  if width > 976
-  then Action <| ToggleSearch "open"
+  if width <= 976
+  then Action <| ToggleSearch "close"
   else NoOp

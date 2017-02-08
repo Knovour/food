@@ -20,6 +20,8 @@
     height: auto;
     padding-top: 0;
     overflow-x: auto;
+    background: rgba(var(--lighter-gray), .16);
+    border-bottom: 1px solid rgba(var(--lighter-gray), .4);
 
     &._search-active {
       top: 80pt;
@@ -50,8 +52,6 @@
     overflow-y: hidden;
     overflow-x: auto;
     writing-mode: horizontal-tb;
-    background: rgba(var(--lighter-gray), .16);
-    border-bottom: 1px solid rgba(var(--lighter-gray), .4);
   }
 
   & > .tab {
@@ -93,10 +93,7 @@
       }
 
       @media (max-width: 976px) {
-        top: auto;
-        right: auto;
-        bottom: 0;
-        left: 0;
+        position: absolute auto auto -1px 0;
         width: 100%;
         height: 2pt;
       }
