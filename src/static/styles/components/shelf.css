@@ -116,13 +116,17 @@
   }
 
   & > .info {
-    margin-top: 8pt;
+    position: relative;
     color: var(--black);
   }
 
   & > .info > .name {
     display: block;
     font-size: 1.1em;
+
+    @media (max-width: 976px) {
+      margin-top: 8pt;
+    }
   }
 
   & > .info > .copyright {
@@ -135,11 +139,51 @@
 }
 
 .harvest-light {
+  display: flex;
+
+  @media (max-width: 976px) {
+    position: absolute;
+    top: -29pt;
+    width: 100%;
+    padding: 4pt;
+    align-items: center;
+    background: rgba(var(--smooth-white), .8);
+  }
+
+  & > .icon {
+    font-size: 16px;
+    padding-top: 1pt;
+    @media (min-width: 977px) {
+      display: none;
+    }
+  }
+}
+
+.harvest-calendar {
   width: 100%;
   margin: 8pt 0;
   height: 4px;
+  display: flex;
 
   & > .dot {
-    float: left;
+    @media (max-width: 976px) {
+      margin-right: 4pt;
+      margin-bottom: 4pt;
+
+      &:not(.current) {
+        background: rgba(var(--black), .4);
+      }
+
+      &:nth-child(n+7) {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  @media (max-width: 976px) {
+    width: calc(4px * 6 + 4pt * 6);
+    height: auto;
+    margin: 0 0 0 8pt;
+    flex-wrap: wrap;
   }
 }
