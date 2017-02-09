@@ -74,6 +74,7 @@
     text-align: center;
     opacity: .65;
     color: var(--berry);
+    user-select: none;
 
     @media (max-width: 1120px) {
       height: 64pt;
@@ -114,6 +115,10 @@
 
       @media (max-width: 1120px) {
         border-right: 2pt solid rgba(var(--berry), .4);
+      }
+
+      @media (max-width: 976px) {
+        border-right-width: 0;
       }
     }
   }
