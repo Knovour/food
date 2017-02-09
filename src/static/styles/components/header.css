@@ -87,7 +87,7 @@
     @apply --depth-2;
     display: flex;
     width: 100%;
-    margin: 8pt 0 0 -8pt;
+    margin: 8pt 4pt 0 -8pt;
     border-radius: 2px;
     padding: 8pt;
     background: white;
@@ -111,6 +111,7 @@
     transition: all 100ms linear;
     background: var(--green);
     color: white;
+    user-select: none;
 
     @media (min-width: 977px) {
       &:hover {
