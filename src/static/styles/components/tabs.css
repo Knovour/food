@@ -52,7 +52,7 @@
     overflow-y: hidden;
     overflow-x: auto;
     writing-mode: horizontal-tb;
-    background: rgba(var(--lighter-gray), .16);
+    background: rgba(var(--lighter-gray), .2);
 
     &::after {
       content: '';
