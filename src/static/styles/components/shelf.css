@@ -167,7 +167,7 @@
 
   & > .dot {
     @media (max-width: 976px) {
-      margin-right: 4pt;
+      margin-right: 6px;
       margin-bottom: 4pt;
 
       &:not(.current) {
@@ -181,7 +181,7 @@
   }
 
   @media (max-width: 976px) {
-    width: calc(4px * 6 + 4pt * 6);
+    width: calc(4px * 6 + 6px * 6);
     height: auto;
     margin: 0 0 0 8pt;
     flex-wrap: wrap;
