@@ -34,4 +34,4 @@ layer_ action foodDict =
         [ tag [ Tag.show action.showBy ] [ text species ]
         , goods [] (Food.list list)
         ]
-    ) foodTypes
+  ) foodTypes

@@ -38,7 +38,6 @@ type Msg
   | Content  (Result Http.Error Respond)
 
 
-
 update : Msg -> Model -> (Model, Cmd msg)
 update msg model =
   let newModel =

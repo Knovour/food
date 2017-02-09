@@ -18,12 +18,10 @@ tools model =
       if (action.sidebar == "close" && isMobile /= True)
       then " -narrow"
       else ""
-
     mobileClasses =
       if isMobile
       then " _float"
       else ""
-
     toggleClasses =
       if isMobile && action.sidebar == "close"
       then " _hide"

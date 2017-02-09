@@ -16,7 +16,6 @@ dimmer { box, action, screen } =
       if (box.open || (action.sidebar == "open" && screen.width <= 976))
       then "dimmer _show"
       else "dimmer _hide"
-
     handleClick =
       if box.open
       then Box <| Close

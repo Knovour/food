@@ -46,9 +46,8 @@ switch options toggle target =
           if target == "layout"
           then Action <| Layout opt
           else Action <| ShowBy opt
-        dom =
-          if target == "layout"
-          then div [ class ("layout opt" ++ active), onClick click ] [ i [ class "material-icons icon" ] [ text opt ] ]
-          else div [ class ("tag opt" ++ active), onClick click ] [ text opt ]
-    in dom
+    in
+      if target == "layout"
+      then div [ class ("layout opt" ++ active), onClick click ] [ i [ class "material-icons icon" ] [ text opt ] ]
+      else div [ class ("tag opt" ++ active), onClick click ] [ text opt ]
   ) options
