@@ -1,6 +1,6 @@
 module Components.Tools.Month exposing (..)
 import Html            exposing (Html, Attribute, div, p, i, text)
-import Html.Attributes exposing (class)
+import Html.Attributes exposing (class, classList)
 import Html.Events     exposing (onClick)
 
 import Architecture.Main   as Main exposing (..)
@@ -11,17 +11,18 @@ import Architecture.Action as Action
 
 month : Action.Model -> Search.Model -> Html Main.Msg
 month { sidebar, hover } { month } =
-  let
-    label =
-      if sidebar == "open"
-      then text "月份"
-      else i [ class "material-icons icon" ] [ text "today" ]
-    classes =
-      if sidebar == "open"
-      then ""
-      else " -narrow"
+  let classes =
+        classList
+          [ ("options-block", True)
+          , ("calendar-filter", True)
+          , ("-narrow", sidebar /= "open")
+          ]
+      label =
+        if sidebar == "open"
+        then text "月份"
+        else i [ class "material-icons icon" ] [ text "today" ]
   in
-    div [ class ("options-block calendar-filter" ++ classes) ]
+    div [ classes ]
       [ p [ class "heading" ] [ label ]
       , div [ class "calendar" ] (monthCircle hover month)
       ]
@@ -31,17 +32,14 @@ monthCircle : List Int -> List Int -> List (Html Main.Msg)
 monthCircle hover month =
   List.map (\num ->
     div
-      [ classes (List.member num hover) (List.member num month)
-      , onClick (handleClick num month)
+      [ classList
+        [ ("month", True)
+        , ("_highlight", List.member num hover)
+        , ("_selected", List.member num month)
+        ]
+        , onClick (handleClick num month)
       ] [ text (toString num) ]
   ) (List.range 1 12)
-
-
-classes : Bool -> Bool -> Attribute Main.Msg
-classes isHighlight isSelected =
-  let highlight = if isHighlight then " _highlight" else ""
-      selected = if isSelected then " _selected" else ""
-  in class ("month" ++ highlight ++ selected)
 
 
 handleClick : Int -> List Int -> Main.Msg

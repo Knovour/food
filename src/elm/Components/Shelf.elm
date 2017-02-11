@@ -1,6 +1,6 @@
 module Components.Shelf exposing (layer_, shelf)
 import Html            exposing (Html, div, text)
-import Html.Attributes exposing (class, attribute)
+import Html.Attributes exposing (class, classList, attribute)
 import Dict exposing (Dict)
 
 import Architecture.Main   as Main exposing (..)
@@ -17,11 +17,12 @@ import Libs.Helpers exposing (foodRefilter, getDictValue)
 
 shelf : Model -> Dict String (List Food) -> Html Main.Msg
 shelf { search, box, action, content } foodDict =
-  let toggle =
-        if action.showBy == "標籤"
-        then " _show-all"
-        else ""
-  in div [ class ("food-shelf" ++ toggle) ] (layer_ action foodDict)
+  div
+    [ classList
+      [ ("food-shelf", True)
+      , ("_show-all", action.showBy == "標籤")
+      ]
+    ] (layer_ action foodDict)
 
 
 layer_ : Action.Model -> Dict String (List Food) -> List (Html Main.Msg)

@@ -1,6 +1,6 @@
 module Components.Tabs exposing (tabs)
 import Html            exposing (Html, Attribute, div, text)
-import Html.Attributes exposing (class)
+import Html.Attributes exposing (class, classList)
 import Html.Events     exposing (onClick)
 import Dict exposing (Dict)
 
@@ -14,30 +14,20 @@ import Libs.Helpers exposing (getDictValue)
 
 tabs : Action.Model -> Dict String (List Food) -> Html Main.Msg
 tabs { group, showBy, toggleSearch } foodList =
-  let toggle =
-        if showBy == "標籤"
-        then " _hide"
-        else ""
+  let classes =
+        classList
+          [ ("tab-block", True)
+          , ("_hide", showBy == "標籤")
+          , ("_search-active", toggleSearch == "open")
+          ]
       tagList = List.map (\name ->
           let value = getDictValue name foodList
-              click = Action <| Group name
-          in div [ classes (name == group) (List.length value == 0), onClick click ] [ text name ]
+              tabClasses =
+                classList
+                  [ ("tab", True)
+                  , ("current", name == group)
+                  , ("_hide", List.length value == 0)
+                  ]
+          in div [ tabClasses, onClick (Action <| Group name) ] [ text name ]
         ) foodTypes
-      mobileMenu =
-        if toggleSearch == "open"
-        then " _search-active"
-        else ""
-  in div [ class ("tab-block" ++ toggle ++ mobileMenu) ] [ div [ class "tab-list" ] tagList ]
-
-
-classes : Bool -> Bool -> Attribute Main.Msg
-classes isCurrentTag noResult =
-  let class1 =
-        if isCurrentTag
-        then " current"
-        else ""
-      class2 =
-        if noResult
-        then " _hide"
-        else ""
-  in class ("tab" ++ class1 ++ class2)
+  in div [ classes ] [ div [ class "tab-list" ] tagList ]

@@ -1,6 +1,6 @@
 module Components.Shelf.Food exposing (..)
 import Html            exposing (Html, div, span, img, text, i, a)
-import Html.Attributes exposing (class, src, alt, href, target)
+import Html.Attributes exposing (class, classList, src, alt, href, target)
 import Html.Events     exposing (onMouseEnter, onMouseLeave)
 
 import Architecture.Main   as Main exposing (..)
@@ -13,8 +13,12 @@ food : Food -> Html Main.Msg
 food food =
   let harvest =
         List.map (\month ->
-          let classes = if (List.member month food.harvest) then " current" else ""
-          in div [ class ("dot" ++ classes) ] []
+          div
+            [ classList
+              [ ("dot", True)
+              , ("current", (List.member month food.harvest))
+              ]
+            ] []
         ) (List.range 1 12)
       hover = Action <| Hover food.harvest
       unHover = Action <| Hover []

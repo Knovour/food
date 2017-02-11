@@ -1,6 +1,6 @@
 module Components.Table exposing (..)
 import Html            exposing (Html, div, table, thead, tr, th, tbody, td, span, text, img)
-import Html.Attributes exposing (class, src, alt)
+import Html.Attributes exposing (class, classList, src, alt)
 import Html.Events     exposing (onMouseEnter, onMouseLeave)
 import Dict exposing (Dict)
 
@@ -15,34 +15,31 @@ import Libs.Helpers exposing (foodRefilter, getDictValue)
 
 table_ : Main.Model -> Dict String (List Food) -> Html Main.Msg
 table_ { search, box, action, content } foodDict =
-  let toggle =
-        if action.showBy == "標籤"
-        then " _show-all"
-        else ""
-  in div [ class ("food-list" ++ toggle) ] (tableList action foodDict)
+  let classes =
+        classList
+          [ ("food-list", True)
+          , ("_show-all", action.showBy == "標籤")
+          ]
+  in div [ classes ] (tableList action foodDict)
 
 
 tableList : Action.Model -> Dict String (List Food) -> List (Html Main.Msg)
 tableList { showBy, group } foodDict =
   List.map(\species ->
     let list = getDictValue species foodDict
-        toggle =
-          if List.length list > 0 && (showBy /= "分頁" || species == group)
-          then ""
-          else " _hide"
+        notCurrentContent = (showBy == "分頁" && species /= group)
+        classes =
+          classList
+            [ ("food-table", True)
+            , ("_hide", (List.length list == 0 || notCurrentContent))
+            ]
+        contentClasses = classList [ ("_hide", notCurrentContent) ]
     in
-      div [ class ("food-table" ++ toggle) ]
+      div [ classes ]
         [ tag [ Tag.show showBy ] [ text species ]
-        , div [ class "table-content" ] [ table [ class (classes showBy species group) ] [ thead_ , tbody_ list ] ]
+        , div [ class "table-content" ] [ table [ contentClasses ] [ thead_ , tbody_ list ] ]
         ]
   ) foodTypes
-
-
-classes : String -> String -> String -> String
-classes tag species current =
-  if (tag /= "分頁" || species == current)
-  then ""
-  else " _hide"
 
 
 thead_ : Html Main.Msg
@@ -58,8 +55,15 @@ tbody_ list =
         List.map (\food ->
           let harvest =
                 List.map (\month ->
-                  let dot = if (List.member month food.harvest) then " current" else ""
-                  in td [] [ span [ class ("dot -large" ++ dot) ] [] ]
+                  td []
+                    [ span
+                      [ classList
+                        [ ("dot", True)
+                        , ("-large", True)
+                        , ("current", (List.member month food.harvest))
+                        ]
+                      ] []
+                    ]
                 ) (List.range 1 12)
               hover = Action <| Hover food.harvest
               unHover = Action <| Hover []

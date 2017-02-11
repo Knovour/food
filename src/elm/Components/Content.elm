@@ -1,6 +1,6 @@
 module Components.Content exposing (..)
 import Html            exposing (Html, div)
-import Html.Attributes exposing (id, class)
+import Html.Attributes exposing (id, class, classList)
 import Dict exposing (Dict)
 
 import Architecture.Main as Main exposing (..)
@@ -15,22 +15,17 @@ import Libs.Helpers exposing (foodRefilter, getDictValue)
 content : Model -> Html Main.Msg
 content model =
   let foodDict = foodRefilter model.action model.search model.content
-      toggle =
-        if model.action.showBy == "標籤"
-        then "_show-all"
-        else ""
-      locate =
-        if (model.action.sidebar == "close" || model.screen.width <= 976)
-        then " _center"
-        else ""
-      mobileSearch =
-        if (model.action.toggleSearch == "open" && model.screen.width <= 976)
-        then " _search"
-        else ""
+      isMobileScreen = model.screen.width <= 976
+      classes =
+        classList
+          [ ("_show-all", model.action.showBy == "標籤")
+          , ("_center", (model.action.sidebar == "close" || isMobileScreen))
+          , ("_search", (model.action.toggleSearch == "open" && isMobileScreen))
+          ]
   in
     div []
       [ tabs model.action foodDict
-      , div [ id "content", class (toggle ++ locate ++ mobileSearch) ] [ display model foodDict ]
+      , div [ id "content", classes ] [ display model foodDict ]
       ]
 
 

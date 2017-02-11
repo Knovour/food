@@ -1,6 +1,6 @@
 module Components.Shelf.Layer exposing (..)
 import Html            exposing (Html, Attribute, h2, div, text)
-import Html.Attributes exposing (class, attribute)
+import Html.Attributes exposing (class, classList, attribute)
 
 
 
@@ -10,6 +10,7 @@ layer attr slot = div attr slot
 
 show : Bool -> Attribute msg
 show isFocus =
-  if isFocus
-  then class "layer"
-  else class "layer _hide"
+  classList
+    [ ("layer", True)
+    , ("_hide", isFocus /= True)
+    ]
