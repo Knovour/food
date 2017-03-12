@@ -129,6 +129,10 @@
     font-size: 12px;
     padding: 4pt 0 0;
     font-weight: 400;
+
+    @media (--below-mobile) {
+      width: 5em;
+    }
   }
 
   @media (max-width: 1600px) { width: calc(100% / 7); }

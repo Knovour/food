@@ -17,6 +17,8 @@
     padding-top: 0;
     overflow-x: auto;
     border-right-width: 0;
+    @apply --depth-1;
+    background: var(--berry);
 
     &._search-active {
       top: 80pt;
@@ -40,20 +42,18 @@
 
   @media (--below-tablet) {
     position: relative;
-    height: 32pt;
-    line-height: 32pt;
+    height: 40pt;
+    line-height: 40pt;
     font-size: 12pt;
     display: flex;
     overflow-y: hidden;
     overflow-x: auto;
     writing-mode: horizontal-tb;
-    background: rgba(var(--lighter-gray), .2);
 
     &::after {
       content: '';
       position: absolute auto auto 0 0;
       size: 100% 1px;
-      background: rgba(var(--lighter-gray), .4);
     }
   }
 
@@ -69,21 +69,12 @@
     color: var(--berry);
     user-select: none;
 
-    @media (--below-small) {
-      height: 64pt;
-    }
-
-    @media (--below-tablet) {
-      min-width: 80pt;
-      height: 32pt;
-    }
-
     &.current {
       font-weight: 500;
       opacity: 1;
     }
 
-    &.current:after {
+    &.current::after {
       content: '';
       position: absolute 0 -1px auto auto;
       size: 4pt 100%;
@@ -110,6 +101,20 @@
 
       @media (--below-tablet) {
         border-right-width: 0;
+      }
+    }
+
+    @media (--below-small) {
+      height: 64pt;
+    }
+
+    @media (--below-tablet) {
+      min-width: 72pt;
+      height: 40pt;
+      color: var(--smooth-white);
+
+      &.current::after {
+        background: var(--smooth-white);
       }
     }
   }

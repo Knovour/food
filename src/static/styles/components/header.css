@@ -16,18 +16,11 @@
   }
 
   @media (--below-tablet) {
-    @apply --depth-1;
     width: 100%;
     min-height: 32pt;
     border-bottom-width: 0;
     padding: 8pt 4pt 8pt 16pt;
     background: var(--berry);
-  }
-
-  @media (--above-tablet) {
-    & > .search-bar {
-      display: none;
-    }
   }
 }
 
@@ -56,10 +49,7 @@
   }
 
   @media (--below-tablet) {
-    height: 24pt;
-    & > .search-bar {
-      display: none;
-    }
+    display: none;
   }
 }
 
@@ -87,7 +77,7 @@
     @apply --depth-2;
     display: flex;
     width: 100%;
-    margin: 8pt 4pt 0 -8pt;
+    margin: 0 4pt 0 -8pt;
     radius: 2px;
     padding: 8pt;
     background: white;

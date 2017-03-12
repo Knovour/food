@@ -13,7 +13,7 @@ search { action, screen, search } =
   let classes =
         classList
           [ ("search-bar", True)
-          , ("_hide", (action.toggleSearch == "close" && screen.width <= 976))
+          , ("_hide", (action.toggleSearch == "close" && screen.width > 976))
           ]
       icon =
         if String.length search.name > 0
