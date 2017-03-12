@@ -13,8 +13,8 @@
 
   @media (--below-tablet) {
     top: 40pt;
-    size: 100% 40pt;
-    padding-top: 8pt;
+    size: 100% 32pt;
+    padding-top: 0;
     overflow-x: auto;
     border-right-width: 0;
     @apply --depth-1;
@@ -43,12 +43,16 @@
   @media (--below-tablet) {
     position: relative;
     height: 32pt;
-    line-height: 32pt;
-    font-size: 12pt;
+    line-height: 36pt;
+    font-size: .8em;
     display: flex;
     overflow-y: hidden;
     overflow-x: auto;
     writing-mode: horizontal-tb;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
 
     &::after {
       content: '';
