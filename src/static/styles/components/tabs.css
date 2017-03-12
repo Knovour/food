@@ -19,10 +19,6 @@
     border-right-width: 0;
     @apply --depth-1;
     background: var(--berry);
-
-    &._search-active {
-      top: 80pt;
-    }
   }
 }
 

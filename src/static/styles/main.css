@@ -53,7 +53,6 @@ a {
 
     @media (--below-large) { margin: 48pt 80pt 40pt; }
     @media (--below-tablet) { margin: 80pt 0 40pt ; }
-    @media (--below-mobile) { margin-top: 80pt; }
   }
 
   &._search {

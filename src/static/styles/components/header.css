@@ -48,6 +48,12 @@
     }
   }
 
+  @media (--above-tablet) {
+    & + .search-bar {
+      display: none;
+    }
+  }
+
   @media (--below-tablet) {
     display: none;
   }
