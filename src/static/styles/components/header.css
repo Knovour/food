@@ -44,18 +44,8 @@
     margin: 0;
 
     @media (--below-tablet) {
-      height: 16pt;
-    }
-  }
-
-  @media (--above-tablet) {
-    & + .search-bar {
       display: none;
     }
-  }
-
-  @media (--below-tablet) {
-    display: none;
   }
 }
 
@@ -64,10 +54,6 @@
   display: inline-flex;
   align-items: center;
   margin: 0 16pt 0 40pt;
-
-  @media (--below-small) {
-    margin-left: 24pt;
-  }
 
   & > .label {
     margin-right: 8pt;
@@ -79,12 +65,16 @@
     }
   }
 
+  @media (--below-small) {
+    margin-left: 24pt;
+  }
+
   @media (--below-tablet) {
     @apply --depth-2;
     display: flex;
     width: 100%;
     margin: 0 4pt 0 -8pt;
-    radius: 2px;
+    border-radius: 2px;
     padding: 8pt;
     background: white;
   }
@@ -123,44 +113,33 @@
     }
   }
 
-  & > .info-btn {
-    @media (--below-tablet) {
-      display: none;
-    }
-  }
-
   & > .info-btn > .icon {
     transform: rotate(180deg);
   }
 
-  & > .search-btn {
-    @media (--above-tablet) {
-      display: none;
+  & > .tools-btn {
+    cursor: pointer;
+    @apply --depth-0;
+    position: absolute;
+    right: 0;
+    transform: translateX(50%);
+    border-radius: 0;
+    background: var(--smooth-white);
+    color: var(--light-green);
+    height: 32pt;
+
+    & > .icon {
+      font-size: 32px;
+      line-height: 32pt;
+    }
+
+    &:hover {
+      @apply --depth-0;
+      color: var(--green);
     }
   }
 
-  & > .tools-btn {
-    cursor: pointer;
-
-    @media (--above-tablet) {
-      @apply --depth-0;
-      position: absolute;
-      right: 0;
-      transform: translateX(50%);
-      radius: 0;
-      background: var(--smooth-white);
-      color: var(--light-green);
-      height: 32pt;
-
-      & > .icon {
-        font-size: 32px;
-        line-height: 32pt;
-      }
-
-      &:hover {
-        @apply --depth-0;
-        color: var(--green);
-      }
-    }
+  @media (--below-tablet) {
+    display: none;
   }
 }

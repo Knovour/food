@@ -67,7 +67,7 @@
 
 .food-card {
   position: relative;
-  radius: 2px;
+  border-radius: 2px;
   width: calc(100% / 8);
   margin-bottom: 8pt;
   padding: 8pt 8pt 16pt;

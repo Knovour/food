@@ -25,7 +25,7 @@
   @media (--below-tablet) {
     position: fixed 4pt 4pt 16pt auto;
     height: auto;
-    radius: 2px;
+    border-radius: 2px;
   }
 }
 
@@ -92,7 +92,7 @@
     position: absolute 0 auto auto 0;
     width: calc(50% - 2pt);
     height: 100%;
-    radius: 2pt;
+    border-radius: 2pt;
     background: var(--green);
     z-index: -1;
     transition: all 200ms linear;
@@ -111,7 +111,7 @@
     justify-content: center;
     align-items: center;
     width: calc(50% - 2pt);
-    radius: 2pt;
+    border-radius: 2pt;
     text-align: center;
     cursor: pointer;
   }

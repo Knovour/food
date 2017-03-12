@@ -3,7 +3,7 @@
   transform: translateX(-50%);
   z-index: 200;
   background: white;
-  radius: 2px;
+  border-radius: 2px;
   width: 32vw;
   padding: 8pt 32pt 24pt;
 
@@ -81,7 +81,7 @@
     display: block;
     width: calc(100% / 5 - 4pt);
     margin: 0 4pt 4pt 0;
-    radius: 2px;
+    border-radius: 2px;
     box-sizing: border-box;
     transition: all 200ms linear;
 
@@ -107,7 +107,7 @@
 .color-box {
   position: relative;
   width: 100%;
-  radius: 2px;
+  border-radius: 2px;
   padding-bottom: 100%;
 
   & > .info {

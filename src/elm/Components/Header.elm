@@ -27,5 +27,4 @@ header_ model =
         , search model
         , rightMenu model
         ]
-      , search model
       ]
