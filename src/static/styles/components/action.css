@@ -20,6 +20,6 @@
   @media (--below-mobile) {
     position: fixed auto 16pt 16pt auto;
     size: 40pt;
-    & > .icon { font-size: 1.4em; }
+    & > .icon { font-size: 1.6em; }
   }
 }
