@@ -14,7 +14,7 @@
   @media (--below-tablet) {
     top: 40pt;
     size: 100% auto;
-    padding-top: 0;
+    padding-top: 8pt;
     overflow-x: auto;
     border-right-width: 0;
     @apply --depth-1;
@@ -42,8 +42,8 @@
 
   @media (--below-tablet) {
     position: relative;
-    height: 40pt;
-    line-height: 40pt;
+    height: 32pt;
+    line-height: 32pt;
     font-size: 12pt;
     display: flex;
     overflow-y: hidden;
@@ -110,7 +110,7 @@
 
     @media (--below-tablet) {
       min-width: 72pt;
-      height: 40pt;
+      height: 32pt;
       color: var(--smooth-white);
 
       &.current::after {
