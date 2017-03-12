@@ -15,13 +15,9 @@ search { action, screen, search } =
           [ ("search-bar", True)
           , ("_hide", (action.toggleSearch == "close" && screen.width > 976))
           ]
-      icon =
-        if String.length search.name > 0
-        then "delete_sweep"
-        else "search"
   in
     div [ classes ]
-      [ label [ class "label material-icons", for "search", onClick (Search <| Name "") ] [ text icon ]
+      [ label [ class "label material-icons", for "search" ] [ text "search" ]
       , input
         [ id "search"
         , type_ "search"
