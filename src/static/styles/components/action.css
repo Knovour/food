@@ -1,35 +1,25 @@
 .action-button {
   position: fixed auto 32pt 32pt auto;
-  background: var(--berry);
+  background: var(--logo);
   text-align: center;
   color: white;
   cursor: pointer;
   transition: all 100ms linear;
+  size: 48pt;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @apply --circle;
+  @apply --depth-4;
 
-  &.open {
-    size: 32pt;
-    font-size: 1.5em;
-  }
+  & > .icon { font-size: 1.8em; }
 
-  &.close {
-    size: 52pt;
-    font-size: 2em;
-  }
+  @media (--above-tablet) { display: none; }
 
-  & > .icon {
-    display: block;
-    position: relative 50% auto auto;
-    transform: translateY(-50%);
-
-    &.mdi-close {
-      top: 52%;
-    }
-  }
-}
-
-@media (max-width: 768px) {
-  .action-button {
-    right: 16pt;
-    bottom: 16pt;
+  @media (--below-mobile) {
+    position: fixed auto 16pt 16pt auto;
+    size: 40pt;
+    & > .icon { font-size: 1.4em; }
   }
 }

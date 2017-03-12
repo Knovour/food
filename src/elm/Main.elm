@@ -7,6 +7,7 @@ import Components.Header  exposing (header_)
 import Components.Content exposing (content)
 import Components.Tools   exposing (tools)
 import Components.Box     exposing (box)
+import Components.Action  exposing (action)
 import Libs.Init exposing (request, screenSize)
 
 
@@ -41,4 +42,5 @@ view model =
     , content model
     , dimmer model
     , box model.box
+    , action
     ]
