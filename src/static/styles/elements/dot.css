@@ -12,4 +12,8 @@
   &.current {
     background: var(--dark-green);
   }
+
+  @media (--below-mobile) {
+    background: rgba(var(--lighter-gray), .8);
+  }
 }
