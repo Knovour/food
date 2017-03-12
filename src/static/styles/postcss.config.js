@@ -7,6 +7,7 @@ module.exports = {
 			browsers: [ 'last 1 versions' ]
 		}),
 		require('rucksack-css'),
+		require('postcss-size'),
 		require('cssnano')({
 			autoprefixer: false
 		})

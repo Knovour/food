@@ -33,7 +33,7 @@ monthCircle hover month =
   List.map (\num ->
     div
       [ classList
-        [ ("month", True)
+        [ ("month -circle", True)
         , ("_highlight", List.member num hover)
         , ("_selected", List.member num month)
         ]

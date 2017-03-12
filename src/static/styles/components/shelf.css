@@ -2,9 +2,8 @@
   flex: 0 1 100%;
   padding: 16pt;
 
-  @media (max-width: 1120px) {
-    padding: 8pt;
-  }
+  @media (--above-small) { padding: 8pt; }
+  @media (--below-mobile) { padding: 0; }
 
   & > .species:first-of-type .label {
     margin-top: 0;
@@ -15,7 +14,7 @@
   margin-bottom: 40pt;
   display: flex;
 
-  @media (max-width: 1120px) {
+  @media (--below-small) {
     flex-flow: column;
   }
 
@@ -38,19 +37,19 @@
       height: 3.2em;
       background: var(--berry);
 
-      @media (max-width: 1120px) {
+      @media (--below-small) {
         position: absolute auto auto -4pt 0;
         width: 16%;
         height: 1.6pt;
       }
 
-      @media (max-width: 624px) {
+      @media (--below-mobile) {
         width: 32%;
       }
     }
 
 
-    @media (max-width: 1120px) {
+    @media (--below-small) {
       width: auto;
       margin: 8pt 8pt 24pt;
       padding: 0;
@@ -68,64 +67,59 @@
 
 .food-card {
   position: relative;
-  border-radius: 2px;
+  radius: 2px;
   width: calc(100% / 8);
   margin-bottom: 8pt;
   padding: 8pt 8pt 16pt;
   transition: all 160ms linear;
-
-  @media (max-width: 1600px) {
-    width: calc(100% / 7);
-  }
-
-  @media (max-width: 1380px) {
-    width: calc(100% / 6);
-  }
-
-  @media (max-width: 1280px) {
-    width: calc(100% / 5);
-  }
-
-  @media (max-width: 1120px) {
-    width: calc(100% / 4);
-  }
-
-  @media (max-width: 624px) {
-    width: calc(100% / 3);
-  }
-
-  @media (max-width: 520px) {
-    width: calc(100% / 2);
-  }
-
+  display: flex;
+  flex-direction: column;
 
   &:hover {
     background: white;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+    @apply --depth-1;
   }
 
   & > .media {
     width: 100%;
     overflow: hidden;
+
+    @media (--below-mobile) {
+      size: 40pt;
+      @apply --circle;
+    }
   }
 
   & > .media > .img {
     display: block;
-    width: 100%;
-    height: auto;
+    size: 100% auto;
+
+    @media (--below-mobile) {
+      size: auto 100%;
+      transform: translateX(-8pt);
+    }
   }
 
   & > .info {
     position: relative;
     color: var(--black);
+
+    @media (--below-mobile) {
+      display: flex;
+      flex-grow: 1;
+      flex-direction: column;
+      margin: 0 16pt;
+    }
   }
 
   & > .info > .name {
     display: block;
     font-size: 1.1em;
+    margin: 4pt 0;
 
-    @media (max-width: 976px) {
-      margin-top: 8pt;
+    @media (--below-mobile) {
+      font-size: 1em;
+      margin: 4pt 0 0;
     }
   }
 
@@ -136,37 +130,37 @@
     padding: 4pt 0 0;
     font-weight: 400;
   }
+
+  @media (max-width: 1600px) { width: calc(100% / 7); }
+  @media (max-width: 1380px) { width: calc(100% / 6); }
+  @media (max-width: 1280px) { width: calc(100% / 5); }
+  @media (--below-small) { width: calc(100% / 4); }
+  @media (--below-mobile) {
+    size: 100% 56pt;
+    flex-direction: row;
+    align-items: center;
+    @apply --depth-1;
+    margin: 4pt 4pt 0;
+    padding: 0 8pt 0 12pt;
+    background: white;
+  }
 }
 
 .harvest-light {
   display: flex;
 
-  @media (max-width: 976px) {
-    position: absolute;
-    top: -29pt;
-    width: 100%;
-    padding: 4pt;
-    align-items: center;
-    background: rgba(var(--smooth-white), .8);
-  }
-
-  & > .icon {
-    font-size: 16px;
-    padding-top: 1pt;
-    @media (min-width: 977px) {
-      display: none;
-    }
+  @media (--below-mobile) {
+    order: 3;
   }
 }
 
 .harvest-calendar {
-  width: 100%;
+  size: 100% 4px;
   margin: 8pt 0;
-  height: 4px;
   display: flex;
 
-  & > .dot {
-    @media (max-width: 976px) {
+  /*& > .dot {
+    @media (--below-tablet) {
       margin-right: 6px;
       margin-bottom: 4pt;
 
@@ -178,12 +172,13 @@
         margin-bottom: 0;
       }
     }
-  }
+  }*/
 
-  @media (max-width: 976px) {
-    width: calc(4px * 6 + 6px * 6);
-    height: auto;
-    margin: 0 0 0 8pt;
-    flex-wrap: wrap;
+  @media (--below-mobile) {
+    align-items: center;
+
+    & > .dot {
+      margin-right: 8pt;
+    }
   }
 }

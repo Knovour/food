@@ -2,22 +2,18 @@
   position: fixed 48pt auto auto 0;
   border-right: 1px solid rgba(var(--lighter-gray), .4);
   background: var(--smooth-white);
-  width: 40pt;
-  height: calc(100vh - 48pt);
+  size: 40pt calc(100vh - 48pt);
   z-index: 100;
   padding-top: 24pt;
 
-  @media (max-width: 1120px) {
+  @media (--below-small) {
     width: 32pt;
     padding-top: 16pt;
   }
 
-  @media (max-width: 976px) {
+  @media (--below-tablet) {
     top: 40pt;
-    left: 0;
-    bottom: auto;
-    width: 100%;
-    height: auto;
+    size: 100% auto;
     padding-top: 0;
     overflow-x: auto;
     border-right-width: 0;
@@ -29,8 +25,7 @@
 }
 
 .tab-list {
-  width: 100%;
-  height: 100%;
+  size: 100%;
   writing-mode: vertical-lr;
   font-size: 16pt;
   line-height: 34pt;
@@ -38,12 +33,12 @@
   overflow-x: hidden;
   white-space: nowrap;
 
-  @media (max-width: 1120px) {
+  @media (--below-small) {
     font-size: 14pt;
     line-height: 30pt;
   }
 
-  @media (max-width: 976px) {
+  @media (--below-tablet) {
     position: relative;
     height: 32pt;
     line-height: 32pt;
@@ -57,8 +52,7 @@
     &::after {
       content: '';
       position: absolute auto auto 0 0;
-      width: 100%;
-      height: 1px;
+      size: 100% 1px;
       background: rgba(var(--lighter-gray), .4);
     }
   }
@@ -66,8 +60,7 @@
   & > .tab {
     position: relative;
     display: inline-block;
-    width: 100%;
-    height: calc(32pt + 48pt);
+    size: 100% calc(32pt + 48pt);
     font-weight: 300;
     cursor: pointer;
     letter-spacing: 4pt;
@@ -76,11 +69,11 @@
     color: var(--berry);
     user-select: none;
 
-    @media (max-width: 1120px) {
+    @media (--below-small) {
       height: 64pt;
     }
 
-    @media (max-width: 976px) {
+    @media (--below-tablet) {
       min-width: 80pt;
       height: 32pt;
     }
@@ -93,19 +86,17 @@
     &.current:after {
       content: '';
       position: absolute 0 -1px auto auto;
-      width: 4pt;
-      height: 100%;
+      size: 4pt 100%;
       background: var(--berry);
       z-index: 400;
 
-      @media (max-width: 1120px) {
+      @media (--below-small) {
         width: 2pt;
       }
 
-      @media (max-width: 976px) {
+      @media (--below-tablet) {
         position: absolute auto auto -1px 0;
-        width: 100%;
-        height: 2pt;
+        size: 100% 2pt;
       }
     }
 
@@ -113,11 +104,11 @@
       border-right: 3pt solid rgba(var(--berry), .4);
       opacity: .9;
 
-      @media (max-width: 1120px) {
+      @media (--below-small) {
         border-right: 2pt solid rgba(var(--berry), .4);
       }
 
-      @media (max-width: 976px) {
+      @media (--below-tablet) {
         border-right-width: 0;
       }
     }

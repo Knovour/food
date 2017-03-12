@@ -38,26 +38,22 @@ a {
 }
 
 #content {
-  margin: 48pt 200pt 0 40pt;
+  margin: 48pt 196pt 0 40pt;
 
-  @media (max-width: 1440px) {
+  @media (--below-large) {
     margin-right: 160pt;
   }
 
-  @media (max-width: 1120px) {
+  @media (--below-small) {
     margin-left: 32pt;
   }
 
   &._center {
     margin: 48pt 120pt 40pt;
 
-    @media (max-width: 1440px) {
-      margin: 48pt 80pt 40pt;
-    }
-
-    @media (max-width: 976px) {
-      margin: 80pt 0 40pt ;
-    }
+    @media (--below-large) { margin: 48pt 80pt 40pt; }
+    @media (--below-tablet) { margin: 80pt 0 40pt ; }
+    @media (--below-mobile) { margin-top: 72pt; }
   }
 
   &._search {

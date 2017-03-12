@@ -1,6 +1,5 @@
 :root {
-  /* Color from Nippon Colors */
-
+  /* Color: from Nippon Colors */
   --smooth-white: #FFFFFB;  /* 胡粉 GOFUN */
   --brown: #A35E47;         /* 柿涉 KAKISHIBU */
   --sky: #58B2DC;           /* 空 SORA */
@@ -13,10 +12,30 @@
   --light-gray: #91989F;    /* 銀鼠 GINNEZUMI */
   --lighter-gray: #BDC0BA;  /* 白鼠 SHIRONEZUMI */
 
+  /* material design shadow */
   --depth-0 { box-shadow: none; };
   --depth-1 { box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2); };
   --depth-2 { box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.3); };
   --depth-3 { box-shadow: 0 6px 10px 0 rgba(0,0,0,0.14), 0 1px 18px 0 rgba(0,0,0,0.12), 0 3px 5px -1px rgba(0,0,0,0.3); };
   --depth-4 { box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.3); };
   --depth-5 { box-shadow: 0 16px 24px 2px rgba(0,0,0,0.14), 0 6px 30px 5px rgba(0,0,0,0.12), 0 8px 10px -5px rgba(0,0,0,0.3); };
+
+  --circle { radius: 50%; }
+}
+
+/* media below */
+@custom-media --below-large (max-width: 1440px);
+@custom-media --below-small (max-width: 1120px);
+@custom-media --below-tablet (max-width: 976px);
+@custom-media --below-mobile (max-width: 624px);
+
+/* media above */
+@custom-media --above-large (max-width: 1441px);
+@custom-media --above-small (max-width: 1121px);
+@custom-media --above-tablet (min-width: 977px);
+@custom-media --above-mobile (min-width: 625px);
+
+
+@alias {
+  radius: border-radius;
 }

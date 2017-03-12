@@ -1,6 +1,6 @@
 .header-block {
   position: fixed 0 auto auto 0;
-  width: calc(100% - 200pt);
+  width: calc(100% - 196pt);
   min-height: 48pt;
   border-bottom: 1px solid rgba(var(--lighter-gray), .4);
   padding: 0 24pt;
@@ -11,11 +11,11 @@
   align-items: center;
   flex-wrap: wrap;
 
-  @media (max-width: 1440px) {
+  @media (--below-large) {
     width: calc(100% - 160pt);
   }
 
-  @media (max-width: 976px) {
+  @media (--below-tablet) {
     @apply --depth-1;
     width: 100%;
     min-height: 32pt;
@@ -24,7 +24,7 @@
     background: var(--berry);
   }
 
-  @media (min-width: 977px) {
+  @media (--above-tablet) {
     & > .search-bar {
       display: none;
     }
@@ -34,7 +34,7 @@
 .header-block.-extend {
   width: calc(100% - 40pt);
 
-  @media (max-width: 1120px) {
+  @media (--below-small) {
     width: calc(100% - 36pt);
   }
 }
@@ -50,12 +50,12 @@
     width: auto;
     margin: 0;
 
-    @media (max-width: 976px) {
+    @media (--below-tablet) {
       height: 16pt;
     }
   }
 
-  @media (max-width: 976px) {
+  @media (--below-tablet) {
     height: 24pt;
     & > .search-bar {
       display: none;
@@ -69,7 +69,7 @@
   align-items: center;
   margin: 0 16pt 0 40pt;
 
-  @media (max-width: 1120px) {
+  @media (--below-small) {
     margin-left: 24pt;
   }
 
@@ -78,20 +78,19 @@
     font-size: 24pt;
     cursor: pointer;
 
-    @media (max-width: 976px) {
+    @media (--below-tablet) {
       font-size: 20px;
     }
   }
 
-  @media (max-width: 976px) {
+  @media (--below-tablet) {
     @apply --depth-2;
     display: flex;
     width: 100%;
     margin: 8pt 4pt 0 -8pt;
-    border-radius: 2px;
+    radius: 2px;
     padding: 8pt;
     background: white;
-
   }
 }
 
@@ -102,10 +101,8 @@
 
   & > .btn {
     @apply --depth-1;
-    width: 24pt;
-    height: 24pt;
+    size: 24pt;
     margin-left: 16pt;
-    border-radius: 50%;
     text-align: center;
     cursor: pointer;
     transition: all 100ms linear;
@@ -113,13 +110,13 @@
     color: white;
     user-select: none;
 
-    @media (min-width: 977px) {
+    @media (--above-tablet) {
       &:hover {
         @apply --depth-3;
       }
     }
 
-    @media (max-width: 976px) {
+    @media (--below-tablet) {
       @apply --depth-0;
       margin-left: 4pt;
       background: transparent;
@@ -131,7 +128,7 @@
   }
 
   & > .info-btn {
-    @media (max-width: 976px) {
+    @media (--below-tablet) {
       display: none;
     }
   }
@@ -141,7 +138,7 @@
   }
 
   & > .search-btn {
-    @media (min-width: 977px) {
+    @media (--above-tablet) {
       display: none;
     }
   }
@@ -149,12 +146,12 @@
   & > .tools-btn {
     cursor: pointer;
 
-    @media (min-width: 977px) {
+    @media (--above-tablet) {
       @apply --depth-0;
       position: absolute;
       right: 0;
       transform: translateX(50%);
-      border-radius: 0;
+      radius: 0;
       background: var(--smooth-white);
       color: var(--light-green);
       height: 32pt;

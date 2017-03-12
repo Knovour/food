@@ -1,14 +1,13 @@
 input[type="search"] {
   outline: none;
   border-width: 0;
-  width: 100%;
+  size: 100% 24pt;
   padding: 4pt 0 6pt;
-  height: 24pt;
   font-size: 16pt;
   color: var(--black);
   background: transparent;
 
-  @media (max-width: 976px) {
+  @media (--below-tablet) {
     height: 16pt;
     font-size: 12pt;
   }

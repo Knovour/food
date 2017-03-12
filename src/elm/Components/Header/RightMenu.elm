@@ -33,7 +33,7 @@ rightMenu { action, screen } =
       else Action <| ToggleSearch "open"
   in
     div [ class "right-menu" ]
-      [ div [ class "btn info-btn", onClick (Box <| Open "info") ] [ i [ class "material-icons icon" ] [ text "priority_high" ] ]
+      [ div [ class "btn info-btn -circle", onClick (Box <| Open "info") ] [ i [ class "material-icons icon" ] [ text "priority_high" ] ]
       , div [ class "btn search-btn", onClick toggleSearch ] [ i [ class "material-icons icon" ] [ text searchIcon ] ]
       , div [ class "btn tools-btn", onClick toggleSidebar ] [ i [ class "material-icons icon" ] [ text toolIcon ] ]
       ]

@@ -51,7 +51,7 @@
   }
 
   & > th:first-child {
-    border-radius: 2px 0 0 2px;
+    radius: 2px 0 0 2px;
     padding-left: 8pt;
     width: calc(6em + 64pt);
     text-align: left;
@@ -62,7 +62,7 @@
   }
 
   & > th:last-child {
-    border-radius: 0 2px 2px 0;
+    radius: 0 2px 2px 0;
   }
 }
 
