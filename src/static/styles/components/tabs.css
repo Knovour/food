@@ -13,7 +13,7 @@
 
   @media (--below-tablet) {
     top: 40pt;
-    size: 100% auto;
+    size: 100% 40pt;
     padding-top: 8pt;
     overflow-x: auto;
     border-right-width: 0;
@@ -86,8 +86,9 @@
       }
 
       @media (--below-tablet) {
-        position: absolute auto auto -1px 0;
+        position: absolute auto auto 0 0;
         size: 100% 2pt;
+        background: var(--smooth-white);
       }
     }
 
@@ -112,10 +113,6 @@
       min-width: 72pt;
       height: 32pt;
       color: var(--smooth-white);
-
-      &.current::after {
-        background: var(--smooth-white);
-      }
     }
   }
 }
