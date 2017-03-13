@@ -61,7 +61,7 @@
     size: 40pt;
     & > .action > .icon { font-size: 1.6em; }
     & > .select { size: 32pt; }
-    & > .reset > .icon { font-size: 2.4em; }
+    & > .reset > .icon { font-size: 2em; }
   }
 }
 
@@ -84,7 +84,7 @@
     size: 100% 56pt;
     margin: 0;
     opacity: 1;
-    padding: 0 56pt;
+    padding: 0 56pt 0 52pt;
   }
 
   & > .reset {
@@ -103,7 +103,7 @@
 
     & > .select {
       size: 100% 48pt;
-      padding: 0 48pt;
+      padding: 0 48pt 0 44pt;
     }
 
     & > .reset {
