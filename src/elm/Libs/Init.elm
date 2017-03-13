@@ -22,7 +22,6 @@ request =
       , Task.perform tagDisplay Window.width
       , Task.perform layoutDisplay Window.width
       , Task.perform closeSidebar Window.width
-      , Task.perform toggleMobileSearch Window.width
       ]
 
 
@@ -35,6 +34,7 @@ screenSize model =
     [ Window.resizes (\{ width, height } -> Screen <| Resize width height)
     , Window.resizes (\{ width } -> tagDisplay width)
     , Window.resizes (\{ width } -> layoutDisplay width)
+    , Window.resizes (\{ width } -> closeSidebar width)
     ]
 
 
@@ -56,11 +56,4 @@ closeSidebar : Int -> Main.Msg
 closeSidebar width =
   if width <= 976
   then Action <| Sidebar "close"
-  else NoOp
-
-
-toggleMobileSearch : Int -> Main.Msg
-toggleMobileSearch width =
-  if width <= 976
-  then Action <| ToggleSearch "close"
   else NoOp
