@@ -8,7 +8,8 @@ type alias Model =
   , sidebar : String
   , layout  : String
   , showBy  : String
-  , toggleSearch  : String
+  , toggleSearch : String
+  , toggleAction : Bool
   }
 
 
@@ -19,7 +20,8 @@ model =
   , sidebar = "open"
   , layout  = "apps"
   , showBy  = "分頁"
-  , toggleSearch  = "open"
+  , toggleSearch = "open"
+  , toggleAction = False
   }
 
 
@@ -30,6 +32,7 @@ type Msg
   | Layout  String
   | ShowBy  String
   | ToggleSearch String
+  | ToggleAction Bool
 
 
 update : Msg -> Model -> Model
@@ -41,3 +44,4 @@ update actionMsg model =
     Layout  str  -> { model | layout = str }
     ShowBy  str  -> { model | showBy = str }
     ToggleSearch str  -> { model | toggleSearch = str }
+    ToggleAction bool -> { model | toggleAction = bool }

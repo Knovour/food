@@ -23,7 +23,7 @@
   }
 
   @media (--below-tablet) {
-    position: fixed 4pt 4pt 16pt auto;
+    position: fixed auto auto -50% 50%;
     height: auto;
     border-radius: 2px;
   }

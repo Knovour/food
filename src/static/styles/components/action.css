@@ -1,25 +1,113 @@
-.action-button {
+.action-block {
   position: fixed auto 32pt 32pt auto;
   background: var(--logo);
-  text-align: center;
-  color: white;
   cursor: pointer;
   transition: all 100ms linear;
   size: 48pt;
   user-select: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   @apply --circle;
   @apply --depth-4;
 
-  & > .icon { font-size: 1.8em; }
+  & > .action {
+    position: absolute 0 0 auto auto;
+    background: transparent;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    size: 100%;
+    z-index: 1000;
+    @apply --circle;
+
+    & > .icon { font-size: 1.8em; }
+  }
+
+  & > .select {
+    size: 40pt;
+    margin: 4pt 0 0 4pt;
+    opacity: 0;
+    display: flex;
+    flex-wrap: wrap;
+
+    & > .month {
+      width: calc(100% / 6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:nth-child(-n+6) {
+        border-bottom: 1px solid var(--lighter-gray);
+      }
+    }
+  }
+
+  & > .reset {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    position: absolute 8pt auto auto 8pt;
+    @apply --circle;
+
+    & > .icon {
+      font-size: 2.8em;
+    }
+  }
 
   @media (--above-tablet) { display: none; }
 
   @media (--below-mobile) {
     position: fixed auto 16pt 16pt auto;
     size: 40pt;
-    & > .icon { font-size: 1.6em; }
+    & > .action > .icon { font-size: 1.6em; }
+    & > .select { size: 32pt; }
+    & > .reset > .icon { font-size: 2.4em; }
+  }
+}
+
+.action-block._active {
+  position: fixed auto 28pt 28pt auto;
+  background: var(--logo);
+  color: white;
+  size: 320pt 56pt;
+  border-radius: 28pt;
+
+  & > .action {
+    top: 8pt;
+    right: 8pt;
+    size: 40pt;
+    background: white;
+    color: var(--logo);
+  }
+
+  & > .select {
+    size: 100% 56pt;
+    margin: 0;
+    opacity: 1;
+    padding: 0 56pt;
+  }
+
+  & > .reset {
+    display: flex;
+    size: 40pt;
+  }
+
+  @media (--below-mobile) {
+    position: fixed auto 12pt 12pt auto;
+    size: calc(100% - 24pt) 48pt;
+    border-radius: 24pt;
+
+    & > .action {
+      size: 32pt;
+    }
+
+    & > .select {
+      size: 100% 48pt;
+      padding: 0 48pt;
+    }
+
+    & > .reset {
+      size: 32pt;
+    }
   }
 }

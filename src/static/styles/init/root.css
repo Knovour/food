@@ -1,16 +1,16 @@
 :root {
-  /* Color: from Nippon Colors */
-  --smooth-white: #FFFFFB;  /* 胡粉 GOFUN */
-  --brown: #A35E47;         /* 柿涉 KAKISHIBU */
-  --sky: #58B2DC;           /* 空 SORA */
-  --black: #373C38;         /* 藍墨茶 AISUMICHA */
-  --logo: #6A8372;          /* 老竹 OITAKE */
-  --dark-green: #00896C;    /* 青竹 AOTAKE */
-  --green: #5DAC81;         /* 若竹 WAKATAKE*/
-  --light-green: #A8D8B9;   /* 白綠 BYAKUROKU */
-  --berry: #B5495B;         /* 莓 ICHIGO*/
-  --light-gray: #91989F;    /* 銀鼠 GINNEZUMI */
-  --lighter-gray: #BDC0BA;  /* 白鼠 SHIRONEZUMI */
+  /* Color */
+  --smooth-white: nippon-color(GOFUN);
+  --brown: nippon-color(KAKISHIBU);
+  --sky: nippon-color(SORA);
+  --black: nippon-color(AISUMICHA);
+  --logo: nippon-color(OITAKE);
+  --dark-green: nippon-color(AOTAKE);
+  --green: nippon-color(WAKATAKE);
+  --light-green: nippon-color(BYAKUROKU);
+  --berry: nippon-color(ICHIGO);
+  --light-gray: nippon-color(GINNEZUMI);
+  --lighter-gray: nippon-color(SHIRONEZUMI);
 
   /* material design shadow */
   --depth-0 { box-shadow: none; };

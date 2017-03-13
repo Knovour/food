@@ -6,6 +6,7 @@ module.exports = {
 		require('postcss-cssnext')({
 			browsers: [ 'last 1 versions' ]
 		}),
+		require('postcss-nippon-color'),
 		require('rucksack-css'),
 		require('postcss-size'),
 		require('cssnano')({

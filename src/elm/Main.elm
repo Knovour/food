@@ -1,7 +1,7 @@
 module Main exposing (..)
-import Html exposing (Html, div)
+import Html exposing (Html, div, main_)
 
-import Architecture.Main   exposing (..)
+import Architecture.Main exposing (..)
 import Components.Dimmer  as Dimmer exposing (dimmer)
 import Components.Header  exposing (header_)
 import Components.Content exposing (content)
@@ -37,10 +37,12 @@ init = (model, request)
 view : Model -> Html Msg
 view model =
   div []
-    [ header_ model
-    , tools model
-    , content model
+    [ main_ []
+      [ header_ model
+      , tools model
+      , content model
+      ]
     , dimmer model
     , box model.box
-    , action
+    , action model
     ]
