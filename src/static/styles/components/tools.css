@@ -23,9 +23,7 @@
   }
 
   @media (--below-tablet) {
-    position: fixed auto auto -50% 50%;
-    height: auto;
-    border-radius: 2px;
+    display: none;
   }
 }
 

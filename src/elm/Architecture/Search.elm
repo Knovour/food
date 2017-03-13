@@ -18,6 +18,7 @@ model =
 type Msg
   = SelectMonth   Int
   | UnSelectMonth Int
+  | ClearMonth
   | Name String
 
 
@@ -30,4 +31,5 @@ update searchMsg model =
     UnSelectMonth num ->
       let newList = List.filter (\m -> m /= num) model.month
       in { model | month = newList }
+    ClearMonth -> { model | month = [] }
     Name str -> { model | name = str }
