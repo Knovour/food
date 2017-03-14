@@ -30,7 +30,7 @@ request =
 screenSize : Main.Model -> Sub Main.Msg
 screenSize model =
   Sub.batch
-    [ Window.resizes (\{ width, height } -> Screen <| Resize width height)
+    [ Window.resizes (\{ width } -> Screen <| Width width)
     , Window.resizes (\{ width } -> tagDisplay width)
     , Window.resizes (\{ width } -> layoutDisplay width)
     ]
