@@ -16,14 +16,10 @@ header_ model =
           [ ("header-block", True)
           , ("-extend", (not action.toggleSidebar && screen.width > 976))
           ]
-      logo =
-        if screen.width > 976
-        then "https://dl.dropboxusercontent.com/u/1419724/img/logo.svg"
-        else "https://dl.dropboxusercontent.com/u/1419724/img/logo-white.svg"
   in
     header [ classes ]
       [ div [ class "main-nav" ]
-        [ img [ class "logo", src logo, alt "logo" ] []
+        [ img [ class "logo", src "https://dl.dropboxusercontent.com/u/1419724/img/logo.svg", alt "logo" ] []
         , search model
         , rightMenu model
         ]
