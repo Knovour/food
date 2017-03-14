@@ -10,9 +10,8 @@ import Components.Footer        exposing (footer_)
 
 
 tools : Main.Model -> Html Main.Msg
-tools model =
-  let { action, screen } = model
-      classes =
+tools { action, search } =
+  let classes =
         classList
           [ ("tools-sidebar", True)
           , ("-narrow", not action.toggleSidebar)
@@ -20,6 +19,6 @@ tools model =
   in
     div [ classes ]
       [ display action
-      , month action model.search
+      , month action search
       , footer_
       ]
