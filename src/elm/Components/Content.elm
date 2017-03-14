@@ -14,16 +14,16 @@ import Libs.Helpers exposing (foodRefilter, getDictValue)
 
 content : Model -> Html Main.Msg
 content model =
-  let foodDict = foodRefilter model.action model.search model.content
-      smallScreen = model.screen.width <= 976
+  let { action, search, content, screen } = model
+      foodDict = foodRefilter action search content
       classes =
         classList
-          [ ("_show-all", model.action.showBy == "標籤")
-          , ("_center", (not model.action.toggleSidebar || smallScreen))
+          [ ("_show-all", action.showBy == "標籤")
+          , ("_center", (not action.toggleSidebar || screen.width <= 976))
           ]
   in
     div []
-      [ tabs model.action foodDict
+      [ tabs action foodDict
       , div [ id "content", classes ] [ display model foodDict ]
       ]
 
