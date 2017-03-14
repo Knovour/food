@@ -21,7 +21,6 @@ request =
       , Task.perform (\w -> Screen <| Width w) Window.width
       , Task.perform tagDisplay Window.width
       , Task.perform layoutDisplay Window.width
-      , Task.perform closeSidebar Window.width
       ]
 
 
@@ -34,7 +33,6 @@ screenSize model =
     [ Window.resizes (\{ width, height } -> Screen <| Resize width height)
     , Window.resizes (\{ width } -> tagDisplay width)
     , Window.resizes (\{ width } -> layoutDisplay width)
-    , Window.resizes (\{ width } -> closeSidebar width)
     ]
 
 
@@ -49,11 +47,4 @@ layoutDisplay : Int -> Main.Msg
 layoutDisplay width =
   if width <= 1120
   then Action <| Layout "apps"
-  else NoOp
-
-
-closeSidebar : Int -> Main.Msg
-closeSidebar width =
-  if width <= 976
-  then Action <| ToggleSidebar
   else NoOp

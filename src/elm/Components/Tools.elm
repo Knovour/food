@@ -18,7 +18,7 @@ tools model =
           [ ("tools-sidebar", True)
           , ("-narrow", (not action.toggleSidebar && not isMobile))
           , ("_float", isMobile)
-          , ("_hide", (isMobile && not action.toggleSidebar))
+          , ("_hide", (not action.toggleSidebar && isMobile))
           ]
   in
     div [ classes ]
