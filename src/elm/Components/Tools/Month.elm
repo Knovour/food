@@ -10,15 +10,15 @@ import Architecture.Action as Action
 
 
 month : Action.Model -> Search.Model -> Html Main.Msg
-month { sidebar, hover } { month } =
+month { toggleSidebar, hover } { month } =
   let classes =
         classList
           [ ("options-block", True)
           , ("calendar-filter", True)
-          , ("-narrow", sidebar /= "open")
+          , ("-narrow", not toggleSidebar)
           ]
       label =
-        if sidebar == "open"
+        if toggleSidebar
         then text "月份"
         else i [ class "material-icons icon" ] [ text "today" ]
   in

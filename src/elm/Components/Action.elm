@@ -11,10 +11,6 @@ import Architecture.Action exposing (..)
 action : Main.Model -> Html Main.Msg
 action { action, search } =
   let
-    click =
-      if action.toggleAction
-      then (Action <| ToggleAction False)
-      else (Action <| ToggleAction True)
     classes =
       classList
         [ ("action-block", True)
@@ -28,7 +24,7 @@ action { action, search } =
     div [ classes ]
       [ div [ class "select" ] (monthList search.month)
       , div [ class "reset ctrl", onClick (Search <| ClearMonth) ] [ i [ class "icon material-icons" ] [ text "loop" ] ]
-      , div [ class "action ctrl", onClick click ] [ i [ class "icon material-icons" ] [ text icon ] ]
+      , div [ class "action ctrl", onClick (Action <| ToggleAction) ] [ i [ class "icon material-icons" ] [ text icon ] ]
       ]
 
 monthList : List Int -> List (Html Main.Msg)

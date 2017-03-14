@@ -11,17 +11,17 @@ import Architecture.Action exposing (..)
 
 dimmer : Main.Model -> Html Main.Msg
 dimmer { box, action, screen } =
-  let isBoxShow = (box.open || (action.sidebar == "open" && screen.width <= 976))
+  let isBoxShow = (box.open || (action.toggleSidebar && screen.width <= 976))
       classes =
         classList
           [ ("dimmer", True)
           , ("_show", isBoxShow)
-          , ("_hide", isBoxShow /= True)
+          , ("_hide", not isBoxShow)
           ]
       handleClick =
         if box.open
         then Box <| Close
-        else if (action.sidebar == "open" && screen.width <= 976)
-        then Action <| Sidebar "close"
+        else if (action.toggleSidebar && screen.width <= 976)
+        then Action <| ToggleSidebar
         else NoOp
   in div [ classes, onClick handleClick ] []

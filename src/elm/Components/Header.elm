@@ -14,7 +14,7 @@ header_ model =
       classes =
         classList
           [ ("header-block", True)
-          , ("-extend", (action.sidebar == "close" && screen.width > 976))
+          , ("-extend", (not action.toggleSidebar && screen.width > 976))
           ]
       logo =
         if screen.width > 976

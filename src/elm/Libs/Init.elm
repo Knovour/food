@@ -55,5 +55,5 @@ layoutDisplay width =
 closeSidebar : Int -> Main.Msg
 closeSidebar width =
   if width <= 976
-  then Action <| Sidebar "close"
+  then Action <| ToggleSidebar
   else NoOp

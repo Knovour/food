@@ -13,13 +13,12 @@ tools : Main.Model -> Html Main.Msg
 tools model =
   let { action, screen } = model
       isMobile = screen.width <= 976
-      isSideBarClose = action.sidebar == "close"
       classes =
         classList
           [ ("tools-sidebar", True)
-          , ("-narrow", (isSideBarClose && isMobile /= True))
+          , ("-narrow", (not action.toggleSidebar && not isMobile))
           , ("_float", isMobile)
-          , ("_hide", (isMobile && isSideBarClose))
+          , ("_hide", (isMobile && not action.toggleSidebar))
           ]
   in
     div [ classes ]

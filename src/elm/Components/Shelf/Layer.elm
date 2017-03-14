@@ -12,5 +12,5 @@ show : Bool -> Attribute msg
 show isFocus =
   classList
     [ ("layer", True)
-    , ("_hide", isFocus /= True)
+    , ("_hide", not isFocus)
     ]

@@ -35,7 +35,7 @@ type Msg
   | Box    Box.Msg
   | Action Action.Msg
   | Screen Screen.Msg
-  | Content  (Result Http.Error Respond)
+  | Content (Result Http.Error Respond)
 
 
 update : Msg -> Model -> (Model, Cmd msg)

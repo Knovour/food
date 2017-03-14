@@ -19,7 +19,7 @@ content model =
       classes =
         classList
           [ ("_show-all", model.action.showBy == "標籤")
-          , ("_center", (model.action.sidebar == "close" || isTabletScreen))
+          , ("_center", (not model.action.toggleSidebar || isTabletScreen))
           ]
   in
     div []
