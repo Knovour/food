@@ -13,9 +13,7 @@ rightMenu : Main.Model -> Html Main.Msg
 rightMenu { action, screen } =
   let
     toolIcon =
-      if screen.width <= 976
-      then "more_vert"
-      else if action.toggleSidebar
+      if action.toggleSidebar
       then "keyboard_arrow_right"
       else "keyboard_arrow_left"
   in

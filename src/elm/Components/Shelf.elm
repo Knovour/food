@@ -16,7 +16,7 @@ import Libs.Helpers exposing (foodRefilter, getDictValue)
 
 
 shelf : Model -> Dict String (List Food) -> Html Main.Msg
-shelf { search, box, action, content } foodDict =
+shelf { action } foodDict =
   div
     [ classList
       [ ("food-shelf", True)

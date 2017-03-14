@@ -12,13 +12,10 @@ import Components.Footer        exposing (footer_)
 tools : Main.Model -> Html Main.Msg
 tools model =
   let { action, screen } = model
-      isMobile = screen.width <= 976
       classes =
         classList
           [ ("tools-sidebar", True)
-          , ("-narrow", (not action.toggleSidebar && not isMobile))
-          , ("_float", isMobile)
-          , ("_hide", (not action.toggleSidebar && isMobile))
+          , ("-narrow", not action.toggleSidebar)
           ]
   in
     div [ classes ]

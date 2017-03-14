@@ -15,11 +15,11 @@ import Libs.Helpers exposing (foodRefilter, getDictValue)
 content : Model -> Html Main.Msg
 content model =
   let foodDict = foodRefilter model.action model.search model.content
-      isTabletScreen = model.screen.width <= 976
+      smallScreen = model.screen.width <= 976
       classes =
         classList
           [ ("_show-all", model.action.showBy == "標籤")
-          , ("_center", (not model.action.toggleSidebar || isTabletScreen))
+          , ("_center", (not model.action.toggleSidebar || smallScreen))
           ]
   in
     div []
