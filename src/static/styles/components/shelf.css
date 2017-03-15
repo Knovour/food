@@ -163,26 +163,82 @@
   margin: 8pt 0;
   display: flex;
 
-  /*& > .dot {
-    @media (--below-tablet) {
-      margin-right: 6px;
-      margin-bottom: 4pt;
-
-      &:not(.current) {
-        background: rgba(var(--black), .4);
-      }
-
-      &:nth-child(n+7) {
-        margin-bottom: 0;
-      }
-    }
-  }*/
-
   @media (--below-mobile) {
     align-items: center;
 
     & > .dot {
       margin-right: 8pt;
     }
+  }
+}
+
+.food-shelf._list {
+  & .food-card {
+    width: 100%;
+    margin-bottom: 0;
+    padding: 4pt 8pt;
+    flex-direction: row;
+
+    & > .media {
+      size: 48pt;
+      overflow: hidden;
+      @apply --circle;
+    }
+
+    & > .media > .img {
+      size: auto 100%;
+      transform: translateX(-8pt);
+    }
+
+    & > .info {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    & > .info > .name {
+      width: 6.5em;
+      margin: 0;
+      padding-left: 16pt;
+      order: 1;
+    }
+
+    & > .info > .copyright {
+      width: 8em;
+      margin: 0;
+      padding: 0;
+      order: 1;
+    }
+  }
+
+  & .harvest-light {
+    flex-grow: 1;
+    order: 2;
+  }
+
+  & .harvest-calendar {
+    size: 100% auto;
+    margin: 0;
+    justify-content: space-around;
+    counter-reset: div;
+
+    & > .dot {
+      size: 24pt;
+      margin-right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:not(.current) { background: transparent; }
+      &.current { background: var(--green); }
+    }
+
+    & > .dot::before {
+      counter-increment: div;                /* Increment the section counter*/
+      content: counter(div);
+      color: var(--light-gray);
+    }
+
+    & > .dot.current::before { color: var(--smooth-white); }
   }
 }

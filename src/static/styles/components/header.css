@@ -11,9 +11,7 @@
   align-items: center;
   flex-wrap: wrap;
 
-  @media (--below-large) {
-    width: calc(100% - 160pt);
-  }
+  @media (--below-large) { width: calc(100% - 160pt); }
 
   @media (--below-tablet) {
     width: 100%;
@@ -27,9 +25,7 @@
 .header-block.-extend {
   width: calc(100% - 40pt);
 
-  @media (--below-small) {
-    width: calc(100% - 36pt);
-  }
+  @media (--below-small) { width: calc(100% - 36pt); }
 }
 
 .main-nav {
@@ -43,9 +39,7 @@
     width: auto;
     margin: 0;
 
-    @media (--below-tablet) {
-      display: none;
-    }
+    @media (--below-tablet) { display: none; }
   }
 }
 
@@ -60,13 +54,13 @@
     font-size: 24pt;
     cursor: pointer;
 
-    @media (--below-tablet) {
-      font-size: 20px;
-    }
+    @media (--below-tablet) { font-size: 20px; }
   }
 
-  @media (--below-small) {
-    margin-left: 24pt;
+  @media (--below-small) { margin-left: 24pt; }
+
+  @media (--above-tablet) {
+    & > .clear { display: none; }
   }
 
   @media (--below-tablet) {
@@ -96,10 +90,10 @@
     color: white;
     user-select: none;
 
+    & > .icon { line-height: 24pt; }
+
     @media (--above-tablet) {
-      &:hover {
-        @apply --depth-3;
-      }
+      &:hover { @apply --depth-3; }
     }
 
     @media (--below-tablet) {
@@ -107,15 +101,9 @@
       margin-left: 4pt;
       background: transparent;
     }
-
-    & > .icon {
-      line-height: 24pt;
-    }
   }
 
-  & > .info-btn > .icon {
-    transform: rotate(180deg);
-  }
+  & > .info-btn > .icon { transform: rotate(180deg); }
 
   & > .tools-btn {
     cursor: pointer;
@@ -139,7 +127,5 @@
     }
   }
 
-  @media (--below-tablet) {
-    display: none;
-  }
+  @media (--below-tablet) { display: none; }
 }

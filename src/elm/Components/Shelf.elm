@@ -20,6 +20,7 @@ shelf { action } foodDict =
   div
     [ classList
       [ ("food-shelf", True)
+      , ("_list", action.layout /= "apps")
       , ("_show-all", action.showBy == "標籤")
       ]
     ] (layer_ action foodDict)
