@@ -9,7 +9,7 @@ import Architecture.Search exposing (..)
 
 
 search : Main.Model -> Html Main.Msg
-search { action, screen, search } =
+search { search } =
   let
     clear =
       if search.name /= ""
