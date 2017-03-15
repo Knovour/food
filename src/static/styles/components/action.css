@@ -1,5 +1,5 @@
 .action-block {
-  position: fixed auto 32pt 32pt auto;
+  position: fixed false 32pt 32pt false;
   background: var(--logo);
   cursor: pointer;
   transition: all 100ms linear;
@@ -10,7 +10,7 @@
   -webkit-tap-highlight-color: transparent;
 
   & > .action {
-    position: absolute 0 0 auto auto;
+    position: absolute 0 0 false false;
     background: transparent;
     color: white;
     display: flex;
@@ -52,7 +52,7 @@
     align-items: center;
     justify-content: center;
     color: white;
-    position: absolute 8pt auto auto 8pt;
+    position: absolute 8pt false false 8pt;
     @apply --circle;
 
     & > .icon {
@@ -63,7 +63,7 @@
   @media (--above-tablet) { display: none; }
 
   @media (--below-mobile) {
-    position: fixed auto 16pt 16pt auto;
+    position: fixed false 16pt 16pt false;
     size: 40pt;
     & > .action > .icon { font-size: 1.6em; }
     & > .select { size: 32pt; }

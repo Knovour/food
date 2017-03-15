@@ -26,7 +26,7 @@ food food =
     div [ class "food-card", onMouseEnter hover, onMouseLeave unHover ]
       [ div [ class "media" ] [ img [ class "img", src food.image, alt "" ] [] ]
       , div [ class "info" ]
-        [ div [ class "harvest-light" ] [ div [ class "harvest-calendar" ] harvest ]
+        [ div [ class "harvest-calendar" ] harvest
         , span [ class "name" ] [ text food.name ]
         , a [ class "copyright", href food.source, target "_blank" ] [ text "圖片來源" ]
         ]

@@ -16,10 +16,7 @@ action { action, search } =
         [ ("action-block", True)
         , ("_active", action.toggleAction)
         ]
-    icon =
-      if action.toggleAction
-      then "done"
-      else "date_range"
+    icon = if action.toggleAction then "done" else "date_range"
   in
     div [ classes ]
       [ div [ class "select" ] (monthList search.month)

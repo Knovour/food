@@ -1,13 +1,8 @@
 .footer {
-  position: absolute auto 0 0;
+  position: absolute false 0 0;
   padding: 16pt;
   font-size: 16px;
 
-  & .middot {
-    margin: 0 4pt;
-  }
-
-  & .links {
-    margin-top: 4pt;
-  }
+  & .middot { margin: 0 4pt; }
+  & .links { margin-top: 4pt; }
 }

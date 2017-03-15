@@ -8,10 +8,6 @@ foodTypes : List String
 foodTypes = [ "蔬菜", "根莖類", "豆類", "菇類", "穀類", "水果" ]
 
 
-monthList : List Int
-monthList = List.range 1 12
-
-
 colorPalettes : List ColorPalette
 colorPalettes =
   [ { color = "#FFFFFB", font = "#373C38", tag = "GOFUN",       name = "胡粉" }

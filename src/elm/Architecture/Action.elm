@@ -1,12 +1,14 @@
 module Architecture.Action exposing (..)
 
+import Architecture.Screen as Screen exposing (..)
+
 
 
 type alias Model =
-  { hover   : List Int
-  , group   : String
-  , layout  : String
-  , showBy  : String
+  { hover  : List Int
+  , group  : String
+  , layout : String
+  , showBy : String
   , toggleSidebar : Bool
   , toggleAction  : Bool
   }
@@ -41,3 +43,16 @@ update actionMsg model =
     ShowBy str  -> { model | showBy = str }
     ToggleSidebar -> { model | toggleSidebar = (not model.toggleSidebar) }
     ToggleAction  -> { model | toggleAction = (not model.toggleAction) }
+
+
+resize : Screen.Msg -> Model -> Model
+resize screenMsg model =
+  case screenMsg of
+    Width w ->
+      let layout = if w <= 1120 then "apps" else model.layout
+          showBy = if w <= 1120 then "分頁" else model.showBy
+      in
+        { model
+        | layout = layout
+        , showBy = showBy
+        }

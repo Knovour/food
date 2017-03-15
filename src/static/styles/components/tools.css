@@ -1,5 +1,5 @@
 .tools-sidebar {
-  position: fixed 0 0 auto auto;
+  position: fixed 0 0 false false;
   size: 196pt 100vh;
   border-left: 1px solid rgba(var(--lighter-gray), .4);
   padding: 24pt 16pt 0;
@@ -61,10 +61,6 @@
 
 .toggle-display {
   position: relative;
-
-  @media (--below-large) {
-    display: none;
-  }
 }
 
 .display-switch {
@@ -77,7 +73,7 @@
 
   &::before {
     content: '';
-    position: absolute 0 auto auto 0;
+    position: absolute 0 false false 0;
     width: calc(50% - 2pt);
     height: 100%;
     border-radius: 2pt;

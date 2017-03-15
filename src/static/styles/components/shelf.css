@@ -32,13 +32,13 @@
 
     &::after {
       content: '';
-      position: absolute 0 0 auto auto;
+      position: absolute 0 0 false false;
       width: 1.6pt;
       height: 3.2em;
       background: var(--berry);
 
       @media (--below-small) {
-        position: absolute auto auto -4pt 0;
+        position: absolute false false -4pt 0;
         width: 16%;
         height: 1.6pt;
       }
@@ -150,14 +150,6 @@
   }
 }
 
-.harvest-light {
-  display: flex;
-
-  @media (--below-mobile) {
-    order: 3;
-  }
-}
-
 .harvest-calendar {
   size: 100% 4px;
   margin: 8pt 0;
@@ -165,6 +157,7 @@
 
   @media (--below-mobile) {
     align-items: center;
+    order: 3;
 
     & > .dot {
       margin-right: 8pt;
@@ -211,12 +204,9 @@
     }
   }
 
-  & .harvest-light {
+  & .harvest-calendar {
     flex-grow: 1;
     order: 2;
-  }
-
-  & .harvest-calendar {
     size: 100% auto;
     margin: 0;
     justify-content: space-around;

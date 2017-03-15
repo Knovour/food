@@ -1,5 +1,5 @@
 .box-modal {
-  position: fixed 8% auto auto 50%;
+  position: fixed 8% false false 50%;
   transform: translateX(-50%);
   z-index: 200;
   background: white;
@@ -25,7 +25,7 @@
   }
 
   & > .close {
-    position: absolute 4pt 4pt auto auto;
+    position: absolute 4pt 4pt false false;
     font-size: 32pt;
     color: var(--lighter-gray);
     cursor: pointer;
@@ -111,7 +111,7 @@
   padding-bottom: 100%;
 
   & > .info {
-    position: absolute 50% auto auto 50%;
+    position: absolute 50% false false 50%;
     transform: translate(-50%, -50%);
   }
 

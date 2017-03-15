@@ -5,7 +5,6 @@ import Window
 
 import Architecture.Main   as Main exposing (..)
 import Architecture.Screen exposing (..)
-import Architecture.Action exposing (..)
 import Libs.Parser exposing (parser)
 
 
@@ -19,8 +18,6 @@ request =
     Cmd.batch
       [ Http.send Content (Http.get url parser)
       , Task.perform (\w -> Screen <| Width w) Window.width
-      , Task.perform tagDisplay Window.width
-      , Task.perform layoutDisplay Window.width
       ]
 
 
@@ -29,22 +26,5 @@ request =
 
 screenSize : Main.Model -> Sub Main.Msg
 screenSize model =
-  Sub.batch
-    [ Window.resizes (\{ width } -> Screen <| Width width)
-    , Window.resizes (\{ width } -> tagDisplay width)
-    , Window.resizes (\{ width } -> layoutDisplay width)
-    ]
+  Window.resizes (\{ width } -> Screen <| Width width)
 
-
-tagDisplay : Int -> Main.Msg
-tagDisplay width =
-  if width <= 1120
-  then Action <| ShowBy "分頁"
-  else NoOp
-
-
-layoutDisplay : Int -> Main.Msg
-layoutDisplay width =
-  if width <= 1120
-  then Action <| Layout "apps"
-  else NoOp
