@@ -19,7 +19,7 @@ header_ model =
   in
     header [ classes ]
       [ div [ class "main-nav" ]
-        [ img [ class "logo", src "https://dl.dropboxusercontent.com/u/1419724/img/logo.svg", alt "logo" ] []
+        [ img [ class "logo", src "https://images.contentful.com/8whbhu195nq1/XEjhAcjLqgkisASyao8KY/dae01c7a3be79d16a89f533249cf05b3/logo.svg", alt "logo" ] []
         , search model
         , rightMenu model
         ]
