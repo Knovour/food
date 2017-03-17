@@ -4,15 +4,15 @@ import Html.Attributes exposing (class, for, id, type_, name, placeholder, value
 import Html.Events     exposing (onInput, onClick)
 
 import Architecture.Main   as Main exposing (..)
-import Architecture.Search exposing (..)
+import Architecture.Search as Search exposing (..)
 
 
 
-search : Main.Model -> Html Main.Msg
-search { search } =
+search : Search.Model -> Html Main.Msg
+search model =
   let
     clear =
-      if search.name /= ""
+      if model.name /= ""
       then i [ class "material-icons clear", onClick (Search <| Name "")] [ text "clear" ]
       else text ""
   in
@@ -24,7 +24,7 @@ search { search } =
         , type_ "search"
         , name "search"
         , placeholder "Search..."
-        , value search.name
+        , value model.name
         , onInput (\value -> Search <| Name value)
         ] []
       , clear
