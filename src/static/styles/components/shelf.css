@@ -126,10 +126,7 @@
   & > .media > .img {
     size: 100% auto;
 
-    @media (--below-mobile) {
-      size: auto 100%;
-      transform: translateX(-8pt);
-    }
+    @media (--below-mobile) { size: auto 100%; }
   }
 
   & > .harvest-calendar {
