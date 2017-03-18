@@ -1,8 +1,17 @@
 .footer {
-  position: absolute false 0 0;
-  padding: 16pt;
   font-size: 16px;
 
   & .middot { margin: 0 4pt; }
   & .links { margin-top: 4pt; }
+
+  @media (--above-tablet) {
+    position: absolute false 0 0;
+    padding: 16pt;
+  }
+
+  @media (--below-tablet) { padding: 0 16pt 16pt; }
+}
+
+@media (--above-tablet) {
+  main > .footer { display: none; }
 }

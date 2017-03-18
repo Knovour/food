@@ -21,11 +21,10 @@
   }
 
   & > .select {
+    display: none;
     size: 40pt;
     margin: 4pt 0 0 4pt;
     opacity: 0;
-    display: flex;
-    flex-wrap: wrap;
   }
 
   & > .select > .month {
@@ -78,6 +77,8 @@
   }
 
   & > .select {
+    display: flex;
+    flex-wrap: wrap;
     size: 100% 56pt;
     margin: 0;
     opacity: 1;

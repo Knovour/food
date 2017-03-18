@@ -9,6 +9,7 @@ import Components.Content exposing (content)
 import Components.Tools   exposing (tools)
 import Components.Box     exposing (box)
 import Components.Action  exposing (action)
+import Components.Footer  exposing (footer_)
 import Libs.Init exposing (cmd, subscriptions)
 import Libs.Helpers exposing (foodRefilter)
 
@@ -46,6 +47,7 @@ view model =
         , tools model
         , tabs model.action foodDict
         , content model foodDict
+        , footer_
         ]
       , dimmer model.box
       , box model.box
