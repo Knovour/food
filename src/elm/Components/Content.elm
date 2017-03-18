@@ -15,7 +15,7 @@ content model =
       foodDict = foodRefilter action search content
       classes =
         classList
-          [ ("_show-all", action.showBy == "標籤")
+          [ ("_show-all", not action.toggleGroupByTab)
           , ("_center", (not action.toggleSidebar || screen.width <= 976))
           ]
   in

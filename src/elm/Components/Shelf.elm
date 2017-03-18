@@ -20,8 +20,8 @@ shelf { action } foodDict =
   div
     [ classList
       [ ("food-shelf", True)
-      , ("_list", action.layout /= "apps")
-      , ("_show-all", action.showBy == "標籤")
+      , ("_list", not action.toggleCardLayout)
+      , ("_show-all", not action.toggleGroupByTab)
       ]
     ] (layer_ action foodDict)
 
@@ -30,10 +30,10 @@ layer_ : Action.Model -> Dict String (List Food) -> List (Html Main.Msg)
 layer_ action foodDict =
   List.map(\species ->
     let list = getDictValue species foodDict
-        isCurrentLayer = List.length list > 0 && (action.showBy /= "分頁" || species == action.group)
+        isCurrentLayer = List.length list > 0 && (not action.toggleGroupByTab || species == action.group)
     in
       layer [ Layer.show isCurrentLayer, attribute "data-type" species ]
-        [ tag [ Tag.show action.showBy ] [ text species ]
+        [ tag [ Tag.show action.toggleGroupByTab ] [ text species ]
         , goods [] (Food.list list)
         ]
   ) foodTypes

@@ -5,15 +5,15 @@ import Html.Events     exposing (onClick)
 
 import Architecture.Main   as Main exposing (..)
 import Architecture.Box    exposing (..)
-import Architecture.Action exposing (..)
+import Architecture.Action as Action exposing (..)
 
 
 
-rightMenu : Main.Model -> Html Main.Msg
-rightMenu { action, screen } =
+rightMenu : Action.Model -> Html Main.Msg
+rightMenu { toggleSidebar } =
   let
     toolIcon =
-      if action.toggleSidebar
+      if toggleSidebar
       then "keyboard_arrow_right"
       else "keyboard_arrow_left"
   in

@@ -22,17 +22,11 @@
   padding: 24pt 8pt;
 
   & > .toggle-display,
-  & > .footer {
-    display: none;
-  }
+  & > .footer { display: none; }
 
-  & > .calendar-filter {
-    margin-top: 24pt;
-  }
+  & > .calendar-filter { margin-top: 24pt; }
 
-  @media (--below-small) {
-    width: calc(20pt + 16pt);
-  }
+  @media (--below-small) { width: calc(20pt + 16pt); }
 }
 
 .options-block {
@@ -42,29 +36,14 @@
     margin: 0 0 8pt;
     font-size: 1.2em;
 
-    @media (--above-tablet) and (--below-large) {
-      font-size: 1em;
-    }
+    @media (--above-tablet) and (--below-large) { font-size: 1em; }
   }
 }
 
-.search-box {
-  @media (--above-tablet) {
-    display: none;
-  }
-
-  & > .search-bar {
-    margin: 0;
-  }
-}
-
-
-.toggle-display {
-  position: relative;
-}
+.toggle-display,
+.display-switch { position: relative; }
 
 .display-switch {
-  position: relative;
   display: flex;
   justify-content: space-between;
   margin-bottom: 8pt;
@@ -82,13 +61,7 @@
     transition: all 200ms linear;
   }
 
-  &.toggle::before {
-    left: calc(50% + 2pt);
-  }
-
-  & > ._active {
-    color: white;
-  }
+  &.toggle::before { left: calc(50% + 2pt); }
 
   & > .opt {
     display: inline-flex;
@@ -100,37 +73,31 @@
     cursor: pointer;
   }
 
-  & > .opt:not(._active):hover {
-    background: rgba(var(--lighter-gray), .4);
-  }
+  &:not(.toggle) > .opt:first-child,
+  &.toggle > .opt:last-child { color: white; }
+
+  &:not(.toggle) > .opt:last-child:hover,
+  &.toggle > .opt:first-child:hover { background: rgba(var(--lighter-gray), .4); }
 
   & > .tag {
     padding: 6pt 0;
     font-size: 10pt;
-    @media (--below-large) {
-      font-size: 8pt;
-    }
+    @media (--below-large) { font-size: 8pt; }
   }
 
-  & > .layout {
-    padding: 8pt 0;
-  }
+  & > .layout { padding: 8pt 0; }
 
   & > .layout > .icon {
     font-size: 20pt;
-    @media (--below-large) {
-      font-size: 16pt;
-    }
+    @media (--below-large) { font-size: 16pt; }
   }
 }
 
 
-.calendar-filter.-narrow {
-  & > .heading {
-    margin-bottom: 4pt;
-    text-align: center;
-    color: var(--light-gray);
-  }
+.calendar-filter.-narrow > .heading {
+  margin-bottom: 4pt;
+  text-align: center;
+  color: var(--light-gray);
 }
 
 .calendar {

@@ -8,9 +8,9 @@ tag : List (Attribute msg) -> List (Html msg) -> Html msg
 tag attr slot = h2 attr slot
 
 
-show : String -> Attribute msg
-show display =
+show : Bool -> Attribute msg
+show groupByTab =
   classList
     [ ("label", True)
-    , ("_hide", display == "分頁")
+    , ("_hide", groupByTab)
     ]

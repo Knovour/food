@@ -12,48 +12,42 @@ display : Action.Model -> Html Main.Msg
 display action =
   div [ class "options-block toggle-display" ]
     [ p [ class "heading" ] [ text "顯示方式" ]
-    , layout action.layout
-    , tag action.showBy
+    , layout action.toggleCardLayout
+    , tag action.toggleGroupByTab
     ]
 
 
-layout : String -> Html Main.Msg
-layout toggle =
+layout : Bool -> Html Main.Msg
+layout cardLayout =
   div
     [ classList
       [ ("display-switch", True)
-      , ("toggle", toggle == "menu")
+      , ("toggle", not cardLayout)
       ]
-    ] (switch [ "apps", "menu" ] toggle "layout")
+    ] (switch [ "apps", "menu" ] "layout")
 
 
-tag : String -> Html Main.Msg
-tag toggle  =
+tag : Bool -> Html Main.Msg
+tag groupByTab  =
   div
     [ classList
       [ ("display-switch", True)
-      , ("toggle", toggle == "標籤")
+      , ("toggle", not groupByTab)
       ]
-    ] (switch [ "分頁", "標籤" ] toggle "tag")
+    ] (switch [ "分頁", "標籤" ] "tag")
 
 
-switch : List String -> String -> String -> List (Html Main.Msg)
-switch options toggle target =
+switch : List String -> String -> List (Html Main.Msg)
+switch options target =
   List.map (\opt ->
-    let classes =
-          classList
-            [ ("layout", target == "layout")
-            , ("tag", target /= "layout")
-            , ("opt", True)
-            , ("_active", toggle == opt)
-            ]
+    let classes = "opt " ++ target
         click =
           if target == "layout"
-          then Action <| Layout opt
-          else Action <| ShowBy opt
+          then Action <| ToggleCardLayout
+          else Action <| ToggleGroupByTab
         switchLabel =
           if target == "layout"
           then i [ class "material-icons icon" ] [ text opt ]
           else text opt
-    in div [ classes, onClick click ] [ switchLabel ]
+    in div [ class classes, onClick click ] [ switchLabel ]
   ) options
