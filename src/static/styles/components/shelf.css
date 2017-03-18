@@ -61,6 +61,7 @@
   border-radius: 2px;
   display: flex;
   transition: all 160ms linear;
+  overflow: hidden;
 
   &:hover {
     background: white;
