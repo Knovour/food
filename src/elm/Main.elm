@@ -4,11 +4,13 @@ import Html exposing (Html, div, main_)
 import Architecture.Main exposing (..)
 import Components.Dimmer  as Dimmer exposing (dimmer)
 import Components.Header  exposing (header_)
+import Components.Tabs    exposing (tabs)
 import Components.Content exposing (content)
 import Components.Tools   exposing (tools)
 import Components.Box     exposing (box)
 import Components.Action  exposing (action)
-import Libs.Init exposing (request, screenSize)
+import Libs.Init exposing (cmd, subscriptions)
+import Libs.Helpers exposing (foodRefilter)
 
 
 
@@ -20,7 +22,7 @@ main =
     { init = init
     , view = view
     , update = update
-    , subscriptions = screenSize
+    , subscriptions = subscriptions
     }
 
 
@@ -28,7 +30,7 @@ main =
 -- INIT
 
 init : (Model, Cmd Msg)
-init = (model, request)
+init = (model, cmd)
 
 
 
@@ -36,13 +38,16 @@ init = (model, request)
 
 view : Model -> Html Msg
 view model =
-  div []
-    [ main_ []
-      [ header_ model
-      , tools model
-      , content model
+  let foodDict = foodRefilter model.action model.search model.content
+  in
+    div []
+      [ main_ []
+        [ header_ model
+        , tools model
+        , tabs model.action foodDict
+        , content model foodDict
+        ]
+      , dimmer model.box
+      , box model.box
+      , action model
       ]
-    , dimmer model
-    , box model.box
-    , action model
-    ]

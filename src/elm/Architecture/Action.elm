@@ -27,7 +27,7 @@ model =
 
 type Msg
   = Hover (List Int)
-  | Group  String
+  | Group String
   | ToggleGroupByTab
   | ToggleCardLayout
   | ToggleSidebar

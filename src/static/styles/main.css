@@ -28,9 +28,7 @@ h1 {
   font-size: 3em;
 }
 
-h2, h3 {
-  font-weight: 500;
-}
+h2, h3 { font-weight: 500; }
 
 a {
   color: var(--sky);
@@ -40,35 +38,23 @@ a {
 #content {
   margin: 48pt 196pt 0 40pt;
 
-  @media (--below-large) {
-    margin-right: 160pt;
-  }
-
-  @media (--below-small) {
-    margin-left: 32pt;
-  }
-
   &._center {
     margin: 48pt 120pt 40pt;
 
     @media (--below-large) { margin: 48pt 80pt 40pt; }
-    @media (--below-tablet) { margin: 80pt 0 40pt ; }
+    @media (--below-tablet) { margin: 80pt 0 64pt ; }
   }
 
-  &._search {
-    margin-top: 112pt;
-  }
+  &._search { margin-top: 112pt; }
+  &._show-all:not(._center) { margin-left: 0; }
 
-  &._show-all:not(._center) {
-    margin-left: 0;
-  }
+  @media (--below-large) { margin-right: 160pt; }
+  @media (--below-small) { margin-left: 32pt; }
 }
 
 /* DEBUG PANEL */
 .elm-overlay {
   z-index: 1000;
 
-  @media (--below-tablet) {
-    display: none;
-  }
+  @media (--below-tablet) { display: none; }
 }

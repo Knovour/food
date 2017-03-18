@@ -12,9 +12,7 @@
     padding: 16pt 12pt 0;
   }
 
-  @media (--below-tablet) {
-    display: none;
-  }
+  @media (--below-tablet) { display: none; }
 }
 
 .tools-sidebar.-narrow {

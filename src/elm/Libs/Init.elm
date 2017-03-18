@@ -11,8 +11,8 @@ import Libs.Parser exposing (parser)
 
 -- INIT
 
-request : Cmd Main.Msg
-request =
+cmd : Cmd Main.Msg
+cmd =
   let url = "https://cdn.contentful.com/spaces/8whbhu195nq1/entries?access_token=2f74c3147a60b6f114c06133d0badf43b7e2415284385a7dd94def6812e3bb4a"
   in
     Cmd.batch
@@ -24,7 +24,6 @@ request =
 
 -- SUBSCRIPTIONS
 
-screenSize : Main.Model -> Sub Main.Msg
-screenSize model =
+subscriptions : Main.Model -> Sub Main.Msg
+subscriptions model =
   Window.resizes (\{ width } -> Screen <| Width width)
-

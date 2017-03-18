@@ -15,12 +15,11 @@ import Libs.Helpers exposing (foodRefilter, getDictValue)
 
 
 
-shelf : Model -> Dict String (List Food) -> Html Main.Msg
-shelf { action } foodDict =
+shelf : Action.Model -> Dict String (List Food) -> Html Main.Msg
+shelf action foodDict =
   div
     [ classList
       [ ("food-shelf", True)
-      , ("_list", not action.toggleCardLayout)
       , ("_show-all", not action.toggleGroupByTab)
       ]
     ] (layer_ action foodDict)
@@ -32,8 +31,8 @@ layer_ action foodDict =
     let list = getDictValue species foodDict
         isCurrentLayer = List.length list > 0 && (not action.toggleGroupByTab || species == action.group)
     in
-      layer [ Layer.show isCurrentLayer, attribute "data-type" species ]
+      layer [ Layer.display isCurrentLayer, attribute "data-type" species ]
         [ tag [ Tag.show action.toggleGroupByTab ] [ text species ]
-        , goods [] (Food.list list)
+        , goods [] (Food.list list action)
         ]
   ) foodTypes

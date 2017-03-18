@@ -8,8 +8,8 @@ layer : List (Attribute msg) -> List (Html msg) -> Html msg
 layer attr slot = div attr slot
 
 
-show : Bool -> Attribute msg
-show isFocus =
+display : Bool -> Attribute msg
+display isFocus =
   classList
     [ ("layer", True)
     , ("_hide", not isFocus)

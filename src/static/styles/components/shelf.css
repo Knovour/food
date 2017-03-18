@@ -2,21 +2,15 @@
   flex: 0 1 100%;
   padding: 16pt;
 
+  & > .species:first-of-type .label { margin-top: 0; }
+
   @media (--above-small) { padding: 8pt; }
   @media (--below-mobile) { padding: 0; }
-
-  & > .species:first-of-type .label {
-    margin-top: 0;
-  }
 }
 
 .layer {
   margin-bottom: 40pt;
   display: flex;
-
-  @media (--below-small) {
-    flex-flow: column;
-  }
 
   & > .label {
     position: relative;
@@ -33,21 +27,16 @@
     &::after {
       content: '';
       position: absolute 0 0 false false;
-      width: 1.6pt;
-      height: 3.2em;
+      size: 1.6pt 3.2em;
       background: var(--berry);
 
       @media (--below-small) {
         position: absolute false false -4pt 0;
-        width: 16%;
-        height: 1.6pt;
+        size: 16% 1.6pt;
       }
 
-      @media (--below-mobile) {
-        width: 32%;
-      }
+      @media (--below-mobile) { width: 32%; }
     }
-
 
     @media (--below-small) {
       width: auto;
@@ -63,26 +52,69 @@
     flex-wrap: wrap;
     flex-grow: 2;
   }
+
+  @media (--below-small) { flex-flow: column; }
 }
 
-.food-card {
+.food-info {
   position: relative;
   border-radius: 2px;
-  width: calc(100% / 8);
-  margin-bottom: 8pt;
-  padding: 8pt 8pt 16pt;
-  transition: all 160ms linear;
   display: flex;
-  flex-direction: column;
+  transition: all 160ms linear;
 
   &:hover {
     background: white;
     @apply --depth-1;
   }
 
+  & > .media { overflow: hidden; }
+
+  & > .harvest-calendar {
+    display: flex;
+    counter-reset: div;
+
+    & > .dot {
+      display: block;
+      size: 4px;
+      @apply --circle;
+      margin-right: 6px;
+      background: rgba(var(--lighter-gray), .5);
+
+      &.current { background: var(--dark-green); }
+
+      &::before {
+        counter-increment: div;
+        line-height: 1;
+        color: var(--light-gray);
+      }
+
+      &.current::before {
+        color: var(--green);
+        font-weight: 700;
+        font-size: 1.15em;
+      }
+    }
+  }
+
+  & > .name {
+    font-size: 1.1em;
+    color: var(--black);
+  }
+
+  & > .copyright {
+    font-size: 12px;
+    font-weight: 400;
+  }
+}
+
+.food-info._card {
+  width: calc(100% / 8);
+  margin-bottom: 8pt;
+  padding: 8pt 8pt 16pt;
+  flex-direction: column;
+
   & > .media {
     width: 100%;
-    overflow: hidden;
 
     @media (--below-mobile) {
       size: 40pt;
@@ -91,7 +123,6 @@
   }
 
   & > .media > .img {
-    display: block;
     size: 100% auto;
 
     @media (--below-mobile) {
@@ -100,39 +131,22 @@
     }
   }
 
-  & > .info {
-    position: relative;
-    color: var(--black);
-
-    @media (--below-mobile) {
-      display: flex;
-      flex-grow: 1;
-      flex-direction: column;
-      margin: 0 16pt;
-    }
+  & > .harvest-calendar {
+    size: 100% 4px;
+    margin: 8pt 0;
+    display: flex;
+    order: 1;
   }
 
-  & > .info > .name {
+  & > .name {
     display: block;
-    font-size: 1.1em;
-    margin: 4pt 0;
-
-    @media (--below-mobile) {
-      font-size: 1em;
-      margin: 4pt 0 0;
-    }
+    margin: 0 0 4pt;
+    order: 2;
   }
 
-  & > .info > .copyright {
-    float: left;
-    text-decoration: none;
-    font-size: 12px;
+  & > .copyright {
     padding: 4pt 0 0;
-    font-weight: 400;
-
-    @media (--below-mobile) {
-      width: 5em;
-    }
+    order: 3;
   }
 
   @media (max-width: 1600px) { width: calc(100% / 7); }
@@ -140,95 +154,98 @@
   @media (max-width: 1280px) { width: calc(100% / 5); }
   @media (--below-small) { width: calc(100% / 4); }
   @media (--below-mobile) {
-    size: 100% 56pt;
-    flex-direction: row;
-    align-items: center;
+    display: block;
+    size: 100% auto;
     @apply --depth-1;
-    margin: 4pt 4pt 0;
-    padding: 0 8pt 0 12pt;
+    margin: 8pt 4pt 0;
+    padding: 0;
     background: white;
-  }
-}
 
-.harvest-calendar {
-  size: 100% 4px;
-  margin: 8pt 0;
-  display: flex;
-
-  @media (--below-mobile) {
-    align-items: center;
-    order: 3;
-
-    & > .dot {
-      margin-right: 8pt;
-    }
-  }
-}
-
-.food-shelf._list {
-  & .food-card {
-    width: 100%;
-    margin-bottom: 0;
-    padding: 4pt 8pt;
-    flex-direction: row;
+    & > .media,
+    & > .name { float: left; }
 
     & > .media {
       size: 48pt;
-      overflow: hidden;
-      @apply --circle;
+      border-radius: 0;
     }
 
-    & > .media > .img {
-      size: auto 100%;
-      transform: translateX(-8pt);
-    }
-
-    & > .info {
-      flex-grow: 1;
+    & > .name,
+    & > .copyright {
+      height: calc(100% - 20pt);
       display: flex;
       align-items: center;
     }
 
-    & > .info > .name {
-      width: 6.5em;
+    & > .name {
+      font-size: 1em;
       margin: 0;
-      padding-left: 16pt;
-      order: 1;
+      padding-left: 8pt;
     }
 
-    & > .info > .copyright {
-      width: 8em;
+    & > .copyright {
+      float: right;
+      padding: 0 4pt;
+    }
+
+    & > .harvest-calendar {
+      size: calc(100% - 48pt) 20pt;
+      align-items: center;
+      justify-content: space-between;
       margin: 0;
+      border-top: 1px solid rgba(var(--lighter-gray), .4);
       padding: 0;
-      order: 1;
+      position: absolute false 0 0 false;
+
+      & > .dot {
+        size: calc(100% / 12) 100%;
+        margin-right: 0;
+        @apply --flex-middle;
+        border-radius: 0;
+        font-size: 12px;
+        background: transparent;
+      }
+
+      & > .dot::before { content: counter(div); }
     }
   }
+}
 
-  & .harvest-calendar {
+.food-info._list {
+  width: 100%;
+  padding: 4pt 8pt;
+  align-items: center;
+
+  & > .media {
+    size: 48pt;
+    @apply --circle;
+  }
+
+  & > .media > .img {
+    size: auto 100%;
+    transform: translateX(-8pt);
+  }
+
+  & > .harvest-calendar {
     flex-grow: 1;
-    order: 2;
-    size: 100% auto;
-    margin: 0;
+    align-items: center;
     justify-content: space-around;
-    counter-reset: div;
 
     & > .dot {
-      size: 24pt;
+      size: calc(100% / 12) auto;
       margin-right: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      &:not(.current) { background: transparent; }
-      &.current { background: var(--green); }
+      @apply --flex-middle;
+      background: transparent;
     }
 
     & > .dot::before {
-      counter-increment: div;                /* Increment the section counter*/
-      content: counter(div);
-      color: var(--light-gray);
+      content: counter(div)' 月';
     }
-
-    & > .dot.current::before { color: var(--smooth-white); }
   }
+
+  & > .name {
+    width: 6.5em;
+    padding-left: 16pt;
+  }
+
+  & > .copyright { width: 6.5em; }
 }

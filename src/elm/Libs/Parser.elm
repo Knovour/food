@@ -20,6 +20,7 @@ decodeItem =
     (Decode.at [ "fields", "species" ] Decode.string)
     (Decode.at [ "fields", "harvest" ] (Decode.list Decode.string))
 
+
 decodeImageId : Decoder String
 decodeImageId = Decode.at [ "sys", "id" ] Decode.string
 

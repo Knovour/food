@@ -1,19 +1,12 @@
 .dimmer {
   position: fixed 0;
   background: rgba(var(--black), .8);
-  width: 100vw;
-  height: 100vh;
+  size: 100vw 100vh;
   z-index: 150;
-
   transition: all 200ms linear;
 
   &._hide {
     opacity: 0;
     visibility: hidden;
-  }
-
-  &._show {
-    opacity: 1;
-    visibility: visible;
   }
 }

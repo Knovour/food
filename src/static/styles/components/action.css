@@ -11,11 +11,8 @@
 
   & > .action {
     position: absolute 0 0 false false;
-    background: transparent;
     color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @apply --flex-middle;
     size: 100%;
     z-index: 1000;
     @apply --circle;
@@ -29,42 +26,35 @@
     opacity: 0;
     display: flex;
     flex-wrap: wrap;
+  }
 
-    & > .month {
-      width: calc(100% / 6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+  & > .select > .month {
+    width: calc(100% / 6);
+    @apply --flex-middle;
 
-      &._selected {
-        color: var(--logo);
-        background: var(--smooth-white);
-      }
+    &:nth-child(-n+6) { border-bottom: 1px solid var(--lighter-gray); }
 
-      &:nth-child(-n+6) {
-        border-bottom: 1px solid var(--lighter-gray);
-      }
+    &._selected {
+      color: var(--logo);
+      background: var(--smooth-white);
     }
   }
 
   & > .reset {
-    display: none;
-    align-items: center;
-    justify-content: center;
-    color: white;
     position: absolute 8pt false false 8pt;
+    display: none;
+    color: white;
     @apply --circle;
 
-    & > .icon {
-      font-size: 2.8em;
-    }
+    & > .icon { font-size: 2.8em; }
   }
 
   @media (--above-tablet) { display: none; }
-
   @media (--below-mobile) {
-    position: fixed false 16pt 16pt false;
+    right: 16pt;
+    bottom: 16pt;
     size: 40pt;
+
     & > .action > .icon { font-size: 1.6em; }
     & > .select { size: 32pt; }
     & > .reset > .icon { font-size: 2em; }
@@ -95,7 +85,7 @@
   }
 
   & > .reset {
-    display: flex;
+    @apply --flex-middle;
     size: 40pt;
   }
 
@@ -106,9 +96,7 @@
     border-radius: 24pt;
 
     & > .action,
-    & > .reset {
-      size: 32pt;
-    }
+    & > .reset { size: 32pt; }
 
     & > .select {
       size: 100% 48pt;
