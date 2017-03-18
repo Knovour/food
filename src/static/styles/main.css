@@ -35,17 +35,6 @@ a {
   text-decoration: none;
 }
 
-
-@media (--below-tablet) {
-  main {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 100vh;
-  }
-}
-
-
 #content {
   margin: 48pt 196pt 0 40pt;
 
@@ -53,7 +42,10 @@ a {
     margin: 48pt 120pt 40pt;
 
     @media (--below-large) { margin: 48pt 80pt 40pt; }
-    @media (--below-tablet) { margin: 80pt 0 0; }
+    @media (--below-tablet) {
+      min-height: calc(100vh - 120pt - 64px);
+      margin: 80pt 0 0;
+    }
   }
 
   &._search { margin-top: 112pt; }
