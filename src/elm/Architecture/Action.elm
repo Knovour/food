@@ -50,6 +50,6 @@ resize screenMsg model =
   case screenMsg of
     Width w ->
       { model
-      | toggleCardLayout = w > 1120
-      , toggleGroupByTab = w > 1120
+      | toggleCardLayout = (w <= 1120 || model.toggleCardLayout)
+      , toggleGroupByTab = (w <= 1120 || model.toggleGroupByTab)
       }
