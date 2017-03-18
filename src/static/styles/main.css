@@ -43,9 +43,11 @@ a {
 
     @media (--below-large) { margin: 48pt 80pt 40pt; }
     @media (--below-tablet) {
-      min-height: calc(100vh - 120pt - 64px);
+      min-height: calc(100vh - 80pt - 64px);
       margin: 80pt 0 0;
     }
+
+    @media (--below-mobile) { min-height: calc(100vh - 120pt - 64px); }
   }
 
   &._search { margin-top: 112pt; }
