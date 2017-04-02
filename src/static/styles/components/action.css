@@ -33,7 +33,7 @@
 
     &:nth-child(-n+6) { border-bottom: 1px solid var(--lighter-gray); }
 
-    &._selected {
+    &.-selected {
       color: var(--logo);
       background: var(--smooth-white);
     }
@@ -60,7 +60,7 @@
   }
 }
 
-.action-block._active {
+.action-block.-active {
   right: 28pt;
   bottom: 28pt;
   background: var(--logo);

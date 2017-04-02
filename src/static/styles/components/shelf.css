@@ -108,7 +108,7 @@
   }
 }
 
-.food-info._card {
+.food-info.-card {
   width: calc(100% / 8);
   margin-bottom: 8pt;
   padding: 8pt 8pt 16pt;
@@ -211,7 +211,7 @@
   }
 }
 
-.food-info._list {
+.food-info.-list {
   width: 100%;
   padding: 4pt 8pt;
   align-items: center;

@@ -1,6 +1,6 @@
 module Components.Shelf exposing (layer_, shelf)
 import Html            exposing (Html, div, text)
-import Html.Attributes exposing (class, classList, attribute)
+import Html.Attributes exposing (class, attribute)
 import Dict exposing (Dict)
 
 import Architecture.Main   as Main exposing (..)
@@ -17,12 +17,7 @@ import Libs.Helpers exposing (foodRefilter, getDictValue)
 
 shelf : Action.Model -> Dict String (List Food) -> Html Main.Msg
 shelf action foodDict =
-  div
-    [ classList
-      [ ("food-shelf", True)
-      , ("_show-all", not action.toggleGroupByTab)
-      ]
-    ] (layer_ action foodDict)
+  div [ class "food-shelf" ] (layer_ action foodDict)
 
 
 layer_ : Action.Model -> Dict String (List Food) -> List (Html Main.Msg)

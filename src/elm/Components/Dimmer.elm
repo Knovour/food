@@ -13,7 +13,7 @@ dimmer { open } =
   let classes =
         classList
           [ ("dimmer", True)
-          , ("_hide", not open)
+          , ("-disabled", not open)
           ]
       handleClick =
         if open

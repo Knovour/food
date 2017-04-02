@@ -1,6 +1,6 @@
 module Libs.Init exposing (..)
 import Http
-import Task exposing (..)
+import Task
 import Window
 
 import Architecture.Main   as Main exposing (..)

@@ -14,8 +14,8 @@ food data action =
   let classes =
         classList
           [ ("food-info", True)
-          , ("_card", action.toggleCardLayout)
-          , ("_list", not action.toggleCardLayout)
+          , ("-card", action.toggleCardLayout)
+          , ("-list", not action.toggleCardLayout)
           ]
       harvest =
         List.map (\month ->

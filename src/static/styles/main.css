@@ -38,7 +38,7 @@ a {
 #content {
   margin: 48pt 196pt 0 40pt;
 
-  &._center {
+  &.-center {
     margin: 48pt 120pt 40pt;
 
     @media (--below-large) { margin: 48pt 80pt 40pt; }
@@ -50,8 +50,7 @@ a {
     @media (--below-mobile) { min-height: calc(100vh - 120pt - 64px); }
   }
 
-  &._search { margin-top: 112pt; }
-  &._show-all:not(._center) { margin-left: 0; }
+  &.-show-all:not(.-center) { margin-left: 0; }
 
   @media (--below-large) { margin-right: 160pt; }
   @media (--below-small) { margin-left: 32pt; }

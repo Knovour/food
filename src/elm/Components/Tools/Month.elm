@@ -34,8 +34,8 @@ monthCircle hover month =
     div
       [ classList
         [ ("month -circle", True)
-        , ("_highlight", List.member num hover)
-        , ("_selected", List.member num month)
+        , ("-highlight", List.member num hover)
+        , ("-selected", List.member num month)
         ]
         , onClick (handleClick num month)
       ] [ text (toString num) ]

@@ -43,8 +43,8 @@ switch options target =
     let classes = "opt " ++ target
         click =
           if target == "layout"
-          then Action <| ToggleCardLayout
-          else Action <| ToggleGroupByTab
+          then Action ToggleCardLayout
+          else Action ToggleGroupByTab
         switchLabel =
           if target == "layout"
           then i [ class "material-icons icon" ] [ text opt ]

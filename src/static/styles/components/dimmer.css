@@ -5,7 +5,7 @@
   z-index: 150;
   transition: all 200ms linear;
 
-  &._hide {
+  &.-disabled {
     opacity: 0;
     visibility: hidden;
   }

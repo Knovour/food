@@ -8,21 +8,23 @@ import Architecture.Search exposing (..)
 import Architecture.Action exposing (..)
 
 
+
 action : Main.Model -> Html Main.Msg
 action { action, search } =
   let
     classes =
       classList
         [ ("action-block", True)
-        , ("_active", action.toggleAction)
+        , ("-active", action.toggleAction)
         ]
     icon = if action.toggleAction then "done" else "date_range"
   in
     div [ classes ]
       [ div [ class "select" ] (monthList search.month)
-      , div [ class "reset ctrl", onClick (Search <| ClearMonth) ] [ i [ class "icon material-icons" ] [ text "loop" ] ]
-      , div [ class "action ctrl", onClick (Action <| ToggleAction) ] [ i [ class "icon material-icons" ] [ text icon ] ]
+      , div [ class "reset ctrl", onClick (Search ClearMonth) ] [ i [ class "icon material-icons" ] [ text "loop" ] ]
+      , div [ class "action ctrl", onClick (Action ToggleAction) ] [ i [ class "icon material-icons" ] [ text icon ] ]
       ]
+
 
 monthList : List Int -> List (Html Main.Msg)
 monthList month =
@@ -30,7 +32,7 @@ monthList month =
     div
       [ classList
         [ ("month", True)
-        , ("_selected", List.member num month)
+        , ("-selected", List.member num month)
         ]
         , onClick (handleClick num month)
       ] [ text (toString num) ]

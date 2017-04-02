@@ -14,7 +14,7 @@ content model foodDict =
   let { action, screen } = model
       classes =
         classList
-          [ ("_show-all", not action.toggleGroupByTab)
-          , ("_center", (not action.toggleSidebar || screen.width <= 976))
+          [ ("-show-all", not action.toggleGroupByTab)
+          , ("-center", (not action.toggleSidebar || screen.width <= 976))
           ]
   in div [ id "content", classes ] [ shelf action foodDict ]
