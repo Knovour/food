@@ -17,6 +17,6 @@ dimmer { open } =
           ]
       handleClick =
         if open
-        then Box <| Close
+        then Box Close
         else NoOp
   in div [ classes, onClick handleClick ] []
