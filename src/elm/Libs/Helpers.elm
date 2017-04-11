@@ -11,8 +11,8 @@ foodRefilter : Action.Model -> Search.Model -> Dict String (List Food) -> Dict S
 foodRefilter action search content =
   Dict.map (\key value ->
     List.filter (\{ name, harvest } ->
-      let isSearchResult = String.isEmpty search.name || (String.contains search.name name)
-          isFilterResult = List.isEmpty search.month || (isFilterHarvest harvest search.month)
+      let isSearchResult = String.isEmpty search.name || String.contains search.name name
+          isFilterResult = List.isEmpty search.month || isFilterHarvest harvest search.month
       in (isSearchResult && isFilterResult)
     ) value
   ) content
@@ -21,7 +21,7 @@ foodRefilter action search content =
 isFilterHarvest : List Int -> List Int -> Bool
 isFilterHarvest harvest selectedMonth =
   let result =
-        if (List.length selectedMonth) > (List.length harvest)
+        if List.length selectedMonth > List.length harvest
         then -1
         else
           selectedMonth

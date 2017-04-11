@@ -1,6 +1,6 @@
 module Components.Shelf exposing (layer_, shelf)
 import Html            exposing (Html, div, text)
-import Html.Attributes exposing (class, attribute)
+import Html.Attributes exposing (class)
 import Dict exposing (Dict)
 
 import Architecture.Main   as Main exposing (..)
@@ -26,7 +26,7 @@ layer_ action foodDict =
     let list = getDictValue species foodDict
         isCurrentLayer = List.length list > 0 && (not action.toggleGroupByTab || species == action.group)
     in
-      layer [ Layer.display isCurrentLayer, attribute "data-type" species ]
+      layer [ Layer.display isCurrentLayer, Layer.dataType species ]
         [ tag [ Tag.show action.toggleGroupByTab ] [ text species ]
         , goods [] (foodList list action)
         ]

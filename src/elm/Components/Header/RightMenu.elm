@@ -11,8 +11,7 @@ import Architecture.Action as Action exposing (..)
 
 rightMenu : Action.Model -> Html Main.Msg
 rightMenu { toggleSidebar } =
-  let direction = if toggleSidebar then "right" else "left"
-      arrowIcon = "keyboard_arrow_" ++ direction
+  let arrowIcon = if toggleSidebar then "keyboard_arrow_right" else "keyboard_arrow_left"
   in
     div [ class "right-menu" ]
       [ div [ class "btn info-btn -circle", onClick (Box <| Open "info") ]

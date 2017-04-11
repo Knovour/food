@@ -1,6 +1,6 @@
 module Components.Shelf.Layer exposing (..)
 import Html            exposing (Html, Attribute, div)
-import Html.Attributes exposing (classList)
+import Html.Attributes exposing (classList, attribute)
 
 
 
@@ -14,3 +14,7 @@ display isFocus =
     [ ("layer", True)
     , ("_hide", not isFocus)
     ]
+
+
+dataType : String -> Attribute msg
+dataType species = attribute "data-type" species
