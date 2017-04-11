@@ -14,19 +14,23 @@ import Libs.Helpers exposing (getDictValue)
 
 tabs : Action.Model -> Dict String (List Food) -> Html Main.Msg
 tabs { group, toggleGroupByTab } foodList =
-  let classes =
-        classList
-          [ ("tab-block", True)
-          , ("_hide", not toggleGroupByTab)
-          ]
-      tagList = List.map (\name ->
-          let value = getDictValue name foodList
-              tabClasses =
-                classList
-                  [ ("tab", True)
-                  , ("current", name == group)
-                  , ("_hide", List.length value == 0)
-                  ]
-          in div [ tabClasses, onClick (Action <| Group name) ] [ text name ]
-        ) foodTypes
-  in div [ classes ] [ div [ class "tab-list" ] tagList ]
+  div
+    [ classList
+      [ ("tab-block", True)
+      , ("_hide", not toggleGroupByTab)
+      ]
+    ] [ div [ class "tab-list" ] (tagList foodTypes foodList group) ]
+
+
+tagList : List String -> Dict String (List Food) -> String -> List (Html Main.Msg)
+tagList foodTypes foodList group =
+  List.map (\name ->
+    let value = getDictValue name foodList
+        tabClasses =
+          classList
+            [ ("tab", True)
+            , ("current", name == group)
+            , ("_hide", List.length value == 0)
+            ]
+    in div [ tabClasses, onClick (Action <| Group name) ] [ text name ]
+  ) foodTypes

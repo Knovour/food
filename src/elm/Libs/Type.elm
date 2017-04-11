@@ -3,7 +3,6 @@ module Libs.Type exposing (..)
 
 type alias ColorPalette =
   { color : String
-  , font  : String
   , tag   : String
   , name  : String
   }

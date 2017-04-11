@@ -10,32 +10,33 @@ import Libs.Type exposing (Food)
 
 
 food : Food -> Action.Model -> Html Main.Msg
-food data action =
+food data { toggleCardLayout } =
   let classes =
         classList
           [ ("food-info", True)
-          , ("-card", action.toggleCardLayout)
-          , ("-list", not action.toggleCardLayout)
+          , ("-card", toggleCardLayout)
+          , ("-list", not toggleCardLayout)
           ]
-      harvest =
-        List.map (\month ->
-          div
-            [ classList
-              [ ("dot", True)
-              , ("current", (List.member month data.harvest))
-              ]
-            ] []
-        ) (List.range 1 12)
-      hover = Action <| Hover data.harvest
-      unHover = Action <| Hover []
   in
-    div [ classes, onMouseEnter hover, onMouseLeave unHover ]
+    div
+      [ classes
+      , onMouseEnter (Action <| Hover data.harvest)
+      , onMouseLeave (Action <| Hover [])
+      ]
       [ div [ class "media" ] [ img [ class "img", src data.image, alt "" ] [] ]
       , span [ class "name" ] [ text data.name ]
       , a [ class "copyright", href data.source, target "_blank" ] [ text "圖片來源" ]
-      , div [ class "harvest-calendar" ] harvest
+      , div [ class "harvest-calendar" ] (dotList data.harvest)
       ]
 
 
-list : List Food -> Action.Model -> List (Html Main.Msg)
-list foodList action = List.map (\foodData -> food foodData action) foodList
+dotList : List Int -> List (Html Main.Msg)
+dotList harvestList =
+  List.map (\month ->
+    div
+      [ classList
+        [ ("dot", True)
+        , ("current", (List.member month harvestList))
+        ]
+      ] []
+  ) (List.range 1 12)

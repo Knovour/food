@@ -13,8 +13,7 @@ month : Action.Model -> Search.Model -> Html Main.Msg
 month { toggleSidebar, hover } { month } =
   let classes =
         classList
-          [ ("options-block", True)
-          , ("calendar-filter", True)
+          [ ("options-block calendar-filter", True)
           , ("-narrow", not toggleSidebar)
           ]
       label =
@@ -31,19 +30,16 @@ month { toggleSidebar, hover } { month } =
 monthCircle : List Int -> List Int -> List (Html Main.Msg)
 monthCircle hover month =
   List.map (\num ->
-    div
-      [ classList
-        [ ("month -circle", True)
-        , ("-highlight", List.member num hover)
-        , ("-selected", List.member num month)
-        ]
-        , onClick (handleClick num month)
-      ] [ text (toString num) ]
+    let isSelected = List.member num month
+        classes =
+          classList
+            [ ("month -circle", True)
+            , ("-highlight", List.member num hover)
+            , ("-selected", isSelected)
+            ]
+        event =
+          if isSelected
+          then Search <| UnSelectMonth num
+          else Search <| SelectMonth num
+    in div [ classes, onClick event ] [ text (toString num) ]
   ) (List.range 1 12)
-
-
-handleClick : Int -> List Int -> Main.Msg
-handleClick num list =
-  if (List.member num list)
-  then Search <| UnSelectMonth num
-  else Search <| SelectMonth num

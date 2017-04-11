@@ -21,26 +21,27 @@ action { action, search } =
   in
     div [ classes ]
       [ div [ class "select" ] (monthList search.month)
-      , div [ class "reset ctrl", onClick (Search ClearMonth) ] [ i [ class "icon material-icons" ] [ text "loop" ] ]
-      , div [ class "action ctrl", onClick (Action ToggleAction) ] [ i [ class "icon material-icons" ] [ text icon ] ]
+      , div [ class "reset ctrl", onClick (Search ClearMonth) ]
+        [ i [ class "icon material-icons" ] [ text "loop" ]
+        ]
+      , div [ class "action ctrl", onClick (Action ToggleAction) ]
+        [ i [ class "icon material-icons" ] [ text icon ]
+        ]
       ]
 
 
 monthList : List Int -> List (Html Main.Msg)
 monthList month =
   List.map (\num ->
-    div
-      [ classList
-        [ ("month", True)
-        , ("-selected", List.member num month)
-        ]
-        , onClick (handleClick num month)
-      ] [ text (toString num) ]
+    let isSelected = List.member num month
+        classes =
+          classList
+            [ ("month", True)
+            , ("-selected", isSelected)
+            ]
+        event =
+          if isSelected
+          then Search <| UnSelectMonth num
+          else Search <| SelectMonth num
+    in div [ classes, onClick event ] [ text (toString num) ]
   ) (List.range 1 12)
-
-
-handleClick : Int -> List Int -> Main.Msg
-handleClick num list =
-  if (List.member num list)
-  then Search <| UnSelectMonth num
-  else Search <| SelectMonth num

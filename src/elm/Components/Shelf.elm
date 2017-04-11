@@ -7,7 +7,7 @@ import Architecture.Main   as Main exposing (..)
 import Architecture.Action as Action
 import Components.Shelf.Layer as Layer exposing (layer)
 import Components.Shelf.Goods exposing (goods)
-import Components.Shelf.Food  as Food
+import Components.Shelf.Food  exposing (food)
 import Components.Tag as Tag exposing (tag)
 import Libs.Data    exposing (foodTypes)
 import Libs.Type    exposing (Food)
@@ -28,6 +28,10 @@ layer_ action foodDict =
     in
       layer [ Layer.display isCurrentLayer, attribute "data-type" species ]
         [ tag [ Tag.show action.toggleGroupByTab ] [ text species ]
-        , goods [] (Food.list list action)
+        , goods [] (foodList list action)
         ]
   ) foodTypes
+
+
+foodList : List Food -> Action.Model -> List (Html Main.Msg)
+foodList list action = List.map (\foodData -> food foodData action) list
