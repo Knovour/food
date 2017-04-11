@@ -26,11 +26,13 @@ tagList : List String -> Dict String (List Food) -> String -> List (Html Main.Ms
 tagList foodTypes foodList group =
   List.map (\name ->
     let value = getDictValue name foodList
-        tabClasses =
-          classList
-            [ ("tab", True)
-            , ("current", name == group)
-            , ("_hide", List.length value == 0)
-            ]
-    in div [ tabClasses, onClick (Action <| Group name) ] [ text name ]
+    in
+      div
+        [ classList
+          [ ("tab", True)
+          , ("current", name == group)
+          , ("_hide", List.length value == 0)
+          ]
+        , onClick (Action <| Group name)
+        ] [ text name ]
   ) foodTypes

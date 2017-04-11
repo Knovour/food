@@ -1,6 +1,6 @@
 module Components.Tag exposing (..)
-import Html            exposing (Html, Attribute, h2, div, text)
-import Html.Attributes exposing (class, classList)
+import Html            exposing (Html, Attribute, h2)
+import Html.Attributes exposing (classList)
 
 
 

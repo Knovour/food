@@ -11,17 +11,17 @@ import Architecture.Action as Action
 
 month : Action.Model -> Search.Model -> Html Main.Msg
 month { toggleSidebar, hover } { month } =
-  let classes =
-        classList
-          [ ("options-block calendar-filter", True)
-          , ("-narrow", not toggleSidebar)
-          ]
-      label =
+  let label =
         if toggleSidebar
         then text "月份"
         else i [ class "material-icons icon" ] [ text "today" ]
   in
-    div [ classes ]
+    div
+      [ classList
+        [ ("options-block calendar-filter", True)
+        , ("-narrow", not toggleSidebar)
+        ]
+      ]
       [ p [ class "heading" ] [ label ]
       , div [ class "calendar" ] (monthCircle hover month)
       ]
@@ -30,16 +30,19 @@ month { toggleSidebar, hover } { month } =
 monthCircle : List Int -> List Int -> List (Html Main.Msg)
 monthCircle hover month =
   List.map (\num ->
-    let isSelected = List.member num month
-        classes =
-          classList
-            [ ("month -circle", True)
-            , ("-highlight", List.member num hover)
-            , ("-selected", isSelected)
-            ]
+    let isHovered = List.member num hover
+        isSelected = List.member num month
         event =
           if isSelected
           then Search <| UnSelectMonth num
           else Search <| SelectMonth num
-    in div [ classes, onClick event ] [ text (toString num) ]
+    in
+      div
+        [ classList
+          [ ("month -circle", True)
+          , ("-highlight", isHovered)
+          , ("-selected", isSelected)
+          ]
+        , onClick event
+        ] [ text (toString num) ]
   ) (List.range 1 12)

@@ -11,15 +11,14 @@ import Architecture.Action exposing (..)
 
 action : Main.Model -> Html Main.Msg
 action { action, search } =
-  let
-    classes =
-      classList
+  let icon = if action.toggleAction then "done" else "date_range"
+  in
+    div
+      [ classList
         [ ("action-block", True)
         , ("-active", action.toggleAction)
         ]
-    icon = if action.toggleAction then "done" else "date_range"
-  in
-    div [ classes ]
+      ]
       [ div [ class "select" ] (monthList search.month)
       , div [ class "reset ctrl", onClick (Search ClearMonth) ]
         [ i [ class "icon material-icons" ] [ text "loop" ]
@@ -34,14 +33,16 @@ monthList : List Int -> List (Html Main.Msg)
 monthList month =
   List.map (\num ->
     let isSelected = List.member num month
-        classes =
-          classList
-            [ ("month", True)
-            , ("-selected", isSelected)
-            ]
         event =
           if isSelected
           then Search <| UnSelectMonth num
           else Search <| SelectMonth num
-    in div [ classes, onClick event ] [ text (toString num) ]
+    in
+      div
+        [ classList
+          [ ("month", True)
+          , ("-selected", isSelected)
+          ]
+        , onClick event
+        ] [ text (toString num) ]
   ) (List.range 1 12)

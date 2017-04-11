@@ -1,6 +1,6 @@
 module Components.Shelf.Layer exposing (..)
-import Html            exposing (Html, Attribute, h2, div, text)
-import Html.Attributes exposing (class, classList, attribute)
+import Html            exposing (Html, Attribute, div)
+import Html.Attributes exposing (classList)
 
 
 
