@@ -1,17 +1,19 @@
 module Components.Header.Search exposing (..)
-import Html            exposing (Html, div, label, text, input, i)
+import Html            exposing (Html, div, label, span, text, input)
 import Html.Attributes exposing (class, classList, for, id, type_, name, placeholder, value)
 import Html.Events     exposing (onInput, onClick)
 
+
+import Elements.Icon exposing (icon)
 import Architecture.Main   as Main exposing (..)
-import Architecture.Search as Search exposing (..)
+import Architecture.Filter as Filter exposing (..)
 
 
 
-search : Search.Model -> Html Main.Msg
+search : Filter.Model -> Html Main.Msg
 search model =
   div [ class "search-bar" ]
-    [ label [ class "material-icons label", for "search" ] [ text "search" ]
+    [ label [ class "label", for "search" ] [ icon "search" ]
     , input
       [ id "search"
       , class "search"
@@ -19,18 +21,13 @@ search model =
       , name "search"
       , placeholder "Search..."
       , value model.name
-      , onInput (\value -> Search <| Name value)
+      , onInput (\value -> Filter <| Name value)
       ] []
-    , clearIcon model.name
+    , span
+      [ classList
+        [ ("clear", True)
+        , ("_hide", model.name == "")
+        ]
+      , onClick (Filter <| Name "")
+      ] [ icon "clear" ]
     ]
-
-
-clearIcon : String -> Html Main.Msg
-clearIcon searchText =
-  i
-    [ classList
-      [ ("material-icons clear", True)
-      , ("_hide", searchText == "")
-      ]
-    , onClick (Search <| Name "")
-    ] [ text "clear" ]

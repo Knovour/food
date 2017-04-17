@@ -1,18 +1,18 @@
 module Libs.Helpers exposing (foodRefilter, getDictValue)
 import Dict exposing (Dict)
 
-import Architecture.Search as Search
+import Architecture.Filter as Filter
 import Architecture.Action as Action
 import Libs.Type exposing (Food)
 
 
 
-foodRefilter : Action.Model -> Search.Model -> Dict String (List Food) -> Dict String (List Food)
-foodRefilter action search content =
+foodRefilter : Action.Model -> Filter.Model -> Dict String (List Food) -> Dict String (List Food)
+foodRefilter action filter content =
   Dict.map (\key value ->
     List.filter (\{ name, harvest } ->
-      let isSearchResult = String.isEmpty search.name || String.contains search.name name
-          isFilterResult = List.isEmpty search.month || isFilterHarvest harvest search.month
+      let isSearchResult = String.isEmpty filter.name || String.contains filter.name name
+          isFilterResult = List.isEmpty filter.month || isFilterHarvest harvest filter.month
       in (isSearchResult && isFilterResult)
     ) value
   ) content
@@ -20,14 +20,13 @@ foodRefilter action search content =
 
 isFilterHarvest : List Int -> List Int -> Bool
 isFilterHarvest harvest selectedMonth =
-  let result =
-        if List.length selectedMonth > List.length harvest
-        then -1
-        else
-          selectedMonth
-            |> List.filter (\num -> List.member num harvest)
-            |> List.length
-  in (List.length selectedMonth) == result
+  if List.length selectedMonth > List.length harvest
+  then False
+  else
+    selectedMonth
+      |> List.filter (\num -> List.member num harvest)
+      |> List.length
+      |> (==) (List.length selectedMonth)
 
 
 getDictValue : String -> Dict String (List Food) -> List Food

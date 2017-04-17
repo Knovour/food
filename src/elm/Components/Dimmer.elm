@@ -10,12 +10,10 @@ import Architecture.Box  as Box exposing (..)
 
 dimmer : Box.Model -> Html Main.Msg
 dimmer { open } =
-  let event = if open then Box Close else NoOp
-  in
-    div
-      [ classList
-        [ ("dimmer", True)
-        , ("-disabled", not open)
-        ]
-      , onClick event
-      ] []
+  div
+    [ classList
+      [ ("dimmer", True)
+      , ("-disabled", not open)
+      ]
+    , onClick (Box Close)
+    ] []

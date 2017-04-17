@@ -7,10 +7,10 @@ import Architecture.Screen as Screen exposing (..)
 type alias Model =
   { hover : List Int
   , group : String
-  , toggleGroupByTab : Bool
-  , toggleCardLayout : Bool
+  , isGroupByTab : Bool
+  , isCardLayout : Bool
   , toggleSidebar : Bool
-  , toggleAction : Bool
+  , toggleActionBtn : Bool
   }
 
 
@@ -18,31 +18,31 @@ model : Model
 model =
   { hover = []
   , group = "蔬菜"
-  , toggleGroupByTab = True
-  , toggleCardLayout = True
+  , isGroupByTab = True
+  , isCardLayout = True
   , toggleSidebar = True
-  , toggleAction  = False
+  , toggleActionBtn = False
   }
 
 
 type Msg
   = Hover (List Int)
   | Group String
-  | ToggleGroupByTab
-  | ToggleCardLayout
+  | IsGroupByTab
+  | IsCardLayout
   | ToggleSidebar
-  | ToggleAction
+  | ToggleActionBtn
 
 
 update : Msg -> Model -> Model
 update actionMsg model =
   case actionMsg of
-    Hover list -> { model | hover  = list }
-    Group str  -> { model | group  = str }
-    ToggleGroupByTab -> { model | toggleGroupByTab = (not model.toggleGroupByTab) }
-    ToggleCardLayout -> { model | toggleCardLayout = (not model.toggleCardLayout) }
-    ToggleSidebar -> { model | toggleSidebar = (not model.toggleSidebar) }
-    ToggleAction  -> { model | toggleAction = (not model.toggleAction) }
+    Hover list      -> { model | hover = list }
+    Group str       -> { model | group = str }
+    IsGroupByTab    -> { model | isGroupByTab = (not model.isGroupByTab) }
+    IsCardLayout    -> { model | isCardLayout = (not model.isCardLayout) }
+    ToggleSidebar   -> { model | toggleSidebar = (not model.toggleSidebar) }
+    ToggleActionBtn -> { model | toggleActionBtn = (not model.toggleActionBtn) }
 
 
 resize : Screen.Msg -> Model -> Model
@@ -50,6 +50,6 @@ resize screenMsg model =
   case screenMsg of
     Width w ->
       { model
-      | toggleCardLayout = (w <= 1120 || model.toggleCardLayout)
-      , toggleGroupByTab = (w <= 1120 || model.toggleGroupByTab)
+      | isCardLayout = (w <= 1120 || model.isCardLayout)
+      , isGroupByTab = (w <= 1120 || model.isGroupByTab)
       }

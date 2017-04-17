@@ -22,7 +22,7 @@ header_ model =
         , src "https://images.contentful.com/8whbhu195nq1/XEjhAcjLqgkisASyao8KY/dae01c7a3be79d16a89f533249cf05b3/logo.svg"
         , alt "logo"
         ] []
-      , search model.search
+      , search model.filter
       , rightMenu model.action
       ]
     ]

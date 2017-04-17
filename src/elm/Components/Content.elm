@@ -14,7 +14,7 @@ content { action, screen } foodDict =
   div
     [ id "content"
     , classList
-      [ ("-show-all", not action.toggleGroupByTab)
+      [ ("-show-all", not action.isGroupByTab)
       , ("-center", (not action.toggleSidebar || screen.width <= 976))
       ]
     ] [ shelf action foodDict ]

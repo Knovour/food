@@ -9,11 +9,14 @@
 
   & > .close {
     position: absolute 4pt 4pt false false;
-    font-size: 32pt;
     color: var(--lighter-gray);
     cursor: pointer;
 
     &:hover { color: var(--light-gray); }
+  }
+
+  & > .close > .icon {
+    font-size: 32pt;
   }
 
   @media (--below-large) { width: 40vw; }

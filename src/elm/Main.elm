@@ -39,7 +39,7 @@ init = (model, cmd)
 
 view : Model -> Html Msg
 view model =
-  let foodDict = foodRefilter model.action model.search model.content
+  let foodDict = foodRefilter model.action model.filter model.content
   in
     div []
       [ main_ []
@@ -51,5 +51,5 @@ view model =
         ]
       , dimmer model.box
       , box model.box
-      , action model
+      , action model.action model.filter
       ]

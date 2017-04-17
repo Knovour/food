@@ -1,5 +1,5 @@
 module Components.Shelf.Food exposing (..)
-import Html            exposing (Html, div, span, img, text, i, a)
+import Html            exposing (Html, div, span, img, text, a)
 import Html.Attributes exposing (class, classList, src, alt, href, target)
 import Html.Events     exposing (onMouseEnter, onMouseLeave)
 
@@ -10,12 +10,12 @@ import Libs.Type exposing (Food)
 
 
 food : Food -> Action.Model -> Html Main.Msg
-food data { toggleCardLayout } =
+food data { isCardLayout } =
   div
     [ classList
       [ ("food-info", True)
-      , ("-card", toggleCardLayout)
-      , ("-list", not toggleCardLayout)
+      , ("-card", isCardLayout)
+      , ("-list", not isCardLayout)
       ]
     , onMouseEnter (Action <| Hover data.harvest)
     , onMouseLeave (Action <| Hover [])

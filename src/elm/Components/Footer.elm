@@ -2,7 +2,8 @@ module Components.Footer exposing (footer_)
 import Html            exposing (Html, div, footer, span, text, a, i)
 import Html.Attributes exposing (class, href, target)
 
-import Components.Link exposing (link)
+import Elements.Link exposing (link)
+import Elements.Middot exposing (middot)
 
 
 
@@ -31,7 +32,3 @@ footer_ =
       , span [] [ text "Made by ", link info.elm "Elm" ]
       ]
     ]
-
-
-middot : Html msg
-middot = span [ class "middot" ] [ text "·" ]

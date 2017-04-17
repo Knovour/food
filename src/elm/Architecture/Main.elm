@@ -1,17 +1,17 @@
 module Architecture.Main exposing (..)
 import Http
 
-import Architecture.Search  as Search
 import Architecture.Box     as Box
 import Architecture.Action  as Action exposing (..)
 import Architecture.Screen  as Screen
 import Architecture.Content as Content
+import Architecture.Filter  as Filter
 import Libs.Type exposing (Respond)
 
 
 
 type alias Model =
-  { search  : Search.Model
+  { filter  : Filter.Model
   , box     : Box.Model
   , action  : Action.Model
   , screen  : Screen.Model
@@ -21,7 +21,7 @@ type alias Model =
 
 model : Model
 model =
-  { search  = Search.model
+  { filter  = Filter.model
   , box     = Box.model
   , action  = Action.model
   , screen  = Screen.model
@@ -31,7 +31,7 @@ model =
 
 type Msg
   = NoOp
-  | Search Search.Msg
+  | Filter Filter.Msg
   | Box    Box.Msg
   | Action Action.Msg
   | Screen Screen.Msg
@@ -44,7 +44,7 @@ update msg model =
         case msg of
           Action actionMsg -> { model | action = (Action.update actionMsg model.action) }
           Box    boxMsg    -> { model | box    = (Box.update boxMsg) }
-          Search searchMsg -> { model | search = (Search.update searchMsg model.search) }
+          Filter filterMsg -> { model | filter = (Filter.update filterMsg model.filter) }
           Screen screenMsg ->
             { model
             | screen = (Screen.update screenMsg model.screen)

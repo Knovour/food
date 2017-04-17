@@ -1,19 +1,20 @@
 module Components.Tools.Display exposing (..)
-import Html            exposing (Html, div, p, i, text)
+import Html            exposing (Html, div, p, text)
 import Html.Attributes exposing (class, classList)
 import Html.Events     exposing (onClick)
 
+import Elements.Icon exposing (icon)
 import Architecture.Main   as Main   exposing (..)
 import Architecture.Action as Action exposing (..)
 
 
 
 display : Action.Model -> Html Main.Msg
-display { toggleCardLayout, toggleGroupByTab } =
+display { isCardLayout, isGroupByTab } =
   div [ class "options-block toggle-display" ]
     [ p [ class "heading" ] [ text "顯示方式" ]
-    , layout toggleCardLayout
-    , tag toggleGroupByTab
+    , layout isCardLayout
+    , tag isGroupByTab
     ]
 
 
@@ -40,14 +41,7 @@ tag groupByTab  =
 switch : List String -> String -> List (Html Main.Msg)
 switch options target =
   List.map (\opt ->
-    let classes = "opt " ++ target
-        click =
-          if target == "layout"
-          then Action ToggleCardLayout
-          else Action ToggleGroupByTab
-        switchLabel =
-          if target == "layout"
-          then i [ class "material-icons icon" ] [ text opt ]
-          else text opt
-    in div [ class classes, onClick click ] [ switchLabel ]
+    if target == "layout"
+    then div [ class ("opt " ++ target), onClick (Action IsCardLayout) ] [ icon opt ]
+    else div [ class ("opt " ++ target), onClick (Action IsGroupByTab) ] [ text opt ]
   ) options

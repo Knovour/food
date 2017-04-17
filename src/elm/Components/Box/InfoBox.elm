@@ -1,9 +1,10 @@
 module Components.Box.InfoBox exposing (..)
-import Html            exposing (Html, div, h5, a, ul, li, p, i, text, span)
+import Html            exposing (Html, div, h5, a, ul, li, p, text, span)
 import Html.Attributes exposing (class, style, href, target)
 import Html.Events     exposing (onClick)
 
-import Components.Link exposing (link)
+import Elements.Link exposing (link)
+import Elements.Icon exposing (icon)
 import Architecture.Main as Main exposing (..)
 import Architecture.Box  exposing (..)
 import Libs.Type exposing (ColorPalette)
@@ -40,7 +41,7 @@ info =
 infoBox : Html Main.Msg
 infoBox =
   div [ class "box-modal -depth-4" ]
-    [ i [ class "material-icons close", onClick (Box Close) ] [ text "close" ]
+    [ div [ class "close", onClick (Box Close) ] [ icon "close" ]
     , div [ class "box-content" ]
       [ h5 [ class "heading" ] [ text "關於" ]
       , ul [ class "info-list" ]

@@ -44,14 +44,18 @@
 
 .search-bar {
   flex-grow: 2;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   margin: 0 16pt 0 40pt;
 
   & > .label {
     margin-right: 8pt;
-    font-size: 24pt;
     cursor: pointer;
+  }
+
+  & .icon {
+    font-size: 24pt;
+    vertical-align: middle;
 
     @media (--below-tablet) { font-size: 20px; }
   }

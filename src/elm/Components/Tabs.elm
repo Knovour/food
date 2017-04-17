@@ -13,11 +13,11 @@ import Libs.Helpers exposing (getDictValue)
 
 
 tabs : Action.Model -> Dict String (List Food) -> Html Main.Msg
-tabs { group, toggleGroupByTab } foodList =
+tabs { group, isGroupByTab } foodList =
   div
     [ classList
       [ ("tab-block", True)
-      , ("_hide", not toggleGroupByTab)
+      , ("_hide", not isGroupByTab)
       ]
     ] [ div [ class "tab-list" ] (tagList foodTypes foodList group) ]
 

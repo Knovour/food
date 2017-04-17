@@ -10,7 +10,7 @@ import Components.Footer        exposing (footer_)
 
 
 tools : Main.Model -> Html Main.Msg
-tools { action, search } =
+tools { action, filter } =
   div
     [ classList
       [ ("tools-sidebar", True)
@@ -18,6 +18,6 @@ tools { action, search } =
       ]
     ]
     [ display action
-    , month action search
+    , month action filter
     , footer_
     ]
