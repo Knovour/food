@@ -14,4 +14,4 @@ goods attr slot = div [ class "goods" ] slot
 
 
 foodList : List Food -> Action.Model -> List (Html Main.Msg)
-foodList list action = List.map (\foodData -> food foodData action) list
+foodList list action = List.map (food action) list

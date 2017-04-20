@@ -8,31 +8,33 @@ import Libs.Type exposing (Respond, Item, Asset, Food, Group)
 
 normalize : Respond -> Dict String (List Food)
 normalize { items, assets } =
-  let rowData = List.map (\item -> insert item assets) items
+  let rowData = List.map (insert assets) items
   in foodTypes
-      |> List.map (\tag ->
-          let list =
-                rowData
-                  |> List.filter (\{ species } -> species == tag)
-                  |> List.sortBy (\{ harvest } -> List.length harvest)
-                  |> List.reverse
-          in (tag, list)
-        )
+      |> List.map (toFoodListTuple rowData)
       |> Dict.fromList
 
 
-insert : Item -> List Asset -> Food
-insert item assets =
-  let result =
+insert : List Asset -> Item -> Food
+insert assets item =
+  let { url, source } =
         assets
           |> List.filter (\{ id } -> id == item.image)
           |> List.head
           |> Maybe.withDefault { id = "", url = "", source = "" }
-      harvest = List.map (\val -> Result.withDefault 0 (String.toInt val)) item.harvest
+      harvest = List.map (Result.withDefault 0 << String.toInt) item.harvest
   in
     { name    = item.name
-    , image   = result.url
-    , source  = result.source
+    , image   = url
+    , source  = source
     , species = item.species
     , harvest = harvest
     }
+
+
+toFoodListTuple : List Food -> String -> (String, List Food)
+toFoodListTuple rowData tag =
+  rowData
+    |> List.filter (\{ species } -> species == tag)
+    |> List.sortBy (\{ harvest } -> List.length harvest)
+    |> List.reverse
+    |> (,) tag

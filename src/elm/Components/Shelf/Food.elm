@@ -9,8 +9,8 @@ import Libs.Type exposing (Food)
 
 
 
-food : Food -> Action.Model -> Html Main.Msg
-food data { isCardLayout } =
+food : Action.Model -> Food -> Html Main.Msg
+food { isCardLayout } data =
   div
     [ classList
       [ ("food-info", True)

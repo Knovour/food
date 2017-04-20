@@ -21,7 +21,7 @@ search model =
       , name "search"
       , placeholder "Search..."
       , value model.name
-      , onInput (\value -> Filter <| Name value)
+      , onInput (Filter << Name)
       ] []
     , span
       [ classList

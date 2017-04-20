@@ -26,7 +26,7 @@ update filterMsg model =
   case filterMsg of
     Month num ->
       if List.member num model.month
-      then { model | month = List.filter (\m -> m /= num) model.month }
+      then { model | month = List.filter ((/=) num) model.month }
       else { model | month = num :: model.month }
     ClearMonth -> { model | month = [] }
     Name str -> { model | name = str }

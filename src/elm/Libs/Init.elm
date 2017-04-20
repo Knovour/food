@@ -19,7 +19,7 @@ cmd : Cmd Main.Msg
 cmd =
   Cmd.batch
     [ Http.send Content (Http.get contentUrl parser)
-    , Task.perform (\w -> Screen <| Width w) Window.width
+    , Task.perform (Screen << Width) Window.width
     ]
 
 
