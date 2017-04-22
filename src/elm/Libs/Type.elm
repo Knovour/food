@@ -1,12 +1,6 @@
 module Libs.Type exposing (..)
 
 
-type alias ColorPalette =
-  { color : String
-  , tag   : String
-  , name  : String
-  }
-
 
 type alias Item =
   { name    : String
@@ -35,10 +29,4 @@ type alias Food =
   , source  : String
   , species : String
   , harvest : List Int
-  }
-
-
-type alias Group =
-  { tag  : String
-  , list : List Food
   }

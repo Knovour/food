@@ -7,7 +7,14 @@ import Elements.Link exposing (link)
 import Elements.Icon exposing (icon)
 import Architecture.Main as Main exposing (..)
 import Architecture.Box  exposing (..)
-import Libs.Type exposing (ColorPalette)
+
+
+
+type alias ColorPalette =
+  { color : String
+  , tag   : String
+  , name  : String
+  }
 
 
 

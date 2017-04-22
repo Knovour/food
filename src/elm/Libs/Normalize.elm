@@ -2,7 +2,7 @@ module Libs.Normalize exposing (normalize)
 import Dict exposing (Dict)
 
 import Libs.Data exposing (foodTypes)
-import Libs.Type exposing (Respond, Item, Asset, Food, Group)
+import Libs.Type exposing (Respond, Item, Asset, Food)
 
 
 
