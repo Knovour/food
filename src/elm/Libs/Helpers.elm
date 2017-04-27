@@ -20,17 +20,16 @@ foodRefilter action filter content =
 
 isFilterHarvest : List Int -> List Int -> Bool
 isFilterHarvest harvest selectedMonth =
-  if List.length selectedMonth > List.length harvest
-  then False
-  else
-    selectedMonth
+  (&&)
+    (List.length selectedMonth <= List.length harvest)
+    (selectedMonth
       |> List.filter (\num -> List.member num harvest)
       |> List.length
-      |> (==) (List.length selectedMonth)
+      |> (==) (List.length selectedMonth))
 
 
-getDictValue : String -> Dict String (List Food) -> List Food
-getDictValue key dict =
+getDictValue : Dict String (List Food) -> String -> List Food
+getDictValue dict key =
   dict
     |> Dict.get key
     |> Maybe.withDefault []
