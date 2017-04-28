@@ -16,17 +16,16 @@ search model =
     [ label [ class "label", for "search" ] [ icon "search" ]
     , input
       [ id "search"
-      , class "search"
       , type_ "search"
       , name "search"
-      , placeholder "Search..."
+      , placeholder "Search"
       , value model.name
       , onInput (Filter << Name)
       ] []
     , span
       [ classList
         [ ("clear", True)
-        , ("_hide", model.name == "")
+        , ("-hide", model.name == "")
         ]
       , onClick (Filter <| Name "")
       ] [ icon "clear" ]

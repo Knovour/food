@@ -10,15 +10,13 @@ import Architecture.Box  as Box exposing (..)
 
 
 
+-- Data
+
 type alias ColorPalette =
   { color : String
   , tag   : String
   , name  : String
   }
-
-
-
--- Data
 
 colorPalettes : List ColorPalette
 colorPalettes =
@@ -35,34 +33,30 @@ colorPalettes =
   ]
 
 
-info : { gov : String, ui : String }
-info =
-  { gov = "http://life.coa.gov.tw/Life/AgriculturalProducts/SeasonProductList.aspx?selectMonth=1&__M=True"
-  , ui  = "https://fonts.google.com/"
-  }
-
-
 
 -- Component
 
 infoBox : Box.Model -> Html Main.Msg
 infoBox { open } =
-  if not open
-  then text ""
-  else
-    div [ class "box-modal -depth-4" ]
-      [ div [ class "close", onClick (Box Close) ] [ icon "close" ]
-      , div [ class "box-content" ]
-        [ h5 [ class "heading" ] [ text "關於" ]
-        , ul [ class "info-list" ]
-          [ li [ class "item" ] [ text "資料來源：", link info.gov "行政院農委會 - 田邊好幫手" ]
-          , li [ class "item" ] [ text "UI 參考：", link info.ui "Google Fonts" ]
+  case not open of
+    True  -> text ""
+    False ->
+      let gov = "http://life.coa.gov.tw/Life/AgriculturalProducts/SeasonProductList.aspx?selectMonth=1&__M=True"
+          ui  = "https://fonts.google.com/"
+      in
+        div [ class "box-modal -depth-4" ]
+          [ div [ class "close", onClick (Box Close) ] [ icon "close" ]
+          , div [ class "box-content" ]
+            [ h5 [ class "heading" ] [ text "關於" ]
+            , ul [ class "info-list" ]
+              [ li [ class "item" ] [ text "資料來源：", link gov "行政院農委會 - 田邊好幫手" ]
+              , li [ class "item" ] [ text "UI 參考：", link ui "Google Fonts" ]
+              ]
+            , h5 [ class "heading" ] [ text "顏色" ]
+            , p [ class "subheading" ] [ text "From Nippon Colors" ]
+            , div [ class "color-palette" ] (colorBlocks colorPalettes)
+            ]
           ]
-        , h5 [ class "heading" ] [ text "顏色" ]
-        , p [ class "subheading" ] [ text "From Nippon Colors" ]
-        , div [ class "color-palette" ] (colorBlocks colorPalettes)
-        ]
-      ]
 
 
 colorBlocks : List ColorPalette -> List (Html Main.Msg)

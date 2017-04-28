@@ -2,7 +2,6 @@
 @import 'elements/index.css';
 @import 'components/index.css';
 @import 'variants.css';
-@import 'helpers.css';
 
 body {
   background-color: var(--smooth-white);

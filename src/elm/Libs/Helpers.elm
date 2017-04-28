@@ -28,8 +28,8 @@ isFilterHarvest harvest selectedMonth =
       |> (==) (List.length selectedMonth))
 
 
-getDictValue : Dict String (List Food) -> String -> List Food
-getDictValue dict key =
+getDictValue : String -> Dict String (List Food) -> List Food
+getDictValue key dict =
   dict
     |> Dict.get key
     |> Maybe.withDefault []

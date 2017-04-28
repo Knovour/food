@@ -21,14 +21,18 @@ tabs { group, isGroupByTab } foodList =
 
 tagList : List String -> Dict String (List Food) -> String -> List (Html Main.Msg)
 tagList foodTypes foodList group =
-  foodTypes
-    |> List.filter (getDictValue foodList >> List.length >> (/=) 0)
-    |> List.map (\name ->
-        div
-          [ classList
-            [ ("tab", True)
-            , ("current", name == group)
-            ]
-          , onClick (Action <| Group name)
-          ] [ text name ]
-       )
+  List.filterMap (\name ->
+    let hasContent = List.length (getDictValue name foodList) /= 0
+    in
+      case hasContent of
+        False -> Nothing
+        True ->
+          Just
+            (div
+              [ classList
+                [ ("tab", True)
+                , ("current", name == group)
+                ]
+              , onClick (Action <| Group name)
+              ] [ text name ])
+  ) foodTypes

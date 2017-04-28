@@ -7,28 +7,21 @@ import Elements.Middot exposing (middot)
 
 
 
--- Data
-
-info : { blog : String, github : String, elm : String }
-info =
-  { blog   = "https://notes.knovour.ninja"
-  , github = "https://github.com/Knovour/food"
-  , elm    = "http://elm-lang.org"
-  }
-
-
-
 -- Component
 
 footer_ : Html msg
 footer_ =
-  footer [ class "footer" ]
-    [ div [ class "copyright" ] [ text "2017 © Knovour" ]
-    , div [ class "links" ]
-      [ link info.blog "Blog"
-      , middot
-      , link info.github "GitHub"
-      , middot
-      , span [] [ text "Made by ", link info.elm "Elm" ]
+  let blog   = "https://notes.knovour.ninja"
+      github = "https://github.com/Knovour/food"
+      elm    = "http://elm-lang.org"
+  in
+    footer [ class "footer" ]
+      [ div [ class "copyright" ] [ text "2017 © Knovour" ]
+      , div [ class "links" ]
+        [ link blog "Blog"
+        , middot
+        , link github "GitHub"
+        , middot
+        , span [] [ text "Made by ", link elm "Elm" ]
+        ]
       ]
-    ]

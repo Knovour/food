@@ -21,17 +21,16 @@ shelf action foodDict =
 
 layer_ : Action.Model -> Dict String (List Food) -> List (Html Main.Msg)
 layer_ action foodDict =
-  foodTypes
-    |> List.filter (\species ->
-        (&&)
-          (List.length (getDictValue foodDict species) > 0)
-          (not action.isGroupByTab || species == action.group)
-       )
-    |> List.map (\species ->
-        let list = getDictValue foodDict species
-        in
-          layer [ Layer.dataType species ]
-            [ tag action.isGroupByTab species
-            , goods [] (Goods.foodList list action)
-            ]
-       )
+  List.filterMap (\species ->
+    let list = getDictValue species foodDict
+        isCurrentLayer = List.length list > 0 && (not action.isGroupByTab || species == action.group)
+    in
+      case isCurrentLayer of
+        False -> Nothing
+        True ->
+          Just
+            (layer [ Layer.dataType species ]
+              [ tag action.isGroupByTab species
+              , goods [] (Goods.foodList list action)
+              ])
+  ) foodTypes
