@@ -1,4 +1,4 @@
-module Components.Box.InfoBox exposing (..)
+module Components.InfoBox exposing (..)
 import Html            exposing (Html, div, h5, a, ul, li, p, text, span)
 import Html.Attributes exposing (class, style, href, target)
 import Html.Events     exposing (onClick)
@@ -6,7 +6,7 @@ import Html.Events     exposing (onClick)
 import Elements.Link exposing (link)
 import Elements.Icon exposing (icon)
 import Architecture.Main as Main exposing (..)
-import Architecture.Box  exposing (..)
+import Architecture.Box  as Box exposing (..)
 
 
 
@@ -45,21 +45,24 @@ info =
 
 -- Component
 
-infoBox : Html Main.Msg
-infoBox =
-  div [ class "box-modal -depth-4" ]
-    [ div [ class "close", onClick (Box Close) ] [ icon "close" ]
-    , div [ class "box-content" ]
-      [ h5 [ class "heading" ] [ text "關於" ]
-      , ul [ class "info-list" ]
-        [ li [ class "item" ] [ text "資料來源：", link info.gov "行政院農委會 - 田邊好幫手" ]
-        , li [ class "item" ] [ text "UI 參考：", link info.ui "Google Fonts" ]
+infoBox : Box.Model -> Html Main.Msg
+infoBox { open } =
+  if not open
+  then text ""
+  else
+    div [ class "box-modal -depth-4" ]
+      [ div [ class "close", onClick (Box Close) ] [ icon "close" ]
+      , div [ class "box-content" ]
+        [ h5 [ class "heading" ] [ text "關於" ]
+        , ul [ class "info-list" ]
+          [ li [ class "item" ] [ text "資料來源：", link info.gov "行政院農委會 - 田邊好幫手" ]
+          , li [ class "item" ] [ text "UI 參考：", link info.ui "Google Fonts" ]
+          ]
+        , h5 [ class "heading" ] [ text "顏色" ]
+        , p [ class "subheading" ] [ text "From Nippon Colors" ]
+        , div [ class "color-palette" ] (colorBlocks colorPalettes)
         ]
-      , h5 [ class "heading" ] [ text "顏色" ]
-      , p [ class "subheading" ] [ text "From Nippon Colors" ]
-      , div [ class "color-palette" ] (colorBlocks colorPalettes)
       ]
-    ]
 
 
 colorBlocks : List ColorPalette -> List (Html Main.Msg)

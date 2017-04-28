@@ -7,7 +7,7 @@ import Components.Header  exposing (header_)
 import Components.Tabs    exposing (tabs)
 import Components.Content exposing (content)
 import Components.Tools   exposing (tools)
-import Components.Box     exposing (box)
+import Components.InfoBox exposing (infoBox)
 import Components.Action  exposing (action)
 import Components.Footer  exposing (footer_)
 import Libs.Init exposing (cmd, subscriptions)
@@ -50,6 +50,6 @@ view model =
         , footer_
         ]
       , dimmer model.box
-      , box model.box
+      , infoBox model.box
       , action model.action model.filter
       ]
