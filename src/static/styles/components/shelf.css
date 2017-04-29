@@ -101,17 +101,12 @@
     font-size: 1.1em;
     color: var(--black);
   }
-
-  & > .copyright {
-    font-size: 12px;
-    font-weight: 400;
-  }
 }
 
 .food-info.-card {
   width: calc(100% / 8);
   margin-bottom: 8pt;
-  padding: 8pt 8pt 16pt;
+  padding: 8pt;
   flex-direction: column;
 
   & > .media {
@@ -145,11 +140,6 @@
     order: 2;
   }
 
-  & > .copyright {
-    padding: 4pt 0 0;
-    order: 3;
-  }
-
   @media (max-width: 1600px) { width: calc(100% / 7); }
   @media (max-width: 1380px) { width: calc(100% / 6); }
   @media (max-width: 1280px) { width: calc(100% / 5); }
@@ -170,22 +160,13 @@
       border-radius: 0;
     }
 
-    & > .name,
-    & > .copyright {
+    & > .name {
       height: calc(100% - 20pt);
       display: flex;
       align-items: center;
-    }
-
-    & > .name {
       font-size: 1em;
       margin: 0;
       padding-left: 8pt;
-    }
-
-    & > .copyright {
-      float: right;
-      padding: 0 4pt;
     }
 
     & > .harvest-calendar {
@@ -247,6 +228,4 @@
     width: 6.5em;
     padding-left: 16pt;
   }
-
-  & > .copyright { width: 6.5em; }
 }

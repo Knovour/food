@@ -1,6 +1,6 @@
 module Components.Shelf.Food exposing (..)
-import Html            exposing (Html, div, span, img, text, a)
-import Html.Attributes exposing (class, classList, src, alt, href, target)
+import Html            exposing (Html, div, span, img, text)
+import Html.Attributes exposing (class, classList, src, alt)
 import Html.Events     exposing (onMouseEnter, onMouseLeave)
 
 import Architecture.Main   as Main exposing (..)
@@ -22,7 +22,6 @@ food { isCardLayout } data =
     ]
     [ div [ class "media" ] [ img [ class "img", src data.image, alt "" ] [] ]
     , span [ class "name" ] [ text data.name ]
-    , a [ class "copyright", href data.source, target "_blank" ] [ text "圖片來源" ]
     , div [ class "harvest-calendar" ] (dotList data.harvest)
     ]
 
