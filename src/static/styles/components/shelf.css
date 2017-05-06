@@ -1,58 +1,56 @@
 .food-shelf {
   flex: 0 1 100%;
-  padding: 16pt;
+  padding: 24px;
 
   & > .species:first-of-type .label { margin-top: 0; }
 
-  @media (--above-small) { padding: 8pt; }
   @media (--below-mobile) { padding: 0; }
 }
 
 .layer {
-  margin-bottom: 40pt;
   display: flex;
 
   & > .label {
     position: relative;
     writing-mode: vertical-rl;
-    margin: 8pt 8pt 0 0;
-    width: 32pt;
-    font-size: 2em;
-    line-height: 1.7em;
-    letter-spacing: 1pt;
-    padding-right: 2pt;
+    display: flex;
+      align-items: center;
+    margin: 8px 16px 0 0;
+    font-size: 24px;
+    letter-spacing: 4px;
     font-weight: 300;
     color: var(--berry);
 
     &::after {
       content: '';
-      position: absolute 0 0 false false;
-      size: 1.6pt 3.2em;
+      position: absolute 0 -4px false false;
+      size: 2px 4em;
       background: var(--berry);
 
       @media (--below-small) {
-        position: absolute false false -4pt 0;
-        size: 16% 1.6pt;
+        position: absolute auto auto -8px 0;
+        size: 4em 2px;
       }
 
       @media (--below-mobile) { width: 32%; }
     }
 
+    @media (--above-small) { min-width: 40px; }
     @media (--below-small) {
-      width: auto;
-      margin: 8pt 8pt 24pt;
+      margin: 8px 8px 40px;
       padding: 0;
       writing-mode: horizontal-tb;
-      font-size: 1.6em;
+      font-size: 28px;
     }
   }
 
   & > .goods {
-    display: inline-flex;
+    display: flex;
     flex-wrap: wrap;
     flex-grow: 2;
   }
 
+  @media (--above-tablet) { margin-bottom: 32px; }
   @media (--below-small) { flex-flow: column; }
 }
 
@@ -78,17 +76,17 @@
       display: block;
       size: 4px;
       @apply --circle;
-      margin-right: 6px;
-      background: rgba(var(--lighter-gray), .5);
+      background: rgba(var(--gray-light), .5);
 
-      &.current { background: var(--dark-green); }
+      & + .dot { margin-left: 8px; }
 
       &::before {
         counter-increment: div;
         line-height: 1;
-        color: var(--light-gray);
+        color: var(--gray);
       }
 
+      &.current { background: var(--green-dark); }
       &.current::before {
         color: var(--green);
         font-weight: 700;
@@ -105,17 +103,12 @@
 
 .food-info.-card {
   width: calc(100% / 8);
-  margin-bottom: 8pt;
-  padding: 8pt;
+  margin-bottom: 8px;
+  padding: 8px;
   flex-direction: column;
 
   & > .media {
     width: 100%;
-
-    @media (--below-mobile) {
-      size: 40pt;
-      @apply --circle;
-    }
   }
 
   & > .media > .img {
@@ -123,20 +116,20 @@
 
     @media (--below-mobile) {
       size: auto 100%;
-      transform: translateX(-8pt);
+      transform: translateX(-8px);
     }
   }
 
   & > .harvest-calendar {
     size: 100% 4px;
-    margin: 8pt 0;
+    margin: 12px 0;
     display: flex;
     order: 1;
   }
 
   & > .name {
     display: block;
-    margin: 0 0 4pt;
+    margin: 0 0 12px;
     order: 2;
   }
 
@@ -148,7 +141,7 @@
     display: block;
     size: 100% auto;
     @apply --depth-1;
-    margin: 8pt 4pt 0;
+    margin: 8px 4px 0;
     padding: 0;
     background: white;
 
@@ -156,31 +149,31 @@
     & > .name { float: left; }
 
     & > .media {
-      size: 48pt;
+      size: 64px;
       border-radius: 0;
     }
 
     & > .name {
-      height: calc(100% - 20pt);
+      height: calc(100% - 24px);
       display: flex;
       align-items: center;
       font-size: 1em;
       margin: 0;
-      padding-left: 8pt;
+      padding-left: 8px;
     }
 
     & > .harvest-calendar {
-      size: calc(100% - 48pt) 20pt;
+      size: calc(100% - 64px) 24px;
       align-items: center;
-      justify-content: space-between;
+      justify-content: space-around;
       margin: 0;
-      border-top: 1px solid rgba(var(--lighter-gray), .4);
+      border-top: 1px solid rgba(var(--gray-light), .4);
       padding: 0;
       position: absolute false 0 0 false;
 
       & > .dot {
         size: calc(100% / 12) 100%;
-        margin-right: 0;
+        margin-left: 0;
         @apply --flex-middle;
         border-radius: 0;
         font-size: 12px;
@@ -194,17 +187,17 @@
 
 .food-info.-list {
   width: 100%;
-  padding: 4pt 8pt;
+  padding: 8px 16px;
   align-items: center;
 
   & > .media {
-    size: 48pt;
+    size: 56px;
     @apply --circle;
   }
 
   & > .media > .img {
     size: auto 100%;
-    transform: translateX(-8pt);
+    transform: translateX(-8px);
   }
 
   & > .harvest-calendar {
@@ -226,6 +219,6 @@
 
   & > .name {
     width: 6.5em;
-    padding-left: 16pt;
+    padding-left: 24px;
   }
 }

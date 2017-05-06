@@ -5,36 +5,30 @@
   background: white;
   border-radius: 2px;
   width: 32vw;
-  padding: 8pt 32pt 24pt;
+  padding: 8px 40px 32px;
 
   & > .close {
-    position: absolute 4pt 4pt false false;
-    color: var(--lighter-gray);
+    position: absolute 8px 8px false false;
+    color: var(--gray-light);
     cursor: pointer;
 
-    &:hover { color: var(--light-gray); }
+    &:hover { color: var(--gray); }
   }
 
   & > .close > .icon {
-    font-size: 32pt;
+    font-size: 40px;
   }
 
   @media (--below-large) { width: 40vw; }
   @media (max-width: 1280px) { width: 48vw; }
   @media (--below-tablet) { width: 72vw; }
-  @media (--below-mobile) {
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 88vw;
-    padding: 0 16pt 24pt;
-  }
 }
 
 .box-content {
   width: 100%;
 
   & > .heading {
-    margin: 24pt 0 8pt;
+    margin: 32px 0 8px;
     font-size: 1.6em;
     font-weight: 400;
 
@@ -42,15 +36,15 @@
   }
 
   & > .subheading {
-    margin: -4pt 0 8pt;
-    color: var(--light-gray);
+    margin: -4px 0 8px;
+    color: var(--gray);
 
     @media (--below-mobile) { font-size: .8em; }
   }
 }
 
 .info-list {
-  padding: 0 0 0 24pt;
+  padding: 0 0 0 32px;
   line-height: 1.8em;
 
   & .link { font-weight: 600; }
@@ -65,8 +59,8 @@
 
   & > .slot {
     display: block;
-    width: calc(100% / 5 - 4pt);
-    margin: 0 4pt 4pt 0;
+    width: calc(100% / 5 - 4px);
+    margin: 0 4px 4px 0;
     border-radius: 2px;
     box-sizing: border-box;
     transition: all 200ms linear;
@@ -77,7 +71,7 @@
     }
 
     @media (--below-mobile) {
-      width: calc(100% / 4 - 4pt);
+      width: calc(100% / 4 - 4px);
       &:nth-child(4n) { margin-right: 0; }
     }
   }
@@ -105,7 +99,7 @@
   }
 
   & > .hex {
-    margin-top: 8pt;
+    margin-top: 8px;
     font-size: .6em;
     font-weight: 800;
   }

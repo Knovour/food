@@ -1,16 +1,16 @@
 input[type="search"] {
   outline: none;
   border-width: 0;
-  size: 100% 24pt;
-  padding: 4pt 0 6pt;
-  font-size: 16pt;
+  size: 100% 32px;
+  padding: 4px 0 8px;
+  font-size: 18px;
   color: var(--black);
   background: transparent;
 
   @media (--below-tablet) {
-    height: 16pt;
-    font-size: 12pt;
-    padding: 4pt 0;
+    height: 24px;
+    font-size: 16px;
+    padding: 8px 0;
   }
 }
 

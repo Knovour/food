@@ -1,9 +1,7 @@
 .header-block {
   position: fixed 0 false false 0;
-  width: calc(100% - 196pt);
-  min-height: 48pt;
-  border-bottom: 1px solid rgba(var(--lighter-gray), .4);
-  padding: 0 24pt;
+  size: calc(100% - var(--sidebar-width)) var(--header-height);
+  padding: 0 32px;
   background: var(--smooth-white);
   color: var(--black);
   z-index: 110;
@@ -11,18 +9,13 @@
   align-items: center;
   flex-wrap: wrap;
 
-  &.-extend {
-    width: calc(100% - 40pt);
+  &.-extend { width: calc(100% - var(--narrow-sidebar-width)); }
 
-    @media (--below-small) { width: calc(100% - 36pt); }
-  }
-
-  @media (--below-large) { width: calc(100% - 160pt); }
+  @media (--below-large) { width: calc(100% - var(--small-sidebar-width)); }
+  @media (--above-tablet) { box-shadow: inset 0 -1px 0 0 rgba(var(--gray-light), .4); }
   @media (--below-tablet) {
-    width: 100%;
-    min-height: 32pt;
-    border-bottom-width: 0;
-    padding: 8pt 4pt 8pt 16pt;
+    size: 100% var(--tablet-header-height);
+    padding: 8px;
     background: var(--berry);
   }
 }
@@ -34,7 +27,7 @@
 
   & > .logo {
     display: inline-block;
-    height: 20pt;
+    height: 24px;
     width: auto;
     margin: 0;
 
@@ -46,21 +39,21 @@
   flex-grow: 2;
   display: flex;
   align-items: center;
-  margin: 0 16pt 0 40pt;
+  margin: 0 32px;
 
   & > .label {
-    margin-right: 8pt;
+    margin-right: 8px;
     cursor: pointer;
   }
 
   & .icon {
-    font-size: 24pt;
+    font-size: 30px;
     vertical-align: middle;
 
     @media (--below-tablet) { font-size: 20px; }
   }
 
-  @media (--below-small) { margin-left: 24pt; }
+  @media (--below-small) { margin-left: 32px; }
   @media (--above-tablet) {
     & > .clear { display: none; }
   }
@@ -68,9 +61,9 @@
     @apply --depth-2;
     display: flex;
     width: 100%;
-    margin: 0 4pt 0 -8pt;
+    margin: 0;
     border-radius: 2px;
-    padding: 8pt;
+    padding: 8px;
     background: white;
   }
 }
@@ -81,9 +74,8 @@
   margin-left: auto;
 
   & > .btn {
-    @apply --depth-1;
-    size: 24pt;
-    margin-left: 16pt;
+    @apply --flex-middle;
+    size: 32px;
     text-align: center;
     cursor: pointer;
     transition: all 100ms linear;
@@ -91,41 +83,31 @@
     color: white;
     user-select: none;
 
-    & > .icon { line-height: 24pt; }
-
     @media (--above-tablet) {
+      @apply --depth-1;
       &:hover { @apply --depth-3; }
-    }
-
-    @media (--below-tablet) {
-      @apply --depth-0;
-      margin-left: 4pt;
-      background: transparent;
     }
   }
 
   & > .info-btn > .icon { transform: rotate(180deg); }
 
   & > .tools-btn {
-    cursor: pointer;
     @apply --depth-0;
+    cursor: pointer;
     position: absolute;
     right: 0;
     transform: translateX(50%);
     border-radius: 0;
     background: var(--smooth-white);
-    color: var(--light-green);
-    height: 32pt;
+    color: var(--green-light);
+    height: 40px;
 
     &:hover {
       @apply --depth-0;
       color: var(--green);
     }
 
-    & > .icon {
-      font-size: 32px;
-      line-height: 32pt;
-    }
+    & > .icon { font-size: 32px; }
   }
 
   @media (--below-tablet) { display: none; }

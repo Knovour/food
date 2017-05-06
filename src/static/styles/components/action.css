@@ -1,9 +1,9 @@
 .action-block {
-  position: fixed false 32pt 32pt false;
+  position: fixed false 32px 32px false;
   background: var(--logo);
   cursor: pointer;
   transition: all 100ms linear;
-  size: 48pt;
+  size: 64px;
   user-select: none;
   @apply --circle;
   @apply --depth-4;
@@ -17,13 +17,11 @@
     z-index: 1000;
     @apply --circle;
 
-    & > .icon { font-size: 1.8em; }
+    & > .icon { font-size: 32px; }
   }
 
   & > .select {
-    display: none;
-    size: 40pt;
-    margin: 4pt 0 0 4pt;
+    margin: 8px 0 0 8px;
     opacity: 0;
   }
 
@@ -31,7 +29,7 @@
     width: calc(100% / 6);
     @apply --flex-middle;
 
-    &:nth-child(-n+6) { border-bottom: 1px solid var(--lighter-gray); }
+    &:nth-child(-n+6) { border-bottom: 1px solid var(--gray-light); }
 
     &.-selected {
       color: var(--logo);
@@ -40,38 +38,38 @@
   }
 
   & > .reset {
-    position: absolute 8pt false false 8pt;
+    position: absolute 8px false false 8px;
     display: none;
     color: white;
     @apply --circle;
 
-    & > .icon { font-size: 2.8em; }
+    & > .icon { font-size: 32px; }
   }
 
   @media (--above-tablet) { display: none; }
   @media (--below-mobile) {
-    right: 16pt;
-    bottom: 16pt;
-    size: 40pt;
+    right: 24px;
+    bottom: 24px;
+    size: 56px;
 
-    & > .action > .icon { font-size: 1.6em; }
-    & > .select { size: 32pt; }
-    & > .reset > .icon { font-size: 2em; }
+    & > .action > .icon { font-size: 28px; }
+    & > .select { size: 24px; }
+    & > .reset > .icon { font-size: 28px; }
   }
 }
 
 .action-block.-active {
-  right: 28pt;
-  bottom: 28pt;
+  right: 28px;
+  bottom: 28px;
   background: var(--logo);
   color: var(--smooth-white);
-  size: 320pt 56pt;
-  border-radius: 28pt;
+  size: 400px 72px;
+  border-radius: 36px;
 
   & > .action {
-    top: 8pt;
-    right: 8pt;
-    size: 40pt;
+    top: 8px;
+    right: 8px;
+    size: 56px;
     background: var(--smooth-white);
     color: var(--logo);
   }
@@ -79,29 +77,29 @@
   & > .select {
     display: flex;
     flex-wrap: wrap;
-    size: 100% 56pt;
+    size: 100% 72px;
     margin: 0;
     opacity: 1;
-    padding: 0 56pt 0 52pt;
+    padding: 0 80px 0 64px;
   }
 
   & > .reset {
     @apply --flex-middle;
-    size: 40pt;
+    size: 56px;
   }
 
   @media (--below-mobile) {
-    right: 12pt;
-    bottom: 12pt;
-    size: calc(100% - 24pt) 48pt;
-    border-radius: 24pt;
+    right: 22px;
+    bottom: 22px;
+    size: calc(100% - 32px) 64px;
+    border-radius: 32px;
 
     & > .action,
-    & > .reset { size: 32pt; }
+    & > .reset { size: 48px; }
 
     & > .select {
-      size: 100% 48pt;
-      padding: 0 48pt 0 44pt;
+      size: 100% 64px;
+      padding: 0 64px 0 56px;
     }
   }
 }

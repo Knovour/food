@@ -11,10 +11,12 @@ import Architecture.Action as Action exposing (..)
 
 display : Action.Model -> Html Main.Msg
 display { isCardLayout, isGroupByTab } =
-  div [ class "options-block toggle-display" ]
+  div [ class "options-block" ]
     [ p [ class "heading" ] [ text "顯示方式" ]
-    , layout isCardLayout
-    , tag isGroupByTab
+    , div [ class "toggle-display" ]
+      [ layout isCardLayout
+      , tag isGroupByTab
+      ]
     ]
 
 

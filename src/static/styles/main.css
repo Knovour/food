@@ -30,29 +30,26 @@ h1 {
 h2, h3 { font-weight: 500; }
 
 a {
-  color: var(--sky);
+  color: var(--blue);
   text-decoration: none;
 }
 
 #content {
-  margin: 48pt 196pt 0 40pt;
+  margin: var(--header-height) var(--sidebar-width) 0 var(--tab-width);
 
   &.-center {
-    margin: 48pt 120pt 40pt;
+    margin: var(--header-height) 120px 48px;
 
-    @media (--below-large) { margin: 48pt 80pt 40pt; }
+    @media (--below-large) { margin: var(--header-height) 80px 48px; }
     @media (--below-tablet) {
-      min-height: calc(100vh - 80pt - 64px);
-      margin: 80pt 0 0;
+      min-height: calc(100vh - 104px - var(--footer-height) - 32px);
+      margin: 104px 0 0;
     }
-
-    @media (--below-mobile) { min-height: calc(100vh - 120pt - 64px); }
   }
 
   &.-show-all:not(.-center) { margin-left: 0; }
 
-  @media (--below-large) { margin-right: 160pt; }
-  @media (--below-small) { margin-left: 32pt; }
+  @media (--below-large) { margin-right: var(--small-sidebar-width); }
 }
 
 /* DEBUG PANEL */

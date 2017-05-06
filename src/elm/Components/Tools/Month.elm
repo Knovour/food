@@ -16,12 +16,12 @@ month { toggleSidebar, hover } { month } =
   in
     div
       [ classList
-        [ ("options-block calendar-filter", True)
+        [ ("options-block", True)
         , ("-narrow", not toggleSidebar)
         ]
       ]
       [ p [ class "heading" ] [ label ]
-      , div [ class "calendar" ] (monthCircle hover month)
+      , div [ class "calendar-filter" ] (monthCircle hover month)
       ]
 
 
