@@ -134,17 +134,13 @@
   & > .month.-selected,
   & > .month:hover {
     font-weight: 600;
-    color: var(--green-light);
+    color: var(--smooth-white);
   }
 
-  & > .month.-highlight:not(.-selected) {
+  & > .month.-highlight:not(.-selected),
+  & > .month:not(.-selected):hover {
     background: var(--green-light);
     border-color: var(--green-light);
-  }
-
-  & > .month:not(.-selected):hover {
-    background: rgba(var(--gray-light), .4);
-    border-color: rgba(var(--gray-light), .1);
   }
 
   & > .month.-selected {
