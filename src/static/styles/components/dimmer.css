@@ -1,7 +1,7 @@
 .dimmer {
   position: fixed 0;
-  background: rgba(var(--black), .8);
   size: 100vw 100vh;
+  background: rgba(var(--black), .8);
   z-index: 150;
   transition: all 200ms linear;
 

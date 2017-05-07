@@ -1,11 +1,11 @@
 .box-modal {
   position: fixed 8% false false 50%;
+  width: 32vw;
+  border-radius: 2px;
+  padding: 8px 40px 32px;
   transform: translateX(-50%);
   z-index: 200;
   background: white;
-  border-radius: 2px;
-  width: 32vw;
-  padding: 8px 40px 32px;
 
   & > .close {
     position: absolute 8px 8px false false;
@@ -54,8 +54,8 @@
 
 .color-palette {
   display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
+    justify-content: flex-start;
+    flex-wrap: wrap;
 
   & > .slot {
     display: block;

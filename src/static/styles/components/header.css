@@ -1,13 +1,13 @@
 .header-block {
   position: fixed 0 false false 0;
+  display: flex;
+    align-items: center;
+    flex-wrap: wrap;
   size: calc(100% - var(--sidebar-width)) var(--header-height);
   padding: 0 32px;
   background: var(--smooth-white);
   color: var(--black);
   z-index: 110;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
 
   &.-extend { width: calc(100% - var(--narrow-sidebar-width)); }
 
@@ -22,13 +22,12 @@
 
 .main-nav {
   display: flex;
-  align-items: center;
+    align-items: center;
   width: 100%;
 
   & > .logo {
     display: inline-block;
-    height: 24px;
-    width: auto;
+    size: auto 24px;
     margin: 0;
 
     @media (--below-tablet) { display: none; }
@@ -36,9 +35,9 @@
 }
 
 .search-bar {
-  flex-grow: 2;
   display: flex;
-  align-items: center;
+    flex-grow: 2;
+    align-items: center;
   margin: 0 32px;
 
   & > .label {
@@ -70,7 +69,7 @@
 
 .right-menu {
   display: inline-flex;
-  align-items: center;
+    align-items: center;
   margin-left: auto;
 
   & > .btn {
@@ -96,11 +95,11 @@
     cursor: pointer;
     position: absolute;
     right: 0;
-    transform: translateX(50%);
+    height: 40px;
     border-radius: 0;
+    transform: translateX(50%);
     background: var(--smooth-white);
     color: var(--green-light);
-    height: 40px;
 
     &:hover {
       @apply --depth-0;

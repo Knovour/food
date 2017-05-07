@@ -1,7 +1,7 @@
 input[type="search"] {
+  size: 100% 32px;
   outline: none;
   border-width: 0;
-  size: 100% 32px;
   padding: 4px 0 8px;
   font-size: 18px;
   color: var(--black);
@@ -9,8 +9,8 @@ input[type="search"] {
 
   @media (--below-tablet) {
     height: 24px;
-    font-size: 16px;
     padding: 8px 0;
+    font-size: 16px;
   }
 }
 

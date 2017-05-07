@@ -105,14 +105,14 @@
 
 .calendar-filter {
   display: flex;
-  flex-wrap: wrap;
+    flex-wrap: wrap;
   font-weight: 200;
   color: var(--black);
 
   & > .month {
     display: inline-flex;
-    align-items: center;
-    justify-content: center;
+      align-items: center;
+      justify-content: center;
     size: 32px;
     margin-bottom: 4px;
     border: 1px solid var(--gray-light);
@@ -134,7 +134,7 @@
   & > .month.-selected,
   & > .month:hover {
     font-weight: 600;
-    color: var(--smooth-white);
+    color: var(--green-light);
   }
 
   & > .month.-highlight:not(.-selected) {

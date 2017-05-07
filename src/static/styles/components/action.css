@@ -1,21 +1,21 @@
 .action-block {
+  @apply --circle;
+  @apply --depth-4;
   position: fixed false 32px 32px false;
+  size: 64px;
   background: var(--logo);
   cursor: pointer;
   transition: all 100ms linear;
-  size: 64px;
   user-select: none;
-  @apply --circle;
-  @apply --depth-4;
   -webkit-tap-highlight-color: transparent;
 
   & > .action {
-    position: absolute 0 0 false false;
-    color: white;
     @apply --flex-middle;
-    size: 100%;
-    z-index: 1000;
     @apply --circle;
+    position: absolute 0 0 false false;
+    size: 100%;
+    color: white;
+    z-index: 1000;
 
     & > .icon { font-size: 32px; }
   }
@@ -26,8 +26,8 @@
   }
 
   & > .select > .month {
-    width: calc(100% / 6);
     @apply --flex-middle;
+    width: calc(100% / 6);
 
     &:nth-child(-n+6) { border-bottom: 1px solid var(--gray-light); }
 
@@ -38,10 +38,10 @@
   }
 
   & > .reset {
+    @apply --circle;
     position: absolute 8px false false 8px;
     display: none;
     color: white;
-    @apply --circle;
 
     & > .icon { font-size: 32px; }
   }
@@ -61,10 +61,10 @@
 .action-block.-active {
   right: 28px;
   bottom: 28px;
-  background: var(--logo);
-  color: var(--smooth-white);
   size: 400px 72px;
   border-radius: 36px;
+  background: var(--logo);
+  color: var(--smooth-white);
 
   & > .action {
     top: 8px;

@@ -1,35 +1,35 @@
 .tab-block {
   position: fixed var(--header-height) false false 0;
-  box-shadow: inset -1px 0 0 0 rgba(var(--gray-light), .4);
-  background: var(--smooth-white);
   size: var(--tab-width) calc(100vh - var(--header-height));
-  z-index: 100;
+  box-shadow: inset -1px 0 0 0 rgba(var(--gray-light), .4);
   padding-top: 32px;
+  background: var(--smooth-white);
+  z-index: 100;
 
   @media (--below-tablet) {
+    @apply --depth-1;
     top: var(--tablet-header-height);
     size: 100% 48px;
-    padding-top: 0;
-    overflow-x: auto;
     border-right-width: 0;
-    @apply --depth-1;
+    padding-top: 0;
     background: var(--berry);
+    overflow-x: auto;
   }
 }
 
 .tab-list {
   position: relative;
+  display: flex;
   size: 100%;
-  writing-mode: vertical-lr;
   font-size: 18px;
   overflow-y: auto;
   overflow-x: hidden;
-  display: flex;
+  writing-mode: vertical-lr;
 
   @media (--below-tablet) {
+    display: flex;
     height: 48px;
     font-size: 16px;
-    display: flex;
     overflow-y: hidden;
     overflow-x: auto;
     writing-mode: horizontal-tb;

@@ -12,7 +12,6 @@
 
   & > .label {
     position: relative;
-    writing-mode: vertical-rl;
     display: flex;
       align-items: center;
     margin: 8px 16px 0 0;
@@ -20,6 +19,7 @@
     letter-spacing: 4px;
     font-weight: 300;
     color: var(--berry);
+    writing-mode: vertical-rl;
 
     &::after {
       content: '';
@@ -46,8 +46,8 @@
 
   & > .goods {
     display: flex;
-    flex-wrap: wrap;
-    flex-grow: 2;
+      flex-wrap: wrap;
+      flex-grow: 2;
   }
 
   @media (--above-tablet) { margin-bottom: 32px; }
@@ -56,8 +56,8 @@
 
 .food-info {
   position: relative;
-  border-radius: 2px;
   display: flex;
+  border-radius: 2px;
   transition: all 160ms linear;
   overflow: hidden;
 
@@ -102,10 +102,10 @@
 }
 
 .food-info.-card {
+  flex-direction: column;
   width: calc(100% / 8);
   margin-bottom: 8px;
   padding: 8px;
-  flex-direction: column;
 
   & > .media {
     width: 100%;
@@ -121,9 +121,9 @@
   }
 
   & > .harvest-calendar {
+    display: flex;
     size: 100% 4px;
     margin: 12px 0;
-    display: flex;
     order: 1;
   }
 
@@ -138,9 +138,9 @@
   @media (max-width: 1280px) { width: calc(100% / 5); }
   @media (--below-small) { width: calc(100% / 4); }
   @media (--below-mobile) {
+    @apply --depth-1;
     display: block;
     size: 100% auto;
-    @apply --depth-1;
     margin: 8px 4px 0;
     padding: 0;
     background: white;
@@ -154,27 +154,27 @@
     }
 
     & > .name {
-      height: calc(100% - 24px);
       display: flex;
-      align-items: center;
-      font-size: 1em;
+        align-items: center;
+      height: calc(100% - 24px);
       margin: 0;
       padding-left: 8px;
+      font-size: 1em;
     }
 
     & > .harvest-calendar {
-      size: calc(100% - 64px) 24px;
+      position: absolute false 0 0 false;
       align-items: center;
       justify-content: space-around;
+      size: calc(100% - 64px) 24px;
       margin: 0;
       border-top: 1px solid rgba(var(--gray-light), .4);
       padding: 0;
-      position: absolute false 0 0 false;
 
       & > .dot {
+        @apply --flex-middle;
         size: calc(100% / 12) 100%;
         margin-left: 0;
-        @apply --flex-middle;
         border-radius: 0;
         font-size: 12px;
         background: transparent;
@@ -186,13 +186,13 @@
 }
 
 .food-info.-list {
+  align-items: center;
   width: 100%;
   padding: 8px 16px;
-  align-items: center;
 
   & > .media {
-    size: 56px;
     @apply --circle;
+    size: 56px;
   }
 
   & > .media > .img {
@@ -206,9 +206,9 @@
     justify-content: space-around;
 
     & > .dot {
+      @apply --flex-middle;
       size: calc(100% / 12) auto;
       margin-right: 0;
-      @apply --flex-middle;
       background: transparent;
     }
 
