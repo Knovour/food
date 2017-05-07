@@ -1,6 +1,6 @@
 .action-block {
   @apply --circle;
-  @apply --depth-4;
+  @apply --depth-3;
   position: fixed false 32px 32px false;
   size: 64px;
   background: var(--logo);
@@ -48,8 +48,8 @@
 
   @media (--above-tablet) { display: none; }
   @media (--below-mobile) {
-    right: 24px;
-    bottom: 24px;
+    right: 16px;
+    bottom: 16px;
     size: 56px;
 
     & > .action > .icon { font-size: 28px; }
@@ -89,8 +89,8 @@
   }
 
   @media (--below-mobile) {
-    right: 22px;
-    bottom: 22px;
+    right: 12px;
+    bottom: 12px;
     size: calc(100% - 32px) 64px;
     border-radius: 32px;
 

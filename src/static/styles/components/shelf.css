@@ -15,6 +15,7 @@
     display: flex;
       align-items: center;
     margin: 8px 16px 0 0;
+    padding: 0 8px 0 0;
     font-size: 24px;
     letter-spacing: 4px;
     font-weight: 300;
