@@ -177,7 +177,7 @@
 
   @media (--below-mobile) {
     & > .media {
-      border-radius: 0;
+      border-radius: 4px;
       size: calc((100vw - (8px * 9)) / 3);
     }
 
