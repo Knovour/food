@@ -57,6 +57,7 @@
   @media (--below-tablet) {
     top: var(--tablet-header-height);
     right: 0;
+    bottom: auto;
     width: 100%;
     height: var(--tablet-tab-height);
   }
