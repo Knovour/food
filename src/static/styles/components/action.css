@@ -48,13 +48,14 @@
 
   @media (--above-tablet) { display: none; }
   @media (--below-mobile) {
-    right: 16px;
-    bottom: 16px;
-    size: 56px;
+    display: none;
+    // right: 16px;
+    // bottom: 16px;
+    // size: 56px;
 
-    & > .action > .icon { font-size: 28px; }
-    & > .select { size: 24px; }
-    & > .reset > .icon { font-size: 28px; }
+    // & > .action > .icon { font-size: 28px; }
+    // & > .select { size: 24px; }
+    // & > .reset > .icon { font-size: 28px; }
   }
 }
 
