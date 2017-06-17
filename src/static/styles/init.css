@@ -17,6 +17,7 @@
   --header-height: 64px;
   --tablet-header-height: 56px;
   --tab-width: 48px;
+  --tablet-tab-height: 48px;
   --sidebar-width: 256px;
   --narrow-sidebar-width: 48px;
   --small-sidebar-width: 216px;
@@ -52,3 +53,43 @@
 @custom-media --above-small (max-width: 1121px);
 @custom-media --above-tablet (min-width: 977px);
 @custom-media --above-mobile (min-width: 625px);
+
+
+
+body {
+  background-color: var(--smooth-white);
+  font-family: Muli, 'Noto Sans TC', 微軟正黑體, sans-serif;
+}
+
+div, h1, h2, h3, h4, h5, h6, header, footer, section, article {
+  box-sizing: border-box;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+h1 {
+  font-weight: 100;
+  font-size: 3em;
+}
+
+h2, h3 { font-weight: 500; }
+
+a {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+/* DEBUG PANEL */
+.elm-overlay {
+  z-index: 1000;
+
+  @media (--below-tablet) { display: none; }
+}

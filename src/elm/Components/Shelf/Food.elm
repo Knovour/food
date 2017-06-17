@@ -12,11 +12,7 @@ import Libs.Type exposing (Food)
 food : Action.Model -> Food -> Html Main.Msg
 food { isCardLayout } data =
   div
-    [ classList
-      [ ("food-info", True)
-      , ("-card", isCardLayout)
-      , ("-list", not isCardLayout)
-      ]
+    [ class "food-info"
     , onMouseEnter (Action <| Hover data.harvest)
     , onMouseLeave (Action <| Hover [])
     ]

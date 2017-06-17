@@ -1,5 +1,6 @@
 module Main exposing (..)
 import Html exposing (Html, div, main_)
+import Html.Attributes exposing (classList)
 
 import Architecture.Main exposing (..)
 import Components.Dimmer  as Dimmer exposing (dimmer)
@@ -40,9 +41,15 @@ init = (model, cmd)
 view : Model -> Html Msg
 view model =
   let foodDict = foodRefilter model.action model.filter model.content
+      classes =
+        classList
+        [ ("main-block", True)
+        , ("-extend", (not model.action.toggleSidebar && model.screen.width > 976))
+        , ("-show-all", not model.action.isGroupByTab)
+        ]
   in
     div []
-      [ main_ []
+      [ main_ [ classes ]
         [ header_ model
         , tools model
         , tabs model.action foodDict

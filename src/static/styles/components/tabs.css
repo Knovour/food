@@ -1,6 +1,4 @@
 .tab-block {
-  position: fixed var(--header-height) false false 0;
-  size: var(--tab-width) calc(100vh - var(--header-height));
   box-shadow: inset -1px 0 0 0 rgba(var(--gray-light), .4);
   padding-top: 32px;
   background: var(--smooth-white);
@@ -8,8 +6,6 @@
 
   @media (--below-tablet) {
     @apply --depth-1;
-    top: var(--tablet-header-height);
-    size: 100% 48px;
     border-right-width: 0;
     padding-top: 0;
     background: var(--berry);

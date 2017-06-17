@@ -13,18 +13,18 @@
   & > .label {
     position: relative;
     display: flex;
-      align-items: center;
-    margin: 8px 16px 0 0;
-    padding: 0 8px 0 0;
+      align-items: flex-end;
+    margin: 8px 0 0 0;
     font-size: 24px;
     letter-spacing: 4px;
     font-weight: 300;
     color: var(--berry);
     writing-mode: vertical-rl;
+    width: 48px;
 
     &::after {
       content: '';
-      position: absolute 0 -4px false false;
+      position: absolute 0 8px false false;
       size: 2px 4em;
       background: var(--berry);
 
@@ -45,14 +45,47 @@
     }
   }
 
-  & > .goods {
-    display: flex;
-      flex-wrap: wrap;
-      flex-grow: 2;
+  & > .goods-layout {
+    display: grid;
+      grid-gap: 8px 0;
+      grid-template-columns: repeat(8, 1fr);
+    flex-wrap: wrap;
+    flex-grow: 1;
+    width: calc(100% - 48px);
   }
 
   @media (--above-tablet) { margin-bottom: 32px; }
   @media (--below-small) { flex-flow: column; }
+}
+
+.goods-layout {
+  display: grid;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  width: calc(100% - 48px);
+
+  &.-card {
+    grid-gap: 8px 0;
+    grid-template-columns: repeat(8, 1fr);
+
+    @media (max-width: 1600px) { grid-template-columns: repeat(7, 1fr); }
+    @media (max-width: 1380px) { grid-template-columns: repeat(6, 1fr); }
+    @media (max-width: 1280px) { grid-template-columns: repeat(5, 1fr); }
+    @media (--below-small) {
+      width: 100%;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    @media (--below-mobile) {
+      padding: 8px;
+      grid-gap: 8px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &.-list {
+    grid-gap: 0;
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 .food-info {
@@ -102,10 +135,8 @@
   }
 }
 
-.food-info.-card {
+.goods-layout.-card .food-info {
   flex-direction: column;
-  width: calc(100% / 8);
-  margin-bottom: 8px;
   padding: 8px;
 
   & > .media {
@@ -114,11 +145,6 @@
 
   & > .media > .img {
     size: 100% auto;
-
-    @media (--below-mobile) {
-      size: auto 100%;
-      transform: translateX(-8px);
-    }
   }
 
   & > .harvest-calendar {
@@ -134,33 +160,24 @@
     order: 2;
   }
 
-  @media (max-width: 1600px) { width: calc(100% / 7); }
-  @media (max-width: 1380px) { width: calc(100% / 6); }
-  @media (max-width: 1280px) { width: calc(100% / 5); }
-  @media (--below-small) { width: calc(100% / 4); }
   @media (--below-mobile) {
     @apply --depth-1;
-    display: block;
-    size: 100% auto;
-    margin: 8px 4px 0;
-    padding: 0;
     background: white;
 
-    & > .media,
-    & > .name { float: left; }
-
     & > .media {
-      size: 64px;
       border-radius: 0;
+      size: calc((100vw - (8px * 4) - (8px * 6)) / 3);
+    }
+
+    & > .media > .img {
+      object-fit: cover;
+      size: 100%;
     }
 
     & > .name {
-      display: flex;
-        align-items: center;
-      height: calc(100% - 24px);
+      font-size: 16px;
       margin: 0;
-      padding-left: 8px;
-      font-size: 1em;
+      padding: 8px 0 8px;
     }
 
     & > .harvest-calendar {
@@ -186,9 +203,8 @@
   }
 }
 
-.food-info.-list {
+.goods-layout.-list .food-info {
   align-items: center;
-  width: 100%;
   padding: 8px 16px;
 
   & > .media {

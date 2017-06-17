@@ -1,13 +1,10 @@
 .tools-sidebar {
-  position: fixed 0 0 false false;
-  size: var(--sidebar-width) 100vh;
   box-shadow: inset 1px 0 0 0 rgba(var(--gray-light), .4);
   padding: 24px 22px;
   background: var(--smooth-white);
   z-index: 100;
 
   @media (--above-tablet) and (--below-large) {
-    width: var(--small-sidebar-width);
     padding: 24px 14px 0;
   }
 

@@ -1,6 +1,6 @@
 module Components.Shelf.Goods exposing (..)
 import Html            exposing (Html, Attribute, div)
-import Html.Attributes exposing (class)
+import Html.Attributes exposing (classList)
 
 import Components.Shelf.Food  exposing (food)
 import Architecture.Main   as Main exposing (..)
@@ -9,8 +9,14 @@ import Libs.Type exposing (Food)
 
 
 
-goods : List (Attribute msg) -> List (Html msg) -> Html msg
-goods attr slot = div [ class "goods" ] slot
+goods : Action.Model -> List (Html msg) -> Html msg
+goods { isCardLayout } slot = div
+    [ classList
+      [ ("goods-layout", True)
+      , ("-card", isCardLayout)
+      , ("-list", not isCardLayout)
+      ]
+    ] slot
 
 
 foodList : List Food -> Action.Model -> List (Html Main.Msg)

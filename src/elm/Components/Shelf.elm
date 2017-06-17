@@ -31,6 +31,6 @@ layer_ action foodDict =
           Just
             (layer [ Layer.dataType species ]
               [ tag action.isGroupByTab species
-              , goods [] (Goods.foodList list action)
+              , goods action (Goods.foodList list action)
               ])
   ) foodTypes
