@@ -7,6 +7,24 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 // detemine build env
 const TARGET_ENV = process.env.npm_lifecycle_event === 'build' ? 'production' : 'development';
 
+const postcssOpts = {
+  loader: 'postcss-loader',
+  options: {
+    plugins: [
+      require('postcss-smart-import'),
+      require('postcss-cssnext')({
+        browsers: [ 'last 1 versions' ]
+      }),
+      require('postcss-nippon-color'),
+      require('rucksack-css'),
+      require('postcss-size'),
+      require('cssnano')({
+        autoprefixer: false
+      })
+    ]
+  }
+}
+
 // common webpack config
 const commonConfig = {
   output: {
@@ -48,11 +66,11 @@ if(TARGET_ENV === 'development') {
           'elm-webpack-loader?verbose=true&warn=true&debug=true'
         ]
       }, {
-        test: /\.p?css$/,
+        test: /\.css$/,
         use: [
           'style-loader',
           'css-loader',
-          'postcss-loader'
+          postcssOpts
         ]
       }],
     }
@@ -72,7 +90,10 @@ if(TARGET_ENV === 'production') {
         test: /\.p?css$/,
         loader: ExtractTextPlugin.extract({
           fallbackLoader: 'style-loader',
-          loader: 'css-loader!postcss-loader'
+          use: [
+            'css-loader',
+            postcssOpts
+          ]
         })
       }]
     },
