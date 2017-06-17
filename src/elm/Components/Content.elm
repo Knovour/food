@@ -10,11 +10,13 @@ import Libs.Type    exposing (Food)
 
 
 content : Model -> Dict String (List Food) -> Html Main.Msg
-content { action, screen } foodDict =
-  div
-    [ id "content"
-    , classList
-      [ ("-show-all", not action.isGroupByTab)
-      , ("-center", (not action.toggleSidebar || screen.width <= 976))
-      ]
-    ] [ shelf action foodDict ]
+content model foodDict =
+  let { action, screen } = model
+  in
+    div
+      [ id "content"
+      , classList
+        [ ("-show-all", not action.isGroupByTab)
+        , ("-center", (not action.toggleSidebar || screen.width <= 976))
+        ]
+      ] [ shelf model foodDict ]

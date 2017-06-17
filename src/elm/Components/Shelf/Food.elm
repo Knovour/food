@@ -9,8 +9,8 @@ import Libs.Type exposing (Food)
 
 
 
-food : Action.Model -> Food -> Html Main.Msg
-food { isCardLayout } data =
+food : Main.Model -> Food -> Html Main.Msg
+food { filter } data =
   div
     [ class "food-info"
     , onMouseEnter (Action <| Hover data.harvest)
@@ -19,6 +19,7 @@ food { isCardLayout } data =
     [ div [ class "media" ] [ img [ class "img", src data.image, alt "" ] [] ]
     , span [ class "name" ] [ text data.name ]
     , div [ class "harvest-calendar" ] (dotList data.harvest)
+    , currentMonth filter.now data.harvest
     ]
 
 
@@ -32,3 +33,17 @@ dotList harvestList =
         ]
       ] []
   ) (List.range 1 12)
+
+
+currentMonth : Int -> List Int -> Html Main.Msg
+currentMonth now harvestList =
+  let harvestInCurrentMonth = List.member now harvestList
+      hint = if harvestInCurrentMonth then "當季作物" else "非當季作物"
+  in
+    div
+      [ classList
+        [ ("harvest-hint", True)
+        , ("-now", (List.member now harvestList))
+        ]
+      ]
+      [ text hint ]

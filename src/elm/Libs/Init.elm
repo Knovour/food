@@ -2,9 +2,12 @@ module Libs.Init exposing (..)
 import Http
 import Task
 import Window
+import Date
+import Date.Extra exposing (monthNumber)
 
 import Architecture.Main   as Main exposing (..)
 import Architecture.Screen exposing (..)
+import Architecture.Filter exposing (..)
 import Libs.Parser exposing (parser)
 
 
@@ -20,6 +23,7 @@ cmd =
   Cmd.batch
     [ Http.send Content (Http.get contentUrl parser)
     , Task.perform (Screen << Width) Window.width
+    , Task.perform (Filter << Now << monthNumber) Date.now
     ]
 
 

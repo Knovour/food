@@ -77,7 +77,7 @@
     }
     @media (--below-mobile) {
       padding: 8px;
-      grid-gap: 8px;
+      grid-gap: 8px 4px;
       grid-template-columns: repeat(3, 1fr);
     }
   }
@@ -94,11 +94,6 @@
   border-radius: 2px;
   transition: all 160ms linear;
   overflow: hidden;
-
-  &:hover {
-    background: white;
-    @apply --depth-1;
-  }
 
   & > .media { overflow: hidden; }
 
@@ -133,6 +128,13 @@
     font-size: 1.1em;
     color: var(--black);
   }
+
+  @media (--above-mobile) {
+    &:hover {
+      background: white;
+      @apply --depth-1;
+    }
+  }
 }
 
 .goods-layout.-card .food-info {
@@ -160,13 +162,23 @@
     order: 2;
   }
 
-  @media (--below-mobile) {
-    @apply --depth-1;
-    background: white;
+  & > .harvest-hint {
+    order: 3;
+    font-size: 12px;
+    padding: 8px 0 8px;
 
+    &.-now { color: var(--green); }
+    &:not(.-now) { color: var(--gray-light); }
+  }
+
+  @media (--above-mobile) {
+    & > .harvest-hint { display: none; }
+  }
+
+  @media (--below-mobile) {
     & > .media {
       border-radius: 0;
-      size: calc((100vw - (8px * 4) - (8px * 6)) / 3);
+      size: calc((100vw - (8px * 9)) / 3);
     }
 
     & > .media > .img {
@@ -177,28 +189,11 @@
     & > .name {
       font-size: 16px;
       margin: 0;
-      padding: 8px 0 8px;
+      padding: 8px 0;
     }
 
     & > .harvest-calendar {
-      position: absolute false 0 0 false;
-      align-items: center;
-      justify-content: space-around;
-      size: calc(100% - 64px) 24px;
-      margin: 0;
-      border-top: 1px solid rgba(var(--gray-light), .4);
-      padding: 0;
-
-      & > .dot {
-        @apply --flex-middle;
-        size: calc(100% / 12) 100%;
-        margin-left: 0;
-        border-radius: 0;
-        font-size: 12px;
-        background: transparent;
-      }
-
-      & > .dot::before { content: counter(div); }
+      display: none;
     }
   }
 }

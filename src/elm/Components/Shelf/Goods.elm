@@ -19,5 +19,5 @@ goods { isCardLayout } slot = div
     ] slot
 
 
-foodList : List Food -> Action.Model -> List (Html Main.Msg)
-foodList list action = List.map (food action) list
+foodList : List Food -> Main.Model -> List (Html Main.Msg)
+foodList list model = List.map (food model) list
