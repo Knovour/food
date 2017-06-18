@@ -117,6 +117,15 @@
     }
   }
 
+  & > .harvest-hint {
+    order: 3;
+    font-size: 12px;
+    padding: 8px 0 8px;
+
+    &.-now { color: var(--green); }
+    &:not(.-now) { color: var(--gray-light); }
+  }
+
   & > .name {
     font-size: 1.1em;
     color: var(--black);
@@ -127,6 +136,8 @@
       background: white;
       @apply --depth-1;
     }
+
+    & > .harvest-hint { display: none; }
   }
 }
 
@@ -153,19 +164,6 @@
     display: block;
     margin: 0 0 12px;
     order: 2;
-  }
-
-  & > .harvest-hint {
-    order: 3;
-    font-size: 12px;
-    padding: 8px 0 8px;
-
-    &.-now { color: var(--green); }
-    &:not(.-now) { color: var(--gray-light); }
-  }
-
-  @media (--above-mobile) {
-    & > .harvest-hint { display: none; }
   }
 
   @media (--below-mobile) {
