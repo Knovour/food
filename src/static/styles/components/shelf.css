@@ -119,8 +119,9 @@
 
   & > .harvest-hint {
     order: 3;
+    padding: 4px 0 0;
     font-size: 12px;
-    padding: 8px 0 8px;
+    transform: scale(.9);
 
     &.-now { color: var(--green); }
     &:not(.-now) { color: var(--gray-light); }
@@ -180,7 +181,7 @@
     & > .name {
       font-size: 16px;
       margin: 0;
-      padding: 8px 0;
+      padding: 12px 0 0;
     }
 
     & > .harvest-calendar {
