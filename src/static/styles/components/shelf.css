@@ -70,7 +70,10 @@
     }
     @media (--below-mobile) {
       padding: 8px;
-      grid-gap: 8px 0;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media (max-width: 400px) {
       grid-template-columns: repeat(3, 1fr);
     }
   }
@@ -171,7 +174,7 @@
   @media (--below-mobile) {
     & > .media {
       border-radius: 4px;
-      size: calc((100vw - (8px * 8)) / 3);
+      size: calc((100vw - (8px * 10)) / 4);
     }
 
     & > .media > .img {
@@ -187,6 +190,12 @@
 
     & > .harvest-calendar {
       display: none;
+    }
+  }
+
+  @media (max-width: 400px) {
+    & > .media {
+      size: calc((100vw - (8px * 8)) / 3);
     }
   }
 }
