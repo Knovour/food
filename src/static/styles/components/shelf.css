@@ -122,6 +122,7 @@
     padding: 4px 0 0;
     font-size: 12px;
     transform: scale(.9);
+    transform-origin: left;
 
     &.-now { color: var(--green); }
     &:not(.-now) { color: var(--gray-light); }
