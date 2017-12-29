@@ -2,7 +2,7 @@ module Libs.Normalize exposing (normalize)
 import Dict exposing (Dict)
 
 import Libs.Data exposing (foodTypes)
-import Libs.Type exposing (Respond, Item, Asset, Food)
+import Libs.Type exposing (Respond, Item, Asset, Food, FoodType)
 
 
 
@@ -31,10 +31,10 @@ insert assets item =
     }
 
 
-toFoodListTuple : List Food -> String -> (String, List Food)
-toFoodListTuple rowData tag =
+toFoodListTuple : List Food -> FoodType -> (String, List Food)
+toFoodListTuple rowData { name } =
   rowData
-    |> List.filter (\{ species } -> species == tag)
+    |> List.filter (\{ species } -> species == name)
     |> List.sortBy (\{ harvest } -> List.length harvest)
     |> List.reverse
-    |> (,) tag
+    |> (,) name

@@ -1,13 +1,13 @@
 module Architecture.Action exposing (..)
 
 import Architecture.Screen as Screen exposing (..)
+import Routing exposing (..)
 
 
 
 type alias Model =
   { hover : List Int
   , group : String
-  , isGroupByTab : Bool
   , isCardLayout : Bool
   , toggleSidebar : Bool
   , toggleActionBtn : Bool
@@ -18,7 +18,6 @@ model : Model
 model =
   { hover = []
   , group = "蔬菜"
-  , isGroupByTab = True
   , isCardLayout = True
   , toggleSidebar = True
   , toggleActionBtn = False
@@ -28,7 +27,6 @@ model =
 type Msg
   = Hover (List Int)
   | Group String
-  | IsGroupByTab
   | IsCardLayout
   | ToggleSidebar
   | ToggleActionBtn
@@ -39,7 +37,6 @@ update actionMsg model =
   case actionMsg of
     Hover list      -> { model | hover = list }
     Group str       -> { model | group = str }
-    IsGroupByTab    -> { model | isGroupByTab = (not model.isGroupByTab) }
     IsCardLayout    -> { model | isCardLayout = (not model.isCardLayout) }
     ToggleSidebar   -> { model | toggleSidebar = (not model.toggleSidebar) }
     ToggleActionBtn -> { model | toggleActionBtn = (not model.toggleActionBtn) }
@@ -51,5 +48,16 @@ resize screenMsg model =
     Width w ->
       { model
       | isCardLayout = (w <= 1120 || model.isCardLayout)
-      , isGroupByTab = (w <= 1120 || model.isGroupByTab)
       }
+
+
+updateGroup : Routing.Route -> Model -> Model
+updateGroup routeMsg model =
+  case routeMsg of
+    VegetableRoute -> { model | group = "蔬菜" }
+    RootVegetableRoute -> { model | group = "根莖類" }
+    BeanRoute -> { model | group = "豆類" }
+    MushroomRoute -> { model | group = "菇類" }
+    CerealRoute -> { model | group = "穀類" }
+    FruitRoute -> { model | group = "水果" }
+    NotFoundRoute -> model

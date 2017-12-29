@@ -1,5 +1,8 @@
 module Architecture.Main exposing (..)
 import Http
+import Navigation exposing (Location)
+
+import Routing exposing (Route(VegetableRoute), Route)
 
 import Architecture.Box     as Box
 import Architecture.Action  as Action exposing (..)
@@ -16,6 +19,7 @@ type alias Model =
   , action  : Action.Model
   , screen  : Screen.Model
   , content : Content.Model
+  , route   : Route
   }
 
 
@@ -26,16 +30,26 @@ model =
   , action  = Action.model
   , screen  = Screen.model
   , content = Content.model
+  , route   = VegetableRoute
+  }
+
+
+initialModel : Route -> Model
+initialModel route =
+  { model
+  | route = route
+  , action = (Action.updateGroup route model.action)
   }
 
 
 type Msg
   = NoOp
   | Filter Filter.Msg
-  | Box    Box.Msg
+  | Box Box.Msg
   | Action Action.Msg
   | Screen Screen.Msg
   | Content (Result Http.Error Respond)
+  | OnLocationChange (Maybe Route)
 
 
 update : Msg -> Model -> (Model, Cmd msg)
@@ -51,5 +65,12 @@ update msg model =
             , action = (Action.resize screenMsg model.action)
             }
           Content contentMsg -> { model | content = (Content.update contentMsg model.content) }
+          OnLocationChange locationMsg ->
+            let routeMsg = Maybe.withDefault VegetableRoute locationMsg
+            in
+              { model
+              | route = routeMsg
+              , action = (Action.updateGroup routeMsg model.action)
+              }
           _ -> model
   in (newModel, Cmd.none)

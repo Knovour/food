@@ -1,6 +1,6 @@
 module Components.Header exposing (header_)
-import Html            exposing (Html, header, img, div)
-import Html.Attributes exposing (class, classList, src, alt)
+import Html            exposing (Html, header, a, img, div)
+import Html.Attributes exposing (class, classList, href, title, src, alt)
 
 import Architecture.Main as Main exposing (..)
 import Components.Header.Search    exposing (search)
@@ -17,11 +17,12 @@ header_ model =
       ]
     ]
     [ div [ class "main-nav" ]
-      [ img
-        [ class "logo"
-        , src "https://images.contentful.com/8whbhu195nq1/XEjhAcjLqgkisASyao8KY/dae01c7a3be79d16a89f533249cf05b3/logo.svg"
-        , alt "logo"
-        ] []
+      [ a [ class "logo", href "/#", title "logo"]
+        [ img
+          [ src "https://images.contentful.com/8whbhu195nq1/XEjhAcjLqgkisASyao8KY/dae01c7a3be79d16a89f533249cf05b3/logo.svg"
+          , alt "logo"
+          ] []
+        ]
       , search model.filter
       , rightMenu model.action
       ]

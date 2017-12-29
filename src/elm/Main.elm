@@ -1,6 +1,9 @@
 module Main exposing (..)
 import Html exposing (Html, div, main_)
 import Html.Attributes exposing (classList)
+import Navigation exposing (Location)
+
+import Routing exposing (Route, fromLocation, parseLocation)
 
 import Architecture.Main exposing (..)
 import Components.Dimmer  as Dimmer exposing (dimmer)
@@ -20,7 +23,7 @@ import Libs.Helpers exposing (foodRefilter)
 
 main : Program Never Model Msg
 main =
-  Html.program
+  Navigation.program (fromLocation >> OnLocationChange)
     { init = init
     , view = view
     , update = update
@@ -31,8 +34,10 @@ main =
 
 -- INIT
 
-init : (Model, Cmd Msg)
-init = (model, cmd)
+init : Location -> (Model, Cmd Msg)
+init location =
+  let currentRoute = parseLocation location
+  in (initialModel currentRoute, cmd)
 
 
 
@@ -45,7 +50,6 @@ view model =
         classList
         [ ("main-block", True)
         , ("-extend", (not model.action.toggleSidebar && model.screen.width > 976))
-        , ("-show-all", not model.action.isGroupByTab)
         ]
   in
     div []

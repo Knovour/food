@@ -16,7 +16,6 @@ content model foodDict =
     div
       [ id "content"
       , classList
-        [ ("-show-all", not action.isGroupByTab)
-        , ("-center", (not action.toggleSidebar || screen.width <= 976))
+        [ ("-center", (not action.toggleSidebar || screen.width <= 976))
         ]
       ] [ shelf model foodDict ]

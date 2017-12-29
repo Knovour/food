@@ -5,7 +5,7 @@
   z-index: 100;
 
   @media (--below-tablet) {
-    @apply --depth-1;
+    box-shadow: var(--depth-1);
     border-right-width: 0;
     padding-top: 0;
     background: var(--berry);
@@ -35,7 +35,9 @@
 
   & > .tab {
     position: relative;
-    display: inline-block;
+    display: flex;
+      justify-content: center;
+      align-items: center;
     size: 100% 88px;
     font-weight: 300;
     cursor: pointer;
@@ -44,7 +46,6 @@
     opacity: .65;
     color: var(--berry);
     user-select: none;
-    @apply --flex-middle;
 
     &::after {
       content: '';

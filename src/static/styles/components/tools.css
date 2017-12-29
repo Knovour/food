@@ -55,7 +55,9 @@
   }
 
   & > .opt {
-    @apply --flex-middle;
+    display: flex;
+      justify-content: center;
+      align-items: center;
     width: calc(50% - 4px);
     border-radius: 2px;
     padding: 8px 0;

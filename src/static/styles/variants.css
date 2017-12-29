@@ -1,10 +1,10 @@
-.-circle { @apply --circle; }
+.-circle { border-radius: 50%; }
 .-hide { display: none; }
 
 .-depth {
-  &-1 { @apply --depth-1; }
-  &-2 { @apply --depth-2; }
-  &-3 { @apply --depth-3; }
-  &-4 { @apply --depth-4; }
-  &-5 { @apply --depth-5; }
+  &-1 { box-shadow: var(--depth-1); }
+  &-2 { box-shadow: var(--depth-2); }
+  &-3 { box-shadow: var(--depth-3); }
+  &-4 { box-shadow: var(--depth-4); }
+  &-5 { box-shadow: var(--depth-5); }
 }

@@ -1,6 +1,6 @@
 .action-block {
-  @apply --circle;
-  @apply --depth-3;
+  border-radius: 50%;
+  box-shadow: var(--depth-3);
   position: fixed false 32px 32px false;
   size: 64px;
   background: var(--logo);
@@ -10,8 +10,10 @@
   -webkit-tap-highlight-color: transparent;
 
   & > .action {
-    @apply --flex-middle;
-    @apply --circle;
+    display: flex;
+      justify-content: center;
+      align-items: center;
+    border-radius: 50%;
     position: absolute 0 0 false false;
     size: 100%;
     color: white;
@@ -26,7 +28,9 @@
   }
 
   & > .select > .month {
-    @apply --flex-middle;
+    display: flex;
+      justify-content: center;
+      align-items: center;
     width: calc(100% / 6);
 
     &:nth-child(-n+6) { border-bottom: 1px solid var(--gray-light); }
@@ -38,7 +42,7 @@
   }
 
   & > .reset {
-    @apply --circle;
+    border-radius: 50%;
     position: absolute 8px false false 8px;
     display: none;
     color: white;
@@ -49,13 +53,6 @@
   @media (--above-tablet) { display: none; }
   @media (--below-mobile) {
     display: none;
-    // right: 16px;
-    // bottom: 16px;
-    // size: 56px;
-
-    // & > .action > .icon { font-size: 28px; }
-    // & > .select { size: 24px; }
-    // & > .reset > .icon { font-size: 28px; }
   }
 }
 
@@ -85,7 +82,9 @@
   }
 
   & > .reset {
-    @apply --flex-middle;
+    display: flex;
+      justify-content: center;
+      align-items: center;
     size: 56px;
   }
 

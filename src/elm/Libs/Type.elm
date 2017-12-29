@@ -30,3 +30,9 @@ type alias Food =
   , species : String
   , harvest : List Int
   }
+
+
+type alias FoodType =
+  { name : String
+  , enName : String
+  }

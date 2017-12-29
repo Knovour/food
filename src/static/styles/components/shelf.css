@@ -96,8 +96,9 @@
 
     & > .dot {
       display: block;
-      size: 4px;
-      @apply --circle;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
       background: rgba(var(--gray-light), .5);
 
       & + .dot { margin-left: 8px; }
@@ -134,7 +135,7 @@
   @media (--above-mobile) {
     &:hover {
       background: white;
-      @apply --depth-1;
+      box-shadow: var(--depth-1);
     }
 
     & > .harvest-hint { display: none; }
@@ -194,7 +195,7 @@
   padding: 8px 16px;
 
   & > .media {
-    @apply --circle;
+    border-radius: 50%;
     size: 56px;
   }
 
@@ -209,7 +210,9 @@
     justify-content: space-around;
 
     & > .dot {
-      @apply --flex-middle;
+      display: flex;
+        justify-content: center;
+        align-items: center;
       size: calc(100% / 12) auto;
       margin-right: 0;
       background: transparent;
