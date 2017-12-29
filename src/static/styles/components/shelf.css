@@ -71,6 +71,10 @@
     @media (--below-mobile) {
       padding: 8px;
       grid-gap: 8px 0;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media (max-width: 400px) {
       grid-template-columns: repeat(3, 1fr);
     }
   }
@@ -120,8 +124,10 @@
 
   & > .harvest-hint {
     order: 3;
+    padding: 4px 0 0;
     font-size: 12px;
-    padding: 8px 0 8px;
+    transform: scale(.9);
+    transform-origin: left;
 
     &.-now { color: var(--green); }
     &:not(.-now) { color: var(--gray-light); }
@@ -168,9 +174,10 @@
   }
 
   @media (--below-mobile) {
+    padding: 8px;
     & > .media {
       border-radius: 4px;
-      size: calc((100vw - (8px * 8)) / 3);
+      size: calc((100vw - (8px * 10)) / 4);
     }
 
     & > .media > .img {
@@ -179,13 +186,19 @@
     }
 
     & > .name {
-      font-size: 16px;
+      font-size: 14px;
       margin: 0;
-      padding: 8px 0;
+      padding: 8px 0 0;
     }
 
     & > .harvest-calendar {
       display: none;
+    }
+  }
+
+  @media (max-width: 400px) {
+    & > .media {
+      size: calc((100vw - (8px * 8)) / 3);
     }
   }
 }
