@@ -10,18 +10,18 @@ const TARGET_ENV = process.env.npm_lifecycle_event === 'build' ? 'production' : 
 const postcssOpts = {
   loader: 'postcss-loader',
   options: {
-    plugins: [
-      require('postcss-import'),
-      require('postcss-cssnext')({
+    plugins: {
+      'postcss-import': {},
+      'postcss-cssnext': {
         browsers: [ 'last 1 versions' ]
-      }),
-      require('postcss-nippon-color'),
-      require('rucksack-css'),
-      require('postcss-size'),
-      require('cssnano')({
+      },
+      'postcss-nippon-color': {},
+      'rucksack-css': {},
+      'postcss-size': {},
+      'cssnano': {
         autoprefixer: false
-      })
-    ]
+      }
+    }
   }
 }
 
@@ -33,7 +33,7 @@ const commonConfig = {
   },
 
   resolve: {
-    extensions: [ '.js', '.elm' ]
+    extensions: ['.js', '.elm']
   },
 
   plugins: [
@@ -70,7 +70,7 @@ if(TARGET_ENV === 'development') {
         use: [
           'style-loader',
           'css-loader',
-          postcssOpts
+          'postcss-loader'
         ]
       }],
     }
@@ -85,14 +85,14 @@ if(TARGET_ENV === 'production') {
       rules: [{
         test:    /\.elm$/,
         exclude: [ /elm-stuff/, /node_modules/ ],
-        loader:  'elm-webpack-loader'
+        use:  'elm-webpack-loader'
       }, {
         test: /\.p?css$/,
         loader: ExtractTextPlugin.extract({
-          fallbackLoader: 'style-loader',
+          fallback: 'style-loader',
           use: [
             'css-loader',
-            postcssOpts
+            'postcss-loader'
           ]
         })
       }]
