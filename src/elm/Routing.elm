@@ -18,12 +18,12 @@ matchers : Parser (Route -> a) a
 matchers =
   oneOf
     [ map VegetableRoute top
-    , map VegetableRoute (s "vegetable")
-    , map RootVegetableRoute (s "root-vegetable")
-    , map BeanRoute (s "bean")
-    , map MushroomRoute (s "mushroom")
-    , map CerealRoute (s "cereal")
-    , map FruitRoute (s "fruit")
+    , map VegetableRoute (s "vegetables")
+    , map RootVegetableRoute (s "root-vegetables")
+    , map BeanRoute (s "beans")
+    , map MushroomRoute (s "mushrooms")
+    , map CerealRoute (s "cereals")
+    , map FruitRoute (s "fruits")
     ]
 
 

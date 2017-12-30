@@ -7,25 +7,6 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 // detemine build env
 const TARGET_ENV = process.env.npm_lifecycle_event === 'build' ? 'production' : 'development';
 
-const postcssOpts = {
-  loader: 'postcss-loader',
-  options: {
-    plugins: {
-      'postcss-import': {},
-      'postcss-cssnext': {
-        browsers: [ 'last 1 versions' ]
-      },
-      'postcss-nippon-color': {},
-      'rucksack-css': {},
-      'postcss-size': {},
-      'cssnano': {
-        autoprefixer: false
-      }
-    }
-  }
-}
-
-// common webpack config
 const commonConfig = {
   output: {
     path: path.resolve(__dirname, './dist/'),
@@ -45,7 +26,6 @@ const commonConfig = {
   ]
 }
 
-// additional webpack settings for local env (when invoked by 'npm start')
 if(TARGET_ENV === 'development') {
   module.exports = Object.assign({}, commonConfig, {
     entry: [
@@ -77,7 +57,6 @@ if(TARGET_ENV === 'development') {
   });
 }
 
-// additional webpack settings for prod env (when invoked via 'npm run build')
 if(TARGET_ENV === 'production') {
   module.exports = Object.assign({}, commonConfig, {
     entry: './src/static/index.js',
