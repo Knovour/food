@@ -21,15 +21,15 @@ layer_ : Model -> Dict String (List Food) -> List (Html Main.Msg)
 layer_ model foodDict =
   let { action } = model
   in
-    List.filterMap (\{ name } ->
-      let list = getDictValue name foodDict
-          isCurrentLayer = List.length list > 0 && name == action.group
+    List.filterMap (\{ enName } ->
+      let list = getDictValue enName foodDict
+          isCurrentLayer = List.length list > 0 && enName == action.group
       in
         case isCurrentLayer of
           False -> Nothing
           True ->
             Just
-              (layer [ Layer.dataType name ]
+              (layer [ Layer.dataType enName ]
                 [ goods action (Goods.foodList list model)
                 ]
               )

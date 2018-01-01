@@ -17,7 +17,7 @@ type alias Model =
 model : Model
 model =
   { hover = []
-  , group = "蔬菜"
+  , group = "vegetables"
   , isCardLayout = True
   , toggleSidebar = True
   , toggleActionBtn = False
@@ -54,10 +54,10 @@ resize screenMsg model =
 updateGroup : Routing.Route -> Model -> Model
 updateGroup routeMsg model =
   case routeMsg of
-    VegetableRoute -> { model | group = "蔬菜" }
-    RootVegetableRoute -> { model | group = "根莖類" }
-    BeanRoute -> { model | group = "豆類" }
-    MushroomRoute -> { model | group = "菇類" }
-    CerealRoute -> { model | group = "穀類" }
-    FruitRoute -> { model | group = "水果" }
+    VegetableRoute -> { model | group = "vegetables" }
+    RootVegetableRoute -> { model | group = "root-vegetables" }
+    BeanRoute -> { model | group = "beans" }
+    MushroomRoute -> { model | group = "mushrooms" }
+    CerealRoute -> { model | group = "cereals" }
+    FruitRoute -> { model | group = "fruits" }
     NotFoundRoute -> model

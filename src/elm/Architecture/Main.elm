@@ -1,8 +1,6 @@
 module Architecture.Main exposing (..)
-import Http
-import Navigation exposing (Location)
-
-import Routing exposing (Route(VegetableRoute), Route)
+import Task
+import GraphQL.Client.Http as GraphQLClient
 
 import Architecture.Box     as Box
 import Architecture.Action  as Action exposing (..)
@@ -10,6 +8,9 @@ import Architecture.Screen  as Screen
 import Architecture.Content as Content
 import Architecture.Filter  as Filter
 import Libs.Type exposing (Respond)
+import Libs.Graphcool exposing (generateQueryRequest)
+import Libs.Helpers exposing (getDictValue)
+import Routing exposing (Route(..))
 
 
 
@@ -48,16 +49,16 @@ type Msg
   | Box Box.Msg
   | Action Action.Msg
   | Screen Screen.Msg
-  | Content (Result Http.Error Respond)
+  | Content (Result GraphQLClient.Error Respond)
   | OnLocationChange (Maybe Route)
 
 
-update : Msg -> Model -> (Model, Cmd msg)
+update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
   let newModel =
         case msg of
           Action actionMsg -> { model | action = (Action.update actionMsg model.action) }
-          Box    boxMsg    -> { model | box    = (Box.update boxMsg) }
+          Box boxMsg -> { model | box = (Box.update boxMsg) }
           Filter filterMsg -> { model | filter = (Filter.update filterMsg model.filter) }
           Screen screenMsg ->
             { model
@@ -73,4 +74,23 @@ update msg model =
               , action = (Action.updateGroup routeMsg model.action)
               }
           _ -> model
-  in (newModel, Cmd.none)
+      newCmd =
+        case msg of
+          OnLocationChange locationMsg ->
+            let routeMsg = Maybe.withDefault VegetableRoute locationMsg
+                target =
+                  case routeMsg of
+                    VegetableRoute -> "vegetables"
+                    RootVegetableRoute -> "root-vegetables"
+                    BeanRoute -> "beans"
+                    MushroomRoute -> "mushrooms"
+                    CerealRoute -> "cereals"
+                    FruitRoute -> "fruits"
+                    NotFoundRoute -> "vegetables"
+                targetData = getDictValue target model.content
+            in
+              if List.length targetData == 0
+              then Task.attempt Content (generateQueryRequest target)
+              else Cmd.none
+          _ -> Cmd.none
+  in (newModel, newCmd)

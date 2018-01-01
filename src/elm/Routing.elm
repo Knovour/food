@@ -33,6 +33,7 @@ parseLocation location =
     Just route -> route
     Nothing -> NotFoundRoute
 
+
 fromLocation : Location -> Maybe Route
 fromLocation location =
   if String.isEmpty location.hash

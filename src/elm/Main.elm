@@ -37,7 +37,7 @@ main =
 init : Location -> (Model, Cmd Msg)
 init location =
   let currentRoute = parseLocation location
-  in (initialModel currentRoute, cmd)
+  in (initialModel currentRoute, cmd location.hash)
 
 
 

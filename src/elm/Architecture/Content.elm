@@ -1,9 +1,9 @@
 module Architecture.Content exposing (..)
-import Http
 import Dict exposing (Dict)
+import GraphQL.Client.Http as GraphQLClient
 
 import Libs.Normalize exposing (normalize)
-import Libs.Type      exposing (Food, Respond)
+import Libs.Type exposing (Food, Respond)
 
 
 
@@ -14,8 +14,15 @@ model : Model
 model = Dict.fromList []
 
 
-update : (Result Http.Error Respond) -> Model -> Model
+update : (Result GraphQLClient.Error Respond) -> Model -> Model
 update msg model =
   case msg of
-    Ok content -> normalize content
-    Err _      -> Dict.fromList []
+    Ok content ->
+      let { enName, foods } =
+            content
+              |> List.head
+              |> Maybe.withDefault { enName = "", foods = [] }
+
+          fmtFoods = normalize foods
+      in Dict.insert enName fmtFoods model
+    Err _ -> model

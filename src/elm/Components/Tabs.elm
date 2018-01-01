@@ -17,19 +17,13 @@ tabs { group } foodList =
 
 tagList : List FoodType -> Dict String (List Food) -> String -> List (Html Main.Msg)
 tagList foodTypes foodList group =
-  List.filterMap (\{ name, enName } ->
-    let hasContent = List.length (getDictValue name foodList) /= 0
-    in
-      case hasContent of
-        False -> Nothing
-        True ->
-          Just
-            (a
-              [ classList
-                [ ("tab", True)
-                , ("current", name == group)
-                ]
-              , href ("#/" ++ enName)
-              -- , onClick (Action <| Group name)
-              ] [ text name ])
+  List.map (\{ name, enName } ->
+    a
+      [ classList
+        [ ("tab", True)
+        , ("current", enName == group)
+        ]
+      , href ("#/" ++ enName)
+      -- , onClick (Action <| Group name)
+      ] [ text name ]
   ) foodTypes

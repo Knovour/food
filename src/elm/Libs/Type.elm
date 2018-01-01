@@ -17,19 +17,21 @@ type alias Asset =
   }
 
 
-type alias Respond =
-  { items  : List Item
-  , assets : List Asset
-  }
-
 
 type alias Food =
   { name    : String
   , image   : String
-  , source  : String
-  , species : String
   , harvest : List Int
   }
+
+
+type alias FoodGroup =
+  { enName : String
+  , foods : List Food
+  }
+
+
+type alias Respond = List FoodGroup
 
 
 type alias FoodType =
