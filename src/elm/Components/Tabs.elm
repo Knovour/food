@@ -5,9 +5,8 @@ import Dict exposing (Dict)
 
 import Architecture.Main   as Main   exposing (..)
 import Architecture.Action as Action exposing (..)
-import Libs.Type    exposing (Food, FoodType)
-import Libs.Data    exposing (foodTypes)
-import Libs.Helpers exposing (getDictValue)
+import Libs.Type exposing (Food, FoodType)
+import Libs.Data exposing (foodTypes)
 
 
 tabs : Action.Model -> Dict String (List Food) -> Html Main.Msg
@@ -24,6 +23,5 @@ tagList foodTypes foodList group =
         , ("current", enName == group)
         ]
       , href ("#/" ++ enName)
-      -- , onClick (Action <| Group name)
       ] [ text name ]
   ) foodTypes
