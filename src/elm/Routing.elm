@@ -27,6 +27,18 @@ matchers =
     ]
 
 
+getRouteTarget : Route -> String
+getRouteTarget routeMsg =
+  case routeMsg of
+    VegetableRoute -> "vegetables"
+    RootVegetableRoute -> "root-vegetables"
+    BeanRoute -> "beans"
+    MushroomRoute -> "mushrooms"
+    CerealRoute -> "cereals"
+    FruitRoute -> "fruits"
+    NotFoundRoute -> "vegetables"
+
+
 parseLocation : Location -> Route
 parseLocation location =
   case (parseHash matchers location) of

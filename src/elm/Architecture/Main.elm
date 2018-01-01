@@ -10,7 +10,7 @@ import Architecture.Filter  as Filter
 import Libs.Type exposing (Respond)
 import Libs.Graphcool exposing (generateQueryRequest)
 import Libs.Helpers exposing (getDictValue)
-import Routing exposing (Route(..))
+import Routing exposing (Route(..), getRouteTarget)
 
 
 
@@ -78,15 +78,7 @@ update msg model =
         case msg of
           OnLocationChange locationMsg ->
             let routeMsg = Maybe.withDefault VegetableRoute locationMsg
-                target =
-                  case routeMsg of
-                    VegetableRoute -> "vegetables"
-                    RootVegetableRoute -> "root-vegetables"
-                    BeanRoute -> "beans"
-                    MushroomRoute -> "mushrooms"
-                    CerealRoute -> "cereals"
-                    FruitRoute -> "fruits"
-                    NotFoundRoute -> "vegetables"
+                target = getRouteTarget routeMsg
                 targetData = getDictValue target model.content
             in
               if List.length targetData == 0

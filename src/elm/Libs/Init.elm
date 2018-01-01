@@ -16,9 +16,13 @@ import Libs.Graphcool exposing (generateQueryRequest)
 cmd : String -> Cmd Main.Msg
 cmd location =
   let group = String.dropLeft 2 location
+      target =
+        if String.isEmpty group
+        then "vegetables"
+        else group
   in
     Cmd.batch
-      [ Task.attempt Content (generateQueryRequest group)
+      [ Task.attempt Content (generateQueryRequest target)
       , Task.perform (Screen << Width) Window.width
       , Task.perform (Filter << Now << monthNumber) Date.now
       ]

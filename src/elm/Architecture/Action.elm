@@ -1,7 +1,7 @@
 module Architecture.Action exposing (..)
 
 import Architecture.Screen as Screen exposing (..)
-import Routing exposing (..)
+import Routing exposing (Route, getRouteTarget)
 
 
 
@@ -51,13 +51,6 @@ resize screenMsg model =
       }
 
 
-updateGroup : Routing.Route -> Model -> Model
+updateGroup : Route -> Model -> Model
 updateGroup routeMsg model =
-  case routeMsg of
-    VegetableRoute -> { model | group = "vegetables" }
-    RootVegetableRoute -> { model | group = "root-vegetables" }
-    BeanRoute -> { model | group = "beans" }
-    MushroomRoute -> { model | group = "mushrooms" }
-    CerealRoute -> { model | group = "cereals" }
-    FruitRoute -> { model | group = "fruits" }
-    NotFoundRoute -> model
+  { model | group = getRouteTarget routeMsg }
