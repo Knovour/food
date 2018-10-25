@@ -1,12 +1,11 @@
-module Components.Dimmer exposing (..)
-import Html            exposing (Html, div)
+module Components.Dimmer exposing (dimmer)
+
+import Html exposing (Html, div)
 import Html.Attributes exposing (classList)
-import Html.Events     exposing (onClick)
+import Html.Events exposing (onClick)
 
+import Architecture.Box as Box exposing (..)
 import Architecture.Main as Main exposing (..)
-import Architecture.Box  as Box exposing (..)
-
-
 
 dimmer : Box.Model -> Html Main.Msg
 dimmer { open } =
@@ -16,4 +15,5 @@ dimmer { open } =
       , ("-disabled", not open)
       ]
     , onClick (Box Close)
-    ] []
+    ]
+    []

@@ -1,27 +1,27 @@
 module Components.Header exposing (header_)
-import Html            exposing (Html, header, a, img, div)
-import Html.Attributes exposing (class, classList, href, title, src, alt)
+
+import Html exposing (Html, a, div, header, img)
+import Html.Attributes exposing (alt, class, classList, href, src, title)
 
 import Architecture.Main as Main exposing (..)
-import Components.Header.Search    exposing (search)
 import Components.Header.RightMenu exposing (rightMenu)
-
-
+import Components.Header.Search exposing (search)
 
 header_ : Model -> Html Main.Msg
 header_ model =
   header
     [ classList
       [ ("header-block", True)
-      , ("-extend", (not model.action.toggleSidebar && model.screen.width > 976))
+      , ("-extend", not model.action.toggleSidebar && model.screen.width > 976)
       ]
     ]
     [ div [ class "main-nav" ]
-      [ a [ class "logo", href "/#", title "logo"]
+      [ a [ class "logo", href "/#", title "logo" ]
         [ img
           [ src "https://images.contentful.com/8whbhu195nq1/XEjhAcjLqgkisASyao8KY/dae01c7a3be79d16a89f533249cf05b3/logo.svg"
           , alt "logo"
-          ] []
+          ]
+          []
         ]
       , search model.filter
       , rightMenu model.action

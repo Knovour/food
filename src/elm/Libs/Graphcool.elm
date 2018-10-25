@@ -1,10 +1,10 @@
-module Libs.Graphcool exposing (..)
+module Libs.Graphcool exposing (generateQueryRequest, iNeedFoods, sendQuery)
 
+import Task exposing (Task)
+import GraphQL.Client.Http as GraphQLClient
 import GraphQL.Request.Builder exposing (..)
 import GraphQL.Request.Builder.Arg as Arg
 import GraphQL.Request.Builder.Variable as Var
-import GraphQL.Client.Http as GraphQLClient
-import Task exposing (Task)
 
 import Libs.Type exposing (Food, FoodGroup, Respond)
 
@@ -13,20 +13,27 @@ iNeedFoods : String -> Request Query Respond
 iNeedFoods foodType =
   extract
     (field "allSpecies"
-      [ ("filter", Arg.object
+      [ ( "filter"
+        , Arg.object
           [ ("enName", Arg.variable (Var.required "enName" .name Var.string)) ]
         )
       ]
-      (list (object FoodGroup
-        |> with (field "enName" [] string)
-        |> with (field "foods" []
-            (list (object Food
-              |> with (field "name" [] string)
-              |> with (field "image" [] string)
-              |> with (field "harvest" [] (list int))
-            ))
-          )
-      ))
+      (list
+        (object FoodGroup
+          |> with (field "enName" [] string)
+          |> with
+              (field "foods"
+                []
+                (list
+                  (object Food
+                    |> with (field "name" [] string)
+                    |> with (field "image" [] string)
+                    |> with (field "harvest" [] (list int))
+                  )
+                )
+              )
+        )
+      )
     )
     |> queryDocument
     |> request { name = foodType }

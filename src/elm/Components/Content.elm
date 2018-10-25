@@ -1,12 +1,12 @@
-module Components.Content exposing (..)
-import Html            exposing (Html, div)
-import Html.Attributes exposing (id, class, classList)
+module Components.Content exposing (content)
+
 import Dict exposing (Dict)
+import Html exposing (Html, div)
+import Html.Attributes exposing (class, classList, id)
+import Libs.Type exposing (Food)
 
 import Architecture.Main as Main exposing (..)
 import Components.Shelf exposing (shelf)
-import Libs.Type    exposing (Food)
-
 
 
 content : Model -> Dict String (List Food) -> Html Main.Msg
@@ -16,6 +16,7 @@ content model foodDict =
     div
       [ id "content"
       , classList
-        [ ("-center", (not action.toggleSidebar || screen.width <= 976))
+        [ ("-center", not action.toggleSidebar || screen.width <= 976)
         ]
-      ] [ shelf model foodDict ]
+      ]
+      [ shelf model foodDict ]

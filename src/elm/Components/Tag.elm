@@ -1,7 +1,7 @@
-module Components.Tag exposing (..)
-import Html            exposing (Html, span, text)
-import Html.Attributes exposing (class)
+module Components.Tag exposing (tag)
 
+import Html exposing (Html, span, text)
+import Html.Attributes exposing (class)
 
 
 tag : Bool -> String -> Html msg

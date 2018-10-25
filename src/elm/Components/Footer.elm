@@ -1,5 +1,6 @@
 module Components.Footer exposing (footer_)
-import Html            exposing (Html, div, footer, span, text, a, i)
+
+import Html exposing (Html, a, div, footer, i, span, text)
 import Html.Attributes exposing (class, href, target)
 
 import Elements.Link exposing (link)
@@ -9,14 +10,15 @@ import Elements.Middot exposing (middot)
 
 -- Component
 
+
 footer_ : Html msg
 footer_ =
-  let blog   = "https://notes.knovour.ninja"
+  let blog = "https://notes.knovour.ninja"
       github = "https://github.com/Knovour/food"
-      elm    = "http://elm-lang.org"
+      elm = "http://elm-lang.org"
   in
     footer [ class "footer" ]
-      [ div [ class "copyright" ] [ text "2017 © Knovour" ]
+      [ div [ class "copyright" ] [ text "2018 © Knovour" ]
       , div [ class "links" ]
         [ link blog "Blog"
         , middot

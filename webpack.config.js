@@ -1,13 +1,16 @@
-const path              = require('path');
-const webpack           = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+const TerserPlugin = require("terser-webpack-plugin")
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
 
 // detemine build env
-const TARGET_ENV = process.env.npm_lifecycle_event === 'build' ? 'production' : 'development';
+const TARGET_ENV = process.env.npm_lifecycle_event === 'build' ? 'production' : 'development'
 
 const commonConfig = {
+  mode: TARGET_ENV,
   output: {
     path: path.resolve(__dirname, './dist/'),
     filename: '[hash].js',
@@ -21,7 +24,6 @@ const commonConfig = {
     new HtmlWebpackPlugin({
       template: 'src/static/index.html',
       inject:   'body',
-      filename: 'index.html'
     })
   ]
 }
@@ -34,7 +36,8 @@ if(TARGET_ENV === 'development') {
     ],
     devServer: {
       stats: {
-        colors: true
+        colors: true,
+        historyApiFallback: true
       }
     },
     module: {
@@ -42,8 +45,8 @@ if(TARGET_ENV === 'development') {
         test:    /\.elm$/,
         exclude: [ /elm-stuff/, /node_modules/ ],
         use: [
-          'elm-hot-loader',
-          'elm-webpack-loader?verbose=true&warn=true&debug=true'
+          'elm-hot-webpack-loader',
+          'elm-webpack-loader?verbose=true&debug=true'
         ]
       }, {
         test: /\.css$/,
@@ -54,7 +57,7 @@ if(TARGET_ENV === 'development') {
         ]
       }],
     }
-  });
+  })
 }
 
 if(TARGET_ENV === 'production') {
@@ -62,38 +65,49 @@ if(TARGET_ENV === 'production') {
     entry: './src/static/index.js',
     module: {
       rules: [{
-        test:    /\.elm$/,
-        exclude: [ /elm-stuff/, /node_modules/ ],
-        use:  'elm-webpack-loader'
+        test: /\.elm$/,
+				exclude: [/elm-stuff/, /node_modules/],
+				use: {
+					loader: 'elm-webpack-loader',
+					options: { optimize: true }
+				}
       }, {
         test: /\.p?css$/,
-        loader: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            'css-loader',
-            'postcss-loader'
-          ]
-        })
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: { publicPath: '' }
+          },
+          'css-loader',
+          'postcss-loader'
+        ]
       }]
     },
 
     plugins: [
+			new CleanWebpackPlugin(['dist'], {
+				root: __dirname,
+				exclude: [],
+				verbose: true,
+				dry: false
+			}),
       new HtmlWebpackPlugin({
         template: 'src/static/index.html',
-        inject:   'body',
-        filename: 'index.html'
+        inject: 'body',
       }),
       new CopyWebpackPlugin([{
         from: 'src/static/favicon.png'
       }]),
-      new ExtractTextPlugin({
+      new MiniCssExtractPlugin({
         filename: './[hash].css',
         allChunks: true
-      }),
-      new webpack.optimize.UglifyJsPlugin({
-        minimize: true,
-        compressor: { warnings: false }
       })
-    ]
-  });
+    ],
+    optimization: {
+      minimizer: [
+				new TerserPlugin({ exclude: 'elm', sourceMap: true, parallel: true }),
+        new OptimizeCSSAssetsPlugin({})
+      ]
+    }
+  })
 }

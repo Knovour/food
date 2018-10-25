@@ -1,19 +1,18 @@
-module Architecture.Filter exposing (..)
-
+module Architecture.Filter exposing (Model, Msg(..), model, update)
 
 
 type alias Model =
   { month : List Int
-  , name  : String
-  , now   : Int
+  , name : String
+  , now : Int
   }
 
 
 model : Model
 model =
   { month = []
-  , name  = ""
-  , now   = 0
+  , name = ""
+  , now = 0
   }
 
 
@@ -25,12 +24,14 @@ type Msg
 
 
 update : Msg -> Model -> Model
-update filterMsg model =
+update filterMsg filterModel =
   case filterMsg of
     Month num ->
-      if List.member num model.month
-      then { model | month = List.filter ((/=) num) model.month }
-      else { model | month = num :: model.month }
-    ClearMonth -> { model | month = [] }
-    Name str -> { model | name = str }
-    Now month -> { model | now = month }
+      let selectedMonth =
+            if List.member num filterModel.month
+            then List.filter ((/=) num) filterModel.month
+            else num :: filterModel.month
+      in { filterModel | month = selectedMonth }
+    ClearMonth -> { filterModel | month = [] }
+    Name str -> { filterModel | name = str }
+    Now month -> { filterModel | now = month }

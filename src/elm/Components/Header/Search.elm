@@ -1,13 +1,12 @@
-module Components.Header.Search exposing (..)
-import Html            exposing (Html, div, label, span, text, input)
-import Html.Attributes exposing (class, classList, for, id, type_, name, placeholder, value)
-import Html.Events     exposing (onInput, onClick)
+module Components.Header.Search exposing (search)
 
+import Html exposing (Html, div, input, label, span, text)
+import Html.Attributes exposing (class, classList, for, id, name, placeholder, type_, value)
+import Html.Events exposing (onClick, onInput)
 
-import Elements.Icon exposing (icon)
-import Architecture.Main   as Main exposing (..)
 import Architecture.Filter as Filter exposing (..)
-
+import Architecture.Main as Main exposing (..)
+import Elements.Icon exposing (icon)
 
 
 search : Filter.Model -> Html Main.Msg
@@ -21,12 +20,14 @@ search model =
       , placeholder "Search"
       , value model.name
       , onInput (Filter << Name)
-      ] []
+      ]
+      []
     , span
       [ classList
-        [ ("clear", True)
-        , ("-hide", model.name == "")
+        [ ( "clear", True )
+        , ( "-hide", model.name == "" )
         ]
       , onClick (Filter <| Name "")
-      ] [ icon "clear" ]
+      ]
+      [ icon "clear" ]
     ]

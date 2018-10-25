@@ -1,12 +1,13 @@
 module Components.Tabs exposing (tabs)
-import Html            exposing (Html, Attribute, div, a, text)
-import Html.Attributes exposing (class, classList, href)
-import Dict exposing (Dict)
 
-import Architecture.Main   as Main   exposing (..)
+import Dict exposing (Dict)
+import Html exposing (Attribute, Html, a, div, text)
+import Html.Attributes exposing (class, classList, href)
+
 import Architecture.Action as Action exposing (..)
-import Libs.Type exposing (Food, FoodType)
+import Architecture.Main as Main exposing (..)
 import Libs.Data exposing (foodTypes)
+import Libs.Type exposing (Food, FoodType)
 
 
 tabs : Action.Model -> Dict String (List Food) -> Html Main.Msg
@@ -16,12 +17,14 @@ tabs { group } foodList =
 
 tagList : List FoodType -> Dict String (List Food) -> String -> List (Html Main.Msg)
 tagList foodTypes foodList group =
-  List.map (\{ name, enName } ->
-    a
-      [ classList
-        [ ("tab", True)
-        , ("current", enName == group)
+  List.map
+    (\{ name, enName } ->
+      a
+        [ classList
+          [ ("tab", True)
+          , ("current", enName == group)
+          ]
+        , href ("/" ++ enName)
         ]
-      , href ("#/" ++ enName)
-      ] [ text name ]
-  ) foodTypes
+        [ text name ]
+    ) foodTypes

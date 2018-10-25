@@ -1,13 +1,12 @@
-module Components.Tools exposing (..)
-import Html            exposing (Html, div)
+module Components.Tools exposing (tools)
+
+import Html exposing (Html, div)
 import Html.Attributes exposing (classList)
 
 import Architecture.Main as Main exposing (..)
+import Components.Footer exposing (footer_)
 import Components.Tools.Display exposing (display)
-import Components.Tools.Month   exposing (month)
-import Components.Footer        exposing (footer_)
-
-
+import Components.Tools.Month exposing (monthFilter)
 
 tools : Main.Model -> Html Main.Msg
 tools { action, filter } =
@@ -18,6 +17,6 @@ tools { action, filter } =
       ]
     ]
     [ display action
-    , month action filter
+    , monthFilter action filter
     , footer_
     ]

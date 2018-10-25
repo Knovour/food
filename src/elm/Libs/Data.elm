@@ -1,4 +1,4 @@
-module Libs.Data exposing (..)
+module Libs.Data exposing (foodTypes)
 
 import Libs.Type exposing (FoodType)
 

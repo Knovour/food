@@ -1,8 +1,7 @@
-module Architecture.Action exposing (..)
+module Architecture.Action exposing (Model, Msg(..), model, resize, update, updateGroup)
 
 import Architecture.Screen as Screen exposing (..)
-import Routing exposing (Route, getRouteTarget)
-
+import Route exposing (Route, getRouteTarget)
 
 
 type alias Model =
@@ -33,24 +32,21 @@ type Msg
 
 
 update : Msg -> Model -> Model
-update actionMsg model =
+update actionMsg actionModel =
   case actionMsg of
-    Hover list      -> { model | hover = list }
-    Group str       -> { model | group = str }
-    IsCardLayout    -> { model | isCardLayout = (not model.isCardLayout) }
-    ToggleSidebar   -> { model | toggleSidebar = (not model.toggleSidebar) }
-    ToggleActionBtn -> { model | toggleActionBtn = (not model.toggleActionBtn) }
+    Hover list -> { actionModel | hover = list }
+    Group str -> { actionModel | group = str }
+    IsCardLayout -> { actionModel | isCardLayout = not actionModel.isCardLayout }
+    ToggleSidebar -> { actionModel | toggleSidebar = not actionModel.toggleSidebar }
+    ToggleActionBtn -> { actionModel | toggleActionBtn = not actionModel.toggleActionBtn }
 
 
 resize : Screen.Msg -> Model -> Model
-resize screenMsg model =
+resize screenMsg actionModel =
   case screenMsg of
-    Width w ->
-      { model
-      | isCardLayout = (w <= 1120 || model.isCardLayout)
-      }
+    Width w -> { actionModel | isCardLayout = w <= 1120 || model.isCardLayout }
 
 
 updateGroup : Route -> Model -> Model
-updateGroup routeMsg model =
-  { model | group = getRouteTarget routeMsg }
+updateGroup routeMsg actionModel =
+  { actionModel | group = getRouteTarget routeMsg }

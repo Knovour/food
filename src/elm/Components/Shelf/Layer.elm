@@ -1,7 +1,7 @@
-module Components.Shelf.Layer exposing (..)
-import Html            exposing (Html, Attribute, div)
-import Html.Attributes exposing (class, attribute)
+module Components.Shelf.Layer exposing (dataType, layer)
 
+import Html exposing (Attribute, Html, div)
+import Html.Attributes exposing (attribute, class)
 
 
 layer : List (Attribute msg) -> List (Html msg) -> Html msg
