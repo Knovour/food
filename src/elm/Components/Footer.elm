@@ -18,7 +18,7 @@ footer_ =
       elm = "http://elm-lang.org"
   in
     footer [ class "footer" ]
-      [ div [ class "copyright" ] [ text "2018 © Knovour" ]
+      [ div [ class "copyright" ] [ text "2019 © SiFi 矽緋國際" ]
       , div [ class "links" ]
         [ link blog "Blog"
         , middot
