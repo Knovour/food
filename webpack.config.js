@@ -52,7 +52,7 @@ if(TARGET_ENV === 'development') {
         test: /\.css$/,
         use: [
           'style-loader',
-          'css-loader',
+          { loader: 'css-loader', options: { importLoaders: 1 }},
           'postcss-loader'
         ]
       }],
@@ -78,7 +78,7 @@ if(TARGET_ENV === 'production') {
             loader: MiniCssExtractPlugin.loader,
             options: { publicPath: '' }
           },
-          'css-loader',
+          { loader: 'css-loader', options: { importLoaders: 1 }},
           'postcss-loader'
         ]
       }]

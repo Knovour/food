@@ -24,7 +24,7 @@
     size: auto 24px;
     margin: 0;
 
-    & > img {
+    & > svg {
       width: auto;
       height: 100%;
     }

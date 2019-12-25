@@ -2,7 +2,7 @@ module Components.Content exposing (content)
 
 import Dict exposing (Dict)
 import Html exposing (Html, div)
-import Html.Attributes exposing (class, classList, id)
+import Html.Attributes exposing (classList, id)
 import Libs.Type exposing (Food)
 
 import Architecture.Main as Main exposing (..)

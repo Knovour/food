@@ -4,7 +4,7 @@ import Html exposing (Html, div, img, span, text)
 import Html.Attributes exposing (alt, class, classList, src)
 import Html.Events exposing (onMouseEnter, onMouseLeave)
 
-import Architecture.Action as Action exposing (..)
+import Architecture.Action exposing (..)
 import Architecture.Main as Main exposing (..)
 import Libs.Type exposing (Food)
 

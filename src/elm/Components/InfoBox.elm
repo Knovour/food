@@ -41,41 +41,41 @@ colorPalettes =
 
 infoBox : Box.Model -> Html Main.Msg
 infoBox { open } =
-  case not open of
-    True -> text ""
-    False ->
-      let gov = "http://life.coa.gov.tw/Life/AgriculturalProducts/SeasonProductList.aspx?selectMonth=1&__M=True"
-          ui = "https://fonts.google.com/"
-          pixabay = "https://pixabay.com/"
-          pakutaso = "https://www.pakutaso.com/"
-          suzaiPage = "http://www.sozai-page.com"
-      in
-        div [ class "box-modal -depth-4" ]
-          [ div [ class "close", onClick (Box Close) ] [ icon "close" ]
-          , div [ class "box-content" ]
-            [ div [ class "about" ]
-              [ h5 [ class "heading" ] [ text "關於" ]
-              , ul [ class "info-list" ]
-                [ li [ class "item" ] [ text "資料來源：", link gov "行政院農委會 - 田邊好幫手" ]
-                , li [ class "item" ] [ text "UI 參考：", link ui "Google Fonts" ]
-                ]
-              ]
-            , div [ class "source" ]
-              [ h5 [ class "heading" ] [ text "圖片來源" ]
-              , p [ class "subheading" ] [ text "找不到的圖以方塊或相同種類的圖代替" ]
-              , ul [ class "info-list" ]
-                [ li [ class "item" ] [ link pixabay "Pixabay" ]
-                , li [ class "item" ] [ link pakutaso "ぱくたそ" ]
-                , li [ class "item" ] [ link suzaiPage "無料DTP素材" ]
-                ]
-              ]
-            , div [ class "colors" ]
-              [ h5 [ class "heading" ] [ text "顏色" ]
-              , p [ class "subheading" ] [ text "From Nippon Colors" ]
-              , div [ class "color-palette" ] (colorBlocks colorPalettes)
+  if not open
+  then text ""
+  else
+    let gov = "http://life.coa.gov.tw/Life/AgriculturalProducts/SeasonProductList.aspx?selectMonth=1&__M=True"
+        ui = "https://fonts.google.com/"
+        pixabay = "https://pixabay.com/"
+        pakutaso = "https://www.pakutaso.com/"
+        suzaiPage = "http://www.sozai-page.com"
+    in
+      div [ class "box-modal -depth-4" ]
+        [ div [ class "close", onClick (Box Close) ] [ icon "close" ]
+        , div [ class "box-content" ]
+          [ div [ class "about" ]
+            [ h5 [ class "heading" ] [ text "關於" ]
+            , ul [ class "info-list" ]
+              [ li [ class "item" ] [ text "資料來源：", link gov "行政院農委會 - 田邊好幫手" ]
+              , li [ class "item" ] [ text "UI 參考：", link ui "Google Fonts" ]
               ]
             ]
+          , div [ class "source" ]
+            [ h5 [ class "heading" ] [ text "圖片來源" ]
+            , p [ class "subheading" ] [ text "找不到的圖以方塊或相同種類的圖代替" ]
+            , ul [ class "info-list" ]
+              [ li [ class "item" ] [ link pixabay "Pixabay" ]
+              , li [ class "item" ] [ link pakutaso "ぱくたそ" ]
+              , li [ class "item" ] [ link suzaiPage "無料DTP素材" ]
+              ]
+            ]
+          , div [ class "colors" ]
+            [ h5 [ class "heading" ] [ text "顏色" ]
+            , p [ class "subheading" ] [ text "From Nippon Colors" ]
+            , div [ class "color-palette" ] (colorBlocks colorPalettes)
+            ]
           ]
+        ]
 
 
 colorBlocks : List ColorPalette -> List (Html Main.Msg)

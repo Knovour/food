@@ -4,7 +4,7 @@ import Architecture.Action as Action
 import Architecture.Filter as Filter exposing (..)
 import Architecture.Main as Main exposing (..)
 import Elements.Icon exposing (icon)
-import Html exposing (Attribute, Html, div, p, text)
+import Html exposing (Html, div, p, text)
 import Html.Attributes exposing (class, classList)
 import Html.Events exposing (onClick)
 

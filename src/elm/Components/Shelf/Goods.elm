@@ -1,6 +1,6 @@
 module Components.Shelf.Goods exposing (foodList, goods)
 
-import Html exposing (Attribute, Html, div)
+import Html exposing (Html, div)
 import Html.Attributes exposing (classList)
 
 import Architecture.Action as Action exposing (..)

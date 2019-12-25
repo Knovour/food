@@ -1,8 +1,7 @@
 module Route exposing (Route(..), getRouteTarget, match)
 
-import Browser.Navigation as Nav
 import Url exposing (Url)
-import Url.Parser exposing ((</>), Parser, map, oneOf, s, string, top, parse)
+import Url.Parser exposing (map, oneOf, s, top, parse)
 
 
 type Route

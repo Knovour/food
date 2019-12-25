@@ -2,6 +2,7 @@ module Architecture.Main exposing (Model, Msg(..), initialModel, update)
 
 import Task
 import Url exposing (Url)
+import GraphQL.Client.Http as GraphQLClient
 import Browser
 import Browser.Navigation as Nav exposing (..)
 
@@ -10,7 +11,6 @@ import Architecture.Box as Box
 import Architecture.Content as Content
 import Architecture.Filter as Filter
 import Architecture.Screen as Screen
-import GraphQL.Client.Http as GraphQLClient
 import Libs.Graphcool exposing (generateQueryRequest)
 import Libs.Helpers exposing (getDictValue)
 import Libs.Type exposing (Respond)

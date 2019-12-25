@@ -47,4 +47,4 @@ cmd location =
 
 
 subscriptions : Main.Model -> Sub Main.Msg
-subscriptions model = onResize (\width _ -> Screen <| Width width)
+subscriptions _ = onResize (\width _ -> Screen <| Width width)

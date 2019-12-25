@@ -1,6 +1,6 @@
 module Components.Header.RightMenu exposing (rightMenu)
 
-import Html exposing (Html, div, i, text)
+import Html exposing (Html, div)
 import Html.Attributes exposing (class)
 import Html.Events exposing (onClick)
 

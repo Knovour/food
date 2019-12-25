@@ -1,7 +1,7 @@
 module Components.Footer exposing (footer_)
 
-import Html exposing (Html, a, div, footer, i, span, text)
-import Html.Attributes exposing (class, href, target)
+import Html exposing (Html, div, footer, span, text)
+import Html.Attributes exposing (class)
 
 import Elements.Link exposing (link)
 import Elements.Middot exposing (middot)

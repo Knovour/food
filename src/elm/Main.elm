@@ -2,14 +2,14 @@ module Main exposing (init, main, view)
 
 import Browser
 import Browser.Navigation as Nav
-import Html exposing (Html, div, main_)
+import Html exposing (div, main_)
 import Html.Attributes exposing (classList)
 import Url exposing (Url)
 
 import Architecture.Main exposing (..)
 import Components.Action exposing (action)
 import Components.Content exposing (content)
-import Components.Dimmer as Dimmer exposing (dimmer)
+import Components.Dimmer exposing (dimmer)
 import Components.Footer exposing (footer_)
 import Components.Header exposing (header_)
 import Components.InfoBox exposing (infoBox)
@@ -17,8 +17,7 @@ import Components.Tabs exposing (tabs)
 import Components.Tools exposing (tools)
 import Libs.Helpers exposing (foodRefilter)
 import Libs.Init exposing (cmd, subscriptions)
-import Route exposing (Route)
-
+import Route
 
 
 -- APP
@@ -50,7 +49,7 @@ init _ url key =
 
 view : Model -> Browser.Document Msg
 view model =
-  let foodDict = foodRefilter model.action model.filter model.content
+  let foodDict = foodRefilter model.filter model.content
 
       classes =
         classList
@@ -64,7 +63,7 @@ view model =
         [ main_ [ classes ]
           [ header_ model
           , tools model
-          , tabs model.action foodDict
+          , tabs model.action
           , content model foodDict
           , footer_
           ]
