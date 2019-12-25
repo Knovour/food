@@ -12,8 +12,8 @@ import Libs.Type exposing (Food, FoodGroup, Respond)
 iNeedFoods : String -> Request Query Respond
 iNeedFoods foodType =
   extract
-    (field "allSpecies"
-      [ ( "filter"
+    (field "specieses"
+      [ ( "where"
         , Arg.object
           [ ("enName", Arg.variable (Var.required "enName" .name Var.string)) ]
         )
@@ -41,7 +41,7 @@ iNeedFoods foodType =
 
 sendQuery : Request Query a -> Task GraphQLClient.Error a
 sendQuery request =
-  GraphQLClient.sendQuery "https://api.graph.cool/simple/v1/ciumn017j1m4h01566kut051t" request
+  GraphQLClient.sendQuery "https://us1.prisma.sh/knovour-52731c/diet/dev" request
 
 
 generateQueryRequest : String -> Task GraphQLClient.Error Respond
